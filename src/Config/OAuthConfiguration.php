@@ -11,7 +11,7 @@ namespace ZEROSPAM\Freshbooks\Config;
 use League\OAuth2\Client\Grant\AuthorizationCode;
 use League\OAuth2\Client\Grant\RefreshToken;
 use League\OAuth2\Client\Token\AccessToken;
-use ZEROSPAM\OAuth2\Client\Provider\FreshBook;
+use ZEROSPAM\OAuth2\Client\Provider\FreshBooks;
 
 class OAuthConfiguration
 {
@@ -49,15 +49,17 @@ class OAuthConfiguration
     /**
      * Get a OAuthProvider
      *
-     * @return FreshBook
+     * @return FreshBooks
      */
-    public function getProvider(): FreshBook
+    public function getProvider(): FreshBooks
     {
-        return new FreshBook([
-            'clientId'     => $this->clientId,
-            'clientSecret' => $this->clientSecret,
-            'redirectUri'  => $this->redirectUrl,
-        ]);
+        return new FreshBooks(
+            [
+                'clientId'     => $this->clientId,
+                'clientSecret' => $this->clientSecret,
+                'redirectUri'  => $this->redirectUrl,
+            ]
+        );
     }
 
     /**
