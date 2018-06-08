@@ -1,0 +1,55 @@
+language: php
+
+sudo: true
+
+php:
+ - 7.2
+ - 7.1
+
+
+cache:
+  directories:
+    - $HOME/.composer/cache/files
+
+stages:
+  - test
+  - name: deploy
+    if: branch = master
+
+jobs:
+  include:
+    - stage: deploy
+      install: true
+      before_install:
+        - sudo apt-get update
+        - sudo apt-get install graphviz
+      script: php vendor/bin/phpdoc -q -d ./src -t ./build/docs --template="responsive-twig"
+      after_success: true
+      deploy:
+        provider: pages
+        skip-cleanup: true
+        github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+        keep-history: true
+        local-dir: build/docs
+        on:
+          branch: master
+    - script:
+      - npm install
+      - npm run semantic-release
+      after_success: skip
+      before_script: skip
+      language: node_js
+      node_js: 10
+      php: skip
+
+
+
+before_script:
+  - travis_retry composer install --prefer-dist
+
+script:
+  - ./vendor/bin/phpunit --configuration phpunit.xml --coverage-clover build/logs/clover.xml
+
+after_success:
+  - php vendor/bin/php-coveralls -v
+
