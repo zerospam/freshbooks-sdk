@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e7b4ab28538d8de3b298651672d1c597",
+    "content-hash": "79fa1af9bf51fafcaed676fb8bb5e8ba",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -649,16 +649,16 @@
         },
         {
             "name": "zerospam/sdk-framework",
-            "version": "v2.0.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zerospam/sdk-framework.git",
-                "reference": "00ad21e417d193ef939f27b83fb4e0b701fec35e"
+                "reference": "8838ccd45407e418432b9676189fc72d0267c684"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zerospam/sdk-framework/zipball/00ad21e417d193ef939f27b83fb4e0b701fec35e",
-                "reference": "00ad21e417d193ef939f27b83fb4e0b701fec35e",
+                "url": "https://api.github.com/repos/zerospam/sdk-framework/zipball/8838ccd45407e418432b9676189fc72d0267c684",
+                "reference": "8838ccd45407e418432b9676189fc72d0267c684",
                 "shasum": ""
             },
             "require": {
@@ -672,14 +672,15 @@
                 "mockery/mockery": "^1.1",
                 "php": ">= 7.1",
                 "php-coveralls/php-coveralls": "^2.0",
-                "phpdocumentor/phpdocumentor": "dev-master",
+                "phploc/phploc": "^4.0",
                 "phpunit/phpunit": "^7.1",
                 "squizlabs/php_codesniffer": "^3.2"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "ZEROSPAM\\Framework\\SDK\\": "src/"
+                    "ZEROSPAM\\Framework\\SDK\\": "src/",
+                    "ZEROSPAM\\Framework\\SDK\\Test\\Base\\": "tests/src/Base"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -698,7 +699,7 @@
                 "framework",
                 "sdk"
             ],
-            "time": "2018-06-08T18:37:37+00:00"
+            "time": "2018-06-11 15:14:40"
         }
     ],
     "packages-dev": [
@@ -1300,16 +1301,16 @@
         },
         {
             "name": "phpunit/php-file-iterator",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-file-iterator.git",
-                "reference": "e20525b0c2945c7c317fff95660698cb3d2a53bc"
+                "reference": "cecbc684605bb0cc288828eb5d65d93d5c676d3c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/e20525b0c2945c7c317fff95660698cb3d2a53bc",
-                "reference": "e20525b0c2945c7c317fff95660698cb3d2a53bc",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/cecbc684605bb0cc288828eb5d65d93d5c676d3c",
+                "reference": "cecbc684605bb0cc288828eb5d65d93d5c676d3c",
                 "shasum": ""
             },
             "require": {
@@ -1343,7 +1344,7 @@
                 "filesystem",
                 "iterator"
             ],
-            "time": "2018-05-28T12:13:49+00:00"
+            "time": "2018-06-11T11:44:00+00:00"
         },
         {
             "name": "phpunit/php-text-template",
@@ -1679,16 +1680,16 @@
         },
         {
             "name": "sebastian/diff",
-            "version": "3.0.0",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/diff.git",
-                "reference": "e09160918c66281713f1c324c1f4c4c3037ba1e8"
+                "reference": "366541b989927187c4ca70490a35615d3fef2dce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/e09160918c66281713f1c324c1f4c4c3037ba1e8",
-                "reference": "e09160918c66281713f1c324c1f4c4c3037ba1e8",
+                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/366541b989927187c4ca70490a35615d3fef2dce",
+                "reference": "366541b989927187c4ca70490a35615d3fef2dce",
                 "shasum": ""
             },
             "require": {
@@ -1731,7 +1732,7 @@
                 "unidiff",
                 "unified diff"
             ],
-            "time": "2018-02-01T13:45:15+00:00"
+            "time": "2018-06-10T07:54:39+00:00"
         },
         {
             "name": "sebastian/environment",
@@ -2275,7 +2276,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "zerospam/sdk-framework": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

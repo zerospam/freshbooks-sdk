@@ -22,7 +22,7 @@ use ZEROSPAM\Freshbooks\Business\Data\BusinessMembership;
  * @property-read string               $email
  * @property-read Carbon               $confirmed_at
  * @property-read string               $created_at
- * @property-read string               $accountId first accountID
+ * @property-read string               $account_id first accountID
  * @property-read BusinessMembership[] $business_memberships
  *
  */

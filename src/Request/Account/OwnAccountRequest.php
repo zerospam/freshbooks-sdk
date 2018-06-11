@@ -18,6 +18,7 @@ use ZEROSPAM\Freshbooks\Response\Account\OwnAccountResponse;
  *
  * Own account informations
  *
+ * @method  OwnAccountResponse getResponse()
  * @package ZEROSPAM\Freshbooks\Request\Account
  */
 class OwnAccountRequest extends BaseRequest
