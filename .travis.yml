@@ -20,7 +20,7 @@ jobs:
     script:
     - wget http://phpdox.de/releases/phpdox.phar && chmod +x phpdox.phar && sudo mv
       phpdox.phar /usr/local/bin/phpdox
-    - mkdir build/ && php vendor/bin/phploc src tests/src/Base --log-xml build/phploc.xml
+    - mkdir build/ && php vendor/bin/phploc src --log-xml build/phploc.xml
     - phpdox
     after_success: true
     deploy:
