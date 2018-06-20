@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/zerospam/freshbooks-sdk/compare/v1.0.0...v1.0.1) (2018-06-20)
+
+
+### Performance Improvements
+
+* **Search:** Add search argument ([997d798](https://github.com/zerospam/freshbooks-sdk/commit/997d798))
+
 # 1.0.0 (2018-06-20)
 
 
