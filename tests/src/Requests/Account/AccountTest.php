@@ -6,7 +6,7 @@
  * Time: 15:16
  */
 
-namespace ZEROSPAM\Freshbooks\Test\Requests;
+namespace ZEROSPAM\Freshbooks\Test\Requests\Account;
 
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 use ZEROSPAM\Freshbooks\Business\Data\BusinessData;
