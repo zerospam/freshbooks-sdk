@@ -8,7 +8,6 @@
 
 namespace ZEROSPAM\Freshbooks\Business\Data;
 
-
 use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
 
 /**
