@@ -16,7 +16,7 @@
   "require": {
     "php": ">= 7.1",
     "zerospam/oauth2-freshbooks": "^1.6",
-    "zerospam/sdk-framework": "^2.2"
+    "zerospam/sdk-framework": "^4.0"
   },
   "require-dev": {
     "php": ">= 7.1",

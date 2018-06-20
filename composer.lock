@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b39fc547d35fc6702eba540f53f48e95",
+    "content-hash": "ad5b02288c7d5ee6dc942f22b189bd1f",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -649,16 +649,16 @@
         },
         {
             "name": "zerospam/sdk-framework",
-            "version": "v2.2.0",
+            "version": "v4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zerospam/sdk-framework.git",
-                "reference": "d2f6b4ede312e8ef2ce2b444ded3f88bc8a0494c"
+                "reference": "efa435dc69c390e1664919a701c4d33c28d79683"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zerospam/sdk-framework/zipball/d2f6b4ede312e8ef2ce2b444ded3f88bc8a0494c",
-                "reference": "d2f6b4ede312e8ef2ce2b444ded3f88bc8a0494c",
+                "url": "https://api.github.com/repos/zerospam/sdk-framework/zipball/efa435dc69c390e1664919a701c4d33c28d79683",
+                "reference": "efa435dc69c390e1664919a701c4d33c28d79683",
                 "shasum": ""
             },
             "require": {
@@ -699,7 +699,7 @@
                 "framework",
                 "sdk"
             ],
-            "time": "2018-06-11T20:14:27+00:00"
+            "time": "2018-06-20T18:58:11+00:00"
         }
     ],
     "packages-dev": [
