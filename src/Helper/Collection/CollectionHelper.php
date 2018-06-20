@@ -6,10 +6,9 @@
  * Time: 14:23
  */
 
-namespace ZEROSPAM\Freshbooks\Business\Collection;
+namespace ZEROSPAM\Freshbooks\Helper\Collection;
 
 use ZEROSPAM\Framework\SDK\Response\Api\Collection\CollectionMetaData;
-use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 
 /**
  * Trait CollectionHelper

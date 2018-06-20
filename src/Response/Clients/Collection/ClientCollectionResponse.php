@@ -10,7 +10,7 @@ namespace ZEROSPAM\Freshbooks\Response\Clients\Collection;
 
 use ZEROSPAM\Framework\SDK\Response\Api\Collection\CollectionResponse;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
-use ZEROSPAM\Freshbooks\Business\Collection\CollectionHelper;
+use ZEROSPAM\Freshbooks\Helper\Collection\CollectionHelper;
 use ZEROSPAM\Freshbooks\Response\Clients\ClientResponse;
 
 /**
