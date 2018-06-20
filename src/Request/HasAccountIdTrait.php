@@ -8,6 +8,8 @@
 
 namespace ZEROSPAM\Freshbooks\Request;
 
+use ZEROSPAM\Framework\SDK\Request\Api\IsBindable;
+
 /**
  * Trait HasAccountIdTrait
  *
@@ -17,14 +19,16 @@ namespace ZEROSPAM\Freshbooks\Request;
  */
 trait HasAccountIdTrait
 {
+    use IsBindable;
 
     /**
      * Set the account ID in the URL
+     *
      * @param string $id
      *
      * @return $this
      */
-    public function setAccountId(string $id) : IAccountIdRequest
+    public function setAccountId(string $id): IAccountIdRequest
     {
         $this->addBinding('accountId', $id);
 
