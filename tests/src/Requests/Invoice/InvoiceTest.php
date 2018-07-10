@@ -13,6 +13,7 @@ use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 use ZEROSPAM\Freshbooks\Argument\IncludeArgument;
 use ZEROSPAM\Freshbooks\Request\Invoice\GetInvoiceListRequest;
 use ZEROSPAM\Freshbooks\Request\Invoice\GetInvoiceRequest;
+use ZEROSPAM\Freshbooks\Request\Invoice\ShareLink\GetInvoiceShareLinkRequest;
 use ZEROSPAM\Freshbooks\Response\Invoice\InvoiceResponse;
 
 class InvoiceTest extends TestCase
@@ -447,5 +448,36 @@ JSON;
         $this->assertEquals("9.99", $line->amount->amount);
         $this->assertEquals("2018-07-10", $line->updated->toDateString());
         $this->assertEquals("5", $line->taxAmount1);
+    }
+
+    public function testGetInvoiceShareLink(): void
+    {
+        $json = <<<JSON
+{
+    "response": {
+        "result": {
+            "share_link": {
+                "resourceid": "129373",
+                "share_method": "share_link",
+                "share_link": "https://my.freshbooks.com/#/link/example",
+                "resource_type": "invoice",
+                "clientid": 163701
+            }
+        }
+    }
+}
+JSON;
+
+        $client  = $this->preSuccess($json);
+        $request = new GetInvoiceShareLinkRequest();
+        $request->setAccountId('id');
+        $request->setInvoiceId('1324');
+        $client->getOAuthTestClient()->processRequest($request);
+
+        $response = $request->getResponse();
+
+        $this->assertEquals("129373", $response->resourceid);
+        $this->assertEquals("share_link", $response->share_method);
+        $this->assertEquals("https://my.freshbooks.com/#/link/example", $response->share_link);
     }
 }
