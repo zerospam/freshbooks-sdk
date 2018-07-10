@@ -1,30 +1,29 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: ycoutu
- * Date: 09/07/18
- * Time: 4:27 PM
+ * User: aaflalo
+ * Date: 18-06-11
+ * Time: 15:37
  */
 
-namespace ZEROSPAM\Freshbooks\Request\Invoice;
+namespace ZEROSPAM\Freshbooks\Request\Call\Clients\Collection;
 
 use ZEROSPAM\Framework\SDK\Request\Api\BaseRequest;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
-use ZEROSPAM\Freshbooks\Request\HasAccountIdTrait;
-use ZEROSPAM\Freshbooks\Request\IAccountIdRequest;
-use ZEROSPAM\Freshbooks\Response\Invoice\Collection\InvoiceCollectionResponse;
+use ZEROSPAM\Freshbooks\Request\Call\HasAccountIdTrait;
+use ZEROSPAM\Freshbooks\Request\Call\IAccountIdRequest;
+use ZEROSPAM\Freshbooks\Response\Clients\Collection\ClientCollectionResponse;
 
 /**
- * Class GetInvoiceListRequest
+ * Class ClientListRequest
  *
- * Get the list of invoices
+ * Retrieves the clients of the account
+ * @method ClientCollectionResponse getResponse()
  *
- * @method InvoiceCollectionResponse getResponse()
- *
- * @package ZEROSPAM\Freshbooks\Request\Invoice
+ * @package ZEROSPAM\Freshbooks\Request\Clients
  */
-class GetInvoiceListRequest extends BaseRequest implements IAccountIdRequest
+class ClientListRequest extends BaseRequest implements IAccountIdRequest
 {
     use HasAccountIdTrait;
 
@@ -35,7 +34,7 @@ class GetInvoiceListRequest extends BaseRequest implements IAccountIdRequest
      */
     public function baseRoute(): string
     {
-        return 'accounting/account/:accountId/invoices/invoices';
+        return 'accounting/account/:accountId/users/clients';
     }
 
 
@@ -54,10 +53,10 @@ class GetInvoiceListRequest extends BaseRequest implements IAccountIdRequest
      *
      * @param array $jsonResponse
      *
-     * @return IResponse
+     * @return \ZEROSPAM\Framework\SDK\Response\Api\IResponse
      */
     public function processResponse(array $jsonResponse): IResponse
     {
-        return new InvoiceCollectionResponse($jsonResponse['response']);
+        return new ClientCollectionResponse($jsonResponse['response']);
     }
 }

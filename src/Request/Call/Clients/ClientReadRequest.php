@@ -6,13 +6,13 @@
  * Time: 13:35
  */
 
-namespace ZEROSPAM\Freshbooks\Request\Clients;
+namespace ZEROSPAM\Freshbooks\Request\Call\Clients;
 
 use ZEROSPAM\Framework\SDK\Request\Api\BaseRequest;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
-use ZEROSPAM\Freshbooks\Request\HasAccountIdTrait;
-use ZEROSPAM\Freshbooks\Request\IAccountIdRequest;
+use ZEROSPAM\Freshbooks\Request\Call\HasAccountIdTrait;
+use ZEROSPAM\Freshbooks\Request\Call\IAccountIdRequest;
 use ZEROSPAM\Freshbooks\Response\Clients\ClientResponse;
 
 /**

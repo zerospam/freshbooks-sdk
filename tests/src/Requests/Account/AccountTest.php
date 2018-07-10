@@ -11,7 +11,7 @@ namespace ZEROSPAM\Freshbooks\Test\Requests\Account;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 use ZEROSPAM\Freshbooks\Business\Data\BusinessData;
 use ZEROSPAM\Freshbooks\Business\Data\BusinessMembership;
-use ZEROSPAM\Freshbooks\Request\Account\OwnAccountRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Account\OwnAccountRequest;
 
 class AccountTest extends TestCase
 {

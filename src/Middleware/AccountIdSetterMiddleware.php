@@ -10,7 +10,7 @@ namespace ZEROSPAM\Freshbooks\Middleware;
 
 use ZEROSPAM\Framework\SDK\Client\Middleware\IPreRequestMiddleware;
 use ZEROSPAM\Framework\SDK\Request\Api\IRequest;
-use ZEROSPAM\Freshbooks\Request\IAccountIdRequest;
+use ZEROSPAM\Freshbooks\Request\Call\IAccountIdRequest;
 
 class AccountIdSetterMiddleware implements IPreRequestMiddleware
 {

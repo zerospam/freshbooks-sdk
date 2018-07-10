@@ -11,9 +11,9 @@ namespace ZEROSPAM\Freshbooks\Test\Requests\Invoice;
 use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 use ZEROSPAM\Freshbooks\Argument\IncludeArgument;
-use ZEROSPAM\Freshbooks\Request\Invoice\GetInvoiceListRequest;
-use ZEROSPAM\Freshbooks\Request\Invoice\GetInvoiceRequest;
-use ZEROSPAM\Freshbooks\Request\Invoice\ShareLink\GetInvoiceShareLinkRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Invoice\GetInvoiceListRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Invoice\GetInvoiceRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Invoice\ShareLink\GetInvoiceShareLinkRequest;
 use ZEROSPAM\Freshbooks\Response\Invoice\InvoiceResponse;
 
 class InvoiceTest extends TestCase

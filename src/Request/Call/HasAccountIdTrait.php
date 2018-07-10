@@ -6,7 +6,7 @@
  * Time: 15:40
  */
 
-namespace ZEROSPAM\Freshbooks\Request;
+namespace ZEROSPAM\Freshbooks\Request\Call;
 
 use ZEROSPAM\Framework\SDK\Request\Api\IsBindable;
 

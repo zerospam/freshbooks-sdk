@@ -6,7 +6,7 @@
  * Time: 10:41
  */
 
-namespace ZEROSPAM\Freshbooks\Request\Account;
+namespace ZEROSPAM\Freshbooks\Request\Call\Account;
 
 use ZEROSPAM\Framework\SDK\Request\Api\BaseRequest;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;

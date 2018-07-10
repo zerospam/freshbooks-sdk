@@ -6,14 +6,14 @@
  * Time: 11:57 AM
  */
 
-namespace ZEROSPAM\Freshbooks\Request\Invoice\ShareLink;
+namespace ZEROSPAM\Freshbooks\Request\Call\Invoice\ShareLink;
 
 use ZEROSPAM\Framework\SDK\Request\Api\BaseRequest;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 use ZEROSPAM\Freshbooks\Argument\Invoice\ShareMethodArgument;
-use ZEROSPAM\Freshbooks\Request\HasAccountIdTrait;
-use ZEROSPAM\Freshbooks\Request\IAccountIdRequest;
+use ZEROSPAM\Freshbooks\Request\Call\HasAccountIdTrait;
+use ZEROSPAM\Freshbooks\Request\Call\IAccountIdRequest;
 use ZEROSPAM\Freshbooks\Response\ShareLink\ShareLinkResponse;
 
 /**
