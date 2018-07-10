@@ -6,7 +6,7 @@
  * Time: 1:37 PM
  */
 
-namespace ZEROSPAM\Freshbooks\Response\Invoice\ShareLink;
+namespace ZEROSPAM\Freshbooks\Response\ShareLink;
 
 use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
 
@@ -21,7 +21,7 @@ use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
  *
  * @package ZEROSPAM\Freshbooks\Response\Invoice\ShareLink
  */
-class InvoiceShareLinkResponse extends BaseResponse
+class ShareLinkResponse extends BaseResponse
 {
 
 }

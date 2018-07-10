@@ -14,14 +14,14 @@ use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 use ZEROSPAM\Freshbooks\Argument\Invoice\ShareMethodArgument;
 use ZEROSPAM\Freshbooks\Request\HasAccountIdTrait;
 use ZEROSPAM\Freshbooks\Request\IAccountIdRequest;
-use ZEROSPAM\Freshbooks\Response\Invoice\ShareLink\InvoiceShareLinkResponse;
+use ZEROSPAM\Freshbooks\Response\ShareLink\ShareLinkResponse;
 
 /**
  * Class GetInvoiceShareLink
  *
  * Get the share link of an invoice
  *
- * @method InvoiceShareLinkResponse getResponse()
+ * @method ShareLinkResponse getResponse()
  *
  * @package ZEROSPAM\Freshbooks\Request\Invoice\ShareLink
  */
@@ -77,6 +77,6 @@ class GetInvoiceShareLinkRequest extends BaseRequest implements IAccountIdReques
      */
     public function processResponse(array $jsonResponse): IResponse
     {
-        return new InvoiceShareLinkResponse($jsonResponse['response']['result']['share_link']);
+        return new ShareLinkResponse($jsonResponse['response']['result']['share_link']);
     }
 }
