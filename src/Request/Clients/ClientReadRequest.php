@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: aaflalo
- * Date: 18-06-11
- * Time: 15:37
+ * Date: 18-07-10
+ * Time: 13:35
  */
 
 namespace ZEROSPAM\Freshbooks\Request\Clients;
@@ -13,30 +13,19 @@ use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 use ZEROSPAM\Freshbooks\Request\HasAccountIdTrait;
 use ZEROSPAM\Freshbooks\Request\IAccountIdRequest;
-use ZEROSPAM\Freshbooks\Response\Clients\Collection\ClientCollectionResponse;
+use ZEROSPAM\Freshbooks\Response\Clients\ClientResponse;
 
 /**
- * Class ClientListRequest
+ * Class ClientReadRequest
  *
- * Retrieves the clients of the account
- * @method ClientCollectionResponse getResponse()
+ * Gather information about a specific client
  *
  * @package ZEROSPAM\Freshbooks\Request\Clients
+ * @method ClientResponse getResponse()
  */
-class ClientListRequest extends BaseRequest implements IAccountIdRequest
+class ClientReadRequest extends BaseRequest implements IAccountIdRequest
 {
     use HasAccountIdTrait;
-
-    /**
-     * Base route without binding.
-     *
-     * @return string
-     */
-    public function baseRoute(): string
-    {
-        return 'accounting/account/:accountId/users/contacts';
-    }
-
 
     /**
      * Type of request.
@@ -57,6 +46,30 @@ class ClientListRequest extends BaseRequest implements IAccountIdRequest
      */
     public function processResponse(array $jsonResponse): IResponse
     {
-        return new ClientCollectionResponse($jsonResponse['response']);
+        return new ClientResponse($jsonResponse['response']['result']['client']);
+    }
+
+    /**
+     * Set the clientID
+     *
+     * @param int $id
+     *
+     * @return $this
+     */
+    public function setClientId(int $id): ClientReadRequest
+    {
+        $this->addBinding('clientId', $id);
+
+        return $this;
+    }
+
+    /**
+     * Base route without binding.
+     *
+     * @return string
+     */
+    public function baseRoute(): string
+    {
+        return 'accounting/account/:accountId/users/clients/:clientId';
     }
 }
