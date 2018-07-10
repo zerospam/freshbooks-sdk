@@ -8,7 +8,6 @@
 
 namespace ZEROSPAM\Freshbooks\Response\Invoice;
 
-use function array_key_exists;
 use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
 use ZEROSPAM\Freshbooks\Business\Amount;
