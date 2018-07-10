@@ -1,3 +1,11 @@
+# [1.1.0](https://github.com/zerospam/freshbooks-sdk/compare/v1.0.1...v1.1.0) (2018-07-10)
+
+
+### Features
+
+* **Invoice:** Add basic GET requests and responses ([a48329c](https://github.com/zerospam/freshbooks-sdk/commit/a48329c))
+* **Invoice:** Add lines property to invoice response ([1992fc8](https://github.com/zerospam/freshbooks-sdk/commit/1992fc8))
+
 ## [1.0.1](https://github.com/zerospam/freshbooks-sdk/compare/v1.0.0...v1.0.1) (2018-06-20)
 
 
