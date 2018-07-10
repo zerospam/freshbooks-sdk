@@ -9,6 +9,7 @@
 namespace ZEROSPAM\Freshbooks\Test\Requests\Client;
 
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
+use ZEROSPAM\Freshbooks\Request\Clients\ClientReadRequest;
 use ZEROSPAM\Freshbooks\Request\Clients\Collection\ClientListRequest;
 use ZEROSPAM\Freshbooks\Response\Clients\ClientResponse;
 
@@ -34,5 +35,26 @@ JSON;
         $this->assertInstanceOf(ClientResponse::class, $response[0]);
         $this->assertEquals("Test", $response[0]->lname);
         $this->assertEquals(0, $response[0]->numLogins);
+    }
+
+    public function testGetOneClient(): void
+    {
+        $json
+            = <<<JSON
+{"response":{"result":{"client":{"allow_late_notifications":true,"fax":"","last_activity":null,"num_logins":0,"vat_number":"","pref_email":true,"id":103807,"direct_link_token":null,"s_province":"","note":null,"s_city":"","s_street2":"","statement_token":null,"lname":"Test","mob_phone":"","last_login":null,"fname":"Test","role":"client","company_industry":null,"subdomain":null,"email":"test@test.com","username":"testtest","updated":"2018-07-10 08:54:44","home_phone":null,"vat_name":null,"p_city":"","bus_phone":"","allow_late_fees":true,"s_street":"","p_street":"","company_size":null,"accounting_systemid":"k0LBE","p_code":"","p_province":"","signup_date":"2018-06-08 14:56:22","language":"en","level":0,"notified":false,"userid":103807,"p_street2":"","pref_gmail":false,"vis_state":0,"s_country":"","s_code":"","organization":"test","p_country":"United States","currency_code":"CAD"}}}}
+JSON;
+
+
+        $client  = $this->preSuccess($json);
+        $request = new ClientReadRequest();
+        $request->setAccountId('id')
+                ->setClientId(103807);
+        $client->getOAuthTestClient()->processRequest($request);
+
+        $this->validateUrl($client, [103807]);
+        $response = $request->getResponse();
+        $this->assertEquals(103807, $response->id);
+        $this->assertEquals("Test", $response->lname);
+        $this->assertEquals(0, $response->numLogins);
     }
 }
