@@ -9,7 +9,7 @@
 namespace ZEROSPAM\Freshbooks\Test\Requests\Client;
 
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
-use ZEROSPAM\Freshbooks\Request\Clients\ClientListRequest;
+use ZEROSPAM\Freshbooks\Request\Clients\Collection\ClientListRequest;
 use ZEROSPAM\Freshbooks\Response\Clients\ClientResponse;
 
 class ClientTest extends TestCase
