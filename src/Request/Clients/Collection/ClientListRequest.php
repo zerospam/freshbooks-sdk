@@ -34,7 +34,7 @@ class ClientListRequest extends BaseRequest implements IAccountIdRequest
      */
     public function baseRoute(): string
     {
-        return 'accounting/account/:accountId/users/contacts';
+        return 'accounting/account/:accountId/users/clients';
     }
 
 
