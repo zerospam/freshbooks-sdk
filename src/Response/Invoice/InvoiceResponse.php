@@ -16,7 +16,7 @@ use ZEROSPAM\Freshbooks\Business\Amount;
  * Class InvoiceResponse
  *
  * @property-read int         $status
- * @property-read null        $deposit_percentage
+ * @property-read string|null $deposit_percentage
  * @property-read Carbon      $create_date
  * @property-read Amount      $outstanding
  * @property-read string      $payment_status
@@ -86,7 +86,7 @@ class InvoiceResponse extends BaseResponse
         'create_date',
         'generation_date',
         'due_date',
-        'updated'
+        'updated',
     ];
 
     /**

@@ -12,6 +12,7 @@ use ZEROSPAM\Framework\SDK\Request\Api\BaseRequest;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 use ZEROSPAM\Freshbooks\Request\HasAccountIdTrait;
+use ZEROSPAM\Freshbooks\Request\IAccountIdRequest;
 use ZEROSPAM\Freshbooks\Response\Invoice\InvoiceResponse;
 
 /**
@@ -19,9 +20,11 @@ use ZEROSPAM\Freshbooks\Response\Invoice\InvoiceResponse;
  *
  * Get a specific invoice
  *
+ * @method InvoiceResponse getResponse()
+ *
  * @package ZEROSPAM\Freshbooks\Request\Invoice
  */
-class GetInvoiceRequest extends BaseRequest
+class GetInvoiceRequest extends BaseRequest implements IAccountIdRequest
 {
     use HasAccountIdTrait;
 

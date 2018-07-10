@@ -12,9 +12,19 @@ use ZEROSPAM\Framework\SDK\Request\Api\BaseRequest;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 use ZEROSPAM\Freshbooks\Request\HasAccountIdTrait;
+use ZEROSPAM\Freshbooks\Request\IAccountIdRequest;
 use ZEROSPAM\Freshbooks\Response\Invoice\Collection\InvoiceCollectionResponse;
 
-class GetInvoiceListRequest extends BaseRequest
+/**
+ * Class GetInvoiceListRequest
+ *
+ * Get the list of invoices
+ *
+ * @method InvoiceCollectionResponse getResponse()
+ *
+ * @package ZEROSPAM\Freshbooks\Request\Invoice
+ */
+class GetInvoiceListRequest extends BaseRequest implements IAccountIdRequest
 {
     use HasAccountIdTrait;
 
