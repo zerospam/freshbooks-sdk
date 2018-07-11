@@ -27,5 +27,7 @@ use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
  */
 class TaxResponse extends BaseResponse
 {
-
+    protected $dates = [
+        'updated',
+    ];
 }
