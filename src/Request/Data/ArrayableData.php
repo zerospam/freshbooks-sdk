@@ -15,7 +15,7 @@ abstract class ArrayableData implements Arrayable
 {
     /** @var string[] */
     protected $renamed = [];
-    
+
     /**
      * Return the object as Array.
      *

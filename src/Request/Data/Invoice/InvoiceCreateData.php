@@ -8,10 +8,7 @@
 
 namespace ZEROSPAM\Freshbooks\Request\Data\Invoice;
 
-use Carbon\Carbon;
 use ZEROSPAM\Freshbooks\Request\Data\ArrayableData;
-use ZEROSPAM\Freshbooks\Request\Data\DateTimeData;
-use ZEROSPAM\Freshbooks\Request\Invoice\WritableInvoiceFieldsTrait;
 
 class InvoiceCreateData extends ArrayableData
 {
@@ -26,44 +23,17 @@ class InvoiceCreateData extends ArrayableData
     /** @var int */
     private $basecampid;
 
-    /** @var int */
-    private $sentid;
-
     /** @var string */
     private $status;
 
     /** @var int */
     private $parent;
 
-    /** @var DateTimeData */
-    private $createdAt;
-
-    /** @var DateTimeData */
-    private $updated;
-
-    /** @var string */
-    private $displayStatus;
-
-    /** @var string */
-    private $autobillStatus;
-
-    /** @var string */
-    private $paymentStatus;
-
     /** @var string */
     private $lastOrderStatus;
 
-    /** @var string */
-    private $disputeStatus;
-
-    /** @var string */
-    private $depositStatus;
-
     /** @var bool */
-    private $autobill;
-
-    /** @var string */
-    private $v3Status;
+    private $autoBill;
 
     /**
      * @param int $ownerid
@@ -96,16 +66,6 @@ class InvoiceCreateData extends ArrayableData
     }
 
     /**
-     * @param int $sentid
-     * @return $this
-     */
-    public function setSentid(int $sentid): InvoiceCreateData
-    {
-        $this->sentid = $sentid;
-        return $this;
-    }
-
-    /**
      * @param string $status
      * @return $this
      */
@@ -126,56 +86,6 @@ class InvoiceCreateData extends ArrayableData
     }
 
     /**
-     * @param Carbon $createdAt
-     * @return $this
-     */
-    public function setCreatedAt(Carbon $createdAt): InvoiceCreateData
-    {
-        $this->createdAt = new DateTimeData($createdAt, 'Y-m-d H:i:s');
-        return $this;
-    }
-
-    /**
-     * @param Carbon $updated
-     * @return $this
-     */
-    public function setUpdated(Carbon $updated): InvoiceCreateData
-    {
-        $this->updated = new DateTimeData($updated, 'Y-m-d H:i:s');
-        return $this;
-    }
-
-    /**
-     * @param string $displayStatus
-     * @return $this
-     */
-    public function setDisplayStatus(string $displayStatus): InvoiceCreateData
-    {
-        $this->displayStatus = $displayStatus;
-        return $this;
-    }
-
-    /**
-     * @param string $autobillStatus
-     * @return $this
-     */
-    public function setAutobillStatus(string $autobillStatus): InvoiceCreateData
-    {
-        $this->autobillStatus = $autobillStatus;
-        return $this;
-    }
-
-    /**
-     * @param string $paymentStatus
-     * @return $this
-     */
-    public function setPaymentStatus(string $paymentStatus): InvoiceCreateData
-    {
-        $this->paymentStatus = $paymentStatus;
-        return $this;
-    }
-
-    /**
      * @param string $lastOrderStatus
      * @return $this
      */
@@ -186,42 +96,12 @@ class InvoiceCreateData extends ArrayableData
     }
 
     /**
-     * @param string $disputeStatus
+     * @param bool $autoBill
      * @return $this
      */
-    public function setDisputeStatus(string $disputeStatus): InvoiceCreateData
+    public function setAutoBill(bool $autoBill): InvoiceCreateData
     {
-        $this->disputeStatus = $disputeStatus;
-        return $this;
-    }
-
-    /**
-     * @param string $depositStatus
-     * @return $this
-     */
-    public function setDepositStatus(string $depositStatus): InvoiceCreateData
-    {
-        $this->depositStatus = $depositStatus;
-        return $this;
-    }
-
-    /**
-     * @param bool $autobill
-     * @return $this
-     */
-    public function setAutobill(bool $autobill): InvoiceCreateData
-    {
-        $this->autobill = $autobill;
-        return $this;
-    }
-
-    /**
-     * @param string $v3Status
-     * @return $this
-     */
-    public function setV3Status(string $v3Status): InvoiceCreateData
-    {
-        $this->v3Status = $v3Status;
+        $this->autoBill = $autoBill;
         return $this;
     }
 }

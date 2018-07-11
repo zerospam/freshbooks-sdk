@@ -6,7 +6,7 @@
  * Time: 2:57 PM
  */
 
-namespace ZEROSPAM\Freshbooks\Request\Invoice;
+namespace ZEROSPAM\Freshbooks\Request\Call\Invoice;
 
 use ZEROSPAM\Framework\SDK\Request\Api\BaseRequest;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;

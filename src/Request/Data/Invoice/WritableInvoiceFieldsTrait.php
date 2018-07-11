@@ -6,12 +6,11 @@
  * Time: 3:00 PM
  */
 
-namespace ZEROSPAM\Freshbooks\Request\Invoice;
+namespace ZEROSPAM\Freshbooks\Request\Data\Invoice;
 
 use Carbon\Carbon;
 use ZEROSPAM\Freshbooks\Request\Data\AmountData;
 use ZEROSPAM\Freshbooks\Request\Data\DateTimeData;
-use ZEROSPAM\Freshbooks\Request\Data\Invoice\InvoiceLineData;
 
 trait WritableInvoiceFieldsTrait
 {
@@ -62,9 +61,6 @@ trait WritableInvoiceFieldsTrait
 
     /** @var string|null */
     private $depositPercentage;
-
-    /** @var boolean */
-    private $gmail;
 
     /** @var boolean */
     private $showAttachments;
@@ -118,7 +114,7 @@ trait WritableInvoiceFieldsTrait
      * @param string $invoiceNumber
      * @return $this
      */
-    public function setInvoiceNumber(string $invoiceNumber): WritableInvoiceFieldsTrait
+    public function setInvoiceNumber(string $invoiceNumber)
     {
         $this->invoiceNumber = $invoiceNumber;
         return $this;
@@ -128,7 +124,7 @@ trait WritableInvoiceFieldsTrait
      * @param int $customerid
      * @return $this
      */
-    public function setCustomerid(int $customerid): WritableInvoiceFieldsTrait
+    public function setCustomerid(int $customerid)
     {
         $this->customerid = $customerid;
         return $this;
@@ -138,7 +134,7 @@ trait WritableInvoiceFieldsTrait
      * @param Carbon $createDate
      * @return $this
      */
-    public function setCreateDate(Carbon $createDate): WritableInvoiceFieldsTrait
+    public function setCreateDate(Carbon $createDate)
     {
         $this->createDate = new DateTimeData($createDate, 'Y-m-d');
         return $this;
@@ -148,7 +144,7 @@ trait WritableInvoiceFieldsTrait
      * @param Carbon|null $generationDate
      * @return $this
      */
-    public function setGenerationDate(?Carbon $generationDate): WritableInvoiceFieldsTrait
+    public function setGenerationDate(?Carbon $generationDate)
     {
         $this->generationDate = is_null($generationDate) ? null : new DateTimeData($generationDate, 'Y-m-d');
         return $this;
@@ -158,7 +154,7 @@ trait WritableInvoiceFieldsTrait
      * @param string $discountValue
      * @return $this
      */
-    public function setDiscountValue(string $discountValue): WritableInvoiceFieldsTrait
+    public function setDiscountValue(string $discountValue)
     {
         $this->discountValue = $discountValue;
         return $this;
@@ -168,7 +164,7 @@ trait WritableInvoiceFieldsTrait
      * @param null|string $discountDescription
      * @return $this
      */
-    public function setDiscountDescription(?string $discountDescription): WritableInvoiceFieldsTrait
+    public function setDiscountDescription(?string $discountDescription)
     {
         $this->discountDescription = $discountDescription;
         return $this;
@@ -178,7 +174,7 @@ trait WritableInvoiceFieldsTrait
      * @param null|string $poNumber
      * @return $this
      */
-    public function setPoNumber(?string $poNumber): WritableInvoiceFieldsTrait
+    public function setPoNumber(?string $poNumber)
     {
         $this->poNumber = $poNumber;
         return $this;
@@ -188,7 +184,7 @@ trait WritableInvoiceFieldsTrait
      * @param string $template
      * @return $this
      */
-    public function setTemplate(string $template): WritableInvoiceFieldsTrait
+    public function setTemplate(string $template)
     {
         $this->template = $template;
         return $this;
@@ -198,7 +194,7 @@ trait WritableInvoiceFieldsTrait
      * @param string $currencyCode
      * @return $this
      */
-    public function setCurrencyCode(string $currencyCode): WritableInvoiceFieldsTrait
+    public function setCurrencyCode(string $currencyCode)
     {
         $this->currencyCode = $currencyCode;
         return $this;
@@ -208,7 +204,7 @@ trait WritableInvoiceFieldsTrait
      * @param string $language
      * @return $this
      */
-    public function setLanguage(string $language): WritableInvoiceFieldsTrait
+    public function setLanguage(string $language)
     {
         $this->language = $language;
         return $this;
@@ -218,7 +214,7 @@ trait WritableInvoiceFieldsTrait
      * @param string $terms
      * @return $this
      */
-    public function setTerms(string $terms): WritableInvoiceFieldsTrait
+    public function setTerms(string $terms)
     {
         $this->terms = $terms;
         return $this;
@@ -228,7 +224,7 @@ trait WritableInvoiceFieldsTrait
      * @param string $notes
      * @return $this
      */
-    public function setNotes(string $notes): WritableInvoiceFieldsTrait
+    public function setNotes(string $notes)
     {
         $this->notes = $notes;
         return $this;
@@ -238,7 +234,7 @@ trait WritableInvoiceFieldsTrait
      * @param string $address
      * @return $this
      */
-    public function setAddress(string $address): WritableInvoiceFieldsTrait
+    public function setAddress(string $address)
     {
         $this->address = $address;
         return $this;
@@ -248,7 +244,7 @@ trait WritableInvoiceFieldsTrait
      * @param null|string $returnUri
      * @return $this
      */
-    public function setReturnUri(?string $returnUri): WritableInvoiceFieldsTrait
+    public function setReturnUri(?string $returnUri)
     {
         $this->returnUri = $returnUri;
         return $this;
@@ -258,7 +254,7 @@ trait WritableInvoiceFieldsTrait
      * @param null|AmountData $depositAmount
      * @return $this
      */
-    public function setDepositAmount(?AmountData $depositAmount): WritableInvoiceFieldsTrait
+    public function setDepositAmount(?AmountData $depositAmount)
     {
         $this->depositAmount = $depositAmount;
         return $this;
@@ -268,19 +264,9 @@ trait WritableInvoiceFieldsTrait
      * @param null|string $depositPercentage
      * @return $this
      */
-    public function setDepositPercentage(?string $depositPercentage): WritableInvoiceFieldsTrait
+    public function setDepositPercentage(?string $depositPercentage)
     {
         $this->depositPercentage = $depositPercentage;
-        return $this;
-    }
-
-    /**
-     * @param bool $gmail
-     * @return $this
-     */
-    public function setGmail(bool $gmail): WritableInvoiceFieldsTrait
-    {
-        $this->gmail = $gmail;
         return $this;
     }
 
@@ -288,7 +274,7 @@ trait WritableInvoiceFieldsTrait
      * @param bool $showAttachments
      * @return $this
      */
-    public function setShowAttachments(bool $showAttachments): WritableInvoiceFieldsTrait
+    public function setShowAttachments(bool $showAttachments)
     {
         $this->showAttachments = $showAttachments;
         return $this;
@@ -298,7 +284,7 @@ trait WritableInvoiceFieldsTrait
      * @param int $extArchive
      * @return $this
      */
-    public function setExtArchive(int $extArchive): WritableInvoiceFieldsTrait
+    public function setExtArchive(int $extArchive)
     {
         $this->extArchive = $extArchive;
         return $this;
@@ -308,7 +294,7 @@ trait WritableInvoiceFieldsTrait
      * @param int $visState
      * @return $this
      */
-    public function setVisState(int $visState): WritableInvoiceFieldsTrait
+    public function setVisState(int $visState)
     {
         $this->visState = $visState;
         return $this;
@@ -318,7 +304,7 @@ trait WritableInvoiceFieldsTrait
      * @param string $street
      * @return $this
      */
-    public function setStreet(string $street): WritableInvoiceFieldsTrait
+    public function setStreet(string $street)
     {
         $this->street = $street;
         return $this;
@@ -328,7 +314,7 @@ trait WritableInvoiceFieldsTrait
      * @param string $street2
      * @return $this
      */
-    public function setStreet2(string $street2): WritableInvoiceFieldsTrait
+    public function setStreet2(string $street2)
     {
         $this->street2 = $street2;
         return $this;
@@ -338,7 +324,7 @@ trait WritableInvoiceFieldsTrait
      * @param string $city
      * @return $this
      */
-    public function setCity(string $city): WritableInvoiceFieldsTrait
+    public function setCity(string $city)
     {
         $this->city = $city;
         return $this;
@@ -348,7 +334,7 @@ trait WritableInvoiceFieldsTrait
      * @param string $province
      * @return $this
      */
-    public function setProvince(string $province): WritableInvoiceFieldsTrait
+    public function setProvince(string $province)
     {
         $this->province = $province;
         return $this;
@@ -358,7 +344,7 @@ trait WritableInvoiceFieldsTrait
      * @param string $code
      * @return $this
      */
-    public function setCode(string $code): WritableInvoiceFieldsTrait
+    public function setCode(string $code)
     {
         $this->code = $code;
         return $this;
@@ -368,7 +354,7 @@ trait WritableInvoiceFieldsTrait
      * @param string $country
      * @return $this
      */
-    public function setCountry(string $country): WritableInvoiceFieldsTrait
+    public function setCountry(string $country)
     {
         $this->country = $country;
         return $this;
@@ -378,7 +364,7 @@ trait WritableInvoiceFieldsTrait
      * @param string $organization
      * @return $this
      */
-    public function setOrganization(string $organization): WritableInvoiceFieldsTrait
+    public function setOrganization(string $organization)
     {
         $this->organization = $organization;
         return $this;
@@ -388,7 +374,7 @@ trait WritableInvoiceFieldsTrait
      * @param string $fname
      * @return $this
      */
-    public function setFname(string $fname): WritableInvoiceFieldsTrait
+    public function setFname(string $fname)
     {
         $this->fname = $fname;
         return $this;
@@ -398,7 +384,7 @@ trait WritableInvoiceFieldsTrait
      * @param string $lname
      * @return $this
      */
-    public function setLname(string $lname): WritableInvoiceFieldsTrait
+    public function setLname(string $lname)
     {
         $this->lname = $lname;
         return $this;
@@ -408,7 +394,7 @@ trait WritableInvoiceFieldsTrait
      * @param string $vatName
      * @return $this
      */
-    public function setVatName(string $vatName): WritableInvoiceFieldsTrait
+    public function setVatName(string $vatName)
     {
         $this->vatName = $vatName;
         return $this;
@@ -418,7 +404,7 @@ trait WritableInvoiceFieldsTrait
      * @param string $vatNumber
      * @return $this
      */
-    public function setVatNumber(string $vatNumber): WritableInvoiceFieldsTrait
+    public function setVatNumber(string $vatNumber)
     {
         $this->vatNumber = $vatNumber;
         return $this;
@@ -428,7 +414,7 @@ trait WritableInvoiceFieldsTrait
      * @param int $dueOffsetDays
      * @return $this
      */
-    public function setDueOffsetDays(int $dueOffsetDays): WritableInvoiceFieldsTrait
+    public function setDueOffsetDays(int $dueOffsetDays)
     {
         $this->dueOffsetDays = $dueOffsetDays;
         return $this;
@@ -438,7 +424,7 @@ trait WritableInvoiceFieldsTrait
      * @param InvoiceLineData[] $lines
      * @return $this
      */
-    public function setLines(array $lines): WritableInvoiceFieldsTrait
+    public function setLines(array $lines)
     {
         $this->lines = $lines;
         return $this;
