@@ -146,6 +146,7 @@ trait WritableInvoiceFieldsTrait
      */
     public function setGenerationDate(?Carbon $generationDate)
     {
+        $this->nullableChanged();
         $this->generationDate = is_null($generationDate) ? null : new DateTimeData($generationDate, 'Y-m-d');
         return $this;
     }
@@ -166,6 +167,7 @@ trait WritableInvoiceFieldsTrait
      */
     public function setDiscountDescription(?string $discountDescription)
     {
+        $this->nullableChanged();
         $this->discountDescription = $discountDescription;
         return $this;
     }
@@ -176,6 +178,7 @@ trait WritableInvoiceFieldsTrait
      */
     public function setPoNumber(?string $poNumber)
     {
+        $this->nullableChanged();
         $this->poNumber = $poNumber;
         return $this;
     }
@@ -246,6 +249,7 @@ trait WritableInvoiceFieldsTrait
      */
     public function setReturnUri(?string $returnUri)
     {
+        $this->nullableChanged();
         $this->returnUri = $returnUri;
         return $this;
     }
@@ -256,6 +260,7 @@ trait WritableInvoiceFieldsTrait
      */
     public function setDepositAmount(?AmountData $depositAmount)
     {
+        $this->nullableChanged();
         $this->depositAmount = $depositAmount;
         return $this;
     }
@@ -266,6 +271,7 @@ trait WritableInvoiceFieldsTrait
      */
     public function setDepositPercentage(?string $depositPercentage)
     {
+        $this->nullableChanged();
         $this->depositPercentage = $depositPercentage;
         return $this;
     }
