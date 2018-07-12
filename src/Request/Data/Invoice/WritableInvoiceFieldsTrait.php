@@ -56,9 +56,6 @@ trait WritableInvoiceFieldsTrait
     /** @var string|null */
     private $returnUri;
 
-    /** @var AmountData|null */
-    private $depositAmount;
-
     /** @var string|null */
     private $depositPercentage;
 
@@ -67,9 +64,6 @@ trait WritableInvoiceFieldsTrait
 
     /** @var int */
     private $extArchive;
-
-    /** @var int */
-    private $visState;
 
     /** @var string */
     private $street;
@@ -255,17 +249,6 @@ trait WritableInvoiceFieldsTrait
     }
 
     /**
-     * @param null|AmountData $depositAmount
-     * @return $this
-     */
-    public function setDepositAmount(?AmountData $depositAmount)
-    {
-        $this->nullableChanged();
-        $this->depositAmount = $depositAmount;
-        return $this;
-    }
-
-    /**
      * @param null|string $depositPercentage
      * @return $this
      */
@@ -293,16 +276,6 @@ trait WritableInvoiceFieldsTrait
     public function setExtArchive(int $extArchive)
     {
         $this->extArchive = $extArchive;
-        return $this;
-    }
-
-    /**
-     * @param int $visState
-     * @return $this
-     */
-    public function setVisState(int $visState)
-    {
-        $this->visState = $visState;
         return $this;
     }
 

@@ -505,7 +505,6 @@ JSON;
     "basecampid": 0,
     "status": 1,
     "parent": 1,
-    "last_order_status": "sent",
     "auto_bill": true,
     "invoice_number": "123456",
     "customerid": 9876,
@@ -521,14 +520,9 @@ JSON;
     "notes": "There are some notes here",
     "address": "1 Main Street",
     "return_uri": "deprecated",
-    "deposit_amount": {
-        "amount": "10.00",
-        "code": "CAD"
-    },
     "deposit_percentage": "5",
     "show_attachments": false,
     "ext_archive": 0,
-    "vis_state": 1,
     "street": "1 Main Street",
     "street2": "app. 1",
     "city": "Springfield",
@@ -597,7 +591,6 @@ JSON;
             ->setBasecampid(0)
             ->setStatus(1)
             ->setParent(1)
-            ->setLastOrderStatus("sent")
             ->setAutoBill(true)
             ->setInvoiceNumber("123456")
             ->setCustomerid(9876)
@@ -613,11 +606,9 @@ JSON;
             ->setNotes("There are some notes here")
             ->setAddress("1 Main Street")
             ->setReturnUri("deprecated")
-            ->setDepositAmount((new AmountData)->setAmount("10.00")->setCode("CAD"))
             ->setDepositPercentage("5")
             ->setShowAttachments(false)
             ->setExtArchive(0)
-            ->setVisState(1)
             ->setStreet("1 Main Street")
             ->setStreet2("app. 1")
             ->setCity("Springfield")

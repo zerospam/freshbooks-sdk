@@ -29,9 +29,6 @@ class InvoiceCreateData extends ArrayableData
     /** @var int */
     private $parent;
 
-    /** @var string */
-    private $lastOrderStatus;
-
     /** @var bool */
     private $autoBill;
 
@@ -82,16 +79,6 @@ class InvoiceCreateData extends ArrayableData
     public function setParent(int $parent): InvoiceCreateData
     {
         $this->parent = $parent;
-        return $this;
-    }
-
-    /**
-     * @param string $lastOrderStatus
-     * @return $this
-     */
-    public function setLastOrderStatus(string $lastOrderStatus): InvoiceCreateData
-    {
-        $this->lastOrderStatus = $lastOrderStatus;
         return $this;
     }
 
