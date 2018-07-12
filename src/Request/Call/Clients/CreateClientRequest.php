@@ -16,6 +16,15 @@ use ZEROSPAM\Freshbooks\Request\Call\IAccountIdRequest;
 use ZEROSPAM\Freshbooks\Request\Data\Client\ClientData;
 use ZEROSPAM\Freshbooks\Response\Clients\ClientResponse;
 
+/**
+ * Class CreateClientRequest
+ *
+ * Client creation request
+ *
+ * @method ClientResponse getResponse()
+ *
+ * @package ZEROSPAM\Freshbooks\Request\Call\Clients
+ */
 class CreateClientRequest extends BaseRequest implements IAccountIdRequest
 {
     use HasAccountIdTrait;

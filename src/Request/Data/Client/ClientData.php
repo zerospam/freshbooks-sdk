@@ -28,10 +28,10 @@ class ClientData extends ArrayableData
     /** @var string */
     private $busPhone;
 
-    /** @var string */
+    /** @var string|null */
     private $companyIndustry;
 
-    /** @var string */
+    /** @var string|null */
     private $companySize;
 
     /** @var string */
@@ -46,7 +46,7 @@ class ClientData extends ArrayableData
     /** @var string */
     private $fname;
 
-    /** @var string */
+    /** @var string|null */
     private $homePhone;
 
     /** @var string */
@@ -58,7 +58,7 @@ class ClientData extends ArrayableData
     /** @var string */
     private $mobPhone;
 
-    /** @var string */
+    /** @var string|null */
     private $note;
 
     /** @var bool */
@@ -112,10 +112,10 @@ class ClientData extends ArrayableData
     /** @var string */
     private $username;
 
-    /** @var string */
+    /** @var string|null */
     private $vatName;
 
-    /** @var string */
+    /** @var string|null */
     private $vatNumber;
 
     /**
@@ -149,20 +149,20 @@ class ClientData extends ArrayableData
     }
 
     /**
-     * @param string $companyIndustry
+     * @param null|string $companyIndustry
      * @return $this
      */
-    public function setCompanyIndustry(string $companyIndustry): ClientData
+    public function setCompanyIndustry(?string $companyIndustry): ClientData
     {
         $this->companyIndustry = $companyIndustry;
         return $this;
     }
 
     /**
-     * @param string $companySize
+     * @param null|string $companySize
      * @return $this
      */
-    public function setCompanySize(string $companySize): ClientData
+    public function setCompanySize(?string $companySize): ClientData
     {
         $this->companySize = $companySize;
         return $this;
@@ -209,10 +209,10 @@ class ClientData extends ArrayableData
     }
 
     /**
-     * @param string $homePhone
+     * @param null|string $homePhone
      * @return $this
      */
-    public function setHomePhone(string $homePhone): ClientData
+    public function setHomePhone(?string $homePhone): ClientData
     {
         $this->homePhone = $homePhone;
         return $this;
@@ -249,10 +249,10 @@ class ClientData extends ArrayableData
     }
 
     /**
-     * @param string $note
+     * @param null|string $note
      * @return $this
      */
-    public function setNote(string $note): ClientData
+    public function setNote(?string $note): ClientData
     {
         $this->note = $note;
         return $this;
@@ -429,20 +429,20 @@ class ClientData extends ArrayableData
     }
 
     /**
-     * @param string $vatName
+     * @param null|string $vatName
      * @return $this
      */
-    public function setVatName(string $vatName): ClientData
+    public function setVatName(?string $vatName): ClientData
     {
         $this->vatName = $vatName;
         return $this;
     }
 
     /**
-     * @param string $vatNumber
+     * @param null|string $vatNumber
      * @return $this
      */
-    public function setVatNumber(string $vatNumber): ClientData
+    public function setVatNumber(?string $vatNumber): ClientData
     {
         $this->vatNumber = $vatNumber;
         return $this;
