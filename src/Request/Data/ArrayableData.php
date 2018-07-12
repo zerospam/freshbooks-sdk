@@ -36,6 +36,7 @@ abstract class ArrayableData implements Arrayable, WithNullableFields
             $data[$newName] = $data[$name];
             unset($data[$name]);
         }
+
         return $data;
     }
 }
