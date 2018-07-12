@@ -28,7 +28,7 @@ abstract class ArrayableData implements Arrayable, WithNullableFields
      */
     public function toArray(): array
     {
-        $data = ReflectionUtil::objToSnakeArray($this, ['renamed']);
+        $data = ReflectionUtil::objToSnakeArray($this, ['renamed', 'nullableChanged']);
         foreach ($this->renamed as $name => $newName) {
             if (!array_key_exists($name, $data)) {
                 continue;
