@@ -13,13 +13,13 @@ use ZEROSPAM\Framework\SDK\Utils\Contracts\PrimalValued;
 
 class DateTimeData implements PrimalValued
 {
-    /** @var Carbon */
+    /** @var Carbon|null */
     private $date;
 
     /** @var string */
     private $format;
 
-    public function __construct(Carbon $date, string $format)
+    public function __construct(?Carbon $date, string $format)
     {
         $this->date = $date;
         $this->format = $format;
@@ -32,6 +32,9 @@ class DateTimeData implements PrimalValued
      */
     public function toPrimitive()
     {
+        if (is_null($this->date)) {
+            return null;
+        }
         return $this->date->format($this->format);
     }
 }

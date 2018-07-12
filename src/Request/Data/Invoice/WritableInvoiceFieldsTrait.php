@@ -141,7 +141,7 @@ trait WritableInvoiceFieldsTrait
     public function setGenerationDate(?Carbon $generationDate)
     {
         $this->nullableChanged();
-        $this->generationDate = is_null($generationDate) ? null : new DateTimeData($generationDate, 'Y-m-d');
+        $this->generationDate = new DateTimeData($generationDate, 'Y-m-d');
         return $this;
     }
 
