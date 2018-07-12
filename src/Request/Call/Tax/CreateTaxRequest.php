@@ -16,6 +16,15 @@ use ZEROSPAM\Freshbooks\Request\Call\IAccountIdRequest;
 use ZEROSPAM\Freshbooks\Request\Data\Tax\TaxData;
 use ZEROSPAM\Freshbooks\Response\Tax\TaxResponse;
 
+/**
+ * Class CreateTaxRequest
+ *
+ * Tax creation request
+ *
+ * @method TaxResponse getResponse()
+ *
+ * @package ZEROSPAM\Freshbooks\Request\Call\Tax
+ */
 class CreateTaxRequest extends BaseRequest implements IAccountIdRequest
 {
     use HasAccountIdTrait;
