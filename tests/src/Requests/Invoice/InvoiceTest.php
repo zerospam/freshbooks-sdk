@@ -11,9 +11,13 @@ namespace ZEROSPAM\Freshbooks\Test\Requests\Invoice;
 use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 use ZEROSPAM\Freshbooks\Argument\IncludeArgument;
+use ZEROSPAM\Freshbooks\Request\Call\Invoice\CreateInvoiceRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Invoice\GetInvoiceListRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Invoice\GetInvoiceRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Invoice\ShareLink\GetInvoiceShareLinkRequest;
+use ZEROSPAM\Freshbooks\Request\Data\AmountData;
+use ZEROSPAM\Freshbooks\Request\Data\Invoice\InvoiceCreateData;
+use ZEROSPAM\Freshbooks\Request\Data\Invoice\InvoiceLineData;
 use ZEROSPAM\Freshbooks\Response\Invoice\InvoiceResponse;
 
 class InvoiceTest extends TestCase
@@ -105,7 +109,7 @@ class InvoiceTest extends TestCase
 }
 JSON;
 
-        $client  = $this->preSuccess($json);
+        $client = $this->preSuccess($json);
         $request = new GetInvoiceRequest();
         $request->setAccountId('id');
         $request->setInvoiceId('1324');
@@ -290,7 +294,7 @@ JSON;
 }
 JSON;
 
-        $client  = $this->preSuccess($json);
+        $client = $this->preSuccess($json);
         $request = new GetInvoiceListRequest();
         $request->setAccountId('id');
         $client->getOAuthTestClient()->processRequest($request);
@@ -427,7 +431,7 @@ JSON;
 }
 JSON;
 
-        $client  = $this->preSuccess($json);
+        $client = $this->preSuccess($json);
         $request = new GetInvoiceRequest();
         $request->setAccountId('id');
         $request->setInvoiceId('1324');
@@ -468,7 +472,7 @@ JSON;
 }
 JSON;
 
-        $client  = $this->preSuccess($json);
+        $client = $this->preSuccess($json);
         $request = new GetInvoiceShareLinkRequest();
         $request->setAccountId('id');
         $request->setInvoiceId('1324');
@@ -479,5 +483,162 @@ JSON;
         $this->assertEquals("129373", $response->resourceid);
         $this->assertEquals("share_link", $response->share_method);
         $this->assertEquals("https://my.freshbooks.com/#/link/example", $response->share_link);
+    }
+
+    public function testCreateInvoice(): void
+    {
+        $jsonResponse = <<<JSON
+{
+  "response": {
+    "result": {
+      "invoice": {
+      }
+    }
+  }
+}
+JSON;
+        $jsonRequest = <<<JSON
+{
+  "invoice": {
+    "ownerid": 1,
+    "estimateid": 0,
+    "basecampid": 0,
+    "status": 1,
+    "parent": 1,
+    "last_order_status": "sent",
+    "auto_bill": true,
+    "invoice_number": "123456",
+    "customerid": 9876,
+    "create_date": "2018-07-01",
+    "generation_date": null,
+    "discount_value": "15",
+    "discount_description": "This is a 15% discount",
+    "po_number": "121",
+    "template": "template",
+    "currency_code": "CAD",
+    "language": "fr",
+    "terms": "You must follow these terms",
+    "notes": "There are some notes here",
+    "address": "1 Main Street",
+    "return_uri": "deprecated",
+    "deposit_amount": {
+        "amount": "10.00",
+        "code": "CAD"
+    },
+    "deposit_percentage": "5",
+    "show_attachments": false,
+    "ext_archive": 0,
+    "vis_state": 1,
+    "street": "1 Main Street",
+    "street2": "app. 1",
+    "city": "Springfield",
+    "province": "ON",
+    "code": "H0H 0H0",
+    "country": "Canada",
+    "organization": "Company Inc.",
+    "fname": "John",
+    "lname": "Doe",
+    "vat_name": "TAX",
+    "vat_number": "1729",
+    "due_offset_days": 30,
+    "lines": [{
+        "type": 2,
+        "expenseid": 0,
+        "qty": 3,
+        "unit_cost": {
+            "amount": "9.99",
+            "code": "CAD"
+        },
+        "description": "Description of the item",
+        "name": "Item name",
+        "taxName1": "tax1",
+        "taxAmount1": "5",
+        "taxName2": "tax2",
+        "taxAmount2": "10"
+     }, {
+        "type": 1,
+        "expenseid": 5,
+        "qty": 1,
+        "unit_cost": {
+            "amount": "4.99",
+            "code": "CAD"
+        },
+        "description": "Other description",
+        "name": "Item again"
+     }]
+  }
+}
+JSON;
+
+        $lines = [
+            (new InvoiceLineData)
+                ->setType(2)
+                ->setExpenseid(0)
+                ->setQty(3)
+                ->setUnitCost((new AmountData)->setAmount("9.99")->setCode("CAD"))
+                ->setDescription("Description of the item")
+                ->setName("Item name")
+                ->setTaxName1("tax1")
+                ->setTaxAmount1("5")
+                ->setTaxName2("tax2")
+                ->setTaxAmount2("10"),
+            (new InvoiceLineData)
+                ->setType(1)
+                ->setExpenseid(5)
+                ->setQty(1)
+                ->setUnitCost((new AmountData)->setAmount("4.99")->setCode("CAD"))
+                ->setDescription("Other description")
+                ->setName("Item again"),
+        ];
+
+        $invoice = (new InvoiceCreateData)
+            ->setOwnerid(1)
+            ->setEstimateid(0)
+            ->setBasecampid(0)
+            ->setStatus(1)
+            ->setParent(1)
+            ->setLastOrderStatus("sent")
+            ->setAutoBill(true)
+            ->setInvoiceNumber("123456")
+            ->setCustomerid(9876)
+            ->setCreateDate(Carbon::create(2018, 07, 01))
+            ->setGenerationDate(null)
+            ->setDiscountValue("15")
+            ->setDiscountDescription("This is a 15% discount")
+            ->setPoNumber("121")
+            ->setTemplate("template")
+            ->setCurrencyCode("CAD")
+            ->setLanguage("fr")
+            ->setTerms("You must follow these terms")
+            ->setNotes("There are some notes here")
+            ->setAddress("1 Main Street")
+            ->setReturnUri("deprecated")
+            ->setDepositAmount((new AmountData)->setAmount("10.00")->setCode("CAD"))
+            ->setDepositPercentage("5")
+            ->setShowAttachments(false)
+            ->setExtArchive(0)
+            ->setVisState(1)
+            ->setStreet("1 Main Street")
+            ->setStreet2("app. 1")
+            ->setCity("Springfield")
+            ->setProvince("ON")
+            ->setCode("H0H 0H0")
+            ->setCountry("Canada")
+            ->setOrganization("Company Inc.")
+            ->setFname("John")
+            ->setLname("Doe")
+            ->setVatName("TAX")
+            ->setVatNumber("1729")
+            ->setDueOffsetDays(30)
+            ->setLines($lines);
+
+
+        $client = $this->preSuccess($jsonResponse);
+        $request = new CreateInvoiceRequest($invoice);
+        $request->setAccountId('id');
+
+        $client->getOAuthTestClient()->processRequest($request);
+
+        $this->validateRequest($client, $jsonRequest);
     }
 }
