@@ -8,11 +8,15 @@
 
 namespace ZEROSPAM\Freshbooks\Request\Data;
 
+use ZEROSPAM\Framework\SDK\Request\Api\HasNullableFields;
+use ZEROSPAM\Framework\SDK\Request\Api\WithNullableFields;
 use ZEROSPAM\Framework\SDK\Utils\Contracts\Arrayable;
 use ZEROSPAM\Framework\SDK\Utils\Reflection\ReflectionUtil;
 
-abstract class ArrayableData implements Arrayable
+abstract class ArrayableData implements Arrayable, WithNullableFields
 {
+    use HasNullableFields;
+
     /** @var string[] */
     protected $renamed = [];
 

@@ -154,6 +154,7 @@ class ClientData extends ArrayableData
      */
     public function setCompanyIndustry(?string $companyIndustry): ClientData
     {
+        $this->nullableChanged();
         $this->companyIndustry = $companyIndustry;
         return $this;
     }
@@ -164,6 +165,7 @@ class ClientData extends ArrayableData
      */
     public function setCompanySize(?string $companySize): ClientData
     {
+        $this->nullableChanged();
         $this->companySize = $companySize;
         return $this;
     }
@@ -214,6 +216,7 @@ class ClientData extends ArrayableData
      */
     public function setHomePhone(?string $homePhone): ClientData
     {
+        $this->nullableChanged();
         $this->homePhone = $homePhone;
         return $this;
     }
@@ -254,6 +257,7 @@ class ClientData extends ArrayableData
      */
     public function setNote(?string $note): ClientData
     {
+        $this->nullableChanged();
         $this->note = $note;
         return $this;
     }
@@ -434,6 +438,7 @@ class ClientData extends ArrayableData
      */
     public function setVatName(?string $vatName): ClientData
     {
+        $this->nullableChanged();
         $this->vatName = $vatName;
         return $this;
     }
@@ -444,6 +449,7 @@ class ClientData extends ArrayableData
      */
     public function setVatNumber(?string $vatNumber): ClientData
     {
+        $this->nullableChanged();
         $this->vatNumber = $vatNumber;
         return $this;
     }
