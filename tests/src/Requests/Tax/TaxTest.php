@@ -13,6 +13,7 @@ use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 use ZEROSPAM\Freshbooks\Request\Call\Tax\CreateTaxRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Tax\GetTaxListRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Tax\GetTaxRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Tax\UpdateTaxRequest;
 use ZEROSPAM\Freshbooks\Request\Data\Tax\TaxData;
 use ZEROSPAM\Freshbooks\Response\Tax\TaxResponse;
 
@@ -155,6 +156,62 @@ JSON;
 
         $request = (new CreateTaxRequest($taxData))
             ->setAccountId("Muu5d");
+
+        $client->getOAuthTestClient()
+            ->processRequest($request);
+
+        $response = $request->getResponse();
+
+        $this->validateRequest($client, $jsonRequest);
+
+        $this->assertFalse($response->compound);
+        $this->assertEquals(111, $response->taxid);
+        $this->assertEquals("TAX", $response->name);
+        $this->assertEquals("1415926536", $response->number);
+    }
+
+    public function testUpdateTax(): void
+    {
+        $jsonRequest = <<<JSON
+{
+    "tax": {
+        "name": "TAX",
+        "amount": "9.5",
+        "compound": false,
+        "number": "1415926536"
+    }
+}
+JSON;
+        $jsonResponse = <<<JSON
+{
+    "response": {
+        "result": {
+            "tax": {
+                "accounting_systemid": "Muu5d",
+                "updated": "2018-07-12 16:06:53",
+                "name": "TAX",
+                "taxid": 111,
+                "number": "1415926536",
+                "amount": "9.5",
+                "compound": false,
+                "id": 111
+            }
+        }
+    }
+}
+JSON;
+
+        $client = $this->preSuccess($jsonResponse);
+
+        $taxData = (new TaxData)
+            ->setName("TAX")
+            ->setAmount("9.5")
+            ->setCompound(false)
+            ->setNumber("1415926536");
+
+        $request = (new UpdateTaxRequest($taxData))
+            ->setAccountId("Muu5d")
+            ->setTaxId("123");
 
         $client->getOAuthTestClient()
             ->processRequest($request);
