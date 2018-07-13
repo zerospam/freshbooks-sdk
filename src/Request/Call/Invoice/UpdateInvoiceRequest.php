@@ -47,7 +47,7 @@ class UpdateInvoiceRequest extends BaseRequest implements IAccountIdRequest
      */
     public function processResponse(array $jsonResponse): IResponse
     {
-        return new InvoiceResponse($jsonResponse['result']['response']['invoice']);
+        return new InvoiceResponse($jsonResponse['response']['result']['invoice']);
     }
 
     /**

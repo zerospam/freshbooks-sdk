@@ -423,9 +423,9 @@ trait WritableInvoiceFieldsTrait
 
     /**
      * @param int $basecampid
-     * @return InvoiceCreateData
+     * @return $this
      */
-    public function setBasecampid(int $basecampid): InvoiceCreateData
+    public function setBasecampid(int $basecampid)
     {
         $this->basecampid = $basecampid;
         return $this;
@@ -433,9 +433,9 @@ trait WritableInvoiceFieldsTrait
 
     /**
      * @param string $status
-     * @return InvoiceCreateData
+     * @return $this
      */
-    public function setStatus(string $status): InvoiceCreateData
+    public function setStatus(string $status)
     {
         $this->status = $status;
         return $this;
@@ -443,9 +443,9 @@ trait WritableInvoiceFieldsTrait
 
     /**
      * @param int $parent
-     * @return InvoiceCreateData
+     * @return $this
      */
-    public function setParent(int $parent): InvoiceCreateData
+    public function setParent(int $parent)
     {
         $this->parent = $parent;
         return $this;
@@ -453,9 +453,9 @@ trait WritableInvoiceFieldsTrait
 
     /**
      * @param bool $autoBill
-     * @return InvoiceCreateData
+     * @return $this
      */
-    public function setAutoBill(bool $autoBill): InvoiceCreateData
+    public function setAutoBill(bool $autoBill)
     {
         $this->autoBill = $autoBill;
         return $this;
