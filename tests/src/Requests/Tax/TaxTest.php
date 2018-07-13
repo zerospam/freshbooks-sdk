@@ -11,9 +11,11 @@ namespace ZEROSPAM\Freshbooks\Test\Requests\Tax;
 use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 use ZEROSPAM\Freshbooks\Request\Call\Tax\CreateTaxRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Tax\DeleteTaxRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Tax\GetTaxListRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Tax\GetTaxRequest;
 use ZEROSPAM\Freshbooks\Request\Data\Tax\TaxData;
+use ZEROSPAM\Freshbooks\Response\EmptyResponse;
 use ZEROSPAM\Freshbooks\Response\Tax\TaxResponse;
 
 class TaxTest extends TestCase
@@ -167,5 +169,25 @@ JSON;
         $this->assertEquals(111, $response->taxid);
         $this->assertEquals("TAX", $response->name);
         $this->assertEquals("1415926536", $response->number);
+    }
+
+    public function testDeleteTax(): void
+    {
+        $jsonResponse = <<<JSON
+{
+    "response": {}
+}
+JSON;
+
+        $client = $this->preSuccess($jsonResponse);
+        $request = new DeleteTaxRequest();
+        $request->setAccountId('zzxx1');
+        $request->setTaxId(937);
+        $client->getOAuthTestClient()->processRequest($request);
+
+        $response = $request->getResponse();
+
+        $this->assertInstanceOf(EmptyResponse::class, $response);
+        $this->validateUrl($client, 'accounting/account/zzxx1/taxes/taxes/937');
     }
 }
