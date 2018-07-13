@@ -14,10 +14,12 @@ use ZEROSPAM\Freshbooks\Argument\IncludeArgument;
 use ZEROSPAM\Freshbooks\Request\Call\Invoice\CreateInvoiceRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Invoice\GetInvoiceListRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Invoice\GetInvoiceRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Invoice\SendInvoiceEmailRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Invoice\ShareLink\GetInvoiceShareLinkRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Invoice\UpdateInvoiceRequest;
 use ZEROSPAM\Freshbooks\Request\Data\AmountData;
 use ZEROSPAM\Freshbooks\Request\Data\Invoice\InvoiceCreateData;
+use ZEROSPAM\Freshbooks\Request\Data\Invoice\InvoiceEmailData;
 use ZEROSPAM\Freshbooks\Request\Data\Invoice\InvoiceLineData;
 use ZEROSPAM\Freshbooks\Request\Data\Invoice\InvoiceUpdateData;
 use ZEROSPAM\Freshbooks\Response\Invoice\InvoiceResponse;
@@ -772,6 +774,45 @@ JSON;
 
         $client = $this->preSuccess($jsonResponse);
         $request = new UpdateInvoiceRequest($invoice);
+        $request->setAccountId('id')
+            ->setInvoiceId("1232");
+
+        $client->getOAuthTestClient()->processRequest($request);
+
+        $this->validateRequest($client, $jsonRequest);
+    }
+
+    public function testSendInvoiceEmail(): void
+    {
+        $jsonResponse = <<<JSON
+{
+  "response": {
+    "result": {
+      "invoice": {
+      }
+    }
+  }
+}
+JSON;
+        $jsonRequest = <<<JSON
+{
+  "invoice": {
+    "email_body": "Message body",
+    "email_subject": "Your invoice",
+    "email_recipients": ["email@example.com", "accounting@example.com"],
+    "action_email": true 
+  }
+}
+JSON;
+
+        $invoice = (new InvoiceEmailData)
+            ->setEmailBody("Message body")
+            ->setEmailSubject("Your invoice")
+            ->setEmailRecipients(["email@example.com", "accounting@example.com"]);
+
+
+        $client = $this->preSuccess($jsonResponse);
+        $request = new SendInvoiceEmailRequest($invoice);
         $request->setAccountId('id')
             ->setInvoiceId("1232");
 
