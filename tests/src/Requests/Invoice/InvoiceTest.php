@@ -12,12 +12,14 @@ use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 use ZEROSPAM\Freshbooks\Argument\IncludeArgument;
 use ZEROSPAM\Freshbooks\Request\Call\Invoice\CreateInvoiceRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Invoice\DeleteInvoiceRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Invoice\GetInvoiceListRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Invoice\GetInvoiceRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Invoice\ShareLink\GetInvoiceShareLinkRequest;
 use ZEROSPAM\Freshbooks\Request\Data\AmountData;
 use ZEROSPAM\Freshbooks\Request\Data\Invoice\InvoiceCreateData;
 use ZEROSPAM\Freshbooks\Request\Data\Invoice\InvoiceLineData;
+use ZEROSPAM\Freshbooks\Response\EmptyResponse;
 use ZEROSPAM\Freshbooks\Response\Invoice\InvoiceResponse;
 
 class InvoiceTest extends TestCase
@@ -631,5 +633,25 @@ JSON;
         $client->getOAuthTestClient()->processRequest($request);
 
         $this->validateRequest($client, $jsonRequest);
+    }
+
+    public function testDeleteInvoice(): void
+    {
+        $jsonResponse = <<<JSON
+{
+    "response": {}
+}
+JSON;
+
+        $client = $this->preSuccess($jsonResponse);
+        $request = new DeleteInvoiceRequest();
+        $request->setAccountId('qwert');
+        $request->setInvoiceId(12345);
+        $client->getOAuthTestClient()->processRequest($request);
+
+        $response = $request->getResponse();
+
+        $this->assertInstanceOf(EmptyResponse::class, $response);
+        $this->validateUrl($client, 'accounting/account/qwert/invoices/invoices/12345');
     }
 }
