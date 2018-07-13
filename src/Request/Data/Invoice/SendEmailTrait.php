@@ -26,7 +26,7 @@ trait SendEmailTrait
      * @param string $emailSubject
      * @return $this
      */
-    public function setEmailSubject(string $emailSubject): SendEmailTrait
+    public function setEmailSubject(string $emailSubject)
     {
         $this->emailSubject = $emailSubject;
         return $this;
@@ -36,7 +36,7 @@ trait SendEmailTrait
      * @param string[] $emailRecipients
      * @return $this
      */
-    public function setEmailRecipients(array $emailRecipients): SendEmailTrait
+    public function setEmailRecipients(array $emailRecipients)
     {
         $this->emailRecipients = $emailRecipients;
         return $this;
@@ -46,7 +46,7 @@ trait SendEmailTrait
      * @param string $emailBody
      * @return $this
      */
-    public function setEmailBody(string $emailBody): SendEmailTrait
+    public function setEmailBody(string $emailBody)
     {
         $this->emailBody = $emailBody;
         return $this;
@@ -56,7 +56,7 @@ trait SendEmailTrait
      * @param bool $actionEmail
      * @return $this
      */
-    public function setActionEmail(bool $actionEmail): SendEmailTrait
+    public function setActionEmail(bool $actionEmail)
     {
         $this->actionEmail = $actionEmail;
         return $this;
