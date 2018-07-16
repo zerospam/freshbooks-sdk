@@ -6,7 +6,7 @@
  * Time: 3:20 PM
  */
 
-namespace ZEROSPAM\Freshbooks\Request\Call\Reports;
+namespace ZEROSPAM\Freshbooks\Request\Call\Report;
 
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 use ZEROSPAM\Freshbooks\Request\Data\Report\ReportTaxSummaryResponse;

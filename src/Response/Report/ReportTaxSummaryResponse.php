@@ -6,7 +6,7 @@
  * Time: 4:04 PM
  */
 
-namespace ZEROSPAM\Freshbooks\Request\Data\Report;
+namespace ZEROSPAM\Freshbooks\Response\Report;
 
 use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
