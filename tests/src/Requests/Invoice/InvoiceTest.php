@@ -12,13 +12,13 @@ use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Response\Api\EmptyResponse;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 use ZEROSPAM\Freshbooks\Argument\IncludeArgument;
-use ZEROSPAM\Freshbooks\Request\Call\Invoice\CreateInvoiceRequest;
-use ZEROSPAM\Freshbooks\Request\Call\Invoice\DeleteInvoiceRequest;
-use ZEROSPAM\Freshbooks\Request\Call\Invoice\GetInvoiceListRequest;
-use ZEROSPAM\Freshbooks\Request\Call\Invoice\GetInvoiceRequest;
-use ZEROSPAM\Freshbooks\Request\Call\Invoice\SendInvoiceEmailRequest;
-use ZEROSPAM\Freshbooks\Request\Call\Invoice\ShareLink\GetInvoiceShareLinkRequest;
-use ZEROSPAM\Freshbooks\Request\Call\Invoice\UpdateInvoiceRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Invoice\Collection\InvoiceCreateRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Invoice\InvoiceDeleteRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Invoice\Collection\InvoiceListReadRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Invoice\InvoiceReadRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Invoice\InvoiceSendEmailRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Invoice\ShareLink\InvoiceShareLinkReadRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Invoice\InvoiceUpdateRequest;
 use ZEROSPAM\Freshbooks\Request\Data\AmountData;
 use ZEROSPAM\Freshbooks\Request\Data\Invoice\InvoiceCreateData;
 use ZEROSPAM\Freshbooks\Request\Data\Invoice\InvoiceEmailData;
@@ -116,7 +116,7 @@ class InvoiceTest extends TestCase
 JSON;
 
         $client = $this->preSuccess($json);
-        $request = new GetInvoiceRequest();
+        $request = new InvoiceReadRequest();
         $request->setAccountId('id');
         $request->setInvoiceId('1324');
         $client->getOAuthTestClient()->processRequest($request);
@@ -301,7 +301,7 @@ JSON;
 JSON;
 
         $client = $this->preSuccess($json);
-        $request = new GetInvoiceListRequest();
+        $request = new InvoiceListReadRequest();
         $request->setAccountId('id');
         $client->getOAuthTestClient()->processRequest($request);
 
@@ -438,7 +438,7 @@ JSON;
 JSON;
 
         $client = $this->preSuccess($json);
-        $request = new GetInvoiceRequest();
+        $request = new InvoiceReadRequest();
         $request->setAccountId('id');
         $request->setInvoiceId('1324');
         $request->addArgument(new IncludeArgument('lines'));
@@ -479,7 +479,7 @@ JSON;
 JSON;
 
         $client = $this->preSuccess($json);
-        $request = new GetInvoiceShareLinkRequest();
+        $request = new InvoiceShareLinkReadRequest();
         $request->setAccountId('id');
         $request->setInvoiceId('1324');
         $client->getOAuthTestClient()->processRequest($request);
@@ -631,7 +631,7 @@ JSON;
 
 
         $client = $this->preSuccess($jsonResponse);
-        $request = new CreateInvoiceRequest($invoice);
+        $request = new InvoiceCreateRequest($invoice);
         $request->setAccountId('id');
 
         $client->getOAuthTestClient()->processRequest($request);
@@ -775,7 +775,7 @@ JSON;
 
 
         $client = $this->preSuccess($jsonResponse);
-        $request = new UpdateInvoiceRequest($invoice);
+        $request = new InvoiceUpdateRequest($invoice);
         $request->setAccountId('id')
             ->setInvoiceId("1232");
 
@@ -814,7 +814,7 @@ JSON;
 
 
         $client = $this->preSuccess($jsonResponse);
-        $request = new SendInvoiceEmailRequest($invoice);
+        $request = new InvoiceSendEmailRequest($invoice);
         $request->setAccountId('id')
             ->setInvoiceId("1232");
 
@@ -832,7 +832,7 @@ JSON;
 JSON;
 
         $client = $this->preSuccess($jsonResponse);
-        $request = new DeleteInvoiceRequest();
+        $request = new InvoiceDeleteRequest();
         $request->setAccountId('qwert');
         $request->setInvoiceId(12345);
         $client->getOAuthTestClient()->processRequest($request);

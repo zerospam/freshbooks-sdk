@@ -11,11 +11,11 @@ namespace ZEROSPAM\Freshbooks\Test\Requests\Tax;
 use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Response\Api\EmptyResponse;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
-use ZEROSPAM\Freshbooks\Request\Call\Tax\CreateTaxRequest;
-use ZEROSPAM\Freshbooks\Request\Call\Tax\DeleteTaxRequest;
-use ZEROSPAM\Freshbooks\Request\Call\Tax\GetTaxListRequest;
-use ZEROSPAM\Freshbooks\Request\Call\Tax\GetTaxRequest;
-use ZEROSPAM\Freshbooks\Request\Call\Tax\UpdateTaxRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Tax\Collection\TaxCreateRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Tax\TaxDeleteRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Tax\Collection\TaxListReadRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Tax\TaxReadRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Tax\TaxUpdateRequest;
 use ZEROSPAM\Freshbooks\Request\Data\Tax\TaxData;
 use ZEROSPAM\Freshbooks\Response\Tax\TaxResponse;
 
@@ -42,7 +42,7 @@ class TaxTest extends TestCase
 }
 JSON;
         $client = $this->preSuccess($jsonResponse);
-        $request = (new GetTaxRequest)
+        $request = (new TaxReadRequest)
             ->setAccountId("Muu5d")
             ->setTaxId("3334");
         $client->getOAuthTestClient()
@@ -98,7 +98,7 @@ JSON;
 }
 JSON;
         $client = $this->preSuccess($jsonResponse);
-        $request = (new GetTaxListRequest)
+        $request = (new TaxListReadRequest)
             ->setAccountId("Muu5d");
         $client->getOAuthTestClient()
             ->processRequest($request);
@@ -156,7 +156,7 @@ JSON;
             ->setCompound(false)
             ->setNumber("1415926536");
 
-        $request = (new CreateTaxRequest($taxData))
+        $request = (new TaxCreateRequest($taxData))
             ->setAccountId("Muu5d");
 
         $client->getOAuthTestClient()
@@ -211,7 +211,7 @@ JSON;
             ->setCompound(false)
             ->setNumber("1415926536");
 
-        $request = (new UpdateTaxRequest($taxData))
+        $request = (new TaxUpdateRequest($taxData))
             ->setAccountId("Muu5d")
             ->setTaxId("123");
 
@@ -237,7 +237,7 @@ JSON;
 JSON;
 
         $client = $this->preSuccess($jsonResponse);
-        $request = new DeleteTaxRequest();
+        $request = new TaxDeleteRequest();
         $request->setAccountId('zzxx1');
         $request->setTaxId(937);
         $client->getOAuthTestClient()->processRequest($request);

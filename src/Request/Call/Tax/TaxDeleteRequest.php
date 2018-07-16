@@ -3,10 +3,10 @@
  * Created by PhpStorm.
  * User: ycoutu
  * Date: 13/07/18
- * Time: 10:47 AM
+ * Time: 10:54 AM
  */
 
-namespace ZEROSPAM\Freshbooks\Request\Call\Clients;
+namespace ZEROSPAM\Freshbooks\Request\Call\Tax;
 
 use ZEROSPAM\Framework\SDK\Request\Api\BaseRequest;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
@@ -16,26 +16,17 @@ use ZEROSPAM\Freshbooks\Request\Call\HasAccountIdTrait;
 use ZEROSPAM\Freshbooks\Request\Call\IAccountIdRequest;
 
 /**
- * Class DeleteClientRequest
+ * Class DeleteTaxRequest
  *
- * Delete a client
+ * Delete a tax
  *
  * @method EmptyResponse getResponse()
  *
- * @package ZEROSPAM\Freshbooks\Request\Call\Clients
+ * @package ZEROSPAM\Freshbooks\Request\Call\Tax
  */
-class DeleteClientRequest extends BaseRequest implements IAccountIdRequest
+class TaxDeleteRequest extends BaseRequest implements IAccountIdRequest
 {
     use HasAccountIdTrait;
-
-    private $client;
-
-    public function __construct()
-    {
-        $this->client = [
-            'vis_state' => 1
-        ];
-    }
 
     /**
      * Type of request.
@@ -44,7 +35,7 @@ class DeleteClientRequest extends BaseRequest implements IAccountIdRequest
      */
     public function httpType(): RequestType
     {
-        return RequestType::HTTP_PUT();
+        return RequestType::HTTP_DELETE();
     }
 
     /**
@@ -60,26 +51,26 @@ class DeleteClientRequest extends BaseRequest implements IAccountIdRequest
     }
 
     /**
-     * Set the clientID
-     *
-     * @param int $id
-     *
-     * @return $this
-     */
-    public function setClientId(int $id): DeleteClientRequest
-    {
-        $this->addBinding('clientId', $id);
-
-        return $this;
-    }
-
-    /**
      * Base route without binding.
      *
      * @return string
      */
     public function baseRoute(): string
     {
-        return 'accounting/account/:accountId/users/clients/:clientId';
+        return 'accounting/account/:accountId/taxes/taxes/:taxId';
+    }
+
+    /**
+     * Set the tax id
+     *
+     * @param string $id
+     *
+     * @return $this
+     */
+    public function setTaxId(string $id): TaxDeleteRequest
+    {
+        $this->addBinding('taxId', $id);
+
+        return $this;
     }
 }

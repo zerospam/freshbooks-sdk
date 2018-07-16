@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: ycoutu
- * Date: 11/07/18
- * Time: 3:53 PM
+ * Date: 13/07/18
+ * Time: 9:56 AM
  */
 
 namespace ZEROSPAM\Freshbooks\Request\Call\Tax;
@@ -13,20 +13,29 @@ use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 use ZEROSPAM\Freshbooks\Request\Call\HasAccountIdTrait;
 use ZEROSPAM\Freshbooks\Request\Call\IAccountIdRequest;
-use ZEROSPAM\Freshbooks\Response\Tax\Collection\TaxCollectionResponse;
+use ZEROSPAM\Freshbooks\Request\Data\Tax\TaxData;
+use ZEROSPAM\Freshbooks\Response\Tax\TaxResponse;
 
 /**
- * Class GetTaxListRequest
+ * Class UpdateTaxRequest
  *
- * Get the list of taxes
+ * Update a tax
  *
- * @method TaxCollectionResponse getResponse()
+ * @method TaxResponse getResponse()
  *
  * @package ZEROSPAM\Freshbooks\Request\Call\Tax
  */
-class GetTaxListRequest extends BaseRequest implements IAccountIdRequest
+class TaxUpdateRequest extends BaseRequest implements IAccountIdRequest
 {
     use HasAccountIdTrait;
+
+    /** @var TaxData */
+    private $tax;
+
+    public function __construct(TaxData $data)
+    {
+        $this->tax = $data;
+    }
 
     /**
      * Type of request.
@@ -35,7 +44,7 @@ class GetTaxListRequest extends BaseRequest implements IAccountIdRequest
      */
     public function httpType(): RequestType
     {
-        return RequestType::HTTP_GET();
+        return RequestType::HTTP_POST();
     }
 
     /**
@@ -43,11 +52,11 @@ class GetTaxListRequest extends BaseRequest implements IAccountIdRequest
      *
      * @param array $jsonResponse
      *
-     * @return \ZEROSPAM\Framework\SDK\Response\Api\IResponse
+     * @return IResponse
      */
     public function processResponse(array $jsonResponse): IResponse
     {
-        return new TaxCollectionResponse($jsonResponse['response']);
+        return new TaxResponse($jsonResponse["response"]["result"]["tax"]);
     }
 
     /**
@@ -57,6 +66,20 @@ class GetTaxListRequest extends BaseRequest implements IAccountIdRequest
      */
     public function baseRoute(): string
     {
-        return 'accounting/account/:accountId/taxes/taxes';
+        return 'accounting/account/:accountId/taxes/taxes/:taxId';
+    }
+
+
+    /**
+     * Set the tax id
+     *
+     * @param string $id
+     * @return $this
+     */
+    public function setTaxId(string $id): TaxUpdateRequest
+    {
+        $this->addBinding('taxId', $id);
+
+        return $this;
     }
 }

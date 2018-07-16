@@ -11,10 +11,10 @@ namespace ZEROSPAM\Freshbooks\Test\Requests\Client;
 use ZEROSPAM\Framework\SDK\Response\Api\EmptyResponse;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 use ZEROSPAM\Freshbooks\Request\Call\Clients\ClientReadRequest;
-use ZEROSPAM\Freshbooks\Request\Call\Clients\Collection\ClientListRequest;
-use ZEROSPAM\Freshbooks\Request\Call\Clients\CreateClientRequest;
-use ZEROSPAM\Freshbooks\Request\Call\Clients\DeleteClientRequest;
-use ZEROSPAM\Freshbooks\Request\Call\Clients\UpdateClientRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Clients\Collection\ClientListReadRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Clients\Collection\ClientCreateRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Clients\ClientDeleteRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Clients\ClientUpdateRequest;
 use ZEROSPAM\Freshbooks\Request\Data\Client\ClientData;
 use ZEROSPAM\Freshbooks\Response\Clients\ClientResponse;
 
@@ -29,7 +29,7 @@ class ClientTest extends TestCase
 JSON;
 
         $client  = $this->preSuccess($json);
-        $request = new ClientListRequest();
+        $request = new ClientListReadRequest();
         $request->setAccountId('id');
         $client->getOAuthTestClient()->processRequest($request);
 
@@ -198,7 +198,7 @@ JSON;
             ->setVatName("TAX")
             ->setVatNumber("12345");
 
-        $request = (new CreateClientRequest($clientData))
+        $request = (new ClientCreateRequest($clientData))
             ->setAccountId('abcde');
 
         $client->getOAuthTestClient()->processRequest($request);
@@ -347,7 +347,7 @@ JSON;
             ->setVatName("TAX")
             ->setVatNumber("12345");
 
-        $request = (new UpdateClientRequest($clientData))
+        $request = (new ClientUpdateRequest($clientData))
             ->setAccountId('abcde')
             ->setClientId(1232);
 
@@ -379,7 +379,7 @@ JSON;
 
 
         $client  = $this->preSuccess($jsonResponse);
-        $request = new DeleteClientRequest();
+        $request = new ClientDeleteRequest();
         $request->setAccountId('place');
         $request->setClientId(1990);
         $client->getOAuthTestClient()->processRequest($request);

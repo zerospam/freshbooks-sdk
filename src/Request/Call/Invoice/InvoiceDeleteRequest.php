@@ -3,10 +3,10 @@
  * Created by PhpStorm.
  * User: ycoutu
  * Date: 13/07/18
- * Time: 10:54 AM
+ * Time: 10:52 AM
  */
 
-namespace ZEROSPAM\Freshbooks\Request\Call\Tax;
+namespace ZEROSPAM\Freshbooks\Request\Call\Invoice;
 
 use ZEROSPAM\Framework\SDK\Request\Api\BaseRequest;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
@@ -16,17 +16,27 @@ use ZEROSPAM\Freshbooks\Request\Call\HasAccountIdTrait;
 use ZEROSPAM\Freshbooks\Request\Call\IAccountIdRequest;
 
 /**
- * Class DeleteTaxRequest
+ * Class DeleteInvoiceRequest
  *
- * Delete a tax
+ * Delete an invoice
  *
  * @method EmptyResponse getResponse()
  *
- * @package ZEROSPAM\Freshbooks\Request\Call\Tax
+ * @package ZEROSPAM\Freshbooks\Request\Call\Invoice
  */
-class DeleteTaxRequest extends BaseRequest implements IAccountIdRequest
+class InvoiceDeleteRequest extends BaseRequest implements IAccountIdRequest
 {
     use HasAccountIdTrait;
+
+    /**
+     * The url of the route.
+     *
+     * @return string
+     */
+    public function baseRoute(): string
+    {
+        return 'accounting/account/:accountId/invoices/invoices/:invoiceId';
+    }
 
     /**
      * Type of request.
@@ -37,6 +47,7 @@ class DeleteTaxRequest extends BaseRequest implements IAccountIdRequest
     {
         return RequestType::HTTP_DELETE();
     }
+
 
     /**
      * Process the data that is in the response.
@@ -51,25 +62,15 @@ class DeleteTaxRequest extends BaseRequest implements IAccountIdRequest
     }
 
     /**
-     * Base route without binding.
-     *
-     * @return string
-     */
-    public function baseRoute(): string
-    {
-        return 'accounting/account/:accountId/taxes/taxes/:taxId';
-    }
-
-    /**
-     * Set the tax id
+     * Set the invoice ID in the URL
      *
      * @param string $id
      *
      * @return $this
      */
-    public function setTaxId(string $id): DeleteTaxRequest
+    public function setInvoiceId(string $id): InvoiceDeleteRequest
     {
-        $this->addBinding('taxId', $id);
+        $this->addBinding('invoiceId', $id);
 
         return $this;
     }
