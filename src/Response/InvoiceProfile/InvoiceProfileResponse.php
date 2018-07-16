@@ -22,7 +22,7 @@ use ZEROSPAM\Freshbooks\Business\InvoiceLine;
  * @property-read int                $ownerid
  * @property-read Carbon             $updated
  * @property-read Amount             $discount_total
- * @property-read int                $occurences_to_date
+ * @property-read int                $occurrences_to_date
  * @property-read Amount             $amount
  * @property-read int                $profileid
  * @property-read string             $frequency
@@ -60,6 +60,8 @@ use ZEROSPAM\Freshbooks\Business\InvoiceLine;
  * @property-read string             $discount_value
  * @property-read bool               $auto_bill
  * @property-read bool               $require_auto_bill
+ * @property-read mixed              $retainer_id
+ * @property-read mixed              $total_accrued_revenue
  * @property-read InvoiceLine[]|null $lines
  *
  * @package ZEROSPAM\Freshbooks\Response\InvoiceProfil
