@@ -9,6 +9,7 @@
 namespace ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile;
 
 use Carbon\Carbon;
+use ZEROSPAM\Freshbooks\Business\InvoiceLine;
 use ZEROSPAM\Freshbooks\Request\Data\ArrayableData;
 use ZEROSPAM\Freshbooks\Request\Data\DateTimeData;
 
@@ -18,7 +19,7 @@ class InvoiceProfileData extends ArrayableData
     private $frequency;
 
     /** @var DateTimeData */
-    private $createData;
+    private $createDate;
 
     /** @var bool */
     private $sendEmail;
@@ -46,8 +47,6 @@ class InvoiceProfileData extends ArrayableData
 
     /** @var string */
     private $fname;
-    // private $extArchive;
-    // private $visState;
 
     /** @var string */
     private $province;
@@ -109,6 +108,9 @@ class InvoiceProfileData extends ArrayableData
     /** @var bool */
     private $requireAutoBill;
 
+    /** @var InvoiceLine[] */
+    private $lines;
+
     protected $renamed = [
         'number_recurring' => 'numberRecurring',
     ];
@@ -124,12 +126,12 @@ class InvoiceProfileData extends ArrayableData
     }
 
     /**
-     * @param Carbon $createData
+     * @param Carbon $createDate
      * @return $this
      */
-    public function setCreateData(Carbon $createData): InvoiceProfileData
+    public function setCreateDate(Carbon $createDate): InvoiceProfileData
     {
-        $this->createData = new DateTimeData($createData, 'Y-m-d');
+        $this->createDate = new DateTimeData($createDate, 'Y-m-d');
         return $this;
     }
 
@@ -420,6 +422,16 @@ class InvoiceProfileData extends ArrayableData
     public function setRequireAutoBill(bool $requireAutoBill): InvoiceProfileData
     {
         $this->requireAutoBill = $requireAutoBill;
+        return $this;
+    }
+
+    /**
+     * @param InvoiceLine[] $lines
+     * @return $this
+     */
+    public function setLines(array $lines): InvoiceProfileData
+    {
+        $this->lines = $lines;
         return $this;
     }
 }
