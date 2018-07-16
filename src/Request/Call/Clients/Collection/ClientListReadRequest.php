@@ -1,41 +1,31 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: ycoutu
- * Date: 11/07/18
- * Time: 4:52 PM
+ * User: aaflalo
+ * Date: 18-06-11
+ * Time: 15:37
  */
 
-namespace ZEROSPAM\Freshbooks\Request\Call\Clients;
+namespace ZEROSPAM\Freshbooks\Request\Call\Clients\Collection;
 
 use ZEROSPAM\Framework\SDK\Request\Api\BaseRequest;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 use ZEROSPAM\Freshbooks\Request\Call\HasAccountIdTrait;
 use ZEROSPAM\Freshbooks\Request\Call\IAccountIdRequest;
-use ZEROSPAM\Freshbooks\Request\Data\Client\ClientData;
-use ZEROSPAM\Freshbooks\Response\Clients\ClientResponse;
+use ZEROSPAM\Freshbooks\Response\Clients\Collection\ClientCollectionResponse;
 
 /**
- * Class CreateClientRequest
+ * Class ClientListRequest
  *
- * Client creation request
+ * Retrieves the clients of the account
+ * @method ClientCollectionResponse getResponse()
  *
- * @method ClientResponse getResponse()
- *
- * @package ZEROSPAM\Freshbooks\Request\Call\Clients
+ * @package ZEROSPAM\Freshbooks\Request\Clients
  */
-class CreateClientRequest extends BaseRequest implements IAccountIdRequest
+class ClientListReadRequest extends BaseRequest implements IAccountIdRequest
 {
     use HasAccountIdTrait;
-
-    /** @var ClientData */
-    private $client;
-
-    public function __construct(ClientData $data)
-    {
-        $this->client = $data;
-    }
 
     /**
      * Base route without binding.
@@ -47,6 +37,7 @@ class CreateClientRequest extends BaseRequest implements IAccountIdRequest
         return 'accounting/account/:accountId/users/clients';
     }
 
+
     /**
      * Type of request.
      *
@@ -54,7 +45,7 @@ class CreateClientRequest extends BaseRequest implements IAccountIdRequest
      */
     public function httpType(): RequestType
     {
-        return RequestType::HTTP_POST();
+        return RequestType::HTTP_GET();
     }
 
     /**
@@ -66,6 +57,6 @@ class CreateClientRequest extends BaseRequest implements IAccountIdRequest
      */
     public function processResponse(array $jsonResponse): IResponse
     {
-        return new ClientResponse($jsonResponse["response"]["result"]["client"]);
+        return new ClientCollectionResponse($jsonResponse['response']);
     }
 }

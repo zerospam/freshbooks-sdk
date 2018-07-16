@@ -2,42 +2,31 @@
 /**
  * Created by PhpStorm.
  * User: ycoutu
- * Date: 09/07/18
- * Time: 4:27 PM
+ * Date: 11/07/18
+ * Time: 3:53 PM
  */
 
-namespace ZEROSPAM\Freshbooks\Request\Call\Invoice;
+namespace ZEROSPAM\Freshbooks\Request\Call\Tax\Collection;
 
 use ZEROSPAM\Framework\SDK\Request\Api\BaseRequest;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 use ZEROSPAM\Freshbooks\Request\Call\HasAccountIdTrait;
 use ZEROSPAM\Freshbooks\Request\Call\IAccountIdRequest;
-use ZEROSPAM\Freshbooks\Response\Invoice\Collection\InvoiceCollectionResponse;
+use ZEROSPAM\Freshbooks\Response\Tax\Collection\TaxCollectionResponse;
 
 /**
- * Class GetInvoiceListRequest
+ * Class GetTaxListRequest
  *
- * Get the list of invoices
+ * Get the list of taxes
  *
- * @method InvoiceCollectionResponse getResponse()
+ * @method TaxCollectionResponse getResponse()
  *
- * @package ZEROSPAM\Freshbooks\Request\Invoice
+ * @package ZEROSPAM\Freshbooks\Request\Call\Tax
  */
-class GetInvoiceListRequest extends BaseRequest implements IAccountIdRequest
+class TaxListReadRequest extends BaseRequest implements IAccountIdRequest
 {
     use HasAccountIdTrait;
-
-    /**
-     * Base route without binding.
-     *
-     * @return string
-     */
-    public function baseRoute(): string
-    {
-        return 'accounting/account/:accountId/invoices/invoices';
-    }
-
 
     /**
      * Type of request.
@@ -54,10 +43,20 @@ class GetInvoiceListRequest extends BaseRequest implements IAccountIdRequest
      *
      * @param array $jsonResponse
      *
-     * @return IResponse
+     * @return \ZEROSPAM\Framework\SDK\Response\Api\IResponse
      */
     public function processResponse(array $jsonResponse): IResponse
     {
-        return new InvoiceCollectionResponse($jsonResponse['response']);
+        return new TaxCollectionResponse($jsonResponse['response']);
+    }
+
+    /**
+     * Base route without binding.
+     *
+     * @return string
+     */
+    public function baseRoute(): string
+    {
+        return 'accounting/account/:accountId/taxes/taxes';
     }
 }

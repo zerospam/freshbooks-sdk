@@ -1,31 +1,32 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: aaflalo
- * Date: 18-06-11
- * Time: 15:37
+ * User: ycoutu
+ * Date: 10/07/18
+ * Time: 2:57 PM
  */
 
-namespace ZEROSPAM\Freshbooks\Request\Call\Clients\Collection;
+namespace ZEROSPAM\Freshbooks\Request\Call\Invoice\Collection;
 
 use ZEROSPAM\Framework\SDK\Request\Api\BaseRequest;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 use ZEROSPAM\Freshbooks\Request\Call\HasAccountIdTrait;
 use ZEROSPAM\Freshbooks\Request\Call\IAccountIdRequest;
-use ZEROSPAM\Freshbooks\Response\Clients\Collection\ClientCollectionResponse;
+use ZEROSPAM\Freshbooks\Request\Data\Invoice\InvoiceCreateData;
+use ZEROSPAM\Freshbooks\Response\Invoice\InvoiceResponse;
 
-/**
- * Class ClientListRequest
- *
- * Retrieves the clients of the account
- * @method ClientCollectionResponse getResponse()
- *
- * @package ZEROSPAM\Freshbooks\Request\Clients
- */
-class ClientListRequest extends BaseRequest implements IAccountIdRequest
+class InvoiceCreateRequest extends BaseRequest implements IAccountIdRequest
 {
     use HasAccountIdTrait;
+
+    /** @var InvoiceCreateData */
+    private $invoice;
+
+    public function __construct(InvoiceCreateData $invoiceCreateData)
+    {
+        $this->invoice = $invoiceCreateData;
+    }
 
     /**
      * Base route without binding.
@@ -34,9 +35,8 @@ class ClientListRequest extends BaseRequest implements IAccountIdRequest
      */
     public function baseRoute(): string
     {
-        return 'accounting/account/:accountId/users/clients';
+        return 'accounting/account/:accountId/invoices/invoices';
     }
-
 
     /**
      * Type of request.
@@ -45,7 +45,7 @@ class ClientListRequest extends BaseRequest implements IAccountIdRequest
      */
     public function httpType(): RequestType
     {
-        return RequestType::HTTP_GET();
+        return RequestType::HTTP_POST();
     }
 
     /**
@@ -53,10 +53,10 @@ class ClientListRequest extends BaseRequest implements IAccountIdRequest
      *
      * @param array $jsonResponse
      *
-     * @return \ZEROSPAM\Framework\SDK\Response\Api\IResponse
+     * @return IResponse
      */
     public function processResponse(array $jsonResponse): IResponse
     {
-        return new ClientCollectionResponse($jsonResponse['response']);
+        return new InvoiceResponse($jsonResponse['response']['result']['invoice']);
     }
 }

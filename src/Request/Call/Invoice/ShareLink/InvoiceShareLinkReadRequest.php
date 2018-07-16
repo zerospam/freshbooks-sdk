@@ -25,7 +25,7 @@ use ZEROSPAM\Freshbooks\Response\ShareLink\ShareLinkResponse;
  *
  * @package ZEROSPAM\Freshbooks\Request\Invoice\ShareLink
  */
-class GetInvoiceShareLinkRequest extends BaseRequest implements IAccountIdRequest
+class InvoiceShareLinkReadRequest extends BaseRequest implements IAccountIdRequest
 {
     use HasAccountIdTrait;
 
@@ -51,7 +51,7 @@ class GetInvoiceShareLinkRequest extends BaseRequest implements IAccountIdReques
      *
      * @return $this
      */
-    public function setInvoiceId(string $id): GetInvoiceShareLinkRequest
+    public function setInvoiceId(string $id): InvoiceShareLinkReadRequest
     {
         $this->addBinding('invoiceId', $id);
 

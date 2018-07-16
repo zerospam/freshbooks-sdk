@@ -3,40 +3,41 @@
  * Created by PhpStorm.
  * User: ycoutu
  * Date: 09/07/18
- * Time: 4:12 PM
+ * Time: 4:27 PM
  */
 
-namespace ZEROSPAM\Freshbooks\Request\Call\Invoice;
+namespace ZEROSPAM\Freshbooks\Request\Call\Invoice\Collection;
 
 use ZEROSPAM\Framework\SDK\Request\Api\BaseRequest;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 use ZEROSPAM\Freshbooks\Request\Call\HasAccountIdTrait;
 use ZEROSPAM\Freshbooks\Request\Call\IAccountIdRequest;
-use ZEROSPAM\Freshbooks\Response\Invoice\InvoiceResponse;
+use ZEROSPAM\Freshbooks\Response\Invoice\Collection\InvoiceCollectionResponse;
 
 /**
- * Class GetInvoiceRequest
+ * Class GetInvoiceListRequest
  *
- * Get a specific invoice
+ * Get the list of invoices
  *
- * @method InvoiceResponse getResponse()
+ * @method InvoiceCollectionResponse getResponse()
  *
  * @package ZEROSPAM\Freshbooks\Request\Invoice
  */
-class GetInvoiceRequest extends BaseRequest implements IAccountIdRequest
+class InvoiceListReadRequest extends BaseRequest implements IAccountIdRequest
 {
     use HasAccountIdTrait;
 
     /**
-     * The url of the route.
+     * Base route without binding.
      *
      * @return string
      */
     public function baseRoute(): string
     {
-        return 'accounting/account/:accountId/invoices/invoices/:invoiceId';
+        return 'accounting/account/:accountId/invoices/invoices';
     }
+
 
     /**
      * Type of request.
@@ -48,7 +49,6 @@ class GetInvoiceRequest extends BaseRequest implements IAccountIdRequest
         return RequestType::HTTP_GET();
     }
 
-
     /**
      * Process the data that is in the response.
      *
@@ -58,20 +58,6 @@ class GetInvoiceRequest extends BaseRequest implements IAccountIdRequest
      */
     public function processResponse(array $jsonResponse): IResponse
     {
-        return new InvoiceResponse($jsonResponse['response']['result']['invoice']);
-    }
-
-    /**
-     * Set the invoice ID in the URL
-     *
-     * @param string $id
-     *
-     * @return $this
-     */
-    public function setInvoiceId(string $id): GetInvoiceRequest
-    {
-        $this->addBinding('invoiceId', $id);
-
-        return $this;
+        return new InvoiceCollectionResponse($jsonResponse['response']);
     }
 }

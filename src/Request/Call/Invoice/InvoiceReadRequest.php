@@ -2,29 +2,29 @@
 /**
  * Created by PhpStorm.
  * User: ycoutu
- * Date: 13/07/18
- * Time: 10:52 AM
+ * Date: 09/07/18
+ * Time: 4:12 PM
  */
 
 namespace ZEROSPAM\Freshbooks\Request\Call\Invoice;
 
 use ZEROSPAM\Framework\SDK\Request\Api\BaseRequest;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
-use ZEROSPAM\Framework\SDK\Response\Api\EmptyResponse;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 use ZEROSPAM\Freshbooks\Request\Call\HasAccountIdTrait;
 use ZEROSPAM\Freshbooks\Request\Call\IAccountIdRequest;
+use ZEROSPAM\Freshbooks\Response\Invoice\InvoiceResponse;
 
 /**
- * Class DeleteInvoiceRequest
+ * Class GetInvoiceRequest
  *
- * Delete an invoice
+ * Get a specific invoice
  *
- * @method EmptyResponse getResponse()
+ * @method InvoiceResponse getResponse()
  *
- * @package ZEROSPAM\Freshbooks\Request\Call\Invoice
+ * @package ZEROSPAM\Freshbooks\Request\Invoice
  */
-class DeleteInvoiceRequest extends BaseRequest implements IAccountIdRequest
+class InvoiceReadRequest extends BaseRequest implements IAccountIdRequest
 {
     use HasAccountIdTrait;
 
@@ -45,7 +45,7 @@ class DeleteInvoiceRequest extends BaseRequest implements IAccountIdRequest
      */
     public function httpType(): RequestType
     {
-        return RequestType::HTTP_DELETE();
+        return RequestType::HTTP_GET();
     }
 
 
@@ -58,7 +58,7 @@ class DeleteInvoiceRequest extends BaseRequest implements IAccountIdRequest
      */
     public function processResponse(array $jsonResponse): IResponse
     {
-        return new EmptyResponse();
+        return new InvoiceResponse($jsonResponse['response']['result']['invoice']);
     }
 
     /**
@@ -68,7 +68,7 @@ class DeleteInvoiceRequest extends BaseRequest implements IAccountIdRequest
      *
      * @return $this
      */
-    public function setInvoiceId(string $id): DeleteInvoiceRequest
+    public function setInvoiceId(string $id): InvoiceReadRequest
     {
         $this->addBinding('invoiceId', $id);
 
