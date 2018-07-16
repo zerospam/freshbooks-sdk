@@ -9,10 +9,13 @@
 namespace ZEROSPAM\Freshbooks\Test\Requests\Tax;
 
 use Carbon\Carbon;
+use ZEROSPAM\Framework\SDK\Response\Api\EmptyResponse;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 use ZEROSPAM\Freshbooks\Request\Call\Tax\CreateTaxRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Tax\DeleteTaxRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Tax\GetTaxListRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Tax\GetTaxRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Tax\UpdateTaxRequest;
 use ZEROSPAM\Freshbooks\Request\Data\Tax\TaxData;
 use ZEROSPAM\Freshbooks\Response\Tax\TaxResponse;
 
@@ -167,5 +170,81 @@ JSON;
         $this->assertEquals(111, $response->taxid);
         $this->assertEquals("TAX", $response->name);
         $this->assertEquals("1415926536", $response->number);
+    }
+
+    public function testUpdateTax(): void
+    {
+        $jsonRequest = <<<JSON
+{
+    "tax": {
+        "name": "TAX",
+        "amount": "9.5",
+        "compound": false,
+        "number": "1415926536"
+    }
+}
+JSON;
+        $jsonResponse = <<<JSON
+{
+    "response": {
+        "result": {
+            "tax": {
+                "accounting_systemid": "Muu5d",
+                "updated": "2018-07-12 16:06:53",
+                "name": "TAX",
+                "taxid": 111,
+                "number": "1415926536",
+                "amount": "9.5",
+                "compound": false,
+                "id": 111
+            }
+        }
+    }
+}
+JSON;
+
+        $client = $this->preSuccess($jsonResponse);
+
+        $taxData = (new TaxData)
+            ->setName("TAX")
+            ->setAmount("9.5")
+            ->setCompound(false)
+            ->setNumber("1415926536");
+
+        $request = (new UpdateTaxRequest($taxData))
+            ->setAccountId("Muu5d")
+            ->setTaxId("123");
+
+        $client->getOAuthTestClient()
+            ->processRequest($request);
+
+        $response = $request->getResponse();
+
+        $this->validateRequest($client, $jsonRequest);
+
+        $this->assertFalse($response->compound);
+        $this->assertEquals(111, $response->taxid);
+        $this->assertEquals("TAX", $response->name);
+        $this->assertEquals("1415926536", $response->number);
+    }
+
+    public function testDeleteTax(): void
+    {
+        $jsonResponse = <<<JSON
+{
+    "response": {}
+}
+JSON;
+
+        $client = $this->preSuccess($jsonResponse);
+        $request = new DeleteTaxRequest();
+        $request->setAccountId('zzxx1');
+        $request->setTaxId(937);
+        $client->getOAuthTestClient()->processRequest($request);
+
+        $response = $request->getResponse();
+
+        $this->assertInstanceOf(EmptyResponse::class, $response);
+        $this->validateUrl($client, 'accounting/account/zzxx1/taxes/taxes/937');
     }
 }
