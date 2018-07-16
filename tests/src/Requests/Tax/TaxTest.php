@@ -9,13 +9,13 @@
 namespace ZEROSPAM\Freshbooks\Test\Requests\Tax;
 
 use Carbon\Carbon;
+use ZEROSPAM\Framework\SDK\Response\Api\EmptyResponse;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 use ZEROSPAM\Freshbooks\Request\Call\Tax\CreateTaxRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Tax\DeleteTaxRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Tax\GetTaxListRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Tax\GetTaxRequest;
 use ZEROSPAM\Freshbooks\Request\Data\Tax\TaxData;
-use ZEROSPAM\Freshbooks\Response\EmptyResponse;
 use ZEROSPAM\Freshbooks\Response\Tax\TaxResponse;
 
 class TaxTest extends TestCase

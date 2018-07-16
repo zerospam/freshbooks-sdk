@@ -9,6 +9,7 @@
 namespace ZEROSPAM\Freshbooks\Test\Requests\Invoice;
 
 use Carbon\Carbon;
+use ZEROSPAM\Framework\SDK\Response\Api\EmptyResponse;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 use ZEROSPAM\Freshbooks\Argument\IncludeArgument;
 use ZEROSPAM\Freshbooks\Request\Call\Invoice\CreateInvoiceRequest;
@@ -19,7 +20,6 @@ use ZEROSPAM\Freshbooks\Request\Call\Invoice\ShareLink\GetInvoiceShareLinkReques
 use ZEROSPAM\Freshbooks\Request\Data\AmountData;
 use ZEROSPAM\Freshbooks\Request\Data\Invoice\InvoiceCreateData;
 use ZEROSPAM\Freshbooks\Request\Data\Invoice\InvoiceLineData;
-use ZEROSPAM\Freshbooks\Response\EmptyResponse;
 use ZEROSPAM\Freshbooks\Response\Invoice\InvoiceResponse;
 
 class InvoiceTest extends TestCase
