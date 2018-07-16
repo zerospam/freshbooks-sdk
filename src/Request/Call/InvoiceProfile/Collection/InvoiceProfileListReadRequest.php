@@ -20,6 +20,8 @@ use ZEROSPAM\Freshbooks\Response\InvoiceProfile\Collection\InvoiceProfileCollect
  *
  * Get the list of invoice profiles
  *
+ * @method InvoiceProfileCollectionResponse getResponse()
+ *
  * @package ZEROSPAM\Freshbooks\Request\Call\InvoiceProfile\Collection
  */
 class InvoiceProfileListReadRequest extends BaseRequest implements IAccountIdRequest

@@ -15,6 +15,15 @@ use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 use ZEROSPAM\Freshbooks\Request\Call\HasAccountIdTrait;
 use ZEROSPAM\Freshbooks\Request\Call\IAccountIdRequest;
 
+/**
+ * Class InvoiceProfileDeleteRequest
+ *
+ * Invoice profile deletion request
+ *
+ * @method EmptyResponse getResponse()
+ *
+ * @package ZEROSPAM\Freshbooks\Request\Call\InvoiceProfile
+ */
 class InvoiceProfileDeleteRequest extends BaseRequest implements IAccountIdRequest
 {
     use HasAccountIdTrait;

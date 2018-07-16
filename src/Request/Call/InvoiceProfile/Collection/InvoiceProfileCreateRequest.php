@@ -21,6 +21,8 @@ use ZEROSPAM\Freshbooks\Response\InvoiceProfile\InvoiceProfileResponse;
  *
  * Invoice profile creation request
  *
+ * @method InvoiceProfileResponse getResponse()
+ *
  * @package ZEROSPAM\Freshbooks\Request\Call\InvoiceProfile\Collection
  */
 class InvoiceProfileCreateRequest extends BaseRequest implements IAccountIdRequest

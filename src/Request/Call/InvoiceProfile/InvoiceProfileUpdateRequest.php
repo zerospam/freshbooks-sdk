@@ -16,6 +16,15 @@ use ZEROSPAM\Freshbooks\Request\Call\IAccountIdRequest;
 use ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData;
 use ZEROSPAM\Freshbooks\Response\InvoiceProfile\InvoiceProfileResponse;
 
+/**
+ * Class InvoiceProfileUpdateRequest
+ *
+ * Invoice profile update request
+ *
+ * @method InvoiceProfileResponse getResponse()
+ *
+ * @package ZEROSPAM\Freshbooks\Request\Call\InvoiceProfile
+ */
 class InvoiceProfileUpdateRequest extends BaseRequest implements IAccountIdRequest
 {
     use HasAccountIdTrait;
