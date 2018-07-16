@@ -1,0 +1,52 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: ycoutu
+ * Date: 16/07/18
+ * Time: 4:04 PM
+ */
+
+namespace ZEROSPAM\Freshbooks\Request\Data\Report;
+
+use Carbon\Carbon;
+use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
+use ZEROSPAM\Freshbooks\Business\Amount;
+use ZEROSPAM\Freshbooks\Business\Report\TaxSummary\Tax;
+
+/**
+ * Class ReportTaxSummaryResponse
+ *
+ * Tax summary report response
+ *
+ * @property-read Amount $total_invoices
+ * @property-read Carbon $end_date
+ * @property-read Tax[]  $taxes
+ * @property-read string $download_token
+ * @property-read bool   $cash_based
+ * @property-read Carbon $start_date
+ * @property-read string $currency_code
+ *
+ * @package ZEROSPAM\Freshbooks\Request\Data\Report
+ */
+class ReportTaxSummaryResponse extends BaseResponse
+{
+    protected $dates = [
+        'end_date',
+        'start_date',
+    ];
+
+    /**
+     * Lines
+     *
+     * @return Tax[]|null
+     */
+    public function getTaxesAttribute(): ?array
+    {
+        return array_map(
+            function (array $data) {
+                return new Tax($data);
+            },
+            $this->data['taxes']
+        );
+    }
+}
