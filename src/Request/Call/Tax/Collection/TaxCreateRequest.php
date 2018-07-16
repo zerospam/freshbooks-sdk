@@ -6,7 +6,7 @@
  * Time: 4:34 PM
  */
 
-namespace ZEROSPAM\Freshbooks\Request\Call\Tax;
+namespace ZEROSPAM\Freshbooks\Request\Call\Tax\Collection;
 
 use ZEROSPAM\Framework\SDK\Request\Api\BaseRequest;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
@@ -25,7 +25,7 @@ use ZEROSPAM\Freshbooks\Response\Tax\TaxResponse;
  *
  * @package ZEROSPAM\Freshbooks\Request\Call\Tax
  */
-class CreateTaxRequest extends BaseRequest implements IAccountIdRequest
+class TaxCreateRequest extends BaseRequest implements IAccountIdRequest
 {
     use HasAccountIdTrait;
 

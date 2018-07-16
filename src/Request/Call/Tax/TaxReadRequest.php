@@ -2,31 +2,31 @@
 /**
  * Created by PhpStorm.
  * User: ycoutu
- * Date: 13/07/18
- * Time: 9:37 AM
+ * Date: 11/07/18
+ * Time: 3:53 PM
  */
 
-namespace ZEROSPAM\Freshbooks\Request\Call\Invoice;
+namespace ZEROSPAM\Freshbooks\Request\Call\Tax;
 
 use ZEROSPAM\Framework\SDK\Request\Api\BaseRequest;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 use ZEROSPAM\Freshbooks\Request\Call\HasAccountIdTrait;
 use ZEROSPAM\Freshbooks\Request\Call\IAccountIdRequest;
-use ZEROSPAM\Freshbooks\Request\Data\Invoice\InvoiceEmailData;
-use ZEROSPAM\Freshbooks\Response\Invoice\InvoiceResponse;
+use ZEROSPAM\Freshbooks\Response\Tax\TaxResponse;
 
-class SendInvoiceEmailRequest extends BaseRequest implements IAccountIdRequest
+/**
+ * Class GetTaxRequest
+ *
+ * Get a specific tax
+ *
+ * @method TaxResponse getResponse()
+ *
+ * @package ZEROSPAM\Freshbooks\Request\Call\Tax
+ */
+class TaxReadRequest extends BaseRequest implements IAccountIdRequest
 {
     use HasAccountIdTrait;
-
-    /** @var InvoiceEmailData */
-    private $invoice;
-
-    public function __construct(InvoiceEmailData $data)
-    {
-        $this->invoice = $data;
-    }
 
     /**
      * Type of request.
@@ -35,7 +35,7 @@ class SendInvoiceEmailRequest extends BaseRequest implements IAccountIdRequest
      */
     public function httpType(): RequestType
     {
-        return RequestType::HTTP_PUT();
+        return RequestType::HTTP_GET();
     }
 
     /**
@@ -47,7 +47,7 @@ class SendInvoiceEmailRequest extends BaseRequest implements IAccountIdRequest
      */
     public function processResponse(array $jsonResponse): IResponse
     {
-        return new InvoiceResponse($jsonResponse['response']['result']['invoice']);
+        return new TaxResponse($jsonResponse['response']['result']['tax']);
     }
 
     /**
@@ -57,19 +57,18 @@ class SendInvoiceEmailRequest extends BaseRequest implements IAccountIdRequest
      */
     public function baseRoute(): string
     {
-        return 'accounting/account/:accountId/invoices/invoices/:invoiceId';
+        return 'accounting/account/:accountId/taxes/taxes/:taxId';
     }
 
     /**
-     * Set the invoice ID in the URL
+     * Set the tax id
      *
      * @param string $id
-     *
-     * @return $this
+     * @return TaxReadRequest
      */
-    public function setInvoiceId(string $id): SendInvoiceEmailRequest
+    public function setTaxId(string $id): TaxReadRequest
     {
-        $this->addBinding('invoiceId', $id);
+        $this->addBinding('taxId', $id);
 
         return $this;
     }
