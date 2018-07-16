@@ -12,6 +12,5 @@ use ZEROSPAM\Freshbooks\Request\Data\ArrayableData;
 
 class InvoiceUpdateData extends ArrayableData
 {
-    use WritableInvoiceFieldsTrait;
-    use SendEmailTrait;
+    use WritableInvoiceFieldsTrait, SendEmailTrait;
 }
