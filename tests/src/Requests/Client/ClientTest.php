@@ -8,10 +8,12 @@
 
 namespace ZEROSPAM\Freshbooks\Test\Requests\Client;
 
+use ZEROSPAM\Framework\SDK\Response\Api\EmptyResponse;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 use ZEROSPAM\Freshbooks\Request\Call\Clients\ClientReadRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Clients\Collection\ClientListRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Clients\CreateClientRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Clients\DeleteClientRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Clients\UpdateClientRequest;
 use ZEROSPAM\Freshbooks\Request\Data\Client\ClientData;
 use ZEROSPAM\Freshbooks\Response\Clients\ClientResponse;
@@ -51,7 +53,7 @@ JSON;
         $client  = $this->preSuccess($json);
         $request = new ClientReadRequest();
         $request->setAccountId('id')
-                ->setClientId(103807);
+            ->setClientId(103807);
         $client->getOAuthTestClient()->processRequest($request);
 
         $this->validateUrl($client, [103807]);
@@ -63,7 +65,7 @@ JSON;
 
     public function testCreateClient(): void
     {
-        $jsonRequest = <<<JSON
+        $jsonRequest  = <<<JSON
 {
     "client": {
         "allow_late_fees": true,
@@ -159,7 +161,7 @@ JSON;
     }
 }
 JSON;
-        $client  = $this->preSuccess($jsonResponse);
+        $client       = $this->preSuccess($jsonResponse);
 
         $clientData = (new ClientData)
             ->setAllowLateFees(true)
@@ -358,5 +360,34 @@ JSON;
         $this->assertEquals("abcde", $response->accounting_systemid);
         $this->assertEquals("Shipville", $response->s_city);
         $this->assertFalse($response->pref_gmail);
+    }
+
+    public function testDeleteClient(): void
+    {
+        $jsonResponse = <<<JSON
+{
+    "response": {}
+}
+JSON;
+        $jsonRequest  = <<<JSON
+{
+    "client": {
+        "vis_state": 1
+    }
+}
+JSON;
+
+
+        $client  = $this->preSuccess($jsonResponse);
+        $request = new DeleteClientRequest();
+        $request->setAccountId('place');
+        $request->setClientId(1990);
+        $client->getOAuthTestClient()->processRequest($request);
+
+        $response = $request->getResponse();
+
+        $this->assertInstanceOf(EmptyResponse::class, $response);
+        $this->validateUrl($client, 'accounting/account/place/users/clients/1990');
+        $this->validateRequest($client, $jsonRequest);
     }
 }
