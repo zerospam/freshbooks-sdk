@@ -14,6 +14,18 @@ use ZEROSPAM\Freshbooks\Request\Data\DateTimeData;
 
 trait WritableInvoiceFieldsTrait
 {
+    /** @var int */
+    private $parent;
+
+    /** @var int */
+    private $basecampid;
+
+    /** @var string */
+    private $status;
+
+    /** @var bool */
+    private $autoBill;
+
     /** @var string */
     private $invoiceNumber;
 
@@ -406,6 +418,46 @@ trait WritableInvoiceFieldsTrait
     public function setLines(array $lines)
     {
         $this->lines = $lines;
+        return $this;
+    }
+
+    /**
+     * @param int $basecampid
+     * @return $this
+     */
+    public function setBasecampid(int $basecampid)
+    {
+        $this->basecampid = $basecampid;
+        return $this;
+    }
+
+    /**
+     * @param string $status
+     * @return $this
+     */
+    public function setStatus(string $status)
+    {
+        $this->status = $status;
+        return $this;
+    }
+
+    /**
+     * @param int $parent
+     * @return $this
+     */
+    public function setParent(int $parent)
+    {
+        $this->parent = $parent;
+        return $this;
+    }
+
+    /**
+     * @param bool $autoBill
+     * @return $this
+     */
+    public function setAutoBill(bool $autoBill)
+    {
+        $this->autoBill = $autoBill;
         return $this;
     }
 }

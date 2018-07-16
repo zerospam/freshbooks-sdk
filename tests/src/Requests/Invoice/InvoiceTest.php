@@ -9,15 +9,21 @@
 namespace ZEROSPAM\Freshbooks\Test\Requests\Invoice;
 
 use Carbon\Carbon;
+use ZEROSPAM\Framework\SDK\Response\Api\EmptyResponse;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 use ZEROSPAM\Freshbooks\Argument\IncludeArgument;
 use ZEROSPAM\Freshbooks\Request\Call\Invoice\CreateInvoiceRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Invoice\DeleteInvoiceRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Invoice\GetInvoiceListRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Invoice\GetInvoiceRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Invoice\SendInvoiceEmailRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Invoice\ShareLink\GetInvoiceShareLinkRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Invoice\UpdateInvoiceRequest;
 use ZEROSPAM\Freshbooks\Request\Data\AmountData;
 use ZEROSPAM\Freshbooks\Request\Data\Invoice\InvoiceCreateData;
+use ZEROSPAM\Freshbooks\Request\Data\Invoice\InvoiceEmailData;
 use ZEROSPAM\Freshbooks\Request\Data\Invoice\InvoiceLineData;
+use ZEROSPAM\Freshbooks\Request\Data\Invoice\InvoiceUpdateData;
 use ZEROSPAM\Freshbooks\Response\Invoice\InvoiceResponse;
 
 class InvoiceTest extends TestCase
@@ -631,5 +637,209 @@ JSON;
         $client->getOAuthTestClient()->processRequest($request);
 
         $this->validateRequest($client, $jsonRequest);
+    }
+
+    public function testUpdateInvoice(): void
+    {
+        $jsonResponse = <<<JSON
+{
+  "response": {
+    "result": {
+      "invoice": {
+      }
+    }
+  }
+}
+JSON;
+        $jsonRequest = <<<JSON
+{
+  "invoice": {
+    "basecampid": 0,
+    "status": 1,
+    "parent": 1,
+    "auto_bill": true,
+    "invoice_number": "123456",
+    "customerid": 9876,
+    "create_date": "2018-07-01",
+    "generation_date": null,
+    "discount_value": "15",
+    "discount_description": "This is a 15% discount",
+    "po_number": "121",
+    "template": "template",
+    "currency_code": "CAD",
+    "language": "fr",
+    "terms": "You must follow these terms",
+    "notes": "There are some notes here",
+    "address": "1 Main Street",
+    "return_uri": "deprecated",
+    "deposit_percentage": "5",
+    "show_attachments": false,
+    "ext_archive": 0,
+    "street": "1 Main Street",
+    "street2": "app. 1",
+    "city": "Springfield",
+    "province": "ON",
+    "code": "H0H 0H0",
+    "country": "Canada",
+    "organization": "Company Inc.",
+    "fname": "John",
+    "lname": "Doe",
+    "vat_name": "TAX",
+    "vat_number": "1729",
+    "due_offset_days": 30,
+    "lines": [{
+        "type": 2,
+        "expenseid": 0,
+        "qty": 3,
+        "unit_cost": {
+            "amount": "9.99",
+            "code": "CAD"
+        },
+        "description": "Description of the item",
+        "name": "Item name",
+        "taxName1": "tax1",
+        "taxAmount1": "5",
+        "taxName2": "tax2",
+        "taxAmount2": "10"
+     }, {
+        "type": 1,
+        "expenseid": 5,
+        "qty": 1,
+        "unit_cost": {
+            "amount": "4.99",
+            "code": "CAD"
+        },
+        "description": "Other description",
+        "name": "Item again"
+     }]
+  }
+}
+JSON;
+
+        $lines = [
+            (new InvoiceLineData)
+                ->setType(2)
+                ->setExpenseid(0)
+                ->setQty(3)
+                ->setUnitCost((new AmountData)->setAmount("9.99")->setCode("CAD"))
+                ->setDescription("Description of the item")
+                ->setName("Item name")
+                ->setTaxName1("tax1")
+                ->setTaxAmount1("5")
+                ->setTaxName2("tax2")
+                ->setTaxAmount2("10"),
+            (new InvoiceLineData)
+                ->setType(1)
+                ->setExpenseid(5)
+                ->setQty(1)
+                ->setUnitCost((new AmountData)->setAmount("4.99")->setCode("CAD"))
+                ->setDescription("Other description")
+                ->setName("Item again"),
+        ];
+
+        $invoice = (new InvoiceUpdateData)
+            ->setBasecampid(0)
+            ->setStatus(1)
+            ->setParent(1)
+            ->setAutoBill(true)
+            ->setInvoiceNumber("123456")
+            ->setCustomerid(9876)
+            ->setCreateDate(Carbon::create(2018, 07, 01))
+            ->setGenerationDate(null)
+            ->setDiscountValue("15")
+            ->setDiscountDescription("This is a 15% discount")
+            ->setPoNumber("121")
+            ->setTemplate("template")
+            ->setCurrencyCode("CAD")
+            ->setLanguage("fr")
+            ->setTerms("You must follow these terms")
+            ->setNotes("There are some notes here")
+            ->setAddress("1 Main Street")
+            ->setReturnUri("deprecated")
+            ->setDepositPercentage("5")
+            ->setShowAttachments(false)
+            ->setExtArchive(0)
+            ->setStreet("1 Main Street")
+            ->setStreet2("app. 1")
+            ->setCity("Springfield")
+            ->setProvince("ON")
+            ->setCode("H0H 0H0")
+            ->setCountry("Canada")
+            ->setOrganization("Company Inc.")
+            ->setFname("John")
+            ->setLname("Doe")
+            ->setVatName("TAX")
+            ->setVatNumber("1729")
+            ->setDueOffsetDays(30)
+            ->setLines($lines);
+
+
+        $client = $this->preSuccess($jsonResponse);
+        $request = new UpdateInvoiceRequest($invoice);
+        $request->setAccountId('id')
+            ->setInvoiceId("1232");
+
+        $client->getOAuthTestClient()->processRequest($request);
+
+        $this->validateRequest($client, $jsonRequest);
+    }
+
+    public function testSendInvoiceEmail(): void
+    {
+        $jsonResponse = <<<JSON
+{
+  "response": {
+    "result": {
+      "invoice": {
+      }
+    }
+  }
+}
+JSON;
+        $jsonRequest = <<<JSON
+{
+  "invoice": {
+    "email_body": "Message body",
+    "email_subject": "Your invoice",
+    "email_recipients": ["email@example.com", "accounting@example.com"],
+    "action_email": true 
+  }
+}
+JSON;
+
+        $invoice = (new InvoiceEmailData)
+            ->setEmailBody("Message body")
+            ->setEmailSubject("Your invoice")
+            ->setEmailRecipients(["email@example.com", "accounting@example.com"]);
+
+
+        $client = $this->preSuccess($jsonResponse);
+        $request = new SendInvoiceEmailRequest($invoice);
+        $request->setAccountId('id')
+            ->setInvoiceId("1232");
+
+        $client->getOAuthTestClient()->processRequest($request);
+
+        $this->validateRequest($client, $jsonRequest);
+    }
+
+    public function testDeleteInvoice(): void
+    {
+        $jsonResponse = <<<JSON
+{
+    "response": {}
+}
+JSON;
+
+        $client = $this->preSuccess($jsonResponse);
+        $request = new DeleteInvoiceRequest();
+        $request->setAccountId('qwert');
+        $request->setInvoiceId(12345);
+        $client->getOAuthTestClient()->processRequest($request);
+
+        $response = $request->getResponse();
+
+        $this->assertInstanceOf(EmptyResponse::class, $response);
+        $this->validateUrl($client, 'accounting/account/qwert/invoices/invoices/12345');
     }
 }
