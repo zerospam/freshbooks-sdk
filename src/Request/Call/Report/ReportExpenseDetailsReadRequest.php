@@ -11,6 +11,15 @@ namespace ZEROSPAM\Freshbooks\Request\Call\Report;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 use ZEROSPAM\Freshbooks\Response\Report\ReportExpenseDetailsResponse;
 
+/**
+ * Class ReportExpenseDetailsReadRequest
+ *
+ * Get the expense details report
+ *
+ * @method ReportExpenseDetailsResponse getResponse()
+ *
+ * @package ZEROSPAM\Freshbooks\Request\Call\Report
+ */
 class ReportExpenseDetailsReadRequest extends ReportBaseRequest
 {
     /**

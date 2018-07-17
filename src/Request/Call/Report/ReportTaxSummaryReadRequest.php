@@ -9,8 +9,17 @@
 namespace ZEROSPAM\Freshbooks\Request\Call\Report;
 
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
-use ZEROSPAM\Freshbooks\Request\Data\Report\ReportTaxSummaryResponse;
+use ZEROSPAM\Freshbooks\Response\Report\ReportTaxSummaryResponse;
 
+/**
+ * Class ReportTaxSummaryReadRequest
+ *
+ * Get the tax summary report
+ *
+ * @method ReportTaxSummaryResponse getResponse()
+ *
+ * @package ZEROSPAM\Freshbooks\Request\Call\Report
+ */
 class ReportTaxSummaryReadRequest extends ReportBaseRequest
 {
     /**

@@ -11,6 +11,15 @@ namespace ZEROSPAM\Freshbooks\Request\Call\Report;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 use ZEROSPAM\Freshbooks\Response\Report\ReportAccountsAgingResponse;
 
+/**
+ * Class ReportAccountsAgingReadRequest
+ *
+ * Get the accounts aging report
+ *
+ * @method ReportAccountsAgingResponse getResponse()
+ *
+ * @package ZEROSPAM\Freshbooks\Request\Call\Report
+ */
 class ReportAccountsAgingReadRequest extends ReportBaseRequest
 {
     /**

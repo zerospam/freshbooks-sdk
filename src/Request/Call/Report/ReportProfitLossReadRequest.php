@@ -11,6 +11,15 @@ namespace ZEROSPAM\Freshbooks\Request\Call\Report;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 use ZEROSPAM\Freshbooks\Response\Report\ReportProfitLossResponse;
 
+/**
+ * Class ReportProfitLossReadRequest
+ *
+ * Get the profit/loss report
+ *
+ * @method ReportProfitLossResponse getResponse()
+ *
+ * @package ZEROSPAM\Freshbooks\Request\Call\Report
+ */
 class ReportProfitLossReadRequest extends ReportBaseRequest
 {
     /**
