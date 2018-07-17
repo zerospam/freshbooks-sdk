@@ -16,7 +16,7 @@ use ZEROSPAM\Freshbooks\Business\Amount;
  *
  * Tax summary of an invoice of a client of an invoice details report
  *
- * @property-read Amount $tax_amount
+ * @property-read Amount $tax_total
  * @property-read string $tax_number
  * @property-read string $tax_rate
  * @property-read string $tax_name
@@ -25,8 +25,13 @@ use ZEROSPAM\Freshbooks\Business\Amount;
  */
 class TaxSummary extends BaseResponse
 {
-    public function getTaxAmountAttribute(): Amount
+    /**
+     * Tax total
+     *
+     * @return Amount
+     */
+    public function getTaxTotalAttribute(): Amount
     {
-        return new Amount($this->data['tax_amount']);
+        return new Amount($this->data['tax_total']);
     }
 }

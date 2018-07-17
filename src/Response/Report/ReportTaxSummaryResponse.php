@@ -18,7 +18,7 @@ use ZEROSPAM\Freshbooks\Business\Report\TaxSummary\Tax;
  *
  * Tax summary report response
  *
- * @property-read Amount $total_invoices
+ * @property-read Amount $total_invoiced
  * @property-read Carbon $end_date
  * @property-read Tax[]  $taxes
  * @property-read string $download_token
@@ -46,7 +46,12 @@ class ReportTaxSummaryResponse extends BaseResponse
             function (array $data) {
                 return new Tax($data);
             },
-            $this->data['taxes']
+            $this->data()['taxes']
         );
+    }
+
+    public function getTotalInvoicedAttribute(): Amount
+    {
+        return new Amount($this->data()['total_invoiced']);
     }
 }
