@@ -25,7 +25,7 @@ use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
  *
  * @package ZEROSPAM\Freshbooks\Business\Report\InvoiceDetails
  */
-class Client extends BaseResponse
+class InvoiceDetailsClient extends BaseResponse
 {
     /**
      * Summary
