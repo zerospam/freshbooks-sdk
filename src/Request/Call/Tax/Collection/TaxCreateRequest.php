@@ -1,25 +1,41 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: aaflalo
- * Date: 18-06-20
- * Time: 15:16
+ * User: ycoutu
+ * Date: 11/07/18
+ * Time: 4:34 PM
  */
 
-namespace ZEROSPAM\Freshbooks\Test\Base;
-
+namespace ZEROSPAM\Freshbooks\Request\Call\Tax\Collection;
 
 use ZEROSPAM\Framework\SDK\Request\Api\BaseRequest;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
-use ZEROSPAM\Framework\SDK\Test\Base\Data\TestResponse;
 use ZEROSPAM\Freshbooks\Request\Call\HasAccountIdTrait;
 use ZEROSPAM\Freshbooks\Request\Call\IAccountIdRequest;
+use ZEROSPAM\Freshbooks\Request\Data\Tax\TaxData;
+use ZEROSPAM\Freshbooks\Response\Tax\TaxResponse;
 
-class TestAccountRequest extends BaseRequest implements IAccountIdRequest
+/**
+ * Class CreateTaxRequest
+ *
+ * Tax creation request
+ *
+ * @method TaxResponse getResponse()
+ *
+ * @package ZEROSPAM\Freshbooks\Request\Call\Tax
+ */
+class TaxCreateRequest extends BaseRequest implements IAccountIdRequest
 {
-
     use HasAccountIdTrait;
+
+    /** @var TaxData */
+    private $tax;
+
+    public function __construct(TaxData $data)
+    {
+        $this->tax = $data;
+    }
 
     /**
      * Type of request.
@@ -28,7 +44,7 @@ class TestAccountRequest extends BaseRequest implements IAccountIdRequest
      */
     public function httpType(): RequestType
     {
-        return RequestType::HTTP_GET();
+        return RequestType::HTTP_POST();
     }
 
     /**
@@ -40,7 +56,7 @@ class TestAccountRequest extends BaseRequest implements IAccountIdRequest
      */
     public function processResponse(array $jsonResponse): IResponse
     {
-        return new TestResponse($jsonResponse);
+        return new TaxResponse($jsonResponse["response"]["result"]["tax"]);
     }
 
     /**
@@ -50,6 +66,6 @@ class TestAccountRequest extends BaseRequest implements IAccountIdRequest
      */
     public function baseRoute(): string
     {
-        return ':accountId/test';
+        return 'accounting/account/:accountId/taxes/taxes ';
     }
 }

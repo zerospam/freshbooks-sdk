@@ -1,24 +1,31 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: aaflalo
- * Date: 18-06-20
- * Time: 15:16
+ * User: ycoutu
+ * Date: 13/07/18
+ * Time: 10:54 AM
  */
 
-namespace ZEROSPAM\Freshbooks\Test\Base;
-
+namespace ZEROSPAM\Freshbooks\Request\Call\Tax;
 
 use ZEROSPAM\Framework\SDK\Request\Api\BaseRequest;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
+use ZEROSPAM\Framework\SDK\Response\Api\EmptyResponse;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
-use ZEROSPAM\Framework\SDK\Test\Base\Data\TestResponse;
 use ZEROSPAM\Freshbooks\Request\Call\HasAccountIdTrait;
 use ZEROSPAM\Freshbooks\Request\Call\IAccountIdRequest;
 
-class TestAccountRequest extends BaseRequest implements IAccountIdRequest
+/**
+ * Class DeleteTaxRequest
+ *
+ * Delete a tax
+ *
+ * @method EmptyResponse getResponse()
+ *
+ * @package ZEROSPAM\Freshbooks\Request\Call\Tax
+ */
+class TaxDeleteRequest extends BaseRequest implements IAccountIdRequest
 {
-
     use HasAccountIdTrait;
 
     /**
@@ -28,7 +35,7 @@ class TestAccountRequest extends BaseRequest implements IAccountIdRequest
      */
     public function httpType(): RequestType
     {
-        return RequestType::HTTP_GET();
+        return RequestType::HTTP_DELETE();
     }
 
     /**
@@ -36,11 +43,11 @@ class TestAccountRequest extends BaseRequest implements IAccountIdRequest
      *
      * @param array $jsonResponse
      *
-     * @return \ZEROSPAM\Framework\SDK\Response\Api\IResponse
+     * @return IResponse
      */
     public function processResponse(array $jsonResponse): IResponse
     {
-        return new TestResponse($jsonResponse);
+        return new EmptyResponse();
     }
 
     /**
@@ -50,6 +57,20 @@ class TestAccountRequest extends BaseRequest implements IAccountIdRequest
      */
     public function baseRoute(): string
     {
-        return ':accountId/test';
+        return 'accounting/account/:accountId/taxes/taxes/:taxId';
+    }
+
+    /**
+     * Set the tax id
+     *
+     * @param string $id
+     *
+     * @return $this
+     */
+    public function setTaxId(string $id): TaxDeleteRequest
+    {
+        $this->addBinding('taxId', $id);
+
+        return $this;
     }
 }

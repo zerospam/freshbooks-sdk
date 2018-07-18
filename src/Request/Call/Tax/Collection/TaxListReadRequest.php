@@ -1,24 +1,31 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: aaflalo
- * Date: 18-06-20
- * Time: 15:16
+ * User: ycoutu
+ * Date: 11/07/18
+ * Time: 3:53 PM
  */
 
-namespace ZEROSPAM\Freshbooks\Test\Base;
-
+namespace ZEROSPAM\Freshbooks\Request\Call\Tax\Collection;
 
 use ZEROSPAM\Framework\SDK\Request\Api\BaseRequest;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
-use ZEROSPAM\Framework\SDK\Test\Base\Data\TestResponse;
 use ZEROSPAM\Freshbooks\Request\Call\HasAccountIdTrait;
 use ZEROSPAM\Freshbooks\Request\Call\IAccountIdRequest;
+use ZEROSPAM\Freshbooks\Response\Tax\Collection\TaxCollectionResponse;
 
-class TestAccountRequest extends BaseRequest implements IAccountIdRequest
+/**
+ * Class GetTaxListRequest
+ *
+ * Get the list of taxes
+ *
+ * @method TaxCollectionResponse getResponse()
+ *
+ * @package ZEROSPAM\Freshbooks\Request\Call\Tax
+ */
+class TaxListReadRequest extends BaseRequest implements IAccountIdRequest
 {
-
     use HasAccountIdTrait;
 
     /**
@@ -40,7 +47,7 @@ class TestAccountRequest extends BaseRequest implements IAccountIdRequest
      */
     public function processResponse(array $jsonResponse): IResponse
     {
-        return new TestResponse($jsonResponse);
+        return new TaxCollectionResponse($jsonResponse['response']);
     }
 
     /**
@@ -50,6 +57,6 @@ class TestAccountRequest extends BaseRequest implements IAccountIdRequest
      */
     public function baseRoute(): string
     {
-        return ':accountId/test';
+        return 'accounting/account/:accountId/taxes/taxes';
     }
 }

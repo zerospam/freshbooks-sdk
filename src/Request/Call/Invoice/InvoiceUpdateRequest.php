@@ -2,40 +2,30 @@
 /**
  * Created by PhpStorm.
  * User: ycoutu
- * Date: 09/07/18
- * Time: 4:12 PM
+ * Date: 12/07/18
+ * Time: 4:53 PM
  */
 
-namespace ZEROSPAM\Freshbooks\Request\Invoice;
+namespace ZEROSPAM\Freshbooks\Request\Call\Invoice;
 
 use ZEROSPAM\Framework\SDK\Request\Api\BaseRequest;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
-use ZEROSPAM\Freshbooks\Request\HasAccountIdTrait;
-use ZEROSPAM\Freshbooks\Request\IAccountIdRequest;
+use ZEROSPAM\Freshbooks\Request\Call\HasAccountIdTrait;
+use ZEROSPAM\Freshbooks\Request\Call\IAccountIdRequest;
+use ZEROSPAM\Freshbooks\Request\Data\Invoice\InvoiceUpdateData;
 use ZEROSPAM\Freshbooks\Response\Invoice\InvoiceResponse;
 
-/**
- * Class GetInvoiceRequest
- *
- * Get a specific invoice
- *
- * @method InvoiceResponse getResponse()
- *
- * @package ZEROSPAM\Freshbooks\Request\Invoice
- */
-class GetInvoiceRequest extends BaseRequest implements IAccountIdRequest
+class InvoiceUpdateRequest extends BaseRequest implements IAccountIdRequest
 {
     use HasAccountIdTrait;
 
-    /**
-     * The url of the route.
-     *
-     * @return string
-     */
-    public function baseRoute(): string
+    /** @var InvoiceUpdateData */
+    private $invoice;
+
+    public function __construct(InvoiceUpdateData $data)
     {
-        return 'accounting/account/:accountId/invoices/invoices/:invoiceId';
+        $this->invoice = $data;
     }
 
     /**
@@ -45,20 +35,29 @@ class GetInvoiceRequest extends BaseRequest implements IAccountIdRequest
      */
     public function httpType(): RequestType
     {
-        return RequestType::HTTP_GET();
+        return RequestType::HTTP_PUT();
     }
-
 
     /**
      * Process the data that is in the response.
      *
      * @param array $jsonResponse
      *
-     * @return IResponse
+     * @return \ZEROSPAM\Framework\SDK\Response\Api\IResponse
      */
     public function processResponse(array $jsonResponse): IResponse
     {
         return new InvoiceResponse($jsonResponse['response']['result']['invoice']);
+    }
+
+    /**
+     * Base route without binding.
+     *
+     * @return string
+     */
+    public function baseRoute(): string
+    {
+        return 'accounting/account/:accountId/invoices/invoices/:invoiceId';
     }
 
     /**
@@ -68,7 +67,7 @@ class GetInvoiceRequest extends BaseRequest implements IAccountIdRequest
      *
      * @return $this
      */
-    public function setInvoiceId(string $id): GetInvoiceRequest
+    public function setInvoiceId(string $id): InvoiceUpdateRequest
     {
         $this->addBinding('invoiceId', $id);
 

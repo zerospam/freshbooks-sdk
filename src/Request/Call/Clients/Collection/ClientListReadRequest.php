@@ -6,13 +6,13 @@
  * Time: 15:37
  */
 
-namespace ZEROSPAM\Freshbooks\Request\Clients;
+namespace ZEROSPAM\Freshbooks\Request\Call\Clients\Collection;
 
 use ZEROSPAM\Framework\SDK\Request\Api\BaseRequest;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
-use ZEROSPAM\Freshbooks\Request\HasAccountIdTrait;
-use ZEROSPAM\Freshbooks\Request\IAccountIdRequest;
+use ZEROSPAM\Freshbooks\Request\Call\HasAccountIdTrait;
+use ZEROSPAM\Freshbooks\Request\Call\IAccountIdRequest;
 use ZEROSPAM\Freshbooks\Response\Clients\Collection\ClientCollectionResponse;
 
 /**
@@ -23,7 +23,7 @@ use ZEROSPAM\Freshbooks\Response\Clients\Collection\ClientCollectionResponse;
  *
  * @package ZEROSPAM\Freshbooks\Request\Clients
  */
-class ClientListRequest extends BaseRequest implements IAccountIdRequest
+class ClientListReadRequest extends BaseRequest implements IAccountIdRequest
 {
     use HasAccountIdTrait;
 
@@ -34,7 +34,7 @@ class ClientListRequest extends BaseRequest implements IAccountIdRequest
      */
     public function baseRoute(): string
     {
-        return 'accounting/account/:accountId/users/contacts';
+        return 'accounting/account/:accountId/users/clients';
     }
 
 

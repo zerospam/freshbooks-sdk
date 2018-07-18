@@ -2,31 +2,31 @@
 /**
  * Created by PhpStorm.
  * User: ycoutu
- * Date: 09/07/18
- * Time: 4:27 PM
+ * Date: 10/07/18
+ * Time: 2:57 PM
  */
 
-namespace ZEROSPAM\Freshbooks\Request\Invoice;
+namespace ZEROSPAM\Freshbooks\Request\Call\Invoice\Collection;
 
 use ZEROSPAM\Framework\SDK\Request\Api\BaseRequest;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
-use ZEROSPAM\Freshbooks\Request\HasAccountIdTrait;
-use ZEROSPAM\Freshbooks\Request\IAccountIdRequest;
-use ZEROSPAM\Freshbooks\Response\Invoice\Collection\InvoiceCollectionResponse;
+use ZEROSPAM\Freshbooks\Request\Call\HasAccountIdTrait;
+use ZEROSPAM\Freshbooks\Request\Call\IAccountIdRequest;
+use ZEROSPAM\Freshbooks\Request\Data\Invoice\InvoiceCreateData;
+use ZEROSPAM\Freshbooks\Response\Invoice\InvoiceResponse;
 
-/**
- * Class GetInvoiceListRequest
- *
- * Get the list of invoices
- *
- * @method InvoiceCollectionResponse getResponse()
- *
- * @package ZEROSPAM\Freshbooks\Request\Invoice
- */
-class GetInvoiceListRequest extends BaseRequest implements IAccountIdRequest
+class InvoiceCreateRequest extends BaseRequest implements IAccountIdRequest
 {
     use HasAccountIdTrait;
+
+    /** @var InvoiceCreateData */
+    private $invoice;
+
+    public function __construct(InvoiceCreateData $invoiceCreateData)
+    {
+        $this->invoice = $invoiceCreateData;
+    }
 
     /**
      * Base route without binding.
@@ -38,7 +38,6 @@ class GetInvoiceListRequest extends BaseRequest implements IAccountIdRequest
         return 'accounting/account/:accountId/invoices/invoices';
     }
 
-
     /**
      * Type of request.
      *
@@ -46,7 +45,7 @@ class GetInvoiceListRequest extends BaseRequest implements IAccountIdRequest
      */
     public function httpType(): RequestType
     {
-        return RequestType::HTTP_GET();
+        return RequestType::HTTP_POST();
     }
 
     /**
@@ -58,6 +57,6 @@ class GetInvoiceListRequest extends BaseRequest implements IAccountIdRequest
      */
     public function processResponse(array $jsonResponse): IResponse
     {
-        return new InvoiceCollectionResponse($jsonResponse['response']);
+        return new InvoiceResponse($jsonResponse['response']['result']['invoice']);
     }
 }
