@@ -1,3 +1,76 @@
+# [2.0.0](https://github.com/zerospam/freshbooks-sdk/compare/v1.1.0...v2.0.0) (2018-07-18)
+
+
+* Merge pull request #23 from zerospam/restructure-project ([1f76192](https://github.com/zerospam/freshbooks-sdk/commit/1f76192)), closes [#23](https://github.com/zerospam/freshbooks-sdk/issues/23)
+
+
+### Bug Fixes
+
+* **Client:** Add field nullability ([8aa8b1b](https://github.com/zerospam/freshbooks-sdk/commit/8aa8b1b))
+* **ClientList:** Use the right route ([9b640db](https://github.com/zerospam/freshbooks-sdk/commit/9b640db))
+* **Invoice:** Add field nullability ([363bd45](https://github.com/zerospam/freshbooks-sdk/commit/363bd45))
+* **Invoice:** Fix send invoice email method typing ([663dbb5](https://github.com/zerospam/freshbooks-sdk/commit/663dbb5))
+* **Invoice:** Fix update invoice request problem with tests ([2909392](https://github.com/zerospam/freshbooks-sdk/commit/2909392))
+* **Invoice:** Remove unchangeable fields for invoice creation ([4750493](https://github.com/zerospam/freshbooks-sdk/commit/4750493))
+* **InvoiceProfile:** Fix field name ([86dd87e](https://github.com/zerospam/freshbooks-sdk/commit/86dd87e))
+* **InvoiceProfile:** Fix fields in invoice profile response ([49e5cc8](https://github.com/zerospam/freshbooks-sdk/commit/49e5cc8))
+* **Report:** Add report base request class ([41d936b](https://github.com/zerospam/freshbooks-sdk/commit/41d936b))
+* **Report:** Fix variable name in some report response ([9801d30](https://github.com/zerospam/freshbooks-sdk/commit/9801d30))
+* **Request:** Fix ArrayableData: Do not generate the nullableChanged field in the JSON request ([85326b6](https://github.com/zerospam/freshbooks-sdk/commit/85326b6))
+* **Tax:** Fix missing date field in tax response ([d35b1c1](https://github.com/zerospam/freshbooks-sdk/commit/d35b1c1))
+
+
+### chore
+
+* **ClientList:** Refactor where the request is ([c076194](https://github.com/zerospam/freshbooks-sdk/commit/c076194))
+
+
+### Code Refactoring
+
+* **Requests:** Refactor Namespace of all the Requests ([79a93e1](https://github.com/zerospam/freshbooks-sdk/commit/79a93e1))
+* **Structure:** Normalize class names and file structure ([6ab3b2c](https://github.com/zerospam/freshbooks-sdk/commit/6ab3b2c))
+
+
+### Features
+
+* **Client:** Add client creation request ([3427b21](https://github.com/zerospam/freshbooks-sdk/commit/3427b21))
+* **Client:** Add client update request ([564cb0a](https://github.com/zerospam/freshbooks-sdk/commit/564cb0a))
+* **Client:** Add delete client request ([4ac61ff](https://github.com/zerospam/freshbooks-sdk/commit/4ac61ff))
+* **Client:** Get information about one client. ([f176068](https://github.com/zerospam/freshbooks-sdk/commit/f176068)), closes [#6](https://github.com/zerospam/freshbooks-sdk/issues/6)
+* **Invoice:** Add delete invoice request ([8d1287e](https://github.com/zerospam/freshbooks-sdk/commit/8d1287e))
+* **Invoice:** Add invoice creation request ([8bb0d37](https://github.com/zerospam/freshbooks-sdk/commit/8bb0d37))
+* **Invoice:** Add invoice update request ([9e18ce1](https://github.com/zerospam/freshbooks-sdk/commit/9e18ce1))
+* **Invoice:** Add request to get an invoice share link ([bed344c](https://github.com/zerospam/freshbooks-sdk/commit/bed344c))
+* **Invoice:** Add send invoice email request ([e25a130](https://github.com/zerospam/freshbooks-sdk/commit/e25a130))
+* **InvoiceProfile:** Add invoice profile create request ([f672976](https://github.com/zerospam/freshbooks-sdk/commit/f672976))
+* **InvoiceProfile:** Add invoice profile delete request ([b0d4987](https://github.com/zerospam/freshbooks-sdk/commit/b0d4987))
+* **InvoiceProfile:** Add invoice profile list request ([0146b22](https://github.com/zerospam/freshbooks-sdk/commit/0146b22))
+* **InvoiceProfile:** Add invoice profile read request ([a296fa3](https://github.com/zerospam/freshbooks-sdk/commit/a296fa3))
+* **InvoiceProfile:** Add invoice profile update request ([f69ffab](https://github.com/zerospam/freshbooks-sdk/commit/f69ffab))
+* **Report:** Add accounts aging report request ([ba77cf6](https://github.com/zerospam/freshbooks-sdk/commit/ba77cf6))
+* **Report:** Add expense details report request ([896aeda](https://github.com/zerospam/freshbooks-sdk/commit/896aeda))
+* **Report:** Add invoice details report request ([6dac10a](https://github.com/zerospam/freshbooks-sdk/commit/6dac10a))
+* **Report:** Add payment collected report request ([36c4b26](https://github.com/zerospam/freshbooks-sdk/commit/36c4b26))
+* **Report:** Add profit/loss report request ([9139e16](https://github.com/zerospam/freshbooks-sdk/commit/9139e16))
+* **Report:** Add tax summary report request ([f217507](https://github.com/zerospam/freshbooks-sdk/commit/f217507))
+* **Tax:** Add delete tax request ([541fddb](https://github.com/zerospam/freshbooks-sdk/commit/541fddb))
+* **Tax:** Add get/index tax requests ([30044c0](https://github.com/zerospam/freshbooks-sdk/commit/30044c0))
+* **Tax:** Add tax creation request ([6441561](https://github.com/zerospam/freshbooks-sdk/commit/6441561))
+* **Tax:** Add update tax request ([ef630e0](https://github.com/zerospam/freshbooks-sdk/commit/ef630e0))
+
+
+### Performance Improvements
+
+* **EmptyResponse:** Uses Empty Response from SDK Framework ([5f94fce](https://github.com/zerospam/freshbooks-sdk/commit/5f94fce))
+
+
+### BREAKING CHANGES
+
+* Classes moved and renamed
+* **Structure:** Classes moved and renamed
+* **Requests:** All the requests changed namespace: now Request/Call
+* **ClientList:** The ClientListRequest moved into its own namespace.
+
 # [1.1.0](https://github.com/zerospam/freshbooks-sdk/compare/v1.0.1...v1.1.0) (2018-07-10)
 
 
