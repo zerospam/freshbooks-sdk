@@ -8,8 +8,49 @@
 
 namespace ZEROSPAM\Freshbooks\Request\Call\Estimate;
 
+use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
+use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
+use ZEROSPAM\Freshbooks\Request\Call\IAccountIdRequest;
+use ZEROSPAM\Freshbooks\Response\Estimate\EstimateResponse;
 
-class EstimateReadRequest
+/**
+ * Class EstimateReadRequest
+ *
+ * @method EstimateResponse getResponse()
+ *
+ * @package ZEROSPAM\Freshbooks\Request\Call\Estimate
+ */
+class EstimateReadRequest extends EstimateResourceRequest implements IAccountIdRequest
 {
+    /**
+     * Type of request.
+     *
+     * @return RequestType
+     */
+    public function httpType(): RequestType
+    {
+        return RequestType::HTTP_GET();
+    }
 
+    /**
+     * Process the data that is in the response.
+     *
+     * @param array $jsonResponse
+     *
+     * @return IResponse
+     */
+    public function processResponse(array $jsonResponse): IResponse
+    {
+        return new EstimateResponse($jsonResponse['response']['result']['estimate']);
+    }
+
+    /**
+     * Base route without binding.
+     *
+     * @return string
+     */
+    public function baseRoute(): string
+    {
+        return 'accounting/account/:accountId/estimates/estimates/:estimateId';
+    }
 }
