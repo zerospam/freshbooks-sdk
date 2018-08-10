@@ -1,26 +1,21 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: ycoutu
- * Date: 10/07/18
- * Time: 10:50 AM
+ * User: pbb
+ * Date: 10/08/18
+ * Time: 4:35 PM
  */
 
-namespace ZEROSPAM\Freshbooks\Business;
+namespace ZEROSPAM\Freshbooks\Response\Common\Lines;
 
-use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
+use ZEROSPAM\Freshbooks\Business\Amount;
 
 /**
- * Class InvoiceLine
+ * Base class for common attributes shared by Line objects
  *
- * Line from an invoice
- *
- * @property-read int         $lineid
  * @property-read Amount      $amount
- * @property-read Carbon      $updated
  * @property-read int         $type
- * @property-read int|null    $expenseid
  * @property-read string      $qty
  * @property-read Amount      $unit_cost
  * @property-read string      $description
@@ -30,19 +25,25 @@ use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
  * @property-read string      $taxAmount1
  * @property-read string      $taxAmount2
  *
- * @package ZEROSPAM\Freshbooks\Business
+ * @package ZEROSPAM\Freshbooks\Response\Lines
  */
-class InvoiceLine extends BaseResponse
+abstract class BaseLine extends BaseResponse
 {
-    public $dates = [
-        'updated',
-    ];
-
+    /**
+     * Amount mutator
+     *
+     * @return Amount
+     */
     public function getAmountAttribute(): Amount
     {
         return new Amount($this->data['amount']);
     }
 
+    /**
+     * Unit cost mutator
+     *
+     * @return Amount
+     */
     public function getUnitCostAttribute(): Amount
     {
         return new Amount($this->data['unit_cost']);

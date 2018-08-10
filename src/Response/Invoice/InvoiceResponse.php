@@ -11,7 +11,6 @@ namespace ZEROSPAM\Freshbooks\Response\Invoice;
 use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
 use ZEROSPAM\Freshbooks\Business\Amount;
-use ZEROSPAM\Freshbooks\Business\InvoiceLine;
 
 /**
  * Class InvoiceResponse

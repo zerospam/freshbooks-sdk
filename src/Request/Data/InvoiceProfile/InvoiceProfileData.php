@@ -9,9 +9,9 @@
 namespace ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile;
 
 use Carbon\Carbon;
-use ZEROSPAM\Freshbooks\Business\InvoiceLine;
 use ZEROSPAM\Freshbooks\Request\Data\ArrayableData;
 use ZEROSPAM\Freshbooks\Request\Data\DateTimeData;
+use ZEROSPAM\Freshbooks\Response\Invoice\InvoiceLine;
 
 class InvoiceProfileData extends ArrayableData
 {
@@ -427,6 +427,7 @@ class InvoiceProfileData extends ArrayableData
 
     /**
      * @param InvoiceLine[] $lines
+     *
      * @return $this
      */
     public function setLines(array $lines): InvoiceProfileData

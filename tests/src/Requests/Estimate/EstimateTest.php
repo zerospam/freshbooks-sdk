@@ -100,6 +100,5 @@ JSON;
         $this->assertEquals(StatusEnum::DRAFT, $response->status->getValue());
         $this->assertEquals(UIStatusEnum::DRAFT, $response->ui_status->getValue());
         $this->assertEquals(UIStatusEnum::DRAFT, $response->display_status->getValue());
-
     }
 }
