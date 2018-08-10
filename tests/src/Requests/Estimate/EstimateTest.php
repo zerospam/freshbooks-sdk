@@ -11,6 +11,9 @@ namespace ZEROSPAM\Freshbooks\Test\Requests\Estimate;
 
 use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
+use ZEROSPAM\Freshbooks\Business\Enums\Currency\CurrencyEnum;
+use ZEROSPAM\Freshbooks\Business\Enums\Estimate\StatusEnum;
+use ZEROSPAM\Freshbooks\Business\Enums\Estimate\UIStatusEnum;
 use ZEROSPAM\Freshbooks\Request\Call\Estimate\EstimateReadRequest;
 use ZEROSPAM\Freshbooks\Response\Estimate\EstimateResponse;
 
@@ -92,5 +95,11 @@ JSON;
         $this->assertEquals("EUR", $response->amount->code);
         $this->assertInstanceOf(Carbon::class, $response->updated);
         $this->assertInstanceOf(EstimateResponse::class, $response);
+        $this->assertInstanceOf(CurrencyEnum::class, $response->currency_code);
+        $this->assertEquals(CurrencyEnum::EUR, $response->currency_code->getValue());
+        $this->assertEquals(StatusEnum::DRAFT, $response->status->getValue());
+        $this->assertEquals(UIStatusEnum::DRAFT, $response->ui_status->getValue());
+        $this->assertEquals(UIStatusEnum::DRAFT, $response->display_status->getValue());
+
     }
 }
