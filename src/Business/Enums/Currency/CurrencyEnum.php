@@ -28,7 +28,7 @@ class CurrencyEnum extends Enum implements PrimalValued
 {
     use PrimalValuedEnumTrait;
 
-    const CAD = 'cad';
-    const USD = 'usd';
-    const EUR = 'eur';
+    const CAD = 'CAD';
+    const USD = 'USD';
+    const EUR = 'EUR';
 }

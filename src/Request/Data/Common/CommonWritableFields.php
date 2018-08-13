@@ -10,6 +10,7 @@ namespace ZEROSPAM\Freshbooks\Request\Data\Common;
 
 
 use Carbon\Carbon;
+use ZEROSPAM\Freshbooks\Business\Enums\Currency\CurrencyEnum;
 use ZEROSPAM\Freshbooks\Request\Data\DateTimeData;
 
 trait CommonWritableFields
@@ -30,7 +31,7 @@ trait CommonWritableFields
     /** @var string */
     private $template;
 
-    /** @var string */
+    /** @var CurrencyEnum */
     private $currencyCode;
 
     /** @var string */
@@ -138,13 +139,13 @@ trait CommonWritableFields
     }
 
     /**
-     * @param string $currencyCode
+     * @param CurrencyEnum $enum
      *
      * @return $this
      */
-    public function setCurrencyCode(string $currencyCode)
+    public function setCurrencyCode(CurrencyEnum $enum)
     {
-        $this->currencyCode = $currencyCode;
+        $this->currencyCode = $enum;
         return $this;
     }
 
