@@ -12,7 +12,7 @@ namespace ZEROSPAM\Freshbooks\Request\Data\Common;
 use Carbon\Carbon;
 use ZEROSPAM\Freshbooks\Request\Data\DateTimeData;
 
-trait BaseWritableFieldsTrait
+trait CommonWritableFields
 {
 
     /** @var int */
