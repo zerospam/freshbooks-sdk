@@ -9,8 +9,11 @@
 namespace ZEROSPAM\Freshbooks\Request\Data\Invoice;
 
 use ZEROSPAM\Freshbooks\Request\Data\ArrayableData;
+use ZEROSPAM\Freshbooks\Request\Data\Common\BaseWritableFieldsTrait;
 
 class InvoiceUpdateData extends ArrayableData
 {
-    use WritableInvoiceFieldsTrait, SendEmailTrait;
+    use BaseWritableFieldsTrait,
+        WritableInvoiceFieldsTrait,
+        SendEmailTrait;
 }
