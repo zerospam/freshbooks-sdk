@@ -16,9 +16,9 @@ use ZEROSPAM\Freshbooks\Response\Common\Lines\BaseLine;
  *
  * @property-read string $taxNumber2
  * @property-read string $taxNumber1
- * @property-read bool $compounded_tax
- * @property-read int $estimateid
- * @property-read int $taskno
+ * @property-read bool   $compounded_tax
+ * @property-read int    $estimateid
+ * @property-read int    $taskno
  *
  * @package ZEROSPAM\Freshbooks\Response\Estimate
  */
