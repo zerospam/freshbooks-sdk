@@ -36,4 +36,14 @@ abstract class EstimateResourceRequest extends BaseRequest implements IAccountId
 
         return $this;
     }
+
+    /**
+     * Base route without binding.
+     *
+     * @return string
+     */
+    public function baseRoute(): string
+    {
+        return 'accounting/account/:accountId/estimates/estimates/:estimateId';
+    }
 }

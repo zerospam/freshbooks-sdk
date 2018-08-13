@@ -2,26 +2,25 @@
 /**
  * Created by PhpStorm.
  * User: pbb
- * Date: 10/08/18
- * Time: 1:16 PM
+ * Date: 13/08/18
+ * Time: 9:51 AM
  */
 
 namespace ZEROSPAM\Freshbooks\Request\Call\Estimate;
 
+
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
+use ZEROSPAM\Framework\SDK\Response\Api\EmptyResponse;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
-use ZEROSPAM\Freshbooks\Request\Call\IAccountIdRequest;
-use ZEROSPAM\Freshbooks\Response\Estimate\EstimateResponse;
 
 /**
- * Class EstimateReadRequest
- *
- * @method EstimateResponse getResponse()
+ * Class EstimateDeleteRequest
  *
  * @package ZEROSPAM\Freshbooks\Request\Call\Estimate
  */
-class EstimateReadRequest extends EstimateResourceRequest implements IAccountIdRequest
+class EstimateDeleteRequest extends EstimateResourceRequest
 {
+
     /**
      * Type of request.
      *
@@ -29,7 +28,7 @@ class EstimateReadRequest extends EstimateResourceRequest implements IAccountIdR
      */
     public function httpType(): RequestType
     {
-        return RequestType::HTTP_GET();
+        return RequestType::HTTP_DELETE();
     }
 
     /**
@@ -37,10 +36,10 @@ class EstimateReadRequest extends EstimateResourceRequest implements IAccountIdR
      *
      * @param array $jsonResponse
      *
-     * @return IResponse
+     * @return \ZEROSPAM\Framework\SDK\Response\Api\IResponse
      */
     public function processResponse(array $jsonResponse): IResponse
     {
-        return new EstimateResponse($jsonResponse['response']['result']['estimate']);
+        return new EmptyResponse();
     }
 }

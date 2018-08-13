@@ -10,18 +10,18 @@ namespace ZEROSPAM\Freshbooks\Test\Requests\Estimate;
 
 
 use Carbon\Carbon;
+use ZEROSPAM\Framework\SDK\Response\Api\EmptyResponse;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
+use ZEROSPAM\Freshbooks\Argument\IncludeArgument;
 use ZEROSPAM\Freshbooks\Business\Enums\Currency\CurrencyEnum;
 use ZEROSPAM\Freshbooks\Business\Enums\Estimate\StatusEnum;
 use ZEROSPAM\Freshbooks\Business\Enums\Estimate\UIStatusEnum;
+use ZEROSPAM\Freshbooks\Request\Call\Estimate\EstimateDeleteRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Estimate\EstimateReadRequest;
 use ZEROSPAM\Freshbooks\Response\Estimate\EstimateResponse;
 
 class EstimateTest extends TestCase
 {
-    /**
-     * @test
-     */
     public function testGetEstimate(): void
     {
         $json
@@ -105,9 +105,6 @@ JSON;
         $this->assertEquals(UIStatusEnum::DRAFT, $response->display_status->getValue());
     }
 
-    /**
-     * @test
-     */
     public function testGetEstimateWithLines()
     {
         $json = <<<JSON
@@ -222,6 +219,7 @@ JSON;
         $request = new EstimateReadRequest();
         $request->setAccountId('id');
         $request->setEstimateId('16023');
+        $request->addArgument(new IncludeArgument('lines'));
         $client->getOAuthTestClient()->processRequest($request);
 
         $response = $request->getResponse();
@@ -236,7 +234,26 @@ JSON;
         $this->assertEquals('1', $line->qty);
         $this->assertEquals('Inbound filtering 1-5 seats', $line->name);
         $this->assertEquals('9.99', $line->amount->amount);
+        $this->validateUrl($client, 'accounting/account/id/estimates/estimates/16023');
     }
 
+    public function testDeleteInvoice(): void
+    {
+        $jsonResponse = <<<JSON
+{
+    "response": {}
+}
+JSON;
 
+        $client  = $this->preSuccess($jsonResponse);
+        $request = new EstimateDeleteRequest();
+        $request->setAccountId('id');
+        $request->setEstimateId(16023);
+        $client->getOAuthTestClient()->processRequest($request);
+
+        $response = $request->getResponse();
+
+        $this->assertInstanceOf(EmptyResponse::class, $response);
+        $this->validateUrl($client, 'accounting/account/id/estimates/estimates/16023');
+    }
 }
