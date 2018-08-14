@@ -20,6 +20,7 @@ use ZEROSPAM\Freshbooks\Business\Enums\Language\LanguageEnum;
 use ZEROSPAM\Freshbooks\Request\Call\Estimate\Collection\EstimateCreateRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Estimate\EstimateDeleteRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Estimate\EstimateReadRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Estimate\EstimateUpdateRequest;
 use ZEROSPAM\Freshbooks\Request\Data\AmountData;
 use ZEROSPAM\Freshbooks\Request\Data\Estimate\EstimateData;
 use ZEROSPAM\Freshbooks\Request\Data\Invoice\InvoiceLineData;
@@ -407,5 +408,93 @@ JSON;
         $this->assertTrue($response->currency_code->is(CurrencyEnum::CAD()));
         $this->assertTrue($response->display_status->is(UIStatusEnum::DRAFT()));
         $this->assertTrue($response->language->is(LanguageEnum::EN()));
+    }
+
+    public function testEstimateUpdate()
+    {
+        $jsonResponse = <<<JSON
+        {
+    "response": {
+        "result": {
+            "estimate": {
+                "province": "Province",
+                "code": "Code",
+                "create_date": "2018-01-01",
+                "display_status": "draft",
+                "require_client_signature": false,
+                "street": "main street",
+                "vat_number": "1234",
+                "ownerid": 1,
+                "id": 16479,
+                "invoiced": false,
+                "city": "City",
+                "lname": "Doe",
+                "ext_archive": 0,
+                "fname": "John",
+                "vis_state": 0,
+                "current_organization": "Yvan Des Souffleuses Inc.",
+                "status": 1,
+                "estimate_number": "12",
+                "updated": "2018-08-14 15:39:38",
+                "terms": "Terms and conditions",
+                "description": "",
+                "vat_name": "vat name",
+                "street2": "app. 1",
+                "template": "clean-grouped",
+                "ui_status": "draft",
+                "discount_total": {
+                    "amount": "0.00",
+                    "code": "CAD"
+                },
+                "address": "5",
+                "accepted": false,
+                "customerid": 180265,
+                "accounting_systemid": "k0LBE",
+                "organization": "Company name Inc.",
+                "language": "es",
+                "po_number": "H0H 0H0",
+                "country": "Country",
+                "notes": "Notes to the client",
+                "reply_status": null,
+                "amount": {
+                    "amount": "0.00",
+                    "code": "CAD"
+                },
+                "estimateid": 16479,
+                "sentid": 1,
+                "discount_value": "5",
+                "rich_proposal": false,
+                "created_at": "2018-08-14 13:58:52",
+                "currency_code": "CAD"
+            }
+        }
+    }
+}
+JSON;
+
+        $jsonRequest = <<<JSON
+{
+  "estimate": {
+     "language": "es"
+  }
+}
+JSON;
+
+        $client = $this->preSuccess($jsonResponse);
+
+        $requestData = new EstimateData();
+        $requestData->setLanguage(LanguageEnum::ES());
+
+        $request = new EstimateUpdateRequest($requestData);
+        $request->setAccountId('id')
+                ->setEstimateId(16479);
+
+        $client->getOAuthTestClient()->processRequest($request);
+        $response = $request->getResponse();
+
+        $this->validateRequest($client, $jsonRequest);
+        $this->validateUrl($client, 'accounting/account/id/estimates/estimates/16479');
+        $this->assertTrue($response->language->is(LanguageEnum::ES()));
+
     }
 }
