@@ -16,6 +16,7 @@ use ZEROSPAM\Freshbooks\Business\Enums\Currency\CurrencyEnum;
 use ZEROSPAM\Freshbooks\Business\Enums\Estimate\StatusEnum;
 use ZEROSPAM\Freshbooks\Business\Enums\Estimate\UIStatusEnum;
 use ZEROSPAM\Freshbooks\Business\Enums\Language\LanguageEnum;
+use ZEROSPAM\Freshbooks\Response\Invoice\InvoiceLine;
 
 /**
  * Class EstimateResponse
@@ -63,7 +64,7 @@ use ZEROSPAM\Freshbooks\Business\Enums\Language\LanguageEnum;
  * @property-read bool                      $rich_proposal
  * @property-read Carbon                    $created_at
  * @property-read CurrencyEnum              $currency_code
- * @property-read EstimateLine[]|array|null $lines
+ * @property-read InvoiceLine[]|array|null $lines
  *
  * @package ZEROSPAM\Freshbooks\Response\Estimate
  */
@@ -142,7 +143,7 @@ class EstimateResponse extends BaseResponse
     /**
      * Mutator for estimate lines
      *
-     * @return EstimateLine[]|null
+     * @return InvoiceLine[]|null
      */
     public function getLinesAttribute(): ?array
     {
@@ -152,7 +153,7 @@ class EstimateResponse extends BaseResponse
 
         return array_map(
             function (array $line) {
-                return new EstimateLine($line);
+                return new InvoiceLine($line);
             }, $this->data['lines']);
     }
 }
