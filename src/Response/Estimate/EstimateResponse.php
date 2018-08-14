@@ -15,6 +15,7 @@ use ZEROSPAM\Freshbooks\Business\Amount;
 use ZEROSPAM\Freshbooks\Business\Enums\Currency\CurrencyEnum;
 use ZEROSPAM\Freshbooks\Business\Enums\Estimate\StatusEnum;
 use ZEROSPAM\Freshbooks\Business\Enums\Estimate\UIStatusEnum;
+use ZEROSPAM\Freshbooks\Business\Enums\Language\LanguageEnum;
 
 /**
  * Class EstimateResponse
@@ -50,7 +51,7 @@ use ZEROSPAM\Freshbooks\Business\Enums\Estimate\UIStatusEnum;
  * @property-read int                       $customerid
  * @property-read string                    $accounting_systemid
  * @property-read string                    $organization
- * @property-read string                    $language
+ * @property-read LanguageEnum              $language
  * @property-read string                    $po_number
  * @property-read string                    $country
  * @property-read string                    $notes
@@ -126,6 +127,16 @@ class EstimateResponse extends BaseResponse
     public function getDisplayStatusAttribute(): UIStatusEnum
     {
         return UIStatusEnum::byValueInsensitive($this->data['ui_status']);
+    }
+
+    /**
+     * Language mutator
+     *
+     * @return LanguageEnum
+     */
+    public function getLanguageAttribute(): LanguageEnum
+    {
+        return LanguageEnum::byValueInsensitive($this->data['language']);
     }
 
     /**

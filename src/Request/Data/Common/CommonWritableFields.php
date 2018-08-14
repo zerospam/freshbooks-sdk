@@ -8,9 +8,9 @@
 
 namespace ZEROSPAM\Freshbooks\Request\Data\Common;
 
-
 use Carbon\Carbon;
 use ZEROSPAM\Freshbooks\Business\Enums\Currency\CurrencyEnum;
+use ZEROSPAM\Freshbooks\Business\Enums\Language\LanguageEnum;
 use ZEROSPAM\Freshbooks\Request\Data\DateTimeData;
 
 trait CommonWritableFields
@@ -150,11 +150,11 @@ trait CommonWritableFields
     }
 
     /**
-     * @param string $language
+     * @param LanguageEnum $language
      *
      * @return $this
      */
-    public function setLanguage(string $language)
+    public function setLanguage(LanguageEnum $language)
     {
         $this->language = $language;
         return $this;

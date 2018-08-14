@@ -16,6 +16,7 @@ use ZEROSPAM\Freshbooks\Argument\IncludeArgument;
 use ZEROSPAM\Freshbooks\Business\Enums\Currency\CurrencyEnum;
 use ZEROSPAM\Freshbooks\Business\Enums\Estimate\StatusEnum;
 use ZEROSPAM\Freshbooks\Business\Enums\Estimate\UIStatusEnum;
+use ZEROSPAM\Freshbooks\Business\Enums\Language\LanguageEnum;
 use ZEROSPAM\Freshbooks\Request\Call\Estimate\Collection\EstimateCreateRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Estimate\EstimateDeleteRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Estimate\EstimateReadRequest;
@@ -358,7 +359,7 @@ JSON;
             ->setPoNumber("H0H 0H0")
             ->setTemplate("clean-grouped")
             ->setCurrencyCode(CurrencyEnum::CAD())
-            ->setLanguage("en")
+            ->setLanguage(LanguageEnum::EN())
             ->setTerms("Terms and conditions")
             ->setNotes("Notes to the client")
             ->setAddress("5")
@@ -386,5 +387,6 @@ JSON;
         $this->validateUrl($client, 'accounting/account/id/estimates/estimates');
         $this->assertTrue($response->currency_code->is(CurrencyEnum::CAD()));
         $this->assertTrue($response->display_status->is(UIStatusEnum::DRAFT()));
+        $this->assertTrue($response->language->is(LanguageEnum::EN()));
     }
 }

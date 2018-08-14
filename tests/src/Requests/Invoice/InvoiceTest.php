@@ -13,6 +13,7 @@ use ZEROSPAM\Framework\SDK\Response\Api\EmptyResponse;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 use ZEROSPAM\Freshbooks\Argument\IncludeArgument;
 use ZEROSPAM\Freshbooks\Business\Enums\Currency\CurrencyEnum;
+use ZEROSPAM\Freshbooks\Business\Enums\Language\LanguageEnum;
 use ZEROSPAM\Freshbooks\Request\Call\Invoice\Collection\InvoiceCreateRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Invoice\Collection\InvoiceListReadRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Invoice\InvoiceDeleteRequest;
@@ -608,7 +609,7 @@ JSON;
             ->setPoNumber("121")
             ->setTemplate("template")
             ->setCurrencyCode(CurrencyEnum::CAD())
-            ->setLanguage("fr")
+            ->setLanguage(LanguageEnum::FR())
             ->setTerms("You must follow these terms")
             ->setNotes("There are some notes here")
             ->setAddress("1 Main Street")
@@ -752,7 +753,7 @@ JSON;
             ->setPoNumber("121")
             ->setTemplate("template")
             ->setCurrencyCode(CurrencyEnum::CAD())
-            ->setLanguage("fr")
+            ->setLanguage(LanguageEnum::FR())
             ->setTerms("You must follow these terms")
             ->setNotes("There are some notes here")
             ->setAddress("1 Main Street")
