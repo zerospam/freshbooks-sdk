@@ -16,10 +16,9 @@ use ZEROSPAM\Freshbooks\Request\Data\Common\CommonWritableFields;
  *
  * @package ZEROSPAM\Freshbooks\Request\Data\Estimate
  */
-class EstimateCreateData extends ArrayableData
+class EstimateData extends ArrayableData
 {
-    use CommonWritableFields,
-        WritableEstimateFields;
+    use CommonWritableFields;
 
     /** @var string */
     private $estimateNumber;
@@ -27,9 +26,9 @@ class EstimateCreateData extends ArrayableData
     /**
      * @param string $estimateNumber
      *
-     * @return EstimateCreateData
+     * @return EstimateData
      */
-    public function setEstimateNumber(string $estimateNumber): EstimateCreateData
+    public function setEstimateNumber(string $estimateNumber): EstimateData
     {
         $this->estimateNumber = $estimateNumber;
 

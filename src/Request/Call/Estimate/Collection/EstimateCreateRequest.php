@@ -11,7 +11,7 @@ namespace ZEROSPAM\Freshbooks\Request\Call\Estimate\Collection;
 
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
-use ZEROSPAM\Freshbooks\Request\Data\Estimate\EstimateCreateData;
+use ZEROSPAM\Freshbooks\Request\Data\Estimate\EstimateData;
 use ZEROSPAM\Freshbooks\Response\Estimate\EstimateResponse;
 
 /**
@@ -23,15 +23,15 @@ use ZEROSPAM\Freshbooks\Response\Estimate\EstimateResponse;
  */
 class EstimateCreateRequest extends EstimateCollectionRequest
 {
-    /** @var EstimateCreateData */
+    /** @var EstimateData */
     private $estimate;
 
     /**
      * EstimateCreateRequest constructor.
      *
-     * @param EstimateCreateData $data
+     * @param EstimateData $data
      */
-    public function __construct(EstimateCreateData $data)
+    public function __construct(EstimateData $data)
     {
         $this->estimate = $data;
     }

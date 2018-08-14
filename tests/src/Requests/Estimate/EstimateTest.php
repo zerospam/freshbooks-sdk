@@ -21,7 +21,7 @@ use ZEROSPAM\Freshbooks\Request\Call\Estimate\Collection\EstimateCreateRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Estimate\EstimateDeleteRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Estimate\EstimateReadRequest;
 use ZEROSPAM\Freshbooks\Request\Data\AmountData;
-use ZEROSPAM\Freshbooks\Request\Data\Estimate\EstimateCreateData;
+use ZEROSPAM\Freshbooks\Request\Data\Estimate\EstimateData;
 use ZEROSPAM\Freshbooks\Request\Data\Invoice\InvoiceLineData;
 use ZEROSPAM\Freshbooks\Response\Estimate\EstimateResponse;
 
@@ -353,7 +353,7 @@ JSON;
 }
 JSON;
 
-        $estimate = (new EstimateCreateData())
+        $estimate = (new EstimateData())
             ->setEstimateNumber('11')
             ->setCustomerid(180265)
             ->setCreateDate(Carbon::create(2018, 01, 01))
