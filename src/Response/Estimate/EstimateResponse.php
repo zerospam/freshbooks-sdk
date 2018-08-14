@@ -113,7 +113,7 @@ class EstimateResponse extends BaseResponse
      */
     public function getUiStatusAttribute(): UIStatusEnum
     {
-        return UIStatusEnum::byValue(Str::lower($this->data['ui_status']));
+        return UIStatusEnum::byValueInsensitive($this->data['ui_status']);
     }
 
     /**
@@ -125,7 +125,7 @@ class EstimateResponse extends BaseResponse
      */
     public function getDisplayStatusAttribute(): UIStatusEnum
     {
-        return UIStatusEnum::byValue(Str::lower($this->data['ui_status']));
+        return UIStatusEnum::byValueInsensitive($this->data['ui_status']);
     }
 
     /**
@@ -139,8 +139,9 @@ class EstimateResponse extends BaseResponse
             return null;
         }
 
-        return array_map(function (array $line) {
-            return new EstimateLine($line);
-        }, $this->data['lines']);
+        return array_map(
+            function (array $line) {
+                return new EstimateLine($line);
+            }, $this->data['lines']);
     }
 }

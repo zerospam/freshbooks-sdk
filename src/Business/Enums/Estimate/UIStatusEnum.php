@@ -10,6 +10,8 @@ namespace ZEROSPAM\Freshbooks\Business\Enums\Estimate;
 
 
 use MabeEnum\Enum;
+use ZEROSPAM\Framework\SDK\Utils\Contracts\Enums\EnumToStringLowerTrait;
+use ZEROSPAM\Framework\SDK\Utils\Contracts\Enums\IEnumInsensitive;
 use ZEROSPAM\Framework\SDK\Utils\Contracts\Impl\PrimalValuedEnumTrait;
 use ZEROSPAM\Framework\SDK\Utils\Contracts\PrimalValued;
 
@@ -26,9 +28,10 @@ use ZEROSPAM\Framework\SDK\Utils\Contracts\PrimalValued;
  *
  * @package ZEROSPAM\Freshbooks\Business\Enums\Estimate
  */
-class UIStatusEnum extends Enum implements PrimalValued
+class UIStatusEnum extends Enum implements PrimalValued, IEnumInsensitive
 {
-    use PrimalValuedEnumTrait;
+    use PrimalValuedEnumTrait,
+        EnumToStringLowerTrait;
 
     const CREATED  = 'created';
     const DRAFT    = 'draft';

@@ -16,8 +16,10 @@ use ZEROSPAM\Freshbooks\Argument\IncludeArgument;
 use ZEROSPAM\Freshbooks\Business\Enums\Currency\CurrencyEnum;
 use ZEROSPAM\Freshbooks\Business\Enums\Estimate\StatusEnum;
 use ZEROSPAM\Freshbooks\Business\Enums\Estimate\UIStatusEnum;
+use ZEROSPAM\Freshbooks\Request\Call\Estimate\Collection\EstimateCreateRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Estimate\EstimateDeleteRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Estimate\EstimateReadRequest;
+use ZEROSPAM\Freshbooks\Request\Data\Estimate\EstimateCreateData;
 use ZEROSPAM\Freshbooks\Response\Estimate\EstimateResponse;
 
 class EstimateTest extends TestCase
@@ -237,7 +239,7 @@ JSON;
         $this->validateUrl($client, 'accounting/account/id/estimates/estimates/16023');
     }
 
-    public function testDeleteInvoice(): void
+    public function testDeleteEstimate(): void
     {
         $jsonResponse = <<<JSON
 {
@@ -255,5 +257,134 @@ JSON;
 
         $this->assertInstanceOf(EmptyResponse::class, $response);
         $this->validateUrl($client, 'accounting/account/id/estimates/estimates/16023');
+    }
+
+    public function testCreateEstimate(): void
+    {
+        $jsonResponse = <<<JSON
+{
+    "response": {
+        "result": {
+            "estimate": {
+                "province": "Province",
+                "code": "Code",
+                "create_date": "2018-01-01",
+                "display_status": "draft",
+                "require_client_signature": false,
+                "street": "main street",
+                "vat_number": "1234",
+                "ownerid": 1,
+                "id": 16473,
+                "invoiced": false,
+                "city": "City",
+                "lname": "Doe",
+                "ext_archive": 0,
+                "fname": "John",
+                "vis_state": 0,
+                "current_organization": "Yvan Des Souffleuses Inc.",
+                "status": 1,
+                "estimate_number": "11",
+                "updated": "2018-08-14 13:48:23",
+                "terms": "Terms and conditions",
+                "description": "",
+                "vat_name": "vat name",
+                "street2": "app. 1",
+                "template": "clean-grouped",
+                "ui_status": "draft",
+                "discount_total": {
+                    "amount": "0.00",
+                    "code": "CAD"
+                },
+                "address": "5",
+                "accepted": false,
+                "customerid": 180265,
+                "accounting_systemid": "k0LBE",
+                "organization": "Company name Inc.",
+                "language": "en",
+                "po_number": "H0H 0H0",
+                "country": "Country",
+                "notes": "Notes to the client",
+                "reply_status": null,
+                "amount": {
+                    "amount": "0.00",
+                    "code": "CAD"
+                },
+                "estimateid": 16473,
+                "sentid": 1,
+                "discount_value": "5",
+                "rich_proposal": false,
+                "created_at": "2018-08-14 13:48:23",
+                "currency_code": "CAD"
+            }
+        }
+    }
+}
+JSON;
+        $jsonRequest  = <<<JSON
+{
+  "estimate": {
+    "estimate_number": "11",
+    "customerid": 180265,
+    "create_date": "2018-01-01",
+    "discount_value": "5",
+    "po_number": "H0H 0H0",
+    "template": "clean-grouped",
+    "currency_code": "CAD",
+    "language": "en",
+    "terms": "Terms and conditions",
+    "notes": "Notes to the client",
+    "address": "5",
+    "ext_archive": 0,
+    "street": "main street",
+    "street2": "app. 1",
+    "city": "City",
+    "province": "Province",
+    "code": "Code",
+    "country": "Country",
+    "organization": "Company name Inc.",
+    "fname": "John",
+    "lname": "Doe",
+    "vat_name": "vat name",
+    "vat_number": "1234"
+  }
+}
+JSON;
+
+        $estimate = (new EstimateCreateData())
+            ->setEstimateNumber('11')
+            ->setCustomerid(180265)
+            ->setCreateDate(Carbon::create(2018, 01, 01))
+            ->setDiscountValue("5")
+            ->setPoNumber("H0H 0H0")
+            ->setTemplate("clean-grouped")
+            ->setCurrencyCode(CurrencyEnum::CAD())
+            ->setLanguage("en")
+            ->setTerms("Terms and conditions")
+            ->setNotes("Notes to the client")
+            ->setAddress("5")
+            ->setExtArchive(0)
+            ->setStreet("main street")
+            ->setStreet2("app. 1")
+            ->setCity("City")
+            ->setProvince("Province")
+            ->setCode("Code")
+            ->setCountry("Country")
+            ->setOrganization("Company name Inc.")
+            ->setFname("John")
+            ->setLname("Doe")
+            ->setVatName("vat name")
+            ->setVatNumber('1234');
+
+        $client  = $this->preSuccess($jsonResponse);
+        $request = new EstimateCreateRequest($estimate);
+        $request->setAccountId('id');
+
+        $client->getOAuthTestClient()->processRequest($request);
+        $response = $request->getResponse();
+
+        $this->validateRequest($client, $jsonRequest);
+        $this->validateUrl($client, 'accounting/account/id/estimates/estimates');
+        $this->assertTrue($response->currency_code->is(CurrencyEnum::CAD()));
+        $this->assertTrue($response->display_status->is(UIStatusEnum::DRAFT()));
     }
 }
