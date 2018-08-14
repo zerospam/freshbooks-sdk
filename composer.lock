@@ -657,16 +657,16 @@
         },
         {
             "name": "zerospam/sdk-framework",
-            "version": "v5.3.0",
+            "version": "v5.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zerospam/sdk-framework.git",
-                "reference": "48b4837dbfb5f6d2611939a505ef7384bac816f3"
+                "reference": "9c2233c97385a462fc25851329790928ae4a6c81"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zerospam/sdk-framework/zipball/48b4837dbfb5f6d2611939a505ef7384bac816f3",
-                "reference": "48b4837dbfb5f6d2611939a505ef7384bac816f3",
+                "url": "https://api.github.com/repos/zerospam/sdk-framework/zipball/9c2233c97385a462fc25851329790928ae4a6c81",
+                "reference": "9c2233c97385a462fc25851329790928ae4a6c81",
                 "shasum": ""
             },
             "require": {
@@ -707,7 +707,7 @@
                 "framework",
                 "sdk"
             ],
-            "time": "2018-08-14 14:30:19"
+            "time": "2018-08-14 15:11:05"
         }
     ],
     "packages-dev": [
