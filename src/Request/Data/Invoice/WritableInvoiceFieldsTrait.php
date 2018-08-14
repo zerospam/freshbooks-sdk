@@ -46,9 +46,6 @@ trait WritableInvoiceFieldsTrait
     /** @var int */
     private $dueOffsetDays;
 
-    /** @var InvoiceLineData[] */
-    private $lines;
-
     /**
      * @param string $invoiceNumber
      *
@@ -171,17 +168,6 @@ trait WritableInvoiceFieldsTrait
     public function setAutoBill(bool $autoBill)
     {
         $this->autoBill = $autoBill;
-        return $this;
-    }
-
-    /**
-     * @param InvoiceLineData[] $lines
-     *
-     * @return $this
-     */
-    public function setLines(array $lines)
-    {
-        $this->lines = $lines;
         return $this;
     }
 }

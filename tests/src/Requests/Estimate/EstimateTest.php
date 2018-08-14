@@ -20,7 +20,9 @@ use ZEROSPAM\Freshbooks\Business\Enums\Language\LanguageEnum;
 use ZEROSPAM\Freshbooks\Request\Call\Estimate\Collection\EstimateCreateRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Estimate\EstimateDeleteRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Estimate\EstimateReadRequest;
+use ZEROSPAM\Freshbooks\Request\Data\AmountData;
 use ZEROSPAM\Freshbooks\Request\Data\Estimate\EstimateCreateData;
+use ZEROSPAM\Freshbooks\Request\Data\Invoice\InvoiceLineData;
 use ZEROSPAM\Freshbooks\Response\Estimate\EstimateResponse;
 
 class EstimateTest extends TestCase
@@ -375,6 +377,23 @@ JSON;
             ->setLname("Doe")
             ->setVatName("vat name")
             ->setVatNumber('1234');
+
+        $line1 = new InvoiceLineData();
+        $line1->setDescription('Description')
+              ->setType(0)
+              ->setTaxName1('Tax 1')
+              ->setTaxAmount1('10')
+              ->setName('Paperwork')
+              ->setQty(1)
+              ->setTaxName2('Tax 2')
+              ->setTaxAmount2('5')
+              ->setUnitCost(
+                  (new AmountData())
+                      ->setAmount('1000')
+                      ->setCode('CAD')
+              );
+
+        $estimate->setLines([$line1]);
 
         $client  = $this->preSuccess($jsonResponse);
         $request = new EstimateCreateRequest($estimate);

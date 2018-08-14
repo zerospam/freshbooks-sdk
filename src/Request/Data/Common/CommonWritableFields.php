@@ -12,6 +12,7 @@ use Carbon\Carbon;
 use ZEROSPAM\Freshbooks\Business\Enums\Currency\CurrencyEnum;
 use ZEROSPAM\Freshbooks\Business\Enums\Language\LanguageEnum;
 use ZEROSPAM\Freshbooks\Request\Data\DateTimeData;
+use ZEROSPAM\Freshbooks\Request\Data\Invoice\InvoiceLineData;
 
 trait CommonWritableFields
 {
@@ -81,6 +82,9 @@ trait CommonWritableFields
 
     /** @var string */
     private $vatNumber;
+
+    /** @var InvoiceLineData[] */
+    private $lines;
 
     /**
      * @param int $customerid
@@ -322,6 +326,17 @@ trait CommonWritableFields
     public function setVatNumber(string $vatNumber)
     {
         $this->vatNumber = $vatNumber;
+        return $this;
+    }
+
+    /**
+     * @param InvoiceLineData[] $lines
+     *
+     * @return $this
+     */
+    public function setLines(array $lines)
+    {
+        $this->lines = $lines;
         return $this;
     }
 }
