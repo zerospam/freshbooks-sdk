@@ -12,6 +12,7 @@ use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
 use ZEROSPAM\Freshbooks\Business\Amount;
 use ZEROSPAM\Freshbooks\Business\Enums\Language\LanguageEnum;
+use ZEROSPAM\Freshbooks\Business\InvoiceLine;
 
 /**
  * Class InvoiceResponse

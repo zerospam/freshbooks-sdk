@@ -6,11 +6,10 @@
  * Time: 10:50 AM
  */
 
-namespace ZEROSPAM\Freshbooks\Response\Invoice;
+namespace ZEROSPAM\Freshbooks\Business;
 
 use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
-use ZEROSPAM\Freshbooks\Business\Amount;
 
 /**
  * Class InvoiceLine
