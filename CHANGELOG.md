@@ -1,3 +1,20 @@
+# [2.1.0](https://github.com/zerospam/freshbooks-sdk/compare/v2.0.0...v2.1.0) (2018-08-15)
+
+
+### Bug Fixes
+
+* **Estimate:** Refactored Invoice Back into the business namespace ([2e35826](https://github.com/zerospam/freshbooks-sdk/commit/2e35826))
+
+
+### Features
+
+* **Estimate:** Add Estimate Read Request and response ([b7bffd4](https://github.com/zerospam/freshbooks-sdk/commit/b7bffd4))
+* **Estimate:** Add update request for Estimates ([35042cf](https://github.com/zerospam/freshbooks-sdk/commit/35042cf))
+* **Estimate:** Added Estimate Create Request and Create Data ([6724db1](https://github.com/zerospam/freshbooks-sdk/commit/6724db1))
+* **Estimate:** Added Estimate delete request ([8b66f22](https://github.com/zerospam/freshbooks-sdk/commit/8b66f22))
+* **Estimate:** Added Estimate Line ([56d6f51](https://github.com/zerospam/freshbooks-sdk/commit/56d6f51))
+* **Estimate:** Added Estimate line attribute for Estimate ([a082785](https://github.com/zerospam/freshbooks-sdk/commit/a082785))
+
 # [2.0.0](https://github.com/zerospam/freshbooks-sdk/compare/v1.1.0...v2.0.0) (2018-07-18)
 
 
