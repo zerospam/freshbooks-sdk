@@ -11,6 +11,7 @@ namespace ZEROSPAM\Freshbooks\Response\Invoice;
 use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
 use ZEROSPAM\Freshbooks\Business\Amount;
+use ZEROSPAM\Freshbooks\Business\Enums\Language\LanguageEnum;
 use ZEROSPAM\Freshbooks\Business\InvoiceLine;
 
 /**
@@ -61,7 +62,7 @@ use ZEROSPAM\Freshbooks\Business\InvoiceLine;
  * @property-read string             $accounting_systemid
  * @property-read string             $organization
  * @property-read int                $due_offset_days
- * @property-read string             $language
+ * @property-read LanguageEnum       $language
  * @property-read string|null        $po_number
  * @property-read string             $display_status
  * @property-read string             $notes
@@ -147,6 +148,17 @@ class InvoiceResponse extends BaseResponse
     {
         return new Amount($this->data['amount']);
     }
+
+    /**
+     * Language mutator
+     *
+     * @return LanguageEnum
+     */
+    public function getLanguageAttribute(): LanguageEnum
+    {
+        return LanguageEnum::byValueInsensitive($this->data['language']);
+    }
+
 
     /**
      * Lines

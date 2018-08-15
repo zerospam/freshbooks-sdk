@@ -16,19 +16,14 @@ use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
  *
  * Line from an invoice
  *
- * @property-read int         $lineid
- * @property-read Amount      $amount
- * @property-read Carbon      $updated
- * @property-read int         $type
- * @property-read int|null    $expenseid
- * @property-read string      $qty
- * @property-read Amount      $unit_cost
- * @property-read string      $description
- * @property-read string      $name
- * @property-read string|null $taxName1
- * @property-read string|null $taxName2
- * @property-read string      $taxAmount1
- * @property-read string      $taxAmount2
+ * @property-read int      $lineid
+ * @property-read Carbon   $updated
+ * @property-read int|null $expenseid
+ * @property-read string $taxNumber2
+ * @property-read string $taxNumber1
+ * @property-read bool   $compounded_tax
+ * @property-read int    $estimateid
+ * @property-read int    $taskno
  *
  * @package ZEROSPAM\Freshbooks\Business
  */
@@ -38,11 +33,21 @@ class InvoiceLine extends BaseResponse
         'updated',
     ];
 
+    /**
+     * Amount mutator
+     *
+     * @return Amount
+     */
     public function getAmountAttribute(): Amount
     {
         return new Amount($this->data['amount']);
     }
 
+    /**
+     * Unit cost mutator
+     *
+     * @return Amount
+     */
     public function getUnitCostAttribute(): Amount
     {
         return new Amount($this->data['unit_cost']);

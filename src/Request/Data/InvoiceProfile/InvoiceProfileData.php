@@ -427,6 +427,7 @@ class InvoiceProfileData extends ArrayableData
 
     /**
      * @param InvoiceLine[] $lines
+     *
      * @return $this
      */
     public function setLines(array $lines): InvoiceProfileData

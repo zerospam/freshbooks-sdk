@@ -9,36 +9,12 @@
 namespace ZEROSPAM\Freshbooks\Request\Data\Invoice;
 
 use ZEROSPAM\Freshbooks\Request\Data\ArrayableData;
+use ZEROSPAM\Freshbooks\Request\Data\Common\CommonWritableFields;
+use ZEROSPAM\Freshbooks\Request\Data\Common\CommonWritableOnCreateFields;
 
 class InvoiceCreateData extends ArrayableData
 {
-    use WritableInvoiceFieldsTrait;
-
-    /** @var int */
-    private $ownerid;
-
-    /** @var int */
-    private $estimateid;
-
-    /**
-     * @param int $ownerid
-     * @return $this
-     */
-    public function setOwnerid(int $ownerid): InvoiceCreateData
-    {
-        $this->ownerid = $ownerid;
-        return $this;
-    }
-
-    /**
-     * @param int $estimateid
-     * @return $this
-     */
-    public function setEstimateid(int $estimateid): InvoiceCreateData
-    {
-        $this->estimateid = $estimateid;
-        return $this;
-    }
-
-
+    use CommonWritableFields,
+        CommonWritableOnCreateFields,
+        WritableInvoiceFieldsTrait;
 }

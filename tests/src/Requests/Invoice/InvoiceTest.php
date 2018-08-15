@@ -12,13 +12,15 @@ use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Response\Api\EmptyResponse;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 use ZEROSPAM\Freshbooks\Argument\IncludeArgument;
+use ZEROSPAM\Freshbooks\Business\Enums\Currency\CurrencyEnum;
+use ZEROSPAM\Freshbooks\Business\Enums\Language\LanguageEnum;
 use ZEROSPAM\Freshbooks\Request\Call\Invoice\Collection\InvoiceCreateRequest;
-use ZEROSPAM\Freshbooks\Request\Call\Invoice\InvoiceDeleteRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Invoice\Collection\InvoiceListReadRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Invoice\InvoiceDeleteRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Invoice\InvoiceReadRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Invoice\InvoiceSendEmailRequest;
-use ZEROSPAM\Freshbooks\Request\Call\Invoice\ShareLink\InvoiceShareLinkReadRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Invoice\InvoiceUpdateRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Invoice\ShareLink\InvoiceShareLinkReadRequest;
 use ZEROSPAM\Freshbooks\Request\Data\AmountData;
 use ZEROSPAM\Freshbooks\Request\Data\Invoice\InvoiceCreateData;
 use ZEROSPAM\Freshbooks\Request\Data\Invoice\InvoiceEmailData;
@@ -115,7 +117,7 @@ class InvoiceTest extends TestCase
 }
 JSON;
 
-        $client = $this->preSuccess($json);
+        $client  = $this->preSuccess($json);
         $request = new InvoiceReadRequest();
         $request->setAccountId('id');
         $request->setInvoiceId('1324');
@@ -300,7 +302,7 @@ JSON;
 }
 JSON;
 
-        $client = $this->preSuccess($json);
+        $client  = $this->preSuccess($json);
         $request = new InvoiceListReadRequest();
         $request->setAccountId('id');
         $client->getOAuthTestClient()->processRequest($request);
@@ -437,7 +439,7 @@ JSON;
 }
 JSON;
 
-        $client = $this->preSuccess($json);
+        $client  = $this->preSuccess($json);
         $request = new InvoiceReadRequest();
         $request->setAccountId('id');
         $request->setInvoiceId('1324');
@@ -478,7 +480,7 @@ JSON;
 }
 JSON;
 
-        $client = $this->preSuccess($json);
+        $client  = $this->preSuccess($json);
         $request = new InvoiceShareLinkReadRequest();
         $request->setAccountId('id');
         $request->setInvoiceId('1324');
@@ -503,7 +505,7 @@ JSON;
   }
 }
 JSON;
-        $jsonRequest = <<<JSON
+        $jsonRequest  = <<<JSON
 {
   "invoice": {
     "ownerid": 1,
@@ -606,8 +608,8 @@ JSON;
             ->setDiscountDescription("This is a 15% discount")
             ->setPoNumber("121")
             ->setTemplate("template")
-            ->setCurrencyCode("CAD")
-            ->setLanguage("fr")
+            ->setCurrencyCode(CurrencyEnum::CAD())
+            ->setLanguage(LanguageEnum::FR())
             ->setTerms("You must follow these terms")
             ->setNotes("There are some notes here")
             ->setAddress("1 Main Street")
@@ -630,7 +632,7 @@ JSON;
             ->setLines($lines);
 
 
-        $client = $this->preSuccess($jsonResponse);
+        $client  = $this->preSuccess($jsonResponse);
         $request = new InvoiceCreateRequest($invoice);
         $request->setAccountId('id');
 
@@ -651,7 +653,7 @@ JSON;
   }
 }
 JSON;
-        $jsonRequest = <<<JSON
+        $jsonRequest  = <<<JSON
 {
   "invoice": {
     "basecampid": 0,
@@ -750,8 +752,8 @@ JSON;
             ->setDiscountDescription("This is a 15% discount")
             ->setPoNumber("121")
             ->setTemplate("template")
-            ->setCurrencyCode("CAD")
-            ->setLanguage("fr")
+            ->setCurrencyCode(CurrencyEnum::CAD())
+            ->setLanguage(LanguageEnum::FR())
             ->setTerms("You must follow these terms")
             ->setNotes("There are some notes here")
             ->setAddress("1 Main Street")
@@ -774,10 +776,10 @@ JSON;
             ->setLines($lines);
 
 
-        $client = $this->preSuccess($jsonResponse);
+        $client  = $this->preSuccess($jsonResponse);
         $request = new InvoiceUpdateRequest($invoice);
         $request->setAccountId('id')
-            ->setInvoiceId("1232");
+                ->setInvoiceId("1232");
 
         $client->getOAuthTestClient()->processRequest($request);
 
@@ -796,7 +798,7 @@ JSON;
   }
 }
 JSON;
-        $jsonRequest = <<<JSON
+        $jsonRequest  = <<<JSON
 {
   "invoice": {
     "email_body": "Message body",
@@ -813,10 +815,10 @@ JSON;
             ->setEmailRecipients(["email@example.com", "accounting@example.com"]);
 
 
-        $client = $this->preSuccess($jsonResponse);
+        $client  = $this->preSuccess($jsonResponse);
         $request = new InvoiceSendEmailRequest($invoice);
         $request->setAccountId('id')
-            ->setInvoiceId("1232");
+                ->setInvoiceId("1232");
 
         $client->getOAuthTestClient()->processRequest($request);
 
@@ -831,7 +833,7 @@ JSON;
 }
 JSON;
 
-        $client = $this->preSuccess($jsonResponse);
+        $client  = $this->preSuccess($jsonResponse);
         $request = new InvoiceDeleteRequest();
         $request->setAccountId('qwert');
         $request->setInvoiceId(12345);
