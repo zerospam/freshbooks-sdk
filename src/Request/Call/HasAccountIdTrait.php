@@ -20,6 +20,7 @@ use ZEROSPAM\Framework\SDK\Request\Api\IsBindable;
 trait HasAccountIdTrait
 {
     use IsBindable;
+    private static $ACCOUNT_ID = 'accountId';
 
     /**
      * Set the account ID in the URL
@@ -30,8 +31,19 @@ trait HasAccountIdTrait
      */
     public function setAccountId(string $id): IAccountIdRequest
     {
-        $this->addBinding('accountId', $id);
+        $this->addBinding(self::$ACCOUNT_ID, $id);
+
 
         return $this;
+    }
+
+    /**
+     * Is account ID set
+     *
+     * @return bool
+     */
+    public function hasAccountId(): bool
+    {
+        return $this->hasBinding(self::$ACCOUNT_ID);
     }
 }

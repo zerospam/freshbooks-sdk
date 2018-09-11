@@ -39,7 +39,7 @@ class AccountIdSetterMiddleware implements IPreRequestMiddleware
      */
     public function handle(IRequest $request): void
     {
-        if ($request instanceof IAccountIdRequest) {
+        if ($request instanceof IAccountIdRequest && !$request->hasAccountId()) {
             $request->setAccountId($this->accountId);
         }
     }
