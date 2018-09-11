@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/zerospam/freshbooks-sdk/compare/v2.1.0...v2.1.1) (2018-09-11)
+
+
+### Bug Fixes
+
+* **AccountIdSetter:** Don't set account id if already set ([b40982f](https://github.com/zerospam/freshbooks-sdk/commit/b40982f))
+
 # [2.1.0](https://github.com/zerospam/freshbooks-sdk/compare/v2.0.0...v2.1.0) (2018-08-15)
 
 
