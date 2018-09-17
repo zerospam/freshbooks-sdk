@@ -9,6 +9,7 @@
 namespace ZEROSPAM\Freshbooks\Request\Data\Client;
 
 use ZEROSPAM\Freshbooks\Request\Data\ArrayableData;
+use ZEROSPAM\Freshbooks\Request\Data\Client\LatePayment\Reminder;
 
 /**
  * Class ClientData
@@ -117,6 +118,9 @@ class ClientData extends ArrayableData
 
     /** @var string|null */
     private $vatNumber;
+
+    /** @var Reminder[] */
+    private $lateReminders;
 
     /**
      * @param bool $allowLateFees
@@ -453,4 +457,16 @@ class ClientData extends ArrayableData
         $this->vatNumber = $vatNumber;
         return $this;
     }
+
+    /**
+     * @param Reminder[] $lateReminders
+     * @return ClientData
+     */
+    public function setLateReminders(array $lateReminders): ClientData
+    {
+        $this->lateReminders = $lateReminders;
+        return $this;
+    }
+
+
 }
