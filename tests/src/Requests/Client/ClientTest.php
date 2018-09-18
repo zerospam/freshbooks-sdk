@@ -11,12 +11,14 @@ namespace ZEROSPAM\Freshbooks\Test\Requests\Client;
 use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Response\Api\EmptyResponse;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
+use ZEROSPAM\Freshbooks\Business\Enums\Client\Fee\LatePaymentFeeType;
 use ZEROSPAM\Freshbooks\Request\Call\Clients\ClientReadRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Clients\Collection\ClientListReadRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Clients\Collection\ClientCreateRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Clients\ClientDeleteRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Clients\ClientUpdateRequest;
 use ZEROSPAM\Freshbooks\Request\Data\Client\ClientData;
+use ZEROSPAM\Freshbooks\Request\Data\Client\LatePayment\FeeData;
 use ZEROSPAM\Freshbooks\Request\Data\Client\LatePayment\ReminderData;
 use ZEROSPAM\Freshbooks\Response\Clients\ClientResponse;
 
@@ -108,7 +110,19 @@ JSON;
             "delay": -3,
             "enabled": true,
             "position": 1
-        }]
+        }],
+        "late_fee": {
+            "repeat": false,
+            "first_tax_name": "TAX",
+            "second_tax_name": null,
+            "enabled": true,
+            "days": 30,
+            "value": 12.5,
+            "second_tax_percent": 0,
+            "first_tax_percent": 10,
+            "type": "percent",
+            "compounded_taxes": false
+        }
     }
 }
 JSON;
@@ -172,7 +186,22 @@ JSON;
                     "userid": 12345,
                     "created_at": "2018-09-17 8:47:00",
                     "updated_at": null
-                }]
+                }],
+                "late_fee": {
+                    "repeat": false,
+                    "first_tax_name": "TAX",
+                    "second_tax_name": null,
+                    "userid": 1132555,
+                    "created_at": "2018-04-01 10:00:00",
+                    "enabled": true,
+                    "days": 30,
+                    "value": 12.5,
+                    "updated_at": null,
+                    "second_tax_percent": 0,
+                    "first_tax_percent": 10,
+                    "type": "percent",
+                    "compounded_tax": false
+                }
             }
         }
     }
@@ -188,6 +217,18 @@ JSON;
             ->setEnabled(true)
             ->setPosition(1)
         ];
+
+        $feeData = (new FeeData)
+            ->setRepeat(false)
+            ->setFirstTaxName("TAX")
+            ->setSecondTaxName(null)
+            ->setEnabled(true)
+            ->setDays(30)
+            ->setValue(12.5)
+            ->setFirstTaxPercent(10)
+            ->setSecondTaxPercent(0)
+            ->setType(LatePaymentFeeType::PERCENT())
+            ->setCompoundedTaxes(false);
 
         $clientData = (new ClientData)
             ->setAllowLateFees(true)
@@ -223,7 +264,8 @@ JSON;
             ->setUsername("john.doe")
             ->setVatName("TAX")
             ->setVatNumber("12345")
-            ->setLateReminders($reminders);
+            ->setLateReminders($reminders)
+            ->setLateFee($feeData);
 
         $request = (new ClientCreateRequest($clientData))
             ->setAccountId('abcde');
@@ -249,6 +291,22 @@ JSON;
         $this->assertEquals(1, $lateReminder->position);
         $this->assertTrue($lateReminder->created_at->equalTo(Carbon::createFromFormat('Y-m-d H:i', '2018-09-17 08:47')));
         $this->assertNull($lateReminder->updated_at);
+
+        $lateFee = $response->late_fee;
+
+        $this->assertFalse($lateFee->repeat);
+        $this->assertEquals("TAX", $lateFee->first_tax_name);
+        $this->assertNull($lateFee->second_tax_name);
+        $this->assertEquals(1132555, $lateFee->userid);
+        $this->assertTrue($lateFee->enabled);
+        $this->assertEquals(30, $lateFee->days);
+        $this->assertEquals(12.5, $lateFee->value, '', 0.0001);
+        $this->assertEquals(10, $lateFee->first_tax_percent, '', 0.0001);
+        $this->assertEquals(0, $lateFee->second_tax_percent, '', 0.0001);
+        $this->assertTrue($lateFee->type->is(LatePaymentFeeType::PERCENT));
+        $this->assertFalse($lateFee->compounded_tax);
+        $this->assertTrue($lateFee->created_at->equalTo(Carbon::createFromFormat('Y-m-d H', '2018-04-01 10')));
+        $this->assertNull($lateFee->updated_at);
     }
 
     public function testUpdateClient(): void
