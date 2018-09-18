@@ -8,14 +8,18 @@
 
 namespace ZEROSPAM\Freshbooks\Test\Requests\Client;
 
+use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Response\Api\EmptyResponse;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
+use ZEROSPAM\Freshbooks\Business\Enums\Client\Fee\LatePaymentFeeType;
 use ZEROSPAM\Freshbooks\Request\Call\Clients\ClientReadRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Clients\Collection\ClientListReadRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Clients\Collection\ClientCreateRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Clients\ClientDeleteRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Clients\ClientUpdateRequest;
 use ZEROSPAM\Freshbooks\Request\Data\Client\ClientData;
+use ZEROSPAM\Freshbooks\Request\Data\Client\LatePayment\FeeData;
+use ZEROSPAM\Freshbooks\Request\Data\Client\LatePayment\ReminderData;
 use ZEROSPAM\Freshbooks\Response\Clients\ClientResponse;
 
 class ClientTest extends TestCase
@@ -100,7 +104,25 @@ JSON;
         "s_street2": "App. 6",
         "username": "john.doe",
         "vat_name": "TAX",
-        "vat_number": "12345"
+        "vat_number": "12345",
+        "late_reminders": [{
+            "body": "Please pay ASAP",
+            "delay": -3,
+            "enabled": true,
+            "position": 1
+        }],
+        "late_fee": {
+            "repeat": false,
+            "first_tax_name": "TAX",
+            "second_tax_name": null,
+            "enabled": true,
+            "days": 30,
+            "value": 12.5,
+            "second_tax_percent": 0,
+            "first_tax_percent": 10,
+            "type": "percent",
+            "compounded_taxes": false
+        }
     }
 }
 JSON;
@@ -155,13 +177,58 @@ JSON;
                 "s_code": "142857",
                 "organization": "Company Inc.",
                 "p_country": "Billand",
-                "currency_code": "USD"
+                "currency_code": "USD",
+                "late_reminders": [{
+                    "body": "Please pay ASAP",
+                    "delay": -3,
+                    "enabled": true,
+                    "position": 1,
+                    "userid": 12345,
+                    "created_at": "2018-09-17 8:47:00",
+                    "updated_at": null
+                }],
+                "late_fee": {
+                    "repeat": false,
+                    "first_tax_name": "TAX",
+                    "second_tax_name": null,
+                    "userid": 1132555,
+                    "created_at": "2018-04-01 10:00:00",
+                    "enabled": true,
+                    "days": 30,
+                    "value": 12.5,
+                    "updated_at": null,
+                    "second_tax_percent": 0,
+                    "first_tax_percent": 10,
+                    "type": "percent",
+                    "compounded_tax": false
+                }
             }
         }
     }
 }
 JSON;
-        $client       = $this->preSuccess($jsonResponse);
+
+        $client = $this->preSuccess($jsonResponse);
+
+        $reminders = [
+            (new ReminderData)
+            ->setBody("Please pay ASAP")
+            ->setDelay(-3)
+            ->setEnabled(true)
+            ->setPosition(1)
+        ];
+
+        $feeData = (new FeeData)
+            ->setRepeat(false)
+            ->setFirstTaxName("TAX")
+            ->setSecondTaxName(null)
+            ->setEnabled(true)
+            ->setDays(30)
+            ->setValue(12.5)
+            ->setFirstTaxPercent(10)
+            ->setSecondTaxPercent(0)
+            ->setType(LatePaymentFeeType::PERCENT())
+            ->setCompoundedTaxes(false);
 
         $clientData = (new ClientData)
             ->setAllowLateFees(true)
@@ -196,7 +263,9 @@ JSON;
             ->setSStreet2("App. 6")
             ->setUsername("john.doe")
             ->setVatName("TAX")
-            ->setVatNumber("12345");
+            ->setVatNumber("12345")
+            ->setLateReminders($reminders)
+            ->setLateFee($feeData);
 
         $request = (new ClientCreateRequest($clientData))
             ->setAccountId('abcde');
@@ -210,6 +279,34 @@ JSON;
         $this->assertEquals("abcde", $response->accounting_systemid);
         $this->assertEquals("Shipville", $response->s_city);
         $this->assertFalse($response->pref_gmail);
+
+        $lateReminders = $response->late_reminders;
+        $lateReminder = $lateReminders[0];
+
+        $this->assertEquals(1, count($lateReminders));
+
+        $this->assertEquals("Please pay ASAP", $lateReminder->body);
+        $this->assertEquals(-3, $lateReminder->delay);
+        $this->assertTrue($lateReminder->enabled);
+        $this->assertEquals(1, $lateReminder->position);
+        $this->assertTrue($lateReminder->created_at->equalTo(Carbon::createFromFormat('Y-m-d H:i', '2018-09-17 08:47')));
+        $this->assertNull($lateReminder->updated_at);
+
+        $lateFee = $response->late_fee;
+
+        $this->assertFalse($lateFee->repeat);
+        $this->assertEquals("TAX", $lateFee->first_tax_name);
+        $this->assertNull($lateFee->second_tax_name);
+        $this->assertEquals(1132555, $lateFee->userid);
+        $this->assertTrue($lateFee->enabled);
+        $this->assertEquals(30, $lateFee->days);
+        $this->assertEquals(12.5, $lateFee->value, '', 0.0001);
+        $this->assertEquals(10, $lateFee->first_tax_percent, '', 0.0001);
+        $this->assertEquals(0, $lateFee->second_tax_percent, '', 0.0001);
+        $this->assertTrue($lateFee->type->is(LatePaymentFeeType::PERCENT));
+        $this->assertFalse($lateFee->compounded_tax);
+        $this->assertTrue($lateFee->created_at->equalTo(Carbon::createFromFormat('Y-m-d H', '2018-04-01 10')));
+        $this->assertNull($lateFee->updated_at);
     }
 
     public function testUpdateClient(): void
@@ -249,7 +346,20 @@ JSON;
         "s_street2": "App. 6",
         "username": "john.doe",
         "vat_name": "TAX",
-        "vat_number": "12345"
+        "vat_number": "12345",
+        "late_reminders": [{
+            "position": 2,
+            "enabled": false,
+            "body": null,
+            "delay": 4,
+            "id": "userid5545"
+        }, {
+            "position": 1,
+            "enabled": true,
+            "body": "Last day",
+            "delay": -1,
+            "id": "userid5544"
+        }]
     }
 }
 JSON;
@@ -304,13 +414,45 @@ JSON;
                 "s_code": "142857",
                 "organization": "Company Inc.",
                 "p_country": "Billand",
-                "currency_code": "USD"
+                "currency_code": "USD",
+                "late_reminders": [{
+                    "position": 2,
+                    "enabled": false,
+                    "body": null,
+                    "delay": 4,
+                    "userid": 5545,
+                    "created_at": "2018-02-02 11:00:00",
+                    "updated_at": "2018-09-01 12:00:00"
+                }, {
+                    "position": 1,
+                    "enabled": true,
+                    "body": "Last day",
+                    "delay": -1,
+                    "userid": 5544,
+                    "created_at": "2018-01-01 10:00:00",
+                    "updated_at": "2018-09-01 12:00:00"
+                }]
             }
         }
     }
 }
 JSON;
         $client  = $this->preSuccess($jsonResponse);
+
+        $reminders = [
+            (new ReminderData)
+                ->setPosition(2)
+                ->setEnabled(false)
+                ->setDelay(4)
+                ->setBody(null)
+                ->setUserid(5545),
+            (new ReminderData)
+                ->setPosition(1)
+                ->setEnabled(true)
+                ->setDelay(-1)
+                ->setBody("Last day")
+                ->setUserid(5544),
+        ];
 
         $clientData = (new ClientData)
             ->setAllowLateFees(true)
@@ -345,7 +487,8 @@ JSON;
             ->setSStreet2("App. 6")
             ->setUsername("john.doe")
             ->setVatName("TAX")
-            ->setVatNumber("12345");
+            ->setVatNumber("12345")
+            ->setLateReminders($reminders);
 
         $request = (new ClientUpdateRequest($clientData))
             ->setAccountId('abcde')
@@ -357,9 +500,22 @@ JSON;
 
         $this->validateRequest($client, $jsonRequest);
 
+        $lateReminders = $response->late_reminders;
+
         $this->assertEquals("abcde", $response->accounting_systemid);
         $this->assertEquals("Shipville", $response->s_city);
         $this->assertFalse($response->pref_gmail);
+
+        $this->assertEquals(2, count($lateReminders));
+
+        $lateReminder = $lateReminders[0];
+
+        $this->assertNull($lateReminder->body);
+        $this->assertEquals(4, $lateReminder->delay);
+        $this->assertFalse($lateReminder->enabled);
+        $this->assertEquals(2, $lateReminder->position);
+        $this->assertTrue($lateReminder->created_at->equalTo(Carbon::createFromFormat('Y-m-d H:i', '2018-02-02 11:00')));
+        $this->assertTrue($lateReminder->updated_at->equalTo(Carbon::createFromFormat('Y-m-d H:i', '2018-09-01 12:00')));
     }
 
     public function testDeleteClient(): void
