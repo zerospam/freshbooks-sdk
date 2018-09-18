@@ -10,7 +10,7 @@ namespace ZEROSPAM\Freshbooks\Request\Data\Client\LatePayment;
 
 use ZEROSPAM\Freshbooks\Request\Data\ArrayableData;
 
-class Reminder extends ArrayableData
+class ReminderData extends ArrayableData
 {
     /** @var string|null */
     private $body;
@@ -31,7 +31,7 @@ class Reminder extends ArrayableData
      * @param null|string $body
      * @return $this
      */
-    public function setBody(?string $body): Reminder
+    public function setBody(?string $body): ReminderData
     {
         $this->body = $body;
         return $this;
@@ -41,7 +41,7 @@ class Reminder extends ArrayableData
      * @param int $delay
      * @return $this
      */
-    public function setDelay(int $delay): Reminder
+    public function setDelay(int $delay): ReminderData
     {
         $this->delay = $delay;
         return $this;
@@ -51,7 +51,7 @@ class Reminder extends ArrayableData
      * @param bool $enabled
      * @return $this
      */
-    public function setEnabled(bool $enabled): Reminder
+    public function setEnabled(bool $enabled): ReminderData
     {
         $this->enabled = $enabled;
         return $this;
@@ -61,7 +61,7 @@ class Reminder extends ArrayableData
      * @param int $position
      * @return $this
      */
-    public function setPosition(int $position): Reminder
+    public function setPosition(int $position): ReminderData
     {
         $this->position = $position;
         return $this;
@@ -71,7 +71,7 @@ class Reminder extends ArrayableData
      * @param int $userid
      * @return $this
      */
-    public function setUserid(int $userid): Reminder
+    public function setUserid(int $userid): ReminderData
     {
         $this->id = 'userid' . $userid;
         return $this;
