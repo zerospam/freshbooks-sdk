@@ -33,6 +33,7 @@ class ReminderData extends ArrayableData
      */
     public function setBody(?string $body): ReminderData
     {
+        $this->nullableChanged();
         $this->body = $body;
         return $this;
     }
