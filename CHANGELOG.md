@@ -1,3 +1,19 @@
+# [2.2.0](https://github.com/zerospam/freshbooks-sdk/compare/v2.1.1...v2.2.0) (2018-09-18)
+
+
+### Bug Fixes
+
+* **LatePaymentFee:** Fix late fee request data nullability ([f78b205](https://github.com/zerospam/freshbooks-sdk/commit/f78b205))
+* **LatePaymentReminder:** Fix body nullability ([35e15a6](https://github.com/zerospam/freshbooks-sdk/commit/35e15a6))
+
+
+### Features
+
+* **LatePaymentFee:** Add ability to add/edit the late payment fees of a client ([dec4c34](https://github.com/zerospam/freshbooks-sdk/commit/dec4c34))
+* **LatePaymentFee:** Add late fee to client response ([3490ab0](https://github.com/zerospam/freshbooks-sdk/commit/3490ab0))
+* **LatePaymentReminder:** Add ability to manage the late payment reminders of a client ([e04583e](https://github.com/zerospam/freshbooks-sdk/commit/e04583e)), closes [#30](https://github.com/zerospam/freshbooks-sdk/issues/30)
+* **LatePaymentReminder:** Add late payment reminder in client response ([708a16f](https://github.com/zerospam/freshbooks-sdk/commit/708a16f))
+
 ## [2.1.1](https://github.com/zerospam/freshbooks-sdk/compare/v2.1.0...v2.1.1) (2018-09-11)
 
 
