@@ -82,6 +82,7 @@ class FeeData extends ArrayableData
      */
     public function setFirstTaxName(?string $firstTaxName): FeeData
     {
+        $this->nullableChanged();
         $this->firstTaxName = $firstTaxName;
         return $this;
     }
@@ -92,6 +93,7 @@ class FeeData extends ArrayableData
      */
     public function setFirstTaxPercent(?float $firstTaxPercent): FeeData
     {
+        $this->nullableChanged();
         $this->firstTaxPercent = $firstTaxPercent;
         return $this;
     }
@@ -122,6 +124,7 @@ class FeeData extends ArrayableData
      */
     public function setSecondTaxName(?string $secondTaxName): FeeData
     {
+        $this->nullableChanged();
         $this->secondTaxName = $secondTaxName;
         return $this;
     }
@@ -132,6 +135,7 @@ class FeeData extends ArrayableData
      */
     public function setSecondTaxPercent(?float $secondTaxPercent): FeeData
     {
+        $this->nullableChanged();
         $this->secondTaxPercent = $secondTaxPercent;
         return $this;
     }
