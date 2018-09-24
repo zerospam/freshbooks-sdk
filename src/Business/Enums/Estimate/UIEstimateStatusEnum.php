@@ -18,17 +18,17 @@ use ZEROSPAM\Framework\SDK\Utils\Contracts\PrimalValued;
 /**
  * Class UIStatusEnum
  *
- * @method static UIStatusEnum CREATED()
- * @method static UIStatusEnum DRAFT()
- * @method static UIStatusEnum SENT()
- * @method static UIStatusEnum VIEWED()
- * @method static UIStatusEnum REPLIED()
- * @method static UIStatusEnum ACCEPTED()
- * @method static UIStatusEnum INVOICED()
+ * @method static UIEstimateStatusEnum CREATED()
+ * @method static UIEstimateStatusEnum DRAFT()
+ * @method static UIEstimateStatusEnum SENT()
+ * @method static UIEstimateStatusEnum VIEWED()
+ * @method static UIEstimateStatusEnum REPLIED()
+ * @method static UIEstimateStatusEnum ACCEPTED()
+ * @method static UIEstimateStatusEnum INVOICED()
  *
  * @package ZEROSPAM\Freshbooks\Business\Enums\Estimate
  */
-class UIStatusEnum extends Enum implements PrimalValued, IEnumInsensitive
+class UIEstimateStatusEnum extends Enum implements PrimalValued, IEnumInsensitive
 {
     use PrimalValuedEnumTrait,
         EnumToStringLowerTrait;
