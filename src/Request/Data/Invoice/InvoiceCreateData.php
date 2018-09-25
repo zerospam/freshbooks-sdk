@@ -32,9 +32,13 @@ class InvoiceCreateData extends ArrayableData
      * Set the presentation of the invoice
      *
      * @param PresentationResponse $presentation
+     *
+     * @return InvoiceCreateData
      */
-    public function setPresentation(PresentationResponse $presentation): void
+    public function setPresentation(PresentationResponse $presentation): InvoiceCreateData
     {
         $this->presentation = $presentation;
+
+        return $this;
     }
 }

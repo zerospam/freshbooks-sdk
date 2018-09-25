@@ -12,16 +12,19 @@ use ZEROSPAM\Framework\SDK\Request\Api\BaseRequest;
 use ZEROSPAM\Framework\SDK\Request\Type\RequestType;
 use ZEROSPAM\Framework\SDK\Response\Api\IResponse;
 use ZEROSPAM\Freshbooks\Request\Call\HasAccountIdTrait;
-use ZEROSPAM\Freshbooks\Response\Invoice\Presentation\Collection\InvoicePresentationCollectionResponse;
+use ZEROSPAM\Freshbooks\Request\Call\IAccountIdRequest;
+use ZEROSPAM\Freshbooks\Response\Invoice\Presentation\PresentationResponse;
 
 /**
  * Class InvoicePresentationsIndexRequest
  *
- * Query the different possible presentations
+ * Query the presentation information
+ *
+ * @method PresentationResponse getResponse()
  *
  * @package ZEROSPAM\Freshbooks\Request\Call\Invoice\Presentations
  */
-class InvoicePresentationsIndexRequest extends BaseRequest
+class PresentationsReadRequest extends BaseRequest implements IAccountIdRequest
 {
 
     use HasAccountIdTrait;
@@ -45,7 +48,7 @@ class InvoicePresentationsIndexRequest extends BaseRequest
      */
     public function processResponse(array $jsonResponse): IResponse
     {
-        return new InvoicePresentationCollectionResponse($jsonResponse);
+        return new PresentationResponse($jsonResponse['response']['result']['presentation']);
     }
 
     /**
