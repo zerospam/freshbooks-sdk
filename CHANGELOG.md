@@ -1,3 +1,14 @@
+# [2.3.0](https://github.com/zerospam/freshbooks-sdk/compare/v2.2.0...v2.3.0) (2018-09-26)
+
+
+### Features
+
+* **Argument:** Added search array argument ([18c0089](https://github.com/zerospam/freshbooks-sdk/commit/18c0089))
+* **Invoice:** Add reminders and late payments ([0f65c5e](https://github.com/zerospam/freshbooks-sdk/commit/0f65c5e))
+* **Invoice:** Adds presentation ([7c08e88](https://github.com/zerospam/freshbooks-sdk/commit/7c08e88))
+* **Presentations:** Adds support for gathering the existing presentations ([82ae854](https://github.com/zerospam/freshbooks-sdk/commit/82ae854))
+* **Presentations-Invoice:** Adds support to set presentation to invoice ([6b1d369](https://github.com/zerospam/freshbooks-sdk/commit/6b1d369))
+
 # [2.2.0](https://github.com/zerospam/freshbooks-sdk/compare/v2.1.1...v2.2.0) (2018-09-18)
 
 
