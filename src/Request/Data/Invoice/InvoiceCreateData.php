@@ -12,6 +12,7 @@ use ZEROSPAM\Framework\SDK\Utils\Data\ArrayableData;
 use ZEROSPAM\Freshbooks\Request\Data\Client\LatePayment\CommonWriteLatePaymentReminders;
 use ZEROSPAM\Freshbooks\Request\Data\Common\CommonWritableFields;
 use ZEROSPAM\Freshbooks\Request\Data\Common\CommonWritableOnCreateFields;
+use ZEROSPAM\Freshbooks\Request\Data\Presentation\PresentationData;
 use ZEROSPAM\Freshbooks\Response\Invoice\Presentation\PresentationResponse;
 
 class InvoiceCreateData extends ArrayableData
@@ -37,7 +38,7 @@ class InvoiceCreateData extends ArrayableData
      */
     public function setPresentation(PresentationResponse $presentation): InvoiceCreateData
     {
-        $this->presentation = $presentation;
+        $this->presentation = PresentationData::fromResponse($presentation);
 
         return $this;
     }
