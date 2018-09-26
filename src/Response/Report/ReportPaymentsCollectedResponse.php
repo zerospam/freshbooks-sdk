@@ -68,9 +68,9 @@ class ReportPaymentsCollectedResponse extends BaseResponse
     }
 
     /**
-     * @return CurrencyEnum
+     * @return array|CurrencyEnum[]
      */
-    public function getCurrencyCodesAttribute(): CurrencyEnum
+    public function getCurrencyCodesAttribute(): array
     {
         return array_map(function ($item) {
             CurrencyEnum::byValueInsensitive($item);

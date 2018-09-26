@@ -137,8 +137,8 @@ class Invoice extends BaseResponse
     /**
      * @return CurrencyEnum
      */
-    public function getCurrencyAttribute(): CurrencyEnum
+    public function getCurrencyCodeAttribute(): CurrencyEnum
     {
-        return CurrencyEnum::byValueInsensitive($this->data['currency']);
+        return CurrencyEnum::byValueInsensitive($this->data['currency_code']);
     }
 }

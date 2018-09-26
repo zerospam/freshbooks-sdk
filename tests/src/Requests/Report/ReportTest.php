@@ -372,7 +372,7 @@ JSON;
         $this->assertEquals("68901804", $invoice->invoice_number);
         $this->assertEquals("550.73", $invoice->total->amount);
         $this->assertEquals("563.53", $invoice->subtotal->amount);
-        $this->assertEquals("USD", $invoice->currency_code);
+        $this->assertTrue($invoice->currency_code->is(CurrencyEnum::USD()));
 
         // Client->Invoice->Tax Summary test
         $taxSummary = $invoice->tax_summaries[0];
@@ -973,6 +973,7 @@ JSON;
         $this->assertEquals("A lot of characters", $response->download_token);
         $this->assertEquals(1, count($response->payments));
         $this->assertEquals("2017-07-26", $response->start_date->toDateString());
+        $this->assertTrue(empty($response->currency_codes));
 
         // Payments test
         $payment = $response->payments[0];
