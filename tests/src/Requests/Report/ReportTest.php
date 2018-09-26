@@ -980,6 +980,7 @@ JSON;
         $this->assertEquals(1, count($response->payments));
         $this->assertEquals("2017-07-26", $response->start_date->toDateString());
         $this->assertTrue(empty($response->currency_codes));
+        $this->assertTrue(empty($response->currencies));
 
         // Payments test
         $payment = $response->payments[0];
