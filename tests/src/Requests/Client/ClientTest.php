@@ -12,11 +12,12 @@ use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Response\Api\EmptyResponse;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 use ZEROSPAM\Freshbooks\Business\Enums\Client\Fee\LatePaymentFeeType;
-use ZEROSPAM\Freshbooks\Request\Call\Clients\ClientReadRequest;
-use ZEROSPAM\Freshbooks\Request\Call\Clients\Collection\ClientListReadRequest;
-use ZEROSPAM\Freshbooks\Request\Call\Clients\Collection\ClientCreateRequest;
+use ZEROSPAM\Freshbooks\Business\Enums\Currency\CurrencyEnum;
 use ZEROSPAM\Freshbooks\Request\Call\Clients\ClientDeleteRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Clients\ClientReadRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Clients\ClientUpdateRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Clients\Collection\ClientCreateRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Clients\Collection\ClientListReadRequest;
 use ZEROSPAM\Freshbooks\Request\Data\Client\ClientData;
 use ZEROSPAM\Freshbooks\Request\Data\Client\LatePayment\FeeData;
 use ZEROSPAM\Freshbooks\Request\Data\Client\LatePayment\ReminderData;
@@ -77,7 +78,7 @@ JSON;
         "bus_phone": "555 555 5555",
         "company_industry": "Construction",
         "company_size": "medium",
-        "currency_code": "USD",
+        "currency_code": "usd",
         "email": "email@example.com",
         "fax": "666 666 6666",
         "fname": "John",
@@ -177,7 +178,7 @@ JSON;
                 "s_code": "142857",
                 "organization": "Company Inc.",
                 "p_country": "Billand",
-                "currency_code": "USD",
+                "currency_code": "usd",
                 "late_reminders": [{
                     "body": "Please pay ASAP",
                     "delay": -3,
@@ -236,7 +237,7 @@ JSON;
             ->setBusPhone("555 555 5555")
             ->setCompanyIndustry("Construction")
             ->setCompanySize("medium")
-            ->setCurrencyCode("USD")
+            ->setCurrencyCode(CurrencyEnum::USD())
             ->setEmail("email@example.com")
             ->setFax("666 666 6666")
             ->setFname("John")
@@ -319,7 +320,7 @@ JSON;
         "bus_phone": "555 555 5555",
         "company_industry": "Construction",
         "company_size": "medium",
-        "currency_code": "USD",
+        "currency_code": "usd",
         "email": "email@example.com",
         "fax": "666 666 6666",
         "fname": "John",
@@ -460,7 +461,7 @@ JSON;
             ->setBusPhone("555 555 5555")
             ->setCompanyIndustry("Construction")
             ->setCompanySize("medium")
-            ->setCurrencyCode("USD")
+            ->setCurrencyCode(CurrencyEnum::USD())
             ->setEmail("email@example.com")
             ->setFax("666 666 6666")
             ->setFname("John")

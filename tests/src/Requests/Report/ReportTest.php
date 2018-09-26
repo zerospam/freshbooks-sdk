@@ -9,6 +9,7 @@
 namespace ZEROSPAM\Freshbooks\Test\Requests\Report;
 
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
+use ZEROSPAM\Freshbooks\Business\Enums\Currency\CurrencyEnum;
 use ZEROSPAM\Freshbooks\Business\Enums\Payment\PaymentMethodEnum;
 use ZEROSPAM\Freshbooks\Request\Call\Report\ReportAccountsAgingReadRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Report\ReportExpenseDetailsReadRequest;
@@ -338,7 +339,7 @@ JSON;
         $this->assertEquals("this download token", $response->download_token);
         $this->assertEquals("Company Inc.", $response->company_name);
         $this->assertEquals("2018-01-01", $response->start_date->toDateString());
-        $this->assertEquals("USD", $response->currency_code);
+        $this->assertTrue($response->currency_code->is(CurrencyEnum::USD()));
 
         // Summary test
         $this->assertEquals("4698.76", $response->summary->total->amount);
@@ -517,7 +518,7 @@ JSON;
         $this->assertEquals("A bunch of letters and numbers", $response->download_token);
         $this->assertEquals(2, count($response->vendors));
         $this->assertEquals("category", $response->group_by);
-        $this->assertEquals("CAD", $response->currency_code);
+        $this->assertTrue($response->currency_code->is(CurrencyEnum::CAD()));
         $this->assertEquals(1, count($response->authors));
         $this->assertEquals(1, count($response->data));
         $this->assertEquals("2017-01-01", $response->start_date->toDateString());
@@ -903,7 +904,7 @@ JSON;
         $this->assertEquals("2017-12-31", $response->end_date->toDateString());
         $this->assertEquals("Lots of Characters", $response->download_token);
         $this->assertEquals("FB", $response->company_name);
-        $this->assertEquals("CAD", $response->currency_code);
+        $this->assertTrue($response->currency_code->is(CurrencyEnum::CAD()));
 
         // Totals test
         $totals = $response->totals;

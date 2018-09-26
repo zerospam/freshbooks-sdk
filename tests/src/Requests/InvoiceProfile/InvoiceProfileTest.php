@@ -11,6 +11,7 @@ namespace ZEROSPAM\Freshbooks\Test\Requests\InvoiceProfile;
 use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Response\Api\EmptyResponse;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
+use ZEROSPAM\Freshbooks\Business\Enums\Currency\CurrencyEnum;
 use ZEROSPAM\Freshbooks\Request\Call\InvoiceProfile\Collection\InvoiceProfileCreateRequest;
 use ZEROSPAM\Freshbooks\Request\Call\InvoiceProfile\Collection\InvoiceProfileListReadRequest;
 use ZEROSPAM\Freshbooks\Request\Call\InvoiceProfile\InvoiceProfileDeleteRequest;
@@ -131,10 +132,10 @@ class InvoiceProfileTest extends TestCase
 }
 JSON;
 
-        $client = $this->preSuccess($jsonResponse);
+        $client  = $this->preSuccess($jsonResponse);
         $request = new InvoiceProfileReadRequest();
         $request->setAccountId('gr34c')
-            ->setInvoiceProfileId("5283");
+                ->setInvoiceProfileId("5283");
         $client->getOAuthTestClient()->processRequest($request);
 
         $response = $request->getResponse();
@@ -165,7 +166,7 @@ JSON;
         $this->assertEquals("Suite 4", $response->street2);
         $this->assertTrue($response->disable);
         $this->assertEquals("-0.72", $response->discount_total->amount);
-        $this->assertEquals("CAD", $response->discount_total->code);
+        $this->assertTrue($response->discount_total->code->is(CurrencyEnum::CAD()));
         $this->assertEquals("1 Main Street", $response->address);
         $this->assertNull($response->total_accrued_revenue);
         $this->assertEquals(165113, $response->customerid);
@@ -180,14 +181,14 @@ JSON;
         $this->assertTrue($response->include_unbilled_time);
         $this->assertEquals(5283, $response->profileid);
         $this->assertEquals("13.71", $response->amount->amount);
-        $this->assertEquals("CAD", $response->amount->code);
+        $this->assertTrue($response->amount->code->is(CurrencyEnum::CAD()));
         $this->assertEquals("2w", $response->frequency);
         $this->assertEquals("Details of the payments", $response->payment_details);
         $this->assertEquals("Organization Co.", $response->organization);
-        $this->assertEquals("CAD", $response->currency_code);
+        $this->assertTrue($response->currency_code->is(CurrencyEnum::CAD()));
         $this->assertEquals(2, count($response->lines));
         $this->assertEquals("5.99", $response->lines[0]->unit_cost->amount);
-        $this->assertEquals("2", $response-> lines[0]->qty);
+        $this->assertEquals("2", $response->lines[0]->qty);
     }
 
     public function testInvoiceProfileListReadRequest(): void
@@ -363,7 +364,7 @@ JSON;
 }
 JSON;
 
-        $client = $this->preSuccess($jsonResponse);
+        $client  = $this->preSuccess($jsonResponse);
         $request = new InvoiceProfileListReadRequest();
         $request->setAccountId('gr34c');
         $client->getOAuthTestClient()->processRequest($request);
@@ -381,7 +382,7 @@ JSON;
 
     public function testInvoiceProfileCreateRequest(): void
     {
-        $jsonRequest = <<<JSON
+        $jsonRequest  = <<<JSON
 {
 	"invoice_profile": {
 		"frequency": "1y",
@@ -399,7 +400,7 @@ JSON;
 		"terms": "The terms",
 		"vat_name": "vat name",
 		"street2": "street2",
-		"currency_code": "CAD",
+		"currency_code": "cad",
 		"disable": true,
 		"address": "address",
 		"organization": "org inc",
@@ -413,14 +414,14 @@ JSON;
 		"payment_details": "The details",
 		"discount_value": "5",
 		"auto_bill": true,
-		"code": "CAD",
+		"code": "cad",
 		"require_auto_bill": false, 
 		"lines": [{
 			"type": 0,
 			"qty": 2,
 			"unit_cost": {
 				"amount": "5.99",
-				"code": "CAD"
+				"code": "cad"
 			},
 			"description": "Description of the item",
 			"name": "item name"
@@ -430,7 +431,7 @@ JSON;
 			"qty": 5,
 			"unit_cost": {
 				"amount": "0.49",
-				"code": "CAD"
+				"code": "cad"
 			},
 			"description": "The description",
 			"name": "item name2",
@@ -457,13 +458,13 @@ JSON;
             (new InvoiceLineData)
                 ->setType(0)
                 ->setQty(2)
-                ->setUnitCost((new AmountData)->setAmount("5.99")->setCode("CAD"))
+                ->setUnitCost((new AmountData)->setAmount("5.99")->setCode(CurrencyEnum::CAD()))
                 ->setDescription("Description of the item")
                 ->setName("item name"),
             (new InvoiceLineData)
                 ->setType(0)
                 ->setQty(5)
-                ->setUnitCost((new AmountData)->setAmount("0.49")->setCode("CAD"))
+                ->setUnitCost((new AmountData)->setAmount("0.49")->setCode(CurrencyEnum::CAD()))
                 ->setDescription("The description")
                 ->setName("item name2")
                 ->setTaxName1("tax1")
@@ -488,7 +489,7 @@ JSON;
             ->setTerms("The terms")
             ->setVatName("vat name")
             ->setStreet2("street2")
-            ->setCurrencyCode("CAD")
+            ->setCurrencyCode(CurrencyEnum::CAD())
             ->setDisable(true)
             ->setAddress("address")
             ->setOrganization("org inc")
@@ -502,11 +503,11 @@ JSON;
             ->setPaymentDetails("The details")
             ->setDiscountValue("5")
             ->setAutoBill(true)
-            ->setCode("CAD")
+            ->setCode(CurrencyEnum::CAD())
             ->setRequireAutoBill(false)
             ->setLines($lines);
 
-        $client = $this->preSuccess($jsonResponse);
+        $client  = $this->preSuccess($jsonResponse);
         $request = new InvoiceProfileCreateRequest($invoiceProfile);
         $request->setAccountId('id');
 
@@ -517,7 +518,7 @@ JSON;
 
     public function testInvoiceProfileUpdateRequest(): void
     {
-        $jsonRequest = <<<JSON
+        $jsonRequest  = <<<JSON
 {
 	"invoice_profile": {
 		"frequency": "1y",
@@ -535,7 +536,7 @@ JSON;
 		"terms": "The terms",
 		"vat_name": "vat name",
 		"street2": "street2",
-		"currency_code": "CAD",
+		"currency_code": "cad",
 		"disable": true,
 		"address": "address",
 		"organization": "org inc",
@@ -549,14 +550,14 @@ JSON;
 		"payment_details": "The details",
 		"discount_value": "5",
 		"auto_bill": true,
-		"code": "CAD",
+		"code": "cad",
 		"require_auto_bill": false, 
 		"lines": [{
 			"type": 0,
 			"qty": 2,
 			"unit_cost": {
 				"amount": "5.99",
-				"code": "CAD"
+				"code": "cad"
 			},
 			"description": "Description of the item",
 			"name": "item name"
@@ -566,7 +567,7 @@ JSON;
 			"qty": 5,
 			"unit_cost": {
 				"amount": "0.49",
-				"code": "CAD"
+				"code": "cad"
 			},
 			"description": "The description",
 			"name": "item name2",
@@ -593,13 +594,13 @@ JSON;
             (new InvoiceLineData)
                 ->setType(0)
                 ->setQty(2)
-                ->setUnitCost((new AmountData)->setAmount("5.99")->setCode("CAD"))
+                ->setUnitCost((new AmountData)->setAmount("5.99")->setCode(CurrencyEnum::CAD()))
                 ->setDescription("Description of the item")
                 ->setName("item name"),
             (new InvoiceLineData)
                 ->setType(0)
                 ->setQty(5)
-                ->setUnitCost((new AmountData)->setAmount("0.49")->setCode("CAD"))
+                ->setUnitCost((new AmountData)->setAmount("0.49")->setCode(CurrencyEnum::CAD()))
                 ->setDescription("The description")
                 ->setName("item name2")
                 ->setTaxName1("tax1")
@@ -624,7 +625,7 @@ JSON;
             ->setTerms("The terms")
             ->setVatName("vat name")
             ->setStreet2("street2")
-            ->setCurrencyCode("CAD")
+            ->setCurrencyCode(CurrencyEnum::CAD())
             ->setDisable(true)
             ->setAddress("address")
             ->setOrganization("org inc")
@@ -638,14 +639,14 @@ JSON;
             ->setPaymentDetails("The details")
             ->setDiscountValue("5")
             ->setAutoBill(true)
-            ->setCode("CAD")
+            ->setCode(CurrencyEnum::CAD())
             ->setRequireAutoBill(false)
             ->setLines($lines);
 
-        $client = $this->preSuccess($jsonResponse);
+        $client  = $this->preSuccess($jsonResponse);
         $request = new InvoiceProfileUpdateRequest($invoiceProfile);
         $request->setAccountId('id')
-            ->setInvoiceProfileId("4543");
+                ->setInvoiceProfileId("4543");
 
         $client->getOAuthTestClient()->processRequest($request);
 
@@ -666,8 +667,8 @@ JSON;
     }
 }
 JSON;
-        $client  = $this->preSuccess($jsonResponse);
-        $request = new InvoiceProfileDeleteRequest();
+        $client       = $this->preSuccess($jsonResponse);
+        $request      = new InvoiceProfileDeleteRequest();
         $request->setAccountId('place');
         $request->setInvoiceProfileId(1990);
         $client->getOAuthTestClient()->processRequest($request);

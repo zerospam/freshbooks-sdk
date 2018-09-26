@@ -10,6 +10,7 @@ namespace ZEROSPAM\Freshbooks\Response\Clients;
 
 use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
+use ZEROSPAM\Freshbooks\Business\Enums\Currency\CurrencyEnum;
 use ZEROSPAM\Freshbooks\Business\LatePaymentFee;
 use ZEROSPAM\Freshbooks\Business\LatePaymentReminder;
 
@@ -62,7 +63,7 @@ use ZEROSPAM\Freshbooks\Business\LatePaymentReminder;
  * @property-read string                     $s_street
  * @property-read string                     $organization
  * @property-read string                     $p_street
- * @property-read string                     $currency_code
+ * @property-read CurrencyEnum               $currency_code
  * @property-read LatePaymentReminder[]|null $late_reminders
  * @property-read LatePaymentFee|null        $late_fee
  *

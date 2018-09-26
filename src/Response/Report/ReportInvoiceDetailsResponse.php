@@ -10,6 +10,7 @@ namespace ZEROSPAM\Freshbooks\Response\Report;
 
 use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
+use ZEROSPAM\Freshbooks\Business\Enums\Currency\CurrencyEnum;
 use ZEROSPAM\Freshbooks\Business\Report\InvoiceDetails\InvoiceDetailsClient;
 use ZEROSPAM\Freshbooks\Business\Report\InvoiceDetails\Summary;
 
@@ -27,7 +28,7 @@ use ZEROSPAM\Freshbooks\Business\Report\InvoiceDetails\Summary;
  * @property-read string                 $download_token
  * @property-read string                 $company_name
  * @property-read Carbon                 $start_date
- * @property-read string                 $currency_code
+ * @property-read CurrencyEnum           $currency_code
  *
  * @package ZEROSPAM\Freshbooks\Request\Data\Report
  */
@@ -61,5 +62,13 @@ class ReportInvoiceDetailsResponse extends BaseResponse
     public function getSummaryAttribute(): Summary
     {
         return new Summary($this->data['summary']);
+    }
+
+    /**
+     * @return CurrencyEnum
+     */
+    public function getCurrencyCodeAttribute(): CurrencyEnum
+    {
+        return CurrencyEnum::byValueInsensitive($this->data['currency_code']);
     }
 }

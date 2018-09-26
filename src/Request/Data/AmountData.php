@@ -9,17 +9,19 @@
 namespace ZEROSPAM\Freshbooks\Request\Data;
 
 use ZEROSPAM\Framework\SDK\Utils\Data\ArrayableData;
+use ZEROSPAM\Freshbooks\Business\Enums\Currency\CurrencyEnum;
 
 class AmountData extends ArrayableData
 {
     /** @var string */
     private $amount;
 
-    /** @var string */
+    /** @var CurrencyEnum */
     private $code;
 
     /**
      * @param string $amount
+     *
      * @return $this
      */
     public function setAmount(string $amount): AmountData
@@ -30,10 +32,11 @@ class AmountData extends ArrayableData
     }
 
     /**
-     * @param string $code
+     * @param CurrencyEnum $code
+     *
      * @return $this
      */
-    public function setCode(string $code): AmountData
+    public function setCode(CurrencyEnum $code): AmountData
     {
         $this->code = $code;
 

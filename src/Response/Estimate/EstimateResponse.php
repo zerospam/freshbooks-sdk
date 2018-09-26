@@ -10,7 +10,6 @@ namespace ZEROSPAM\Freshbooks\Response\Estimate;
 
 use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
-use ZEROSPAM\Framework\SDK\Utils\Str;
 use ZEROSPAM\Freshbooks\Business\Amount;
 use ZEROSPAM\Freshbooks\Business\Enums\Currency\CurrencyEnum;
 use ZEROSPAM\Freshbooks\Business\Enums\Estimate\EstimateStatusEnum;
@@ -95,7 +94,7 @@ class EstimateResponse extends BaseResponse
      */
     public function getCurrencyCodeAttribute(): CurrencyEnum
     {
-        return CurrencyEnum::byValue(Str::upper($this->data['currency_code']));
+        return CurrencyEnum::byValueInsensitive($this->data['currency_code']);
     }
 
     /**

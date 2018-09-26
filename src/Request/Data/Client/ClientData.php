@@ -9,6 +9,7 @@
 namespace ZEROSPAM\Freshbooks\Request\Data\Client;
 
 use ZEROSPAM\Framework\SDK\Utils\Data\ArrayableData;
+use ZEROSPAM\Freshbooks\Business\Enums\Currency\CurrencyEnum;
 use ZEROSPAM\Freshbooks\Request\Data\Client\LatePayment\CommonWriteLatePaymentReminders;
 
 /**
@@ -37,7 +38,7 @@ class ClientData extends ArrayableData
     /** @var string|null */
     private $companySize;
 
-    /** @var string */
+    /** @var CurrencyEnum */
     private $currencyCode;
 
     /** @var string */
@@ -175,10 +176,10 @@ class ClientData extends ArrayableData
     }
 
     /**
-     * @param string $currencyCode
+     * @param CurrencyEnum $currencyCode
      * @return $this
      */
-    public function setCurrencyCode(string $currencyCode): ClientData
+    public function setCurrencyCode(CurrencyEnum $currencyCode): ClientData
     {
         $this->currencyCode = $currencyCode;
         return $this;
