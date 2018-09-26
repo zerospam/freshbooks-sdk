@@ -92,26 +92,15 @@ JSON;
             $config,
             [
                 'invoice' => [
-                    'presentation' =>
-                        [
-                            'quantity_heading'         => null,
-                            'date_format'              => 'yyyy-mm-dd',
-                            'invoiceid'                => 226105,
-                            'theme_layout'             => 'simple',
-                            'image_banner_position_y'  => 0,
-                            'unit_cost_heading'        => null,
-                            'time_entry_notes_heading' => null,
-                            'task_heading'             => null,
-                            'image_logo_src'           => '/service/uploads/images/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50IjozNDAxMTU3LCJvcmlnaW5hbF9maWxlbmFtZSI6Ilplcm9TcGFtX0xvZ29fU21hbGwucG5nIiwiYnVja2V0IjoidXBsb2FkcyIsImZpbGVuYW1lIjoidXBsb2FkLTI2YzAwZGI0M2VhZjUxNGI1MDU5NmFjOTk4Njg3MzUzMGFlZjZmM2QiLCJsZW5ndGgiOjE5NTEyLCJrZXkiOiInZG9jcy0nLTM0MDExNTcvdXBsb2FkLTI2YzAwZGI0M2VhZjUxNGI1MDU5NmFjOTk4Njg3MzUzMGFlZjZmM2QifQ.HP_Ww3kSFLRnYkAt0xbJSUxh2mfxtLmNtvPuq7l2bkI',
-                            'image_banner_src'         => null,
-                            'theme_primary_color'      => '#dc143c',
-                            'theme_font_name'          => 'modern',
-                            'item_heading'             => null,
-                            'hours_heading'            => null,
-                            'description_heading'      => null,
-                            'label'                    => null,
-                            'rate_heading'             => null,
-                        ],
+                    'presentation' => [
+                        'date_format'             => 'yyyy-mm-dd',
+                        'id'                      => 226105,
+                        'image_banner_position_y' => 0,
+                        'image_logo_src'          => '/service/uploads/images/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50IjozNDAxMTU3LCJvcmlnaW5hbF9maWxlbmFtZSI6Ilplcm9TcGFtX0xvZ29fU21hbGwucG5nIiwiYnVja2V0IjoidXBsb2FkcyIsImZpbGVuYW1lIjoidXBsb2FkLTI2YzAwZGI0M2VhZjUxNGI1MDU5NmFjOTk4Njg3MzUzMGFlZjZmM2QiLCJsZW5ndGgiOjE5NTEyLCJrZXkiOiInZG9jcy0nLTM0MDExNTcvdXBsb2FkLTI2YzAwZGI0M2VhZjUxNGI1MDU5NmFjOTk4Njg3MzUzMGFlZjZmM2QifQ.HP_Ww3kSFLRnYkAt0xbJSUxh2mfxtLmNtvPuq7l2bkI',
+                        'theme_font_name'         => 'modern',
+                        'theme_layout'            => 'simple',
+                        'theme_primary_color'     => '#dc143c',
+                    ],
                 ],
             ]
         );
