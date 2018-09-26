@@ -9,6 +9,7 @@
 namespace ZEROSPAM\Freshbooks\Test\Requests\Report;
 
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
+use ZEROSPAM\Freshbooks\Business\Enums\Payment\PaymentMethodEnum;
 use ZEROSPAM\Freshbooks\Request\Call\Report\ReportAccountsAgingReadRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Report\ReportExpenseDetailsReadRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Report\ReportInvoiceDetailsReadRequest;
@@ -324,7 +325,7 @@ class ReportTest extends TestCase
 }
 JSON;
 
-        $client = $this->preSuccess($jsonResponse);
+        $client  = $this->preSuccess($jsonResponse);
         $request = new ReportInvoiceDetailsReadRequest();
         $request->setAccountId('id');
         $client->getOAuthTestClient()->processRequest($request);
@@ -503,7 +504,7 @@ JSON;
 }
 JSON;
 
-        $client = $this->preSuccess($jsonResponse);
+        $client  = $this->preSuccess($jsonResponse);
         $request = new ReportExpenseDetailsReadRequest();
         $request->setAccountId('id');
         $client->getOAuthTestClient()->processRequest($request);
@@ -700,7 +701,7 @@ JSON;
   }
 JSON;
 
-        $client = $this->preSuccess($jsonResponse);
+        $client  = $this->preSuccess($jsonResponse);
         $request = new ReportProfitLossReadRequest();
         $request->setAccountId('id');
         $client->getOAuthTestClient()->processRequest($request);
@@ -826,8 +827,8 @@ JSON;
   }
 }
 JSON;
-        $client = $this->preSuccess($jsonResponse);
-        $request = new ReportTaxSummaryReadRequest();
+        $client       = $this->preSuccess($jsonResponse);
+        $request      = new ReportTaxSummaryReadRequest();
         $request->setAccountId('id');
         $client->getOAuthTestClient()->processRequest($request);
 
@@ -892,7 +893,7 @@ JSON;
   }
 JSON;
 
-        $client = $this->preSuccess($jsonResponse);
+        $client  = $this->preSuccess($jsonResponse);
         $request = new ReportAccountsAgingReadRequest();
         $request->setAccountId('id');
         $client->getOAuthTestClient()->processRequest($request);
@@ -958,7 +959,7 @@ JSON;
 }
 JSON;
 
-        $client = $this->preSuccess($jsonResponse);
+        $client  = $this->preSuccess($jsonResponse);
         $request = new ReportPaymentsCollectedReadRequest();
         $request->setAccountId('id');
         $client->getOAuthTestClient()->processRequest($request);
@@ -981,6 +982,6 @@ JSON;
         $this->assertEquals("Magic", $payment->client);
         $this->assertEquals("2017-07-26", $payment->date->toDateString());
         $this->assertEquals("0000012", $payment->invoice_number);
-        $this->assertEquals("Bank Transfer", $payment->method);
+        $this->assertTrue($payment->method->is(PaymentMethodEnum::BANK_TRANSFER()));
     }
 }
