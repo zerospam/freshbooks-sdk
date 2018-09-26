@@ -14,8 +14,8 @@ use ZEROSPAM\Framework\SDK\Response\Api\EmptyResponse;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 use ZEROSPAM\Freshbooks\Argument\IncludeArgument;
 use ZEROSPAM\Freshbooks\Business\Enums\Currency\CurrencyEnum;
-use ZEROSPAM\Freshbooks\Business\Enums\Estimate\StatusEnum;
-use ZEROSPAM\Freshbooks\Business\Enums\Estimate\UIStatusEnum;
+use ZEROSPAM\Freshbooks\Business\Enums\Estimate\EstimateStatusEnum;
+use ZEROSPAM\Freshbooks\Business\Enums\Estimate\UIEstimateStatusEnum;
 use ZEROSPAM\Freshbooks\Business\Enums\Language\LanguageEnum;
 use ZEROSPAM\Freshbooks\Request\Call\Estimate\Collection\EstimateCreateRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Estimate\EstimateDeleteRequest;
@@ -106,9 +106,9 @@ JSON;
         $this->assertInstanceOf(EstimateResponse::class, $response);
         $this->assertInstanceOf(CurrencyEnum::class, $response->currency_code);
         $this->assertEquals(CurrencyEnum::EUR, $response->currency_code->getValue());
-        $this->assertEquals(StatusEnum::DRAFT, $response->status->getValue());
-        $this->assertEquals(UIStatusEnum::DRAFT, $response->ui_status->getValue());
-        $this->assertEquals(UIStatusEnum::DRAFT, $response->display_status->getValue());
+        $this->assertEquals(EstimateStatusEnum::DRAFT, $response->status->getValue());
+        $this->assertEquals(UIEstimateStatusEnum::DRAFT, $response->ui_status->getValue());
+        $this->assertEquals(UIEstimateStatusEnum::DRAFT, $response->display_status->getValue());
     }
 
     public function testGetEstimateWithLines()
@@ -406,7 +406,7 @@ JSON;
         $this->validateRequest($client, $jsonRequest);
         $this->validateUrl($client, 'accounting/account/id/estimates/estimates');
         $this->assertTrue($response->currency_code->is(CurrencyEnum::CAD()));
-        $this->assertTrue($response->display_status->is(UIStatusEnum::DRAFT()));
+        $this->assertTrue($response->display_status->is(UIEstimateStatusEnum::DRAFT()));
         $this->assertTrue($response->language->is(LanguageEnum::EN()));
     }
 

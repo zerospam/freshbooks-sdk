@@ -16,16 +16,16 @@ use ZEROSPAM\Framework\SDK\Utils\Contracts\PrimalValued;
 /**
  * Class StatusEnum
  *
- * @method static StatusEnum DRAFT()
- * @method static StatusEnum SENT()
- * @method static StatusEnum VIEWED()
- * @method static StatusEnum REPLIED()
- * @method static StatusEnum ACCEPTED()
- * @method static StatusEnum INVOICED()
+ * @method static EstimateStatusEnum DRAFT()
+ * @method static EstimateStatusEnum SENT()
+ * @method static EstimateStatusEnum VIEWED()
+ * @method static EstimateStatusEnum REPLIED()
+ * @method static EstimateStatusEnum ACCEPTED()
+ * @method static EstimateStatusEnum INVOICED()
  *
  * @package ZEROSPAM\Freshbooks\Business\Enums\Estimate
  */
-class StatusEnum extends Enum implements PrimalValued
+class EstimateStatusEnum extends Enum implements PrimalValued
 {
     use PrimalValuedEnumTrait;
 
