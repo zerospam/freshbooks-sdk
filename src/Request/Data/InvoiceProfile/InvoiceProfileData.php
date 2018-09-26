@@ -9,8 +9,8 @@
 namespace ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile;
 
 use Carbon\Carbon;
+use ZEROSPAM\Framework\SDK\Utils\Data\ArrayableData;
 use ZEROSPAM\Freshbooks\Business\InvoiceLine;
-use ZEROSPAM\Freshbooks\Request\Data\ArrayableData;
 use ZEROSPAM\Freshbooks\Request\Data\DateTimeData;
 
 class InvoiceProfileData extends ArrayableData

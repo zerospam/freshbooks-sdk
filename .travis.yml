@@ -31,8 +31,8 @@ jobs:
       on:
         branch: master
   - script:
-    - npm install
-    - npm run semantic-release
+    - yarn install
+    - yarn semantic-release
     after_success: skip
     before_script: skip
     language: node_js

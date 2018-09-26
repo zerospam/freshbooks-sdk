@@ -8,7 +8,7 @@
 
 namespace ZEROSPAM\Freshbooks\Request\Data\Estimate;
 
-use ZEROSPAM\Freshbooks\Request\Data\ArrayableData;
+use ZEROSPAM\Framework\SDK\Utils\Data\ArrayableData;
 use ZEROSPAM\Freshbooks\Request\Data\Common\CommonWritableFields;
 
 /**

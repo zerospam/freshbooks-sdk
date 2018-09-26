@@ -7,12 +7,12 @@
     "semantic-release": "semantic-release"
   },
   "devDependencies": {
-    "@semantic-release/changelog": "^2.0.2",
-    "@semantic-release/git": "^5.0.0",
+    "@semantic-release/changelog": "^3.0.0",
+    "@semantic-release/git": "^7.0.4",
     "cz-conventional-changelog": "^2.0.0",
-    "husky": "^0.14.3",
+    "husky": "^1.0.0",
     "last-release-git": "0.0.3",
-    "semantic-release": "^15.5.1",
+    "semantic-release": "^15.9.16",
     "validate-commit-msg": "^2.14.0"
   },
   "config": {

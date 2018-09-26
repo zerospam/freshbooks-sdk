@@ -8,6 +8,7 @@
 
 namespace ZEROSPAM\Freshbooks\Request\Data;
 
+use ZEROSPAM\Framework\SDK\Utils\Data\ArrayableData;
 
 class AmountData extends ArrayableData
 {
@@ -24,6 +25,7 @@ class AmountData extends ArrayableData
     public function setAmount(string $amount): AmountData
     {
         $this->amount = $amount;
+
         return $this;
     }
 
@@ -34,6 +36,7 @@ class AmountData extends ArrayableData
     public function setCode(string $code): AmountData
     {
         $this->code = $code;
+
         return $this;
     }
 }

@@ -8,8 +8,8 @@
 
 namespace ZEROSPAM\Freshbooks\Request\Data\Invoice;
 
+use ZEROSPAM\Framework\SDK\Utils\Data\ArrayableData;
 use ZEROSPAM\Freshbooks\Request\Data\AmountData;
-use ZEROSPAM\Freshbooks\Request\Data\ArrayableData;
 
 class InvoiceLineData extends ArrayableData
 {
@@ -58,6 +58,7 @@ class InvoiceLineData extends ArrayableData
     public function setType(int $type): InvoiceLineData
     {
         $this->type = $type;
+
         return $this;
     }
 
@@ -68,6 +69,7 @@ class InvoiceLineData extends ArrayableData
     public function setExpenseid(int $expenseid): InvoiceLineData
     {
         $this->expenseid = $expenseid;
+
         return $this;
     }
 
@@ -78,6 +80,7 @@ class InvoiceLineData extends ArrayableData
     public function setQty(int $qty): InvoiceLineData
     {
         $this->qty = $qty;
+
         return $this;
     }
 
@@ -88,6 +91,7 @@ class InvoiceLineData extends ArrayableData
     public function setUnitCost(AmountData $unitCost): InvoiceLineData
     {
         $this->unitCost = $unitCost;
+
         return $this;
     }
 
@@ -98,6 +102,7 @@ class InvoiceLineData extends ArrayableData
     public function setDescription(string $description): InvoiceLineData
     {
         $this->description = $description;
+
         return $this;
     }
 
@@ -108,6 +113,7 @@ class InvoiceLineData extends ArrayableData
     public function setName(string $name): InvoiceLineData
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -118,6 +124,7 @@ class InvoiceLineData extends ArrayableData
     public function setTaxName1(string $taxName1): InvoiceLineData
     {
         $this->taxName1 = $taxName1;
+
         return $this;
     }
 
@@ -128,6 +135,7 @@ class InvoiceLineData extends ArrayableData
     public function setTaxAmount1(string $taxAmount1): InvoiceLineData
     {
         $this->taxAmount1 = $taxAmount1;
+
         return $this;
     }
 
@@ -138,6 +146,7 @@ class InvoiceLineData extends ArrayableData
     public function setTaxName2(string $taxName2): InvoiceLineData
     {
         $this->taxName2 = $taxName2;
+
         return $this;
     }
 
@@ -148,6 +157,7 @@ class InvoiceLineData extends ArrayableData
     public function setTaxAmount2(string $taxAmount2): InvoiceLineData
     {
         $this->taxAmount2 = $taxAmount2;
+
         return $this;
     }
 }
