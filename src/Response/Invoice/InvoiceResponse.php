@@ -11,13 +11,14 @@ namespace ZEROSPAM\Freshbooks\Response\Invoice;
 use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
 use ZEROSPAM\Freshbooks\Business\Amount;
+use ZEROSPAM\Freshbooks\Business\Enums\Invoice\InvoiceStatusEnum;
 use ZEROSPAM\Freshbooks\Business\Enums\Language\LanguageEnum;
 use ZEROSPAM\Freshbooks\Business\InvoiceLine;
 
 /**
  * Class InvoiceResponse
  *
- * @property-read int                $status
+ * @property-read InvoiceStatusEnum  $status
  * @property-read string|null        $deposit_percentage
  * @property-read Carbon             $create_date
  * @property-read Amount             $outstanding
@@ -91,6 +92,14 @@ class InvoiceResponse extends BaseResponse
         'due_date',
         'updated',
     ];
+
+    /**
+     * @return InvoiceStatusEnum
+     */
+    public function getStatusAttribute()
+    {
+        return InvoiceStatusEnum::get($this->data['status']);
+    }
 
     /**
      * Outstanding

@@ -13,8 +13,8 @@ use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
 use ZEROSPAM\Framework\SDK\Utils\Str;
 use ZEROSPAM\Freshbooks\Business\Amount;
 use ZEROSPAM\Freshbooks\Business\Enums\Currency\CurrencyEnum;
-use ZEROSPAM\Freshbooks\Business\Enums\Estimate\StatusEnum;
-use ZEROSPAM\Freshbooks\Business\Enums\Estimate\UIStatusEnum;
+use ZEROSPAM\Freshbooks\Business\Enums\Estimate\EstimateStatusEnum;
+use ZEROSPAM\Freshbooks\Business\Enums\Estimate\UIEstimateStatusEnum;
 use ZEROSPAM\Freshbooks\Business\Enums\Language\LanguageEnum;
 use ZEROSPAM\Freshbooks\Business\InvoiceLine;
 
@@ -24,7 +24,7 @@ use ZEROSPAM\Freshbooks\Business\InvoiceLine;
  * @property-read string                   $province
  * @property-read string                   $code
  * @property-read Carbon                   $create_date
- * @property-read UIStatusEnum             $display_status
+ * @property-read UIEstimateStatusEnum     $display_status
  * @property-read bool                     $require_client_signature
  * @property-read string                   $street
  * @property-read string|null              $vat_number
@@ -37,7 +37,7 @@ use ZEROSPAM\Freshbooks\Business\InvoiceLine;
  * @property-read string                   $fname
  * @property-read int                      $vis_state
  * @property-read string                   $current_organization
- * @property-read StatusEnum               $status
+ * @property-read EstimateStatusEnum       $status
  * @property-read string                   $estimate_number
  * @property-read Carbon                   $updated
  * @property-read string                   $terms
@@ -45,7 +45,7 @@ use ZEROSPAM\Freshbooks\Business\InvoiceLine;
  * @property-read string|null              $vat_name
  * @property-read string                   $street2
  * @property-read string                   $template
- * @property-read UIStatusEnum             $ui_status
+ * @property-read UIEstimateStatusEnum     $ui_status
  * @property-read Amount                   $discount_total
  * @property-read string                   $address
  * @property-read bool                     $accepted
@@ -101,21 +101,21 @@ class EstimateResponse extends BaseResponse
     /**
      * Estimate status mutator
      *
-     * @return StatusEnum
+     * @return EstimateStatusEnum
      */
-    public function getStatusAttribute(): StatusEnum
+    public function getStatusAttribute(): EstimateStatusEnum
     {
-        return StatusEnum::byValue($this->data['status']);
+        return EstimateStatusEnum::byValue($this->data['status']);
     }
 
     /**
      * Estimate ui_status mutator
      *
-     * @return UIStatusEnum
+     * @return UIEstimateStatusEnum
      */
-    public function getUiStatusAttribute(): UIStatusEnum
+    public function getUiStatusAttribute(): UIEstimateStatusEnum
     {
-        return UIStatusEnum::byValueInsensitive($this->data['ui_status']);
+        return UIEstimateStatusEnum::byValueInsensitive($this->data['ui_status']);
     }
 
     /**
@@ -123,11 +123,11 @@ class EstimateResponse extends BaseResponse
      *
      * Should be one in (draft, sent, viewed)
      *
-     * @return UIStatusEnum
+     * @return UIEstimateStatusEnum
      */
-    public function getDisplayStatusAttribute(): UIStatusEnum
+    public function getDisplayStatusAttribute(): UIEstimateStatusEnum
     {
-        return UIStatusEnum::byValueInsensitive($this->data['ui_status']);
+        return UIEstimateStatusEnum::byValueInsensitive($this->data['ui_status']);
     }
 
     /**
