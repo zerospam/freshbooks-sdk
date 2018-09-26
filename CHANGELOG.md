@@ -1,3 +1,15 @@
+# [2.4.0](https://github.com/zerospam/freshbooks-sdk/compare/v2.3.1...v2.4.0) (2018-09-26)
+
+
+### Bug Fixes
+
+* **Presentation:** Fix the use of presentation ([61d807b](https://github.com/zerospam/freshbooks-sdk/commit/61d807b))
+
+
+### Features
+
+* **Estimate:** Added payment method enumeration ([dfc6365](https://github.com/zerospam/freshbooks-sdk/commit/dfc6365))
+
 ## [2.3.1](https://github.com/zerospam/freshbooks-sdk/compare/v2.3.0...v2.3.1) (2018-09-26)
 
 
