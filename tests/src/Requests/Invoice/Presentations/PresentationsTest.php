@@ -32,6 +32,9 @@ class PresentationsTest extends TestCase
 
         $this->assertEquals('yyyy-mm-dd', $response->date_format);
         $this->assertEquals('226105', $response->invoiceid);
+        $this->assertArraySubset([
+            'image_logo_src' => '/service/uploads/images/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhY2NvdW50IjozNDAxMTU3LCJvcmlnaW5hbF9maWxlbmFtZSI6Ilplcm9TcGFtX0xvZ29fU21hbGwucG5nIiwiYnVja2V0IjoidXBsb2FkcyIsImZpbGVuYW1lIjoidXBsb2FkLTI2YzAwZGI0M2VhZjUxNGI1MDU5NmFjOTk4Njg3MzUzMGFlZjZmM2QiLCJsZW5ndGgiOjE5NTEyLCJrZXkiOiInZG9jcy0nLTM0MDExNTcvdXBsb2FkLTI2YzAwZGI0M2VhZjUxNGI1MDU5NmFjOTk4Njg3MzUzMGFlZjZmM2QifQ.HP_Ww3kSFLRnYkAt0xbJSUxh2mfxtLmNtvPuq7l2bkI'
+        ], $response->toArray());
     }
 
     public function testSetPresentationInvoice(): void
