@@ -12,7 +12,9 @@ use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Response\Api\EmptyResponse;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 use ZEROSPAM\Freshbooks\Argument\IncludeArgument;
+use ZEROSPAM\Freshbooks\Argument\SearchArrayArgument;
 use ZEROSPAM\Freshbooks\Business\Enums\Currency\CurrencyEnum;
+use ZEROSPAM\Freshbooks\Business\Enums\Invoice\InvoiceStatusEnum;
 use ZEROSPAM\Freshbooks\Business\Enums\Language\LanguageEnum;
 use ZEROSPAM\Freshbooks\Request\Call\Invoice\Collection\InvoiceCreateRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Invoice\Collection\InvoiceListReadRequest;
@@ -304,6 +306,11 @@ JSON;
 
         $client  = $this->preSuccess($json);
         $request = new InvoiceListReadRequest();
+        $request->addArgument(new SearchArrayArgument('statusids', [
+            InvoiceStatusEnum::PAID(),
+            InvoiceStatusEnum::AUTO_PAID(),
+            InvoiceStatusEnum::PARTIAL()
+        ]));
         $request->setAccountId('id');
         $client->getOAuthTestClient()->processRequest($request);
 
@@ -318,6 +325,8 @@ JSON;
         $this->assertEquals("Testing cool", $response[0]->current_organization);
         $this->assertEquals("10% discount: blah blah", $response[1]->terms);
         $this->assertEquals("-2.97", $response[1]->discount_total->amount);
+
+        $this->validateQuery($client, 'search[statusids][]=4', 'search[statusids][]=5', 'search[statusids][]=8');
     }
 
     public function testGetInvoiceWithLines(): void
