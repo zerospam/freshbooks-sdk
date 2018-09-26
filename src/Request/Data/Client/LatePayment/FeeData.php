@@ -8,8 +8,8 @@
 
 namespace ZEROSPAM\Freshbooks\Request\Data\Client\LatePayment;
 
+use ZEROSPAM\Framework\SDK\Utils\Data\ArrayableData;
 use ZEROSPAM\Freshbooks\Business\Enums\Client\Fee\LatePaymentFeeType;
-use ZEROSPAM\Freshbooks\Request\Data\ArrayableData;
 
 class FeeData extends ArrayableData
 {
@@ -53,6 +53,7 @@ class FeeData extends ArrayableData
     public function setCompoundedTaxes(bool $compoundedTaxes): FeeData
     {
         $this->compoundedTaxes = $compoundedTaxes;
+
         return $this;
     }
 
@@ -63,6 +64,7 @@ class FeeData extends ArrayableData
     public function setDays(int $days): FeeData
     {
         $this->days = $days;
+
         return $this;
     }
 
@@ -73,6 +75,7 @@ class FeeData extends ArrayableData
     public function setEnabled(bool $enabled): FeeData
     {
         $this->enabled = $enabled;
+
         return $this;
     }
 
@@ -84,6 +87,7 @@ class FeeData extends ArrayableData
     {
         $this->nullableChanged();
         $this->firstTaxName = $firstTaxName;
+
         return $this;
     }
 
@@ -95,6 +99,7 @@ class FeeData extends ArrayableData
     {
         $this->nullableChanged();
         $this->firstTaxPercent = $firstTaxPercent;
+
         return $this;
     }
 
@@ -105,6 +110,7 @@ class FeeData extends ArrayableData
     public function setUserid(int $userid): FeeData
     {
         $this->id = 'userid' . $userid;
+
         return $this;
     }
 
@@ -115,6 +121,7 @@ class FeeData extends ArrayableData
     public function setRepeat(bool $repeat): FeeData
     {
         $this->repeat = $repeat;
+
         return $this;
     }
 
@@ -126,6 +133,7 @@ class FeeData extends ArrayableData
     {
         $this->nullableChanged();
         $this->secondTaxName = $secondTaxName;
+
         return $this;
     }
 
@@ -137,6 +145,7 @@ class FeeData extends ArrayableData
     {
         $this->nullableChanged();
         $this->secondTaxPercent = $secondTaxPercent;
+
         return $this;
     }
 
@@ -147,6 +156,7 @@ class FeeData extends ArrayableData
     public function setType(LatePaymentFeeType $type): FeeData
     {
         $this->type = $type;
+
         return $this;
     }
 
@@ -157,6 +167,7 @@ class FeeData extends ArrayableData
     public function setValue(float $value): FeeData
     {
         $this->value = $value;
+
         return $this;
     }
 }

@@ -8,7 +8,8 @@
 
 namespace ZEROSPAM\Freshbooks\Request\Data\Tax;
 
-use ZEROSPAM\Freshbooks\Request\Data\ArrayableData;
+
+use ZEROSPAM\Framework\SDK\Utils\Data\ArrayableData;
 
 class TaxData extends ArrayableData
 {

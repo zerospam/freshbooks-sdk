@@ -8,7 +8,7 @@
 
 namespace ZEROSPAM\Freshbooks\Request\Data\Client\LatePayment;
 
-use ZEROSPAM\Freshbooks\Request\Data\ArrayableData;
+use ZEROSPAM\Framework\SDK\Utils\Data\ArrayableData;
 
 class ReminderData extends ArrayableData
 {

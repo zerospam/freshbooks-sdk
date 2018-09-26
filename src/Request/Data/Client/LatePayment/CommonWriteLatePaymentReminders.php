@@ -8,9 +8,6 @@
 
 namespace ZEROSPAM\Freshbooks\Request\Data\Client\LatePayment;
 
-use ZEROSPAM\Freshbooks\Business\LatePaymentFee;
-use ZEROSPAM\Freshbooks\Business\LatePaymentReminder;
-
 /**
  * Trait CommonWriteLatePayment
  *
@@ -46,30 +43,6 @@ trait CommonWriteLatePaymentReminders
      * @return self
      */
     public function setLateFee(FeeData $lateFee)
-    {
-        $this->lateFee = $lateFee;
-
-        return $this;
-    }
-
-    /**
-     * @param LatePaymentReminder[] $lateReminders
-     *
-     * @return self
-     */
-    public function setLateRemindersFromResponse(array $lateReminders)
-    {
-        $this->lateReminders = $lateReminders;
-
-        return $this;
-    }
-
-    /**
-     * @param LatePaymentFee $lateFee
-     *
-     * @return self
-     */
-    public function setLateFeeFromResponse(LatePaymentFee $lateFee)
     {
         $this->lateFee = $lateFee;
 
