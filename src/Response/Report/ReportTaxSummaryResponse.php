@@ -25,7 +25,8 @@ use ZEROSPAM\Freshbooks\Business\Report\TaxSummary\Tax;
  * @property-read string       $download_token
  * @property-read bool         $cash_based
  * @property-read Carbon       $start_date
- * @property-read CurrencyEnum $currency_code
+ * @property-read string       $currency_code @deprecated
+ * @property-read CurrencyEnum $currency
  *
  * @package ZEROSPAM\Freshbooks\Request\Data\Report
  */
@@ -54,5 +55,13 @@ class ReportTaxSummaryResponse extends BaseResponse
     public function getTotalInvoicedAttribute(): Amount
     {
         return new Amount($this->data()['total_invoiced']);
+    }
+
+    /**
+     * @return CurrencyEnum
+     */
+    public function getCurrencyAttribute(): CurrencyEnum
+    {
+        return CurrencyEnum::byValueInsensitive($this->data['currency_code']);
     }
 }

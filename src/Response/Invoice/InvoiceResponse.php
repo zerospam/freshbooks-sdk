@@ -11,6 +11,7 @@ namespace ZEROSPAM\Freshbooks\Response\Invoice;
 use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
 use ZEROSPAM\Freshbooks\Business\Amount;
+use ZEROSPAM\Freshbooks\Business\Enums\Currency\CurrencyEnum;
 use ZEROSPAM\Freshbooks\Business\Enums\Invoice\InvoiceStatusEnum;
 use ZEROSPAM\Freshbooks\Business\Enums\Language\LanguageEnum;
 use ZEROSPAM\Freshbooks\Business\InvoiceLine;
@@ -70,7 +71,8 @@ use ZEROSPAM\Freshbooks\Business\InvoiceLine;
  * @property-read Carbon|null        $date_paid
  * @property-read Amount             $amount
  * @property-read string             $city
- * @property-read string             $currency_code
+ * @property-read string             $currency_code @deprecated
+ * @property-read CurrencyEnum       $currency
  * @property-read int                $sentid
  * @property-read string|null        $autobill_status
  * @property-read string|null        $return_uri
@@ -186,5 +188,13 @@ class InvoiceResponse extends BaseResponse
             },
             $this->data['lines']
         );
+    }
+
+    /**
+     * @return CurrencyEnum
+     */
+    public function getCurrencyAttribute(): CurrencyEnum
+    {
+        return CurrencyEnum::byValueInsensitive($this->data['currency_code']);
     }
 }

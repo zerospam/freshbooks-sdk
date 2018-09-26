@@ -15,13 +15,17 @@ use ZEROSPAM\Freshbooks\Business\Enums\Currency\CurrencyEnum;
  * Class Amount
  *
  * @property-read string       $amount
- * @property-read CurrencyEnum $code
+ * @property-read string       $code @deprecated
+ * @property-read CurrencyEnum $currency
  *
  * @package ZEROSPAM\Freshbooks\Business
  */
 class Amount extends BaseResponse
 {
-    public function getCodeAttribute(): CurrencyEnum
+    /**
+     * @return CurrencyEnum
+     */
+    public function getCurrencyAttribute(): CurrencyEnum
     {
         return CurrencyEnum::byValueInsensitive($this->data()['code']);
     }

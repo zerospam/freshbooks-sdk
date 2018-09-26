@@ -130,7 +130,8 @@ JSON;
         $this->assertEquals("Kansas", $response->province);
         $this->assertFalse($response->gmail);
         $this->assertEquals("11.49", $response->outstanding->amount);
-        $this->assertTrue($response->outstanding->code->is(CurrencyEnum::USD()));
+        $this->assertTrue($response->outstanding->currency->is(CurrencyEnum::USD()));
+        $this->assertEquals('USD', $response->outstanding->code);
         $this->assertInstanceOf(Carbon::class, $response->due_date);
         $this->assertEquals("2018-08-09", $response->due_date->toDateString());
         $this->assertNull($response->lines);
@@ -323,6 +324,8 @@ JSON;
         $this->assertEquals(1, $response->getMetaData()->pages);
         $this->assertInstanceOf(InvoiceResponse::class, $response[0]);
         $this->assertEquals("Testing cool", $response[0]->current_organization);
+        $this->assertEquals('USD', $response[0]->currency_code);
+        $this->assertTrue($response[0]->currency->is(CurrencyEnum::USD()));
         $this->assertEquals("10% discount: blah blah", $response[1]->terms);
         $this->assertEquals("-2.97", $response[1]->discount_total->amount);
 
@@ -460,7 +463,8 @@ JSON;
         $this->assertEquals("Kansas", $response->province);
         $this->assertFalse($response->gmail);
         $this->assertEquals("11.49", $response->outstanding->amount);
-        $this->assertTrue($response->outstanding->code->is(CurrencyEnum::USD()));
+        $this->assertTrue($response->outstanding->currency->is(CurrencyEnum::USD()));
+        $this->assertEquals('USD', $response->outstanding->code);
         $this->assertInstanceOf(Carbon::class, $response->due_date);
         $this->assertEquals("2018-08-09", $response->due_date->toDateString());
         $this->assertCount(1, $response->lines);
@@ -531,7 +535,7 @@ JSON;
     "discount_description": "This is a 15% discount",
     "po_number": "121",
     "template": "template",
-    "currency_code": "cad",
+    "currency_code": "CAD",
     "language": "fr",
     "terms": "You must follow these terms",
     "notes": "There are some notes here",
@@ -558,7 +562,7 @@ JSON;
         "qty": 3,
         "unit_cost": {
             "amount": "9.99",
-            "code": "cad"
+            "code": "CAD"
         },
         "description": "Description of the item",
         "name": "Item name",
@@ -572,7 +576,7 @@ JSON;
         "qty": 1,
         "unit_cost": {
             "amount": "4.99",
-            "code": "cad"
+            "code": "CAD"
         },
         "description": "Other description",
         "name": "Item again"
@@ -586,7 +590,7 @@ JSON;
                 ->setType(2)
                 ->setExpenseid(0)
                 ->setQty(3)
-                ->setUnitCost((new AmountData)->setAmount("9.99")->setCode(CurrencyEnum::CAD()))
+                ->setUnitCost((new AmountData)->setAmount("9.99")->setCode('CAD'))
                 ->setDescription("Description of the item")
                 ->setName("Item name")
                 ->setTaxName1("tax1")
@@ -597,7 +601,7 @@ JSON;
                 ->setType(1)
                 ->setExpenseid(5)
                 ->setQty(1)
-                ->setUnitCost((new AmountData)->setAmount("4.99")->setCode(CurrencyEnum::CAD()))
+                ->setUnitCost((new AmountData)->setAmount("4.99")->setCode('CAD'))
                 ->setDescription("Other description")
                 ->setName("Item again"),
         ];
@@ -617,7 +621,8 @@ JSON;
             ->setDiscountDescription("This is a 15% discount")
             ->setPoNumber("121")
             ->setTemplate("template")
-            ->setCurrencyCode(CurrencyEnum::CAD())
+            ->setCurrencyCode('CAD')
+            ->setCurrency(CurrencyEnum::CAD())
             ->setLanguage(LanguageEnum::FR())
             ->setTerms("You must follow these terms")
             ->setNotes("There are some notes here")
@@ -677,7 +682,7 @@ JSON;
     "discount_description": "This is a 15% discount",
     "po_number": "121",
     "template": "template",
-    "currency_code": "cad",
+    "currency_code": "CAD",
     "language": "fr",
     "terms": "You must follow these terms",
     "notes": "There are some notes here",
@@ -704,7 +709,7 @@ JSON;
         "qty": 3,
         "unit_cost": {
             "amount": "9.99",
-            "code": "cad"
+            "code": "CAD"
         },
         "description": "Description of the item",
         "name": "Item name",
@@ -718,7 +723,7 @@ JSON;
         "qty": 1,
         "unit_cost": {
             "amount": "4.99",
-            "code": "cad"
+            "code": "CAD"
         },
         "description": "Other description",
         "name": "Item again"
@@ -732,7 +737,7 @@ JSON;
                 ->setType(2)
                 ->setExpenseid(0)
                 ->setQty(3)
-                ->setUnitCost((new AmountData)->setAmount("9.99")->setCode(CurrencyEnum::CAD()))
+                ->setUnitCost((new AmountData)->setAmount("9.99")->setCode('CAD'))
                 ->setDescription("Description of the item")
                 ->setName("Item name")
                 ->setTaxName1("tax1")
@@ -743,7 +748,7 @@ JSON;
                 ->setType(1)
                 ->setExpenseid(5)
                 ->setQty(1)
-                ->setUnitCost((new AmountData)->setAmount("4.99")->setCode(CurrencyEnum::CAD()))
+                ->setUnitCost((new AmountData)->setAmount("4.99")->setCode('CAD'))
                 ->setDescription("Other description")
                 ->setName("Item again"),
         ];
@@ -761,7 +766,8 @@ JSON;
             ->setDiscountDescription("This is a 15% discount")
             ->setPoNumber("121")
             ->setTemplate("template")
-            ->setCurrencyCode(CurrencyEnum::CAD())
+            ->setCurrencyCode('CAD')
+            ->setCurrency(CurrencyEnum::CAD())
             ->setLanguage(LanguageEnum::FR())
             ->setTerms("You must follow these terms")
             ->setNotes("There are some notes here")

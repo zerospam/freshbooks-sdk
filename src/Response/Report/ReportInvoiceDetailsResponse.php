@@ -28,7 +28,8 @@ use ZEROSPAM\Freshbooks\Business\Report\InvoiceDetails\Summary;
  * @property-read string                 $download_token
  * @property-read string                 $company_name
  * @property-read Carbon                 $start_date
- * @property-read CurrencyEnum           $currency_code
+ * @property-read string                 $currency_code @deprecated
+ * @property-read CurrencyEnum           $currency
  *
  * @package ZEROSPAM\Freshbooks\Request\Data\Report
  */
@@ -67,7 +68,7 @@ class ReportInvoiceDetailsResponse extends BaseResponse
     /**
      * @return CurrencyEnum
      */
-    public function getCurrencyCodeAttribute(): CurrencyEnum
+    public function getCurrencyAttribute(): CurrencyEnum
     {
         return CurrencyEnum::byValueInsensitive($this->data['currency_code']);
     }

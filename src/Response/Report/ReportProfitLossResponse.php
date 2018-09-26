@@ -30,7 +30,8 @@ use ZEROSPAM\Freshbooks\Business\Report\ProfitLoss\Entry;
  * @property-read Entry        $total_expenses
  * @property-read string|null  $resolution
  * @property-read Carbon       $start_date
- * @property-read CurrencyEnum $currency_code
+ * @property-read string       $currency_code @deprecated
+ * @property-read CurrencyEnum $currency
  *
  * @package ZEROSPAM\Freshbooks\Request\Data\Report
  */
@@ -99,5 +100,13 @@ class ReportProfitLossResponse extends BaseResponse
     public function getTotalExpensesAttribute(): Entry
     {
         return new Entry($this->data()['total_expenses']);
+    }
+
+    /**
+     * @return CurrencyEnum
+     */
+    public function getCurrencyAttribute(): CurrencyEnum
+    {
+        return CurrencyEnum::byValueInsensitive($this->data['currency_code']);
     }
 }

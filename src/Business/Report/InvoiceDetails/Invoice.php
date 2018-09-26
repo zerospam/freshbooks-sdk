@@ -33,7 +33,8 @@ use ZEROSPAM\Freshbooks\Business\Enums\Currency\CurrencyEnum;
  * @property-read string              $invoice_number
  * @property-read Amount              $total
  * @property-read Amount              $subtotal
- * @property-read CurrencyEnum        $currency_code
+ * @property-read string              $currency_code @deprecated
+ * @property-read CurrencyEnum        $currency
  *
  * @package ZEROSPAM\Freshbooks\Business\Report\InvoiceDetails
  */
@@ -137,7 +138,7 @@ class Invoice extends BaseResponse
     /**
      * @return CurrencyEnum
      */
-    public function getCurrencyCodeAttribute(): CurrencyEnum
+    public function getCurrencyAttribute(): CurrencyEnum
     {
         return CurrencyEnum::byValueInsensitive($this->data['currency_code']);
     }

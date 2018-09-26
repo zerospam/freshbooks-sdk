@@ -44,7 +44,8 @@ use ZEROSPAM\Freshbooks\Business\InvoiceLine;
  * @property-read string             $description
  * @property-read string             $vat_name
  * @property-read string             $street2
- * @property-read CurrencyEnum       $currency_code
+ * @property-read string             $currency_code @deprecated
+ * @property-read CurrencyEnum       $currency
  * @property-read bool               $disable
  * @property-read string             $address
  * @property-read string             $accounting_systemid
@@ -118,7 +119,7 @@ class InvoiceProfileResponse extends BaseResponse
      *
      * @return CurrencyEnum
      */
-    public function getCurrencyCodeAttribute(): CurrencyEnum
+    public function getCurrencyAttribute(): CurrencyEnum
     {
         return CurrencyEnum::byValueInsensitive($this->data['currency_code']);
     }

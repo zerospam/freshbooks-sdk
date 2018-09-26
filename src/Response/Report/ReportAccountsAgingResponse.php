@@ -24,7 +24,8 @@ use ZEROSPAM\Freshbooks\Business\Report\AccountsAging\Account;
  * @property-read string       $download_token
  * @property-read Account[]    $accounts
  * @property-read string       $company_name
- * @property-read CurrencyEnum $currency_code
+ * @property-read string       $currency_code @deprecated
+ * @property-read CurrencyEnum $currency
  *
  * @package ZEROSPAM\Freshbooks\Request\Data\Report
  */
@@ -68,7 +69,7 @@ class ReportAccountsAgingResponse extends BaseResponse
     /**
      * @return CurrencyEnum
      */
-    public function getCurrencyCodeAttribute(): CurrencyEnum
+    public function getCurrencyAttribute(): CurrencyEnum
     {
         return CurrencyEnum::byValueInsensitive($this->data['currency_code']);
     }

@@ -166,7 +166,8 @@ JSON;
         $this->assertEquals("Suite 4", $response->street2);
         $this->assertTrue($response->disable);
         $this->assertEquals("-0.72", $response->discount_total->amount);
-        $this->assertTrue($response->discount_total->code->is(CurrencyEnum::CAD()));
+        $this->assertTrue($response->discount_total->currency->is(CurrencyEnum::CAD()));
+        $this->assertEquals('CAD', $response->discount_total->code);
         $this->assertEquals("1 Main Street", $response->address);
         $this->assertNull($response->total_accrued_revenue);
         $this->assertEquals(165113, $response->customerid);
@@ -181,11 +182,13 @@ JSON;
         $this->assertTrue($response->include_unbilled_time);
         $this->assertEquals(5283, $response->profileid);
         $this->assertEquals("13.71", $response->amount->amount);
-        $this->assertTrue($response->amount->code->is(CurrencyEnum::CAD()));
+        $this->assertTrue($response->amount->currency->is(CurrencyEnum::CAD()));
+        $this->assertEquals('CAD', $response->amount->code);
         $this->assertEquals("2w", $response->frequency);
         $this->assertEquals("Details of the payments", $response->payment_details);
         $this->assertEquals("Organization Co.", $response->organization);
-        $this->assertTrue($response->currency_code->is(CurrencyEnum::CAD()));
+        $this->assertTrue($response->currency->is(CurrencyEnum::CAD()));
+        $this->assertEquals('CAD', $response->currency_code);
         $this->assertEquals(2, count($response->lines));
         $this->assertEquals("5.99", $response->lines[0]->unit_cost->amount);
         $this->assertEquals("2", $response->lines[0]->qty);
@@ -400,7 +403,7 @@ JSON;
 		"terms": "The terms",
 		"vat_name": "vat name",
 		"street2": "street2",
-		"currency_code": "cad",
+		"currency_code": "CAD",
 		"disable": true,
 		"address": "address",
 		"organization": "org inc",
@@ -421,7 +424,7 @@ JSON;
 			"qty": 2,
 			"unit_cost": {
 				"amount": "5.99",
-				"code": "cad"
+				"code": "CAD"
 			},
 			"description": "Description of the item",
 			"name": "item name"
@@ -431,7 +434,7 @@ JSON;
 			"qty": 5,
 			"unit_cost": {
 				"amount": "0.49",
-				"code": "cad"
+				"code": "CAD"
 			},
 			"description": "The description",
 			"name": "item name2",
@@ -458,13 +461,13 @@ JSON;
             (new InvoiceLineData)
                 ->setType(0)
                 ->setQty(2)
-                ->setUnitCost((new AmountData)->setAmount("5.99")->setCode(CurrencyEnum::CAD()))
+                ->setUnitCost((new AmountData)->setAmount("5.99")->setCode('CAD'))
                 ->setDescription("Description of the item")
                 ->setName("item name"),
             (new InvoiceLineData)
                 ->setType(0)
                 ->setQty(5)
-                ->setUnitCost((new AmountData)->setAmount("0.49")->setCode(CurrencyEnum::CAD()))
+                ->setUnitCost((new AmountData)->setAmount("0.49")->setCode('CAD'))
                 ->setDescription("The description")
                 ->setName("item name2")
                 ->setTaxName1("tax1")
@@ -489,7 +492,8 @@ JSON;
             ->setTerms("The terms")
             ->setVatName("vat name")
             ->setStreet2("street2")
-            ->setCurrencyCode(CurrencyEnum::CAD())
+            ->setCurrencyCode('CAD')
+            ->setCurrency(CurrencyEnum::CAD())
             ->setDisable(true)
             ->setAddress("address")
             ->setOrganization("org inc")
@@ -536,7 +540,7 @@ JSON;
 		"terms": "The terms",
 		"vat_name": "vat name",
 		"street2": "street2",
-		"currency_code": "cad",
+		"currency_code": "CAD",
 		"disable": true,
 		"address": "address",
 		"organization": "org inc",
@@ -557,7 +561,7 @@ JSON;
 			"qty": 2,
 			"unit_cost": {
 				"amount": "5.99",
-				"code": "cad"
+				"code": "CAD"
 			},
 			"description": "Description of the item",
 			"name": "item name"
@@ -567,7 +571,7 @@ JSON;
 			"qty": 5,
 			"unit_cost": {
 				"amount": "0.49",
-				"code": "cad"
+				"code": "CAD"
 			},
 			"description": "The description",
 			"name": "item name2",
@@ -594,13 +598,13 @@ JSON;
             (new InvoiceLineData)
                 ->setType(0)
                 ->setQty(2)
-                ->setUnitCost((new AmountData)->setAmount("5.99")->setCode(CurrencyEnum::CAD()))
+                ->setUnitCost((new AmountData)->setAmount("5.99")->setCode('CAD'))
                 ->setDescription("Description of the item")
                 ->setName("item name"),
             (new InvoiceLineData)
                 ->setType(0)
                 ->setQty(5)
-                ->setUnitCost((new AmountData)->setAmount("0.49")->setCode(CurrencyEnum::CAD()))
+                ->setUnitCost((new AmountData)->setAmount("0.49")->setCode('CAD'))
                 ->setDescription("The description")
                 ->setName("item name2")
                 ->setTaxName1("tax1")
@@ -625,7 +629,8 @@ JSON;
             ->setTerms("The terms")
             ->setVatName("vat name")
             ->setStreet2("street2")
-            ->setCurrencyCode(CurrencyEnum::CAD())
+            ->setCurrencyCode('CAD')
+            ->setCurrency(CurrencyEnum::CAD())
             ->setDisable(true)
             ->setAddress("address")
             ->setOrganization("org inc")

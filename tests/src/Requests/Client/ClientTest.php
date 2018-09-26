@@ -58,13 +58,15 @@ JSON;
         $client  = $this->preSuccess($json);
         $request = new ClientReadRequest();
         $request->setAccountId('id')
-            ->setClientId(103807);
+                ->setClientId(103807);
         $client->getOAuthTestClient()->processRequest($request);
 
         $this->validateUrl($client, [103807]);
         $response = $request->getResponse();
         $this->assertEquals(103807, $response->id);
         $this->assertEquals("Test", $response->lname);
+        $this->assertEquals('CAD', $response->currency_code);
+        $this->assertTrue($response->currency->is(CurrencyEnum::CAD()));
         $this->assertEquals(0, $response->numLogins);
     }
 
@@ -78,7 +80,7 @@ JSON;
         "bus_phone": "555 555 5555",
         "company_industry": "Construction",
         "company_size": "medium",
-        "currency_code": "usd",
+        "currency_code": "USD",
         "email": "email@example.com",
         "fax": "666 666 6666",
         "fname": "John",
@@ -213,10 +215,10 @@ JSON;
 
         $reminders = [
             (new ReminderData)
-            ->setBody("Please pay ASAP")
-            ->setDelay(-3)
-            ->setEnabled(true)
-            ->setPosition(1)
+                ->setBody("Please pay ASAP")
+                ->setDelay(-3)
+                ->setEnabled(true)
+                ->setPosition(1)
         ];
 
         $feeData = (new FeeData)
@@ -237,7 +239,8 @@ JSON;
             ->setBusPhone("555 555 5555")
             ->setCompanyIndustry("Construction")
             ->setCompanySize("medium")
-            ->setCurrencyCode(CurrencyEnum::USD())
+            ->setCurrencyCode('USD')
+            ->setCurrency(CurrencyEnum::USD())
             ->setEmail("email@example.com")
             ->setFax("666 666 6666")
             ->setFname("John")
@@ -282,7 +285,7 @@ JSON;
         $this->assertFalse($response->pref_gmail);
 
         $lateReminders = $response->late_reminders;
-        $lateReminder = $lateReminders[0];
+        $lateReminder  = $lateReminders[0];
 
         $this->assertEquals(1, count($lateReminders));
 
@@ -312,7 +315,7 @@ JSON;
 
     public function testUpdateClient(): void
     {
-        $jsonRequest = <<<JSON
+        $jsonRequest  = <<<JSON
 {
     "client": {
         "allow_late_fees": true,
@@ -438,7 +441,7 @@ JSON;
     }
 }
 JSON;
-        $client  = $this->preSuccess($jsonResponse);
+        $client       = $this->preSuccess($jsonResponse);
 
         $reminders = [
             (new ReminderData)

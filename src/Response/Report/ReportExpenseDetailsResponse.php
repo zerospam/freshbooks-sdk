@@ -27,7 +27,8 @@ use ZEROSPAM\Freshbooks\Business\Report\ExpenseDetails\ExpenseDetailsData;
  * @property-read string                 $download_token
  * @property-read string[]               $vendors
  * @property-read string                 $group_by
- * @property-read CurrencyEnum           $currency_code
+ * @property-read string                 $currency_code @deprecated
+ * @property-read CurrencyEnum           $currency
  * @property-read Author[]               $authors
  * @property-read ExpenseDetailsData[]   $data
  * @property-read Carbon                 $start_date
@@ -107,7 +108,7 @@ class ReportExpenseDetailsResponse extends BaseResponse
     /**
      * @return CurrencyEnum
      */
-    public function getCurrencyCodeAttribute(): CurrencyEnum
+    public function getCurrencyAttribute(): CurrencyEnum
     {
         return CurrencyEnum::byValueInsensitive($this->data['currency_code']);
     }

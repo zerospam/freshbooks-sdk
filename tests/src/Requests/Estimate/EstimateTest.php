@@ -101,7 +101,8 @@ JSON;
 
         $this->assertEquals("Quebec", $response->province);
         $this->assertEquals("11.99", $response->amount->amount);
-        $this->assertTrue($response->amount->code->is(CurrencyEnum::EUR()));
+        $this->assertEquals('EUR', $response->amount->code);
+        $this->assertTrue($response->amount->currency->is(CurrencyEnum::EUR()));
         $this->assertInstanceOf(Carbon::class, $response->updated);
         $this->assertInstanceOf(EstimateResponse::class, $response);
         $this->assertInstanceOf(CurrencyEnum::class, $response->currency_code);
@@ -232,7 +233,8 @@ JSON;
 
         $this->assertEquals("Quebec", $response->province);
         $this->assertEquals("11.99", $response->amount->amount);
-        $this->assertTrue($response->amount->code->is(CurrencyEnum::EUR()));
+        $this->assertEquals('EUR', $response->amount->code);
+        $this->assertTrue($response->amount->currency->is(CurrencyEnum::EUR()));
         $this->assertCount(2, $response->lines);
 
         $line = $response->lines[0];
@@ -333,7 +335,7 @@ JSON;
     "discount_value": "5",
     "po_number": "H0H 0H0",
     "template": "clean-grouped",
-    "currency_code": "cad",
+    "currency_code": "CAD",
     "language": "en",
     "terms": "Terms and conditions",
     "notes": "Notes to the client",
@@ -361,7 +363,8 @@ JSON;
             ->setDiscountValue("5")
             ->setPoNumber("H0H 0H0")
             ->setTemplate("clean-grouped")
-            ->setCurrencyCode(CurrencyEnum::CAD())
+            ->setCurrencyCode('CAD')
+            ->setCurrency(CurrencyEnum::CAD())
             ->setLanguage(LanguageEnum::EN())
             ->setTerms("Terms and conditions")
             ->setNotes("Notes to the client")
@@ -391,7 +394,8 @@ JSON;
               ->setUnitCost(
                   (new AmountData())
                       ->setAmount('1000')
-                      ->setCode(CurrencyEnum::CAD())
+                      ->setCode('CAD')
+                      ->setCurrency(CurrencyEnum::CAD())
               );
 
         $estimate->setLines([$line1]);

@@ -19,7 +19,8 @@ use ZEROSPAM\Freshbooks\Business\Report\PaymentsCollected\Payment;
  *
  * Payments collected report response
  *
- * @property-read CurrencyEnum[] $currency_codes
+ * @property-read string[]       $currency_codes @deprecated
+ * @property-read CurrencyEnum[] $currencies
  * @property-read Carbon         $end_date
  * @property-read int[]          $clientids
  * @property-read string[]       $payment_methods
@@ -70,7 +71,7 @@ class ReportPaymentsCollectedResponse extends BaseResponse
     /**
      * @return array|CurrencyEnum[]
      */
-    public function getCurrencyCodesAttribute(): array
+    public function getCurrenciesAttribute(): array
     {
         return array_map(function ($item) {
             CurrencyEnum::byValueInsensitive($item);
