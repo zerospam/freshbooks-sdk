@@ -239,7 +239,6 @@ JSON;
             ->setBusPhone("555 555 5555")
             ->setCompanyIndustry("Construction")
             ->setCompanySize("medium")
-            ->setCurrencyCode('USD')
             ->setCurrency(CurrencyEnum::USD())
             ->setEmail("email@example.com")
             ->setFax("666 666 6666")
@@ -323,7 +322,7 @@ JSON;
         "bus_phone": "555 555 5555",
         "company_industry": "Construction",
         "company_size": "medium",
-        "currency_code": "usd",
+        "currency_code": "USD",
         "email": "email@example.com",
         "fax": "666 666 6666",
         "fname": "John",
@@ -464,7 +463,8 @@ JSON;
             ->setBusPhone("555 555 5555")
             ->setCompanyIndustry("Construction")
             ->setCompanySize("medium")
-            ->setCurrencyCode(CurrencyEnum::USD())
+            ->setCurrencyCode('USD')
+            ->setCurrency(CurrencyEnum::USD())
             ->setEmail("email@example.com")
             ->setFax("666 666 6666")
             ->setFname("John")

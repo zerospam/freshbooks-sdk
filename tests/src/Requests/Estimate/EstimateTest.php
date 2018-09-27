@@ -363,7 +363,6 @@ JSON;
             ->setDiscountValue("5")
             ->setPoNumber("H0H 0H0")
             ->setTemplate("clean-grouped")
-            ->setCurrencyCode('CAD')
             ->setCurrency(CurrencyEnum::CAD())
             ->setLanguage(LanguageEnum::EN())
             ->setTerms("Terms and conditions")
@@ -394,7 +393,6 @@ JSON;
               ->setUnitCost(
                   (new AmountData())
                       ->setAmount('1000')
-                      ->setCode('CAD')
                       ->setCurrency(CurrencyEnum::CAD())
               );
 

@@ -16,14 +16,8 @@ class AmountData extends ArrayableData
     /** @var string */
     private $amount;
 
-    /**
-     * @deprecated
-     * @var string
-     */
+    /** @var string */
     private $code;
-
-    /** @var CurrencyEnum */
-    private $currency;
 
     /**
      * @param string $amount
@@ -58,7 +52,7 @@ class AmountData extends ArrayableData
      */
     public function setCurrency(CurrencyEnum $currency): AmountData
     {
-        $this->currency = $currency;
+        $this->code = $currency->getValue();
 
         return $this;
     }

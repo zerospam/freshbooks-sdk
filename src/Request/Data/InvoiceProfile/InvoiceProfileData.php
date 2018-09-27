@@ -61,14 +61,8 @@ class InvoiceProfileData extends ArrayableData
     /** @var string */
     private $street2;
 
-    /**
-     * @deprecated
-     * @var string
-     */
+    /** @var string */
     private $currencyCode;
-
-    /** @var CurrencyEnum */
-    private $currency;
 
     /** @var bool */
     private $disable;
@@ -307,7 +301,7 @@ class InvoiceProfileData extends ArrayableData
      */
     public function setCurrency(CurrencyEnum $currency): InvoiceProfileData
     {
-        $this->currency = $currency;
+        $this->currencyCode = $currency->getValue();
         return $this;
     }
 
@@ -433,11 +427,11 @@ class InvoiceProfileData extends ArrayableData
     }
 
     /**
-     * @param CurrencyEnum $code
+     * @param string $code
      *
      * @return $this
      */
-    public function setCode(CurrencyEnum $code): InvoiceProfileData
+    public function setCode(string $code): InvoiceProfileData
     {
         $this->code = $code;
         return $this;

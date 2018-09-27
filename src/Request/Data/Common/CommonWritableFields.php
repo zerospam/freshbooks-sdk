@@ -32,14 +32,8 @@ trait CommonWritableFields
     /** @var string */
     private $template;
 
-    /**
-     * @var string
-     * @deprecated
-     */
+    /** @var string */
     private $currencyCode;
-
-    /** @var CurrencyEnum */
-    private $currency;
 
     /** @var string */
     private $language;
@@ -168,7 +162,7 @@ trait CommonWritableFields
      */
     public function setCurrency(CurrencyEnum $enum)
     {
-        $this->currency = $enum;
+        $this->currencyCode = $enum->getValue();
         return $this;
     }
 

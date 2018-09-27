@@ -74,7 +74,7 @@ class ReportPaymentsCollectedResponse extends BaseResponse
     public function getCurrenciesAttribute(): array
     {
         return array_map(function ($item) {
-            CurrencyEnum::byValueInsensitive($item);
+            CurrencyEnum::get($item);
         }, $this->data['currency_codes']);
     }
 }

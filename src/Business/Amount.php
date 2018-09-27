@@ -27,6 +27,6 @@ class Amount extends BaseResponse
      */
     public function getCurrencyAttribute(): CurrencyEnum
     {
-        return CurrencyEnum::byValueInsensitive($this->data()['code']);
+        return CurrencyEnum::get($this->data()['code']);
     }
 }

@@ -10,15 +10,13 @@ namespace ZEROSPAM\Freshbooks\Business\Enums\Currency;
 
 
 use MabeEnum\Enum;
-use ZEROSPAM\Framework\SDK\Utils\Contracts\Enums\EnumToStringLowerTrait;
-use ZEROSPAM\Framework\SDK\Utils\Contracts\Enums\IEnumInsensitive;
 use ZEROSPAM\Framework\SDK\Utils\Contracts\Impl\PrimalValuedEnumTrait;
 use ZEROSPAM\Framework\SDK\Utils\Contracts\PrimalValued;
 
 /**
  * Class CurrencyEnum
  *
- * @method static CurrencyEnum CAD();
+ * @method static CurrencyEnum CAD()
  * @method static CurrencyEnum USD()
  * @method static CurrencyEnum EUR()
  *
@@ -26,12 +24,11 @@ use ZEROSPAM\Framework\SDK\Utils\Contracts\PrimalValued;
  *
  * @package ZEROSPAM\Freshbooks\Business\Enums
  */
-class CurrencyEnum extends Enum implements PrimalValued, IEnumInsensitive
+class CurrencyEnum extends Enum implements PrimalValued
 {
-    use PrimalValuedEnumTrait,
-        EnumToStringLowerTrait;
+    use PrimalValuedEnumTrait;
 
-    const CAD = 'cad';
-    const USD = 'usd';
-    const EUR = 'eur';
+    const CAD = 'CAD';
+    const USD = 'USD';
+    const EUR = 'EUR';
 }

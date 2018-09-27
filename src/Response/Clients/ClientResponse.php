@@ -119,6 +119,6 @@ class ClientResponse extends BaseResponse
      */
     public function getCurrencyAttribute(): CurrencyEnum
     {
-        return CurrencyEnum::byValueInsensitive($this->data()['currency_code']);
+        return CurrencyEnum::get($this->data()['currency_code']);
     }
 }

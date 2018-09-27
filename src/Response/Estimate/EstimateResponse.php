@@ -94,7 +94,7 @@ class EstimateResponse extends BaseResponse
      */
     public function getCurrencyCodeAttribute(): CurrencyEnum
     {
-        return CurrencyEnum::byValueInsensitive($this->data['currency_code']);
+        return CurrencyEnum::get($this->data['currency_code']);
     }
 
     /**

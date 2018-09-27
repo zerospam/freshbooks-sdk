@@ -417,7 +417,7 @@ JSON;
 		"payment_details": "The details",
 		"discount_value": "5",
 		"auto_bill": true,
-		"code": "cad",
+		"code": "CAD",
 		"require_auto_bill": false, 
 		"lines": [{
 			"type": 0,
@@ -461,7 +461,7 @@ JSON;
             (new InvoiceLineData)
                 ->setType(0)
                 ->setQty(2)
-                ->setUnitCost((new AmountData)->setAmount("5.99")->setCode('CAD'))
+                ->setUnitCost((new AmountData)->setAmount("5.99")->setCurrency(CurrencyEnum::CAD()))
                 ->setDescription("Description of the item")
                 ->setName("item name"),
             (new InvoiceLineData)
@@ -492,8 +492,8 @@ JSON;
             ->setTerms("The terms")
             ->setVatName("vat name")
             ->setStreet2("street2")
-            ->setCurrencyCode('CAD')
             ->setCurrency(CurrencyEnum::CAD())
+            ->setCode('CAD')
             ->setDisable(true)
             ->setAddress("address")
             ->setOrganization("org inc")
@@ -507,7 +507,7 @@ JSON;
             ->setPaymentDetails("The details")
             ->setDiscountValue("5")
             ->setAutoBill(true)
-            ->setCode(CurrencyEnum::CAD())
+            ->setCode('CAD')
             ->setRequireAutoBill(false)
             ->setLines($lines);
 
@@ -554,7 +554,7 @@ JSON;
 		"payment_details": "The details",
 		"discount_value": "5",
 		"auto_bill": true,
-		"code": "cad",
+		"code": "CAD",
 		"require_auto_bill": false, 
 		"lines": [{
 			"type": 0,
@@ -629,7 +629,6 @@ JSON;
             ->setTerms("The terms")
             ->setVatName("vat name")
             ->setStreet2("street2")
-            ->setCurrencyCode('CAD')
             ->setCurrency(CurrencyEnum::CAD())
             ->setDisable(true)
             ->setAddress("address")
@@ -644,7 +643,7 @@ JSON;
             ->setPaymentDetails("The details")
             ->setDiscountValue("5")
             ->setAutoBill(true)
-            ->setCode(CurrencyEnum::CAD())
+            ->setCode('CAD')
             ->setRequireAutoBill(false)
             ->setLines($lines);
 

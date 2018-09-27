@@ -38,14 +38,8 @@ class ClientData extends ArrayableData
     /** @var string|null */
     private $companySize;
 
-    /**
-     * @var string
-     * @deprecated
-     */
+    /** @var string */
     private $currencyCode;
-
-    /** @var CurrencyEnum */
-    private $currency;
 
     /** @var string */
     private $email;
@@ -199,7 +193,7 @@ class ClientData extends ArrayableData
      */
     public function setCurrency(CurrencyEnum $currency): ClientData
     {
-        $this->currency = $currency;
+        $this->currencyCode = $currency->getValue();
         return $this;
     }
 
