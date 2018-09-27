@@ -12,11 +12,12 @@ use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Response\Api\EmptyResponse;
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
 use ZEROSPAM\Freshbooks\Business\Enums\Client\Fee\LatePaymentFeeType;
-use ZEROSPAM\Freshbooks\Request\Call\Clients\ClientReadRequest;
-use ZEROSPAM\Freshbooks\Request\Call\Clients\Collection\ClientListReadRequest;
-use ZEROSPAM\Freshbooks\Request\Call\Clients\Collection\ClientCreateRequest;
+use ZEROSPAM\Freshbooks\Business\Enums\Currency\CurrencyEnum;
 use ZEROSPAM\Freshbooks\Request\Call\Clients\ClientDeleteRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Clients\ClientReadRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Clients\ClientUpdateRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Clients\Collection\ClientCreateRequest;
+use ZEROSPAM\Freshbooks\Request\Call\Clients\Collection\ClientListReadRequest;
 use ZEROSPAM\Freshbooks\Request\Data\Client\ClientData;
 use ZEROSPAM\Freshbooks\Request\Data\Client\LatePayment\FeeData;
 use ZEROSPAM\Freshbooks\Request\Data\Client\LatePayment\ReminderData;
@@ -57,13 +58,15 @@ JSON;
         $client  = $this->preSuccess($json);
         $request = new ClientReadRequest();
         $request->setAccountId('id')
-            ->setClientId(103807);
+                ->setClientId(103807);
         $client->getOAuthTestClient()->processRequest($request);
 
         $this->validateUrl($client, [103807]);
         $response = $request->getResponse();
         $this->assertEquals(103807, $response->id);
         $this->assertEquals("Test", $response->lname);
+        $this->assertEquals('CAD', $response->currency_code);
+        $this->assertTrue($response->currency->is(CurrencyEnum::CAD()));
         $this->assertEquals(0, $response->numLogins);
     }
 
@@ -177,7 +180,7 @@ JSON;
                 "s_code": "142857",
                 "organization": "Company Inc.",
                 "p_country": "Billand",
-                "currency_code": "USD",
+                "currency_code": "usd",
                 "late_reminders": [{
                     "body": "Please pay ASAP",
                     "delay": -3,
@@ -212,10 +215,10 @@ JSON;
 
         $reminders = [
             (new ReminderData)
-            ->setBody("Please pay ASAP")
-            ->setDelay(-3)
-            ->setEnabled(true)
-            ->setPosition(1)
+                ->setBody("Please pay ASAP")
+                ->setDelay(-3)
+                ->setEnabled(true)
+                ->setPosition(1)
         ];
 
         $feeData = (new FeeData)
@@ -236,7 +239,7 @@ JSON;
             ->setBusPhone("555 555 5555")
             ->setCompanyIndustry("Construction")
             ->setCompanySize("medium")
-            ->setCurrencyCode("USD")
+            ->setCurrency(CurrencyEnum::USD())
             ->setEmail("email@example.com")
             ->setFax("666 666 6666")
             ->setFname("John")
@@ -281,7 +284,7 @@ JSON;
         $this->assertFalse($response->pref_gmail);
 
         $lateReminders = $response->late_reminders;
-        $lateReminder = $lateReminders[0];
+        $lateReminder  = $lateReminders[0];
 
         $this->assertEquals(1, count($lateReminders));
 
@@ -311,7 +314,7 @@ JSON;
 
     public function testUpdateClient(): void
     {
-        $jsonRequest = <<<JSON
+        $jsonRequest  = <<<JSON
 {
     "client": {
         "allow_late_fees": true,
@@ -437,7 +440,7 @@ JSON;
     }
 }
 JSON;
-        $client  = $this->preSuccess($jsonResponse);
+        $client       = $this->preSuccess($jsonResponse);
 
         $reminders = [
             (new ReminderData)
@@ -460,7 +463,8 @@ JSON;
             ->setBusPhone("555 555 5555")
             ->setCompanyIndustry("Construction")
             ->setCompanySize("medium")
-            ->setCurrencyCode("USD")
+            ->setCurrencyCode('USD')
+            ->setCurrency(CurrencyEnum::USD())
             ->setEmail("email@example.com")
             ->setFax("666 666 6666")
             ->setFname("John")

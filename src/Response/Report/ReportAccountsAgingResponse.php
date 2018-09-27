@@ -11,6 +11,7 @@ namespace ZEROSPAM\Freshbooks\Response\Report;
 use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
 use ZEROSPAM\Freshbooks\Business\Amount;
+use ZEROSPAM\Freshbooks\Business\Enums\Currency\CurrencyEnum;
 use ZEROSPAM\Freshbooks\Business\Report\AccountsAging\Account;
 
 /**
@@ -18,12 +19,13 @@ use ZEROSPAM\Freshbooks\Business\Report\AccountsAging\Account;
  *
  * Accounts aging report response
  *
- * @property-read Carbon    $end_date
- * @property-read Amount[]  $totals
- * @property-read string    $download_token
- * @property-read Account[] $accounts
- * @property-read string    $company_name
- * @property-read string    $currency_code
+ * @property-read Carbon       $end_date
+ * @property-read Amount[]     $totals
+ * @property-read string       $download_token
+ * @property-read Account[]    $accounts
+ * @property-read string       $company_name
+ * @property-read string       $currency_code @deprecated
+ * @property-read CurrencyEnum $currency
  *
  * @package ZEROSPAM\Freshbooks\Request\Data\Report
  */
@@ -62,5 +64,13 @@ class ReportAccountsAgingResponse extends BaseResponse
             },
             $this->data()['accounts']
         );
+    }
+
+    /**
+     * @return CurrencyEnum
+     */
+    public function getCurrencyAttribute(): CurrencyEnum
+    {
+        return CurrencyEnum::get($this->data['currency_code']);
     }
 }

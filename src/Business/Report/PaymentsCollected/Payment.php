@@ -18,13 +18,18 @@ use ZEROSPAM\Freshbooks\Business\Enums\Payment\PaymentMethodEnum;
  *
  * Payments collected report payment
  *
- * @property-read int               $invoiceid
+ * Invoice related information is null case of an overpayment ;
+ * Overpayment payment will be registered as 2 payments by freshbook
+ * 1. First one for the invoice paid part with the related invoice bindings
+ * 2. Second one is overpaid chunk and invoice related values will be null
+ *
+ * @property-read int|null          $invoiceid
  * @property-read string            $description
  * @property-read int               $clientid
  * @property-read Amount            $amount
  * @property-read string            $client
  * @property-read Carbon            $date
- * @property-read string            $invoice_number
+ * @property-read string|null       $invoice_number
  * @property-read PaymentMethodEnum $method
  *
  * @package ZEROSPAM\Freshbooks\Business\Report\PaymentsCollected
