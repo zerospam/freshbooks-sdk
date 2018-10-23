@@ -11,6 +11,7 @@ namespace ZEROSPAM\Freshbooks\Response\Report;
 use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
 use ZEROSPAM\Freshbooks\Business\Amount;
+use ZEROSPAM\Freshbooks\Business\Enums\Currency\CurrencyEnum;
 use ZEROSPAM\Freshbooks\Business\Report\PaymentsCollected\Payment;
 
 /**
@@ -18,14 +19,15 @@ use ZEROSPAM\Freshbooks\Business\Report\PaymentsCollected\Payment;
  *
  * Payments collected report response
  *
- * @property-read string[]  $currency_codes
- * @property-read Carbon    $end_date
- * @property-read int[]     $clientids
- * @property-read string[]  $payment_methods
- * @property-read Amount[]  $totals
- * @property-read string    $download_token
- * @property-read Payment[] $payments
- * @property-read Carbon    $start_date
+ * @property-read string[]       $currency_codes @deprecated
+ * @property-read CurrencyEnum[] $currencies
+ * @property-read Carbon         $end_date
+ * @property-read int[]          $clientids
+ * @property-read string[]       $payment_methods
+ * @property-read Amount[]       $totals
+ * @property-read string         $download_token
+ * @property-read Payment[]      $payments
+ * @property-read Carbon         $start_date
  *
  * @package ZEROSPAM\Freshbooks\Request\Data\Report
  */
@@ -64,5 +66,15 @@ class ReportPaymentsCollectedResponse extends BaseResponse
             },
             $this->data()['payments']
         );
+    }
+
+    /**
+     * @return array|CurrencyEnum[]
+     */
+    public function getCurrenciesAttribute(): array
+    {
+        return array_map(function ($item) {
+            CurrencyEnum::get($item);
+        }, $this->data['currency_codes']);
     }
 }

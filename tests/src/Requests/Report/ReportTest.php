@@ -9,6 +9,7 @@
 namespace ZEROSPAM\Freshbooks\Test\Requests\Report;
 
 use ZEROSPAM\Framework\SDK\Test\Base\TestCase;
+use ZEROSPAM\Freshbooks\Business\Enums\Currency\CurrencyEnum;
 use ZEROSPAM\Freshbooks\Business\Enums\Payment\PaymentMethodEnum;
 use ZEROSPAM\Freshbooks\Request\Call\Report\ReportAccountsAgingReadRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Report\ReportExpenseDetailsReadRequest;
@@ -338,7 +339,8 @@ JSON;
         $this->assertEquals("this download token", $response->download_token);
         $this->assertEquals("Company Inc.", $response->company_name);
         $this->assertEquals("2018-01-01", $response->start_date->toDateString());
-        $this->assertEquals("USD", $response->currency_code);
+        $this->assertTrue($response->currency->is(CurrencyEnum::USD()));
+        $this->assertEquals('USD', $response->currency_code);
 
         // Summary test
         $this->assertEquals("4698.76", $response->summary->total->amount);
@@ -371,7 +373,8 @@ JSON;
         $this->assertEquals("68901804", $invoice->invoice_number);
         $this->assertEquals("550.73", $invoice->total->amount);
         $this->assertEquals("563.53", $invoice->subtotal->amount);
-        $this->assertEquals("USD", $invoice->currency_code);
+        $this->assertEquals('USD', $invoice->currency_code);
+        $this->assertTrue($invoice->currency->is(CurrencyEnum::USD()));
 
         // Client->Invoice->Tax Summary test
         $taxSummary = $invoice->tax_summaries[0];
@@ -517,7 +520,8 @@ JSON;
         $this->assertEquals("A bunch of letters and numbers", $response->download_token);
         $this->assertEquals(2, count($response->vendors));
         $this->assertEquals("category", $response->group_by);
-        $this->assertEquals("CAD", $response->currency_code);
+        $this->assertTrue($response->currency->is(CurrencyEnum::CAD()));
+        $this->assertEquals('CAD', $response->currency_code);
         $this->assertEquals(1, count($response->authors));
         $this->assertEquals(1, count($response->data));
         $this->assertEquals("2017-01-01", $response->start_date->toDateString());
@@ -717,6 +721,7 @@ JSON;
         $this->assertNull($response->resolution);
         $this->assertEquals("2017-01-01", $response->start_date->toDateString());
         $this->assertEquals("CAD", $response->currency_code);
+        $this->assertTrue($response->currency->is(CurrencyEnum::CAD()));
 
         // Net profit test
         $this->assertEquals("credit", $response->net_profit->entry_type);
@@ -841,6 +846,7 @@ JSON;
         $this->assertFalse($response->cash_based);
         $this->assertEquals("2017-01-01", $response->start_date->toDateString());
         $this->assertEquals("CAD", $response->currency_code);
+        $this->assertTrue($response->currency->is(CurrencyEnum::CAD()));
 
         // Taxes test
         $tax = $response->taxes[0];
@@ -903,7 +909,8 @@ JSON;
         $this->assertEquals("2017-12-31", $response->end_date->toDateString());
         $this->assertEquals("Lots of Characters", $response->download_token);
         $this->assertEquals("FB", $response->company_name);
-        $this->assertEquals("CAD", $response->currency_code);
+        $this->assertTrue($response->currency->is(CurrencyEnum::CAD()));
+        $this->assertEquals('CAD', $response->currency_code);
 
         // Totals test
         $totals = $response->totals;
@@ -972,6 +979,8 @@ JSON;
         $this->assertEquals("A lot of characters", $response->download_token);
         $this->assertEquals(1, count($response->payments));
         $this->assertEquals("2017-07-26", $response->start_date->toDateString());
+        $this->assertTrue(empty($response->currency_codes));
+        $this->assertTrue(empty($response->currencies));
 
         // Payments test
         $payment = $response->payments[0];

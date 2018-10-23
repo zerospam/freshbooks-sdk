@@ -10,6 +10,7 @@ namespace ZEROSPAM\Freshbooks\Response\Report;
 
 use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
+use ZEROSPAM\Freshbooks\Business\Enums\Currency\CurrencyEnum;
 use ZEROSPAM\Freshbooks\Business\Report\ExpenseDetails\Author;
 use ZEROSPAM\Freshbooks\Business\Report\ExpenseDetails\Category;
 use ZEROSPAM\Freshbooks\Business\Report\ExpenseDetails\ExpenseDetailsClient;
@@ -26,7 +27,8 @@ use ZEROSPAM\Freshbooks\Business\Report\ExpenseDetails\ExpenseDetailsData;
  * @property-read string                 $download_token
  * @property-read string[]               $vendors
  * @property-read string                 $group_by
- * @property-read string                 $currency_code
+ * @property-read string                 $currency_code @deprecated
+ * @property-read CurrencyEnum           $currency
  * @property-read Author[]               $authors
  * @property-read ExpenseDetailsData[]   $data
  * @property-read Carbon                 $start_date
@@ -101,5 +103,13 @@ class ReportExpenseDetailsResponse extends BaseResponse
             },
             $this->data()['categories']
         );
+    }
+
+    /**
+     * @return CurrencyEnum
+     */
+    public function getCurrencyAttribute(): CurrencyEnum
+    {
+        return CurrencyEnum::get($this->data['currency_code']);
     }
 }

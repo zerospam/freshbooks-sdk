@@ -10,6 +10,7 @@ namespace ZEROSPAM\Freshbooks\Response\Report;
 
 use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
+use ZEROSPAM\Freshbooks\Business\Enums\Currency\CurrencyEnum;
 use ZEROSPAM\Freshbooks\Business\Report\ProfitLoss\Entry;
 
 /**
@@ -17,19 +18,20 @@ use ZEROSPAM\Freshbooks\Business\Report\ProfitLoss\Entry;
  *
  * Profit/loss report response
  *
- * @property-read Entry       $net_profit
- * @property-read string      $download_token
- * @property-read Carbon      $end_date
- * @property-read array       $labels
- * @property-read bool        $cash_based
- * @property-read Entry[]     $expenses
- * @property-read Entry       $total_income
- * @property-read string      $company_name
- * @property-read Entry[]     $income
- * @property-read Entry       $total_expenses
- * @property-read string|null $resolution
- * @property-read Carbon      $start_date
- * @property-read string      $currency_code
+ * @property-read Entry        $net_profit
+ * @property-read string       $download_token
+ * @property-read Carbon       $end_date
+ * @property-read array        $labels
+ * @property-read bool         $cash_based
+ * @property-read Entry[]      $expenses
+ * @property-read Entry        $total_income
+ * @property-read string       $company_name
+ * @property-read Entry[]      $income
+ * @property-read Entry        $total_expenses
+ * @property-read string|null  $resolution
+ * @property-read Carbon       $start_date
+ * @property-read string       $currency_code @deprecated
+ * @property-read CurrencyEnum $currency
  *
  * @package ZEROSPAM\Freshbooks\Request\Data\Report
  */
@@ -98,5 +100,13 @@ class ReportProfitLossResponse extends BaseResponse
     public function getTotalExpensesAttribute(): Entry
     {
         return new Entry($this->data()['total_expenses']);
+    }
+
+    /**
+     * @return CurrencyEnum
+     */
+    public function getCurrencyAttribute(): CurrencyEnum
+    {
+        return CurrencyEnum::get($this->data['currency_code']);
     }
 }

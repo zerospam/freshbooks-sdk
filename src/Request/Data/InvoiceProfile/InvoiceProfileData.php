@@ -10,6 +10,7 @@ namespace ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile;
 
 use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Utils\Data\ArrayableData;
+use ZEROSPAM\Freshbooks\Business\Enums\Currency\CurrencyEnum;
 use ZEROSPAM\Freshbooks\Business\InvoiceLine;
 use ZEROSPAM\Freshbooks\Request\Data\DateTimeData;
 
@@ -117,6 +118,7 @@ class InvoiceProfileData extends ArrayableData
 
     /**
      * @param string $frequency
+     *
      * @return $this
      */
     public function setFrequency(string $frequency): InvoiceProfileData
@@ -127,6 +129,7 @@ class InvoiceProfileData extends ArrayableData
 
     /**
      * @param Carbon $createDate
+     *
      * @return $this
      */
     public function setCreateDate(Carbon $createDate): InvoiceProfileData
@@ -137,6 +140,7 @@ class InvoiceProfileData extends ArrayableData
 
     /**
      * @param bool $sendEmail
+     *
      * @return $this
      */
     public function setSendEmail(bool $sendEmail): InvoiceProfileData
@@ -147,6 +151,7 @@ class InvoiceProfileData extends ArrayableData
 
     /**
      * @param string $street
+     *
      * @return $this
      */
     public function setStreet(string $street): InvoiceProfileData
@@ -157,6 +162,7 @@ class InvoiceProfileData extends ArrayableData
 
     /**
      * @param null|string $billGateway
+     *
      * @return $this
      */
     public function setBillGateway(?string $billGateway): InvoiceProfileData
@@ -167,6 +173,7 @@ class InvoiceProfileData extends ArrayableData
 
     /**
      * @param string $vatNumber
+     *
      * @return $this
      */
     public function setVatNumber(string $vatNumber): InvoiceProfileData
@@ -177,6 +184,7 @@ class InvoiceProfileData extends ArrayableData
 
     /**
      * @param int $numberRecurring
+     *
      * @return $this
      */
     public function setNumberRecurring(int $numberRecurring): InvoiceProfileData
@@ -187,6 +195,7 @@ class InvoiceProfileData extends ArrayableData
 
     /**
      * @param string $city
+     *
      * @return $this
      */
     public function setCity(string $city): InvoiceProfileData
@@ -197,6 +206,7 @@ class InvoiceProfileData extends ArrayableData
 
     /**
      * @param bool $sendGmail
+     *
      * @return $this
      */
     public function setSendGmail(bool $sendGmail): InvoiceProfileData
@@ -207,6 +217,7 @@ class InvoiceProfileData extends ArrayableData
 
     /**
      * @param string $lname
+     *
      * @return $this
      */
     public function setLname(string $lname): InvoiceProfileData
@@ -217,6 +228,7 @@ class InvoiceProfileData extends ArrayableData
 
     /**
      * @param string $fname
+     *
      * @return $this
      */
     public function setFname(string $fname): InvoiceProfileData
@@ -227,6 +239,7 @@ class InvoiceProfileData extends ArrayableData
 
     /**
      * @param string $province
+     *
      * @return $this
      */
     public function setProvince(string $province): InvoiceProfileData
@@ -237,6 +250,7 @@ class InvoiceProfileData extends ArrayableData
 
     /**
      * @param null|string $terms
+     *
      * @return $this
      */
     public function setTerms(?string $terms): InvoiceProfileData
@@ -247,6 +261,7 @@ class InvoiceProfileData extends ArrayableData
 
     /**
      * @param string $vatName
+     *
      * @return $this
      */
     public function setVatName(string $vatName): InvoiceProfileData
@@ -257,6 +272,7 @@ class InvoiceProfileData extends ArrayableData
 
     /**
      * @param string $street2
+     *
      * @return $this
      */
     public function setStreet2(string $street2): InvoiceProfileData
@@ -266,7 +282,10 @@ class InvoiceProfileData extends ArrayableData
     }
 
     /**
+     * @deprecated
+     *
      * @param string $currencyCode
+     *
      * @return $this
      */
     public function setCurrencyCode(string $currencyCode): InvoiceProfileData
@@ -276,7 +295,19 @@ class InvoiceProfileData extends ArrayableData
     }
 
     /**
+     * @param CurrencyEnum $currency
+     *
+     * @return $this
+     */
+    public function setCurrency(CurrencyEnum $currency): InvoiceProfileData
+    {
+        $this->currencyCode = $currency->getValue();
+        return $this;
+    }
+
+    /**
      * @param bool $disable
+     *
      * @return $this
      */
     public function setDisable(bool $disable): InvoiceProfileData
@@ -287,6 +318,7 @@ class InvoiceProfileData extends ArrayableData
 
     /**
      * @param string $address
+     *
      * @return $this
      */
     public function setAddress(string $address): InvoiceProfileData
@@ -297,6 +329,7 @@ class InvoiceProfileData extends ArrayableData
 
     /**
      * @param string $organization
+     *
      * @return $this
      */
     public function setOrganization(string $organization): InvoiceProfileData
@@ -307,6 +340,7 @@ class InvoiceProfileData extends ArrayableData
 
     /**
      * @param int $customerid
+     *
      * @return $this
      */
     public function setCustomerid(int $customerid): InvoiceProfileData
@@ -317,6 +351,7 @@ class InvoiceProfileData extends ArrayableData
 
     /**
      * @param int $dueOffsetDays
+     *
      * @return $this
      */
     public function setDueOffsetDays(int $dueOffsetDays): InvoiceProfileData
@@ -327,6 +362,7 @@ class InvoiceProfileData extends ArrayableData
 
     /**
      * @param string $language
+     *
      * @return $this
      */
     public function setLanguage(string $language): InvoiceProfileData
@@ -337,6 +373,7 @@ class InvoiceProfileData extends ArrayableData
 
     /**
      * @param string $poNumber
+     *
      * @return $this
      */
     public function setPoNumber(string $poNumber): InvoiceProfileData
@@ -347,6 +384,7 @@ class InvoiceProfileData extends ArrayableData
 
     /**
      * @param string $country
+     *
      * @return $this
      */
     public function setCountry(string $country): InvoiceProfileData
@@ -357,6 +395,7 @@ class InvoiceProfileData extends ArrayableData
 
     /**
      * @param string $notes
+     *
      * @return $this
      */
     public function setNotes(string $notes): InvoiceProfileData
@@ -367,6 +406,7 @@ class InvoiceProfileData extends ArrayableData
 
     /**
      * @param bool $includeUnbilledTime
+     *
      * @return $this
      */
     public function setIncludeUnbilledTime(bool $includeUnbilledTime): InvoiceProfileData
@@ -377,6 +417,7 @@ class InvoiceProfileData extends ArrayableData
 
     /**
      * @param string $paymentDetails
+     *
      * @return $this
      */
     public function setPaymentDetails(string $paymentDetails): InvoiceProfileData
@@ -387,6 +428,7 @@ class InvoiceProfileData extends ArrayableData
 
     /**
      * @param string $code
+     *
      * @return $this
      */
     public function setCode(string $code): InvoiceProfileData
@@ -397,6 +439,7 @@ class InvoiceProfileData extends ArrayableData
 
     /**
      * @param string $discountValue
+     *
      * @return $this
      */
     public function setDiscountValue(string $discountValue): InvoiceProfileData
@@ -407,6 +450,7 @@ class InvoiceProfileData extends ArrayableData
 
     /**
      * @param bool $autoBill
+     *
      * @return $this
      */
     public function setAutoBill(bool $autoBill): InvoiceProfileData
@@ -417,6 +461,7 @@ class InvoiceProfileData extends ArrayableData
 
     /**
      * @param bool $requireAutoBill
+     *
      * @return $this
      */
     public function setRequireAutoBill(bool $requireAutoBill): InvoiceProfileData

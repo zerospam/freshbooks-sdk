@@ -11,28 +11,30 @@ namespace ZEROSPAM\Freshbooks\Business\Report\InvoiceDetails;
 use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
 use ZEROSPAM\Freshbooks\Business\Amount;
+use ZEROSPAM\Freshbooks\Business\Enums\Currency\CurrencyEnum;
 
 /**
  * Class Invoice
  *
  * Invoice object for invoice details report clients
  *
- * @property-read int $invoiceid
- * @property-read Carbon $create_date
- * @property-read int $due_offset_days
- * @property-read Amount $outstanding
- * @property-read string|null $po_number
- * @property-read Amount $tax
- * @property-read TaxSummary[] $tax_summaries
+ * @property-read int                 $invoiceid
+ * @property-read Carbon              $create_date
+ * @property-read int                 $due_offset_days
+ * @property-read Amount              $outstanding
+ * @property-read string|null         $po_number
+ * @property-read Amount              $tax
+ * @property-read TaxSummary[]        $tax_summaries
  * @property-read ReportInvoiceLine[] $lines
- * @property-read Amount $paid
- * @property-read string $v3_status
- * @property-read Carbon|null $date_paid
- * @property-read Amount $discount_total
- * @property-read string $invoice_number
- * @property-read Amount $total
- * @property-read Amount $subtotal
- * @property-read string $currency_code
+ * @property-read Amount              $paid
+ * @property-read string              $v3_status
+ * @property-read Carbon|null         $date_paid
+ * @property-read Amount              $discount_total
+ * @property-read string              $invoice_number
+ * @property-read Amount              $total
+ * @property-read Amount              $subtotal
+ * @property-read string              $currency_code @deprecated
+ * @property-read CurrencyEnum        $currency
  *
  * @package ZEROSPAM\Freshbooks\Business\Report\InvoiceDetails
  */
@@ -131,5 +133,13 @@ class Invoice extends BaseResponse
     public function getSubtotalAttribute(): Amount
     {
         return new Amount($this->data['subtotal']);
+    }
+
+    /**
+     * @return CurrencyEnum
+     */
+    public function getCurrencyAttribute(): CurrencyEnum
+    {
+        return CurrencyEnum::get($this->data['currency_code']);
     }
 }

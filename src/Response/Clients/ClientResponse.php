@@ -10,6 +10,7 @@ namespace ZEROSPAM\Freshbooks\Response\Clients;
 
 use Carbon\Carbon;
 use ZEROSPAM\Framework\SDK\Response\Api\BaseResponse;
+use ZEROSPAM\Freshbooks\Business\Enums\Currency\CurrencyEnum;
 use ZEROSPAM\Freshbooks\Business\LatePaymentFee;
 use ZEROSPAM\Freshbooks\Business\LatePaymentReminder;
 
@@ -62,7 +63,8 @@ use ZEROSPAM\Freshbooks\Business\LatePaymentReminder;
  * @property-read string                     $s_street
  * @property-read string                     $organization
  * @property-read string                     $p_street
- * @property-read string                     $currency_code
+ * @property-read string                     $currency_code @deprecated
+ * @property-read CurrencyEnum               $currency
  * @property-read LatePaymentReminder[]|null $late_reminders
  * @property-read LatePaymentFee|null        $late_fee
  *
@@ -110,5 +112,13 @@ class ClientResponse extends BaseResponse
         }
 
         return new LatePaymentFee($this->data['late_fee']);
+    }
+
+    /**
+     * @return CurrencyEnum
+     */
+    public function getCurrencyAttribute(): CurrencyEnum
+    {
+        return CurrencyEnum::get($this->data()['currency_code']);
     }
 }
