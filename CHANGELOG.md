@@ -1,3 +1,10 @@
+## [2.4.1](https://github.com/zerospam/freshbooks-sdk/compare/v2.4.0...v2.4.1) (2018-10-23)
+
+
+### Bug Fixes
+
+* **Payment:** refactored setter usage in view of deprecation ([fb5b3a3](https://github.com/zerospam/freshbooks-sdk/commit/fb5b3a3))
+
 # [2.4.0](https://github.com/zerospam/freshbooks-sdk/compare/v2.3.1...v2.4.0) (2018-09-26)
 
 
