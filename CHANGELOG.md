@@ -1,3 +1,10 @@
+## [2.4.2](https://github.com/zerospam/freshbooks-sdk/compare/v2.4.1...v2.4.2) (2018-11-07)
+
+
+### Bug Fixes
+
+* **deps:** fix problem with requests ([0d84c6b](https://github.com/zerospam/freshbooks-sdk/commit/0d84c6b))
+
 ## [2.4.1](https://github.com/zerospam/freshbooks-sdk/compare/v2.4.0...v2.4.1) (2018-10-23)
 
 
