@@ -9,6 +9,7 @@
 namespace ZEROSPAM\Freshbooks\Config;
 
 use ZEROSPAM\Framework\SDK\Config\OAuthConfiguration;
+use ZEROSPAM\Freshbooks\Middleware\Error\UnprocessableEntityMiddleware;
 use ZEROSPAM\OAuth2\Client\Provider\FreshBooks;
 
 /**
@@ -29,5 +30,10 @@ class FreshbooksConfiguration extends OAuthConfiguration
     protected function providerClass(): string
     {
         return FreshBooks::class;
+    }
+
+    public function defaultMiddlewares(): array
+    {
+        return [new UnprocessableEntityMiddleware()];
     }
 }
