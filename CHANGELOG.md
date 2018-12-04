@@ -1,3 +1,10 @@
+## [2.5.2](https://github.com/zerospam/freshbooks-sdk/compare/v2.5.1...v2.5.2) (2018-12-04)
+
+
+### Bug Fixes
+
+* **Taxes:** Http Method for Update ([004b8e8](https://github.com/zerospam/freshbooks-sdk/commit/004b8e8))
+
 ## [2.5.1](https://github.com/zerospam/freshbooks-sdk/compare/v2.5.0...v2.5.1) (2018-12-04)
 
 
