@@ -44,7 +44,7 @@ class TaxUpdateRequest extends BaseRequest implements IAccountIdRequest
      */
     public function httpType(): RequestType
     {
-        return RequestType::HTTP_POST();
+        return RequestType::HTTP_PUT();
     }
 
     /**
