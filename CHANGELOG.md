@@ -1,3 +1,10 @@
+## [2.5.1](https://github.com/zerospam/freshbooks-sdk/compare/v2.5.0...v2.5.1) (2018-12-04)
+
+
+### Bug Fixes
+
+* **Taxes:** Url contained a space ([5c87872](https://github.com/zerospam/freshbooks-sdk/commit/5c87872))
+
 # [2.5.0](https://github.com/zerospam/freshbooks-sdk/compare/v2.4.2...v2.5.0) (2018-12-04)
 
 
