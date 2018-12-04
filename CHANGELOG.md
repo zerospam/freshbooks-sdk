@@ -1,3 +1,11 @@
+# [2.5.0](https://github.com/zerospam/freshbooks-sdk/compare/v2.4.2...v2.5.0) (2018-12-04)
+
+
+### Features
+
+* **Configuration:** Set default middlewares ([13635a9](https://github.com/zerospam/freshbooks-sdk/commit/13635a9))
+* **UnprocessableEntity:** Trigger Exception with error msg ([42ee32a](https://github.com/zerospam/freshbooks-sdk/commit/42ee32a))
+
 ## [2.4.2](https://github.com/zerospam/freshbooks-sdk/compare/v2.4.1...v2.4.2) (2018-11-07)
 
 
