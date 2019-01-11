@@ -1,3 +1,10 @@
+# [2.6.0](https://github.com/zerospam/freshbooks-sdk/compare/v2.5.2...v2.6.0) (2019-01-11)
+
+
+### Features
+
+* **AllowedGateway:** Add set gateway feature to accept payments ([1fac653](https://github.com/zerospam/freshbooks-sdk/commit/1fac653))
+
 ## [2.5.2](https://github.com/zerospam/freshbooks-sdk/compare/v2.5.1...v2.5.2) (2018-12-04)
 
 
