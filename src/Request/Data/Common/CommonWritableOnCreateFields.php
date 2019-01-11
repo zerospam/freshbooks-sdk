@@ -8,6 +8,8 @@
 
 namespace ZEROSPAM\Freshbooks\Request\Data\Common;
 
+use ZEROSPAM\Freshbooks\Request\Data\Gateway\GatewayTypeEnum;
+
 /**
  * Trait CommonWritableOnCreateFields
  *
@@ -23,6 +25,9 @@ trait CommonWritableOnCreateFields
     /** @var int */
     private $estimateid;
 
+    /** @var GatewayTypeEnum[] */
+    private $allowedGatewayids;
+
     /**
      * @param int $ownerid
      *
@@ -31,6 +36,7 @@ trait CommonWritableOnCreateFields
     public function setOwnerid(int $ownerid)
     {
         $this->ownerid = $ownerid;
+
         return $this;
     }
 
@@ -42,6 +48,21 @@ trait CommonWritableOnCreateFields
     public function setEstimateid(int $estimateid)
     {
         $this->estimateid = $estimateid;
+
+        return $this;
+    }
+
+    /**
+     * Set the allowed gateways used for payments
+     *
+     * @param array $gateways
+     *
+     * @return $this
+     */
+    public function setAllowedGateways(array $gateways)
+    {
+        $this->allowedGatewayids = $gateways;
+
         return $this;
     }
 }

@@ -24,6 +24,7 @@ use ZEROSPAM\Freshbooks\Request\Call\Invoice\InvoiceSendEmailRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Invoice\InvoiceUpdateRequest;
 use ZEROSPAM\Freshbooks\Request\Call\Invoice\ShareLink\InvoiceShareLinkReadRequest;
 use ZEROSPAM\Freshbooks\Request\Data\AmountData;
+use ZEROSPAM\Freshbooks\Request\Data\Gateway\GatewayTypeEnum;
 use ZEROSPAM\Freshbooks\Request\Data\Invoice\InvoiceCreateData;
 use ZEROSPAM\Freshbooks\Request\Data\Invoice\InvoiceEmailData;
 use ZEROSPAM\Freshbooks\Request\Data\Invoice\InvoiceLineData;
@@ -509,14 +510,7 @@ JSON;
     public function testCreateInvoice(): void
     {
         $jsonResponse = <<<JSON
-{
-  "response": {
-    "result": {
-      "invoice": {
-      }
-    }
-  }
-}
+{"response":{"result":{"invoice":{"accountid":"aaaa","accounting_systemid":"aaa","address":"","allowed_gateways":[{"allowedid":1,"connectionid":"aaaaaaa","gateway_name":"stripe","gatewayid":26,"id":1}],"amount":{"amount":"0.00","code":"CAD"},"attachments":[],"audit_logs":[{"acting_contactid":-1,"acting_level":3,"acting_userid":1,"amount":{"amount":"0.00","code":"CAD"},"autobill_status":null,"created_at":"2019-01-11 15:01:00","currency_code":"CAD","customer_contactid":null,"customerid":1111,"display_status":"draft","dispute_status":null,"event":"Created","id":1,"invoiceid":1,"last_order_status":null,"logid":1,"num_lines":0,"paid":{"amount":"0.00","code":"CAD"},"payment_status":"unpaid","status":1}],"auto_bill":false,"autobill_status":null,"basecampid":0,"city":"Ville","client_audits":[],"code":"X0X X0X","contacts":[{"contactid":-1,"email":"aa@aa.com","fname":"aa","invoiceid":1,"lname":"aa","userid":1}],"country":"CA","create_date":"2019-01-11","created_at":"2019-01-11 10:01:00","currency_code":"CAD","current_organization":"aa inc.","customerid":1,"date_paid":null,"deposit_amount":null,"deposit_percentage":null,"deposit_status":"none","description":"","discount_description":null,"discount_total":{"amount":"0.00","code":"CAD"},"discount_value":"0","display_status":"draft","dispute_status":null,"due_date":"2019-02-10","due_offset_days":30,"estimateid":0,"ext_archive":0,"fname":"Dany","fulfillment_date":null,"generation_date":null,"gmail":false,"id":1,"invoice_number":"TEST-2","invoice_profile":null,"invoiceid":1,"language":"fr","last_order_status":null,"late_fee":{"compounded_tax":false,"created_at":"2019-01-11 10:01:00","days":30,"enabled":true,"first_tax_name":null,"first_tax_percent":"0","invoiceid":1,"repeat":false,"second_tax_name":null,"second_tax_percent":"0","type":"percent","updated_at":null,"value":"2"},"late_reminders":[{"body":null,"created_at":"2019-01-11 10:01:00","delay":-7,"enabled":true,"invoiceid":1,"position":1,"subject":null,"updated_at":null},{"body":null,"created_at":"2019-01-11 10:01:00","delay":0,"enabled":true,"invoiceid":1,"position":2,"subject":null,"updated_at":null},{"body":null,"created_at":"2019-01-11 10:01:00","delay":7,"enabled":true,"invoiceid":1,"position":3,"subject":null,"updated_at":null}],"lines":[],"lname":"aa","notes":"","organization":"aa inc.","outstanding":{"amount":"0.00","code":"CAD"},"owner":{"email":"aa@aa.aa","fname":"aa","lname":"aa","organization":"","userid":1},"ownerid":1,"paid":{"amount":"0.00","code":"CAD"},"parent":0,"payment_details":"","payment_schedule":[],"payment_status":"unpaid","po_number":null,"presentation":{"date_format":"yyyy-mm-dd","description_heading":null,"hours_heading":null,"image_banner_position_y":0,"image_banner_src":null,"image_logo_src":"aa","invoiceid":1,"item_heading":null,"label":null,"quantity_heading":null,"rate_heading":null,"task_heading":null,"theme_font_name":"modern","theme_layout":"simple","theme_primary_color":"#1f3970","time_entry_notes_heading":null,"unit_cost_heading":null},"province":"AA","return_uri":null,"sentid":1,"show_attachments":false,"status":1,"street":"aa","street2":"","system":{"bus_phone":"aa","city":"aa","code":"aa","country":"Canada","currency_code":"CAD","date":"2018-05-09 15:18:17","fax":"","info_email":"aa@aa.aa","mob_phone":"","modern_system":true,"name":"aa.","province":"aa","street":"aa","street2":null,"subdomain":"","vat_name":null,"vat_number":"","vis_state":0},"template":"clean-grouped","terms":null,"updated":"2019-01-11 10:01:00","v3_status":"draft","vat_name":null,"vat_number":null,"vis_state":0}}}}
 JSON;
         $jsonRequest  = <<<JSON
 {
@@ -544,6 +538,9 @@ JSON;
     "deposit_percentage": "5",
     "show_attachments": false,
     "ext_archive": 0,
+    "allowed_gatewayids": [
+      26
+    ],
     "street": "1 Main Street",
     "street2": "app. 1",
     "city": "Springfield",
@@ -607,6 +604,7 @@ JSON;
         ];
 
         $invoice = (new InvoiceCreateData)
+            ->setAllowedGateways([GatewayTypeEnum::STRIPE()])
             ->setOwnerid(1)
             ->setEstimateid(0)
             ->setBasecampid(0)
