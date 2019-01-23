@@ -188,13 +188,13 @@ trait WritableInvoiceFieldsTrait
     /**
      * Set state of the invoice
      *
-     * @param bool $visState
+     * @param int $visState
      *
      * @return $this
      */
-    public function setVisState(bool $visState)
+    public function setVisState(int $visState)
     {
-        $this->visState = (int)$visState;
+        $this->visState = $visState;
 
         return $this;
     }
@@ -202,12 +202,30 @@ trait WritableInvoiceFieldsTrait
     /**
      * Set the invoice deleted or recovered
      *
-     * @param bool $deleted
+     * @return $this
+     */
+    public function setDeleted()
+    {
+        return $this->setVisState(1);
+    }
+
+    /**
+     * Set the invoice as active
      *
      * @return $this
      */
-    public function setDeleted(bool $deleted)
+    public function setActive()
     {
-        return $this->setVisState($deleted);
+        return $this->setVisState(0);
+    }
+
+    /**
+     * Set the invoice as archived
+     *
+     * @return $this
+     */
+    public function setArchived()
+    {
+        return $this->setVisState(2);
     }
 }
