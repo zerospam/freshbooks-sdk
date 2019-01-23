@@ -1,3 +1,10 @@
+## [2.6.1](https://github.com/zerospam/freshbooks-sdk/compare/v2.6.0...v2.6.1) (2019-01-23)
+
+
+### Bug Fixes
+
+* **Invoice:** Add missing visState to delete invoice ([5f0127f](https://github.com/zerospam/freshbooks-sdk/commit/5f0127f))
+
 # [2.6.0](https://github.com/zerospam/freshbooks-sdk/compare/v2.5.2...v2.6.0) (2019-01-11)
 
 
