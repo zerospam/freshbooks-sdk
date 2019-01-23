@@ -44,7 +44,7 @@ class UnprocessableEntityMiddleware implements IMiddleware
      */
     public static function statusCode(): array
     {
-        return [422];
+        return [422, 413];
     }
 
     /**
