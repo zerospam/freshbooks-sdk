@@ -1,3 +1,10 @@
+## [2.6.3](https://github.com/zerospam/freshbooks-sdk/compare/v2.6.2...v2.6.3) (2019-01-23)
+
+
+### Bug Fixes
+
+* **Invoice:** Fix the vis state of an invoice ([e7bdf63](https://github.com/zerospam/freshbooks-sdk/commit/e7bdf63))
+
 ## [2.6.2](https://github.com/zerospam/freshbooks-sdk/compare/v2.6.1...v2.6.2) (2019-01-23)
 
 
