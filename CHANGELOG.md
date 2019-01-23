@@ -1,3 +1,10 @@
+## [2.6.2](https://github.com/zerospam/freshbooks-sdk/compare/v2.6.1...v2.6.2) (2019-01-23)
+
+
+### Bug Fixes
+
+* **Errors:** Add support for 413 code ([cdb2ea8](https://github.com/zerospam/freshbooks-sdk/commit/cdb2ea8))
+
 ## [2.6.1](https://github.com/zerospam/freshbooks-sdk/compare/v2.6.0...v2.6.1) (2019-01-23)
 
 
