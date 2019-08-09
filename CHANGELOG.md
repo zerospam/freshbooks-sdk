@@ -1,3 +1,10 @@
+# [2.7.0](https://github.com/zerospam/freshbooks-sdk/compare/v2.6.3...v2.7.0) (2019-08-09)
+
+
+### Features
+
+* **Dependencies:** update sdk-framework version ([b3e7ff3](https://github.com/zerospam/freshbooks-sdk/commit/b3e7ff3))
+
 ## [2.6.3](https://github.com/zerospam/freshbooks-sdk/compare/v2.6.2...v2.6.3) (2019-01-23)
 
 
