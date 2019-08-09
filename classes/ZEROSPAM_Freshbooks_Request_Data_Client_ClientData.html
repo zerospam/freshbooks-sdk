@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - ZEROSPAM\Freshbooks\Request\Data\Client\ClientData</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.html">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.html">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.html">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.html">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.html">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.html">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.html">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.html">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.html#ZEROSPAM_Freshbooks_Request_Data_Client">ZEROSPAM\Freshbooks\Request\Data\Client</a>
+          </li>
+          <li class="separator">ClientData</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="#history">History</a>
+          </li>
+          <li>
+            <a href="../source/src/Request/Data/Client/ClientData.php.html#line22">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>ZEROSPAM\Freshbooks\Request\Data\Client\</small>ClientData</h1>
+        <h4>Class ClientData</h4>
+        <p>Data to send for client creation and update</p>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class ClientData
+                extends ArrayableData
+            {<br/><ul class="none"><li>// members</li><li>private <span title="ZEROSPAM\Freshbooks\Request\Data\Client\bool">bool</span> <a href="#members">$allowLateFees</a>;
+                    </li><li>private <span title="ZEROSPAM\Freshbooks\Request\Data\Client\bool">bool</span> <a href="#members">$allowLateNotifications</a>;
+                    </li><li>private  <a href="#members">$busPhone</a>;
+                    </li><li>private <span title="ZEROSPAM\Freshbooks\Request\Data\Client\string|null">string|null</span> <a href="#members">$companyIndustry</a>;
+                    </li><li>private <span title="ZEROSPAM\Freshbooks\Request\Data\Client\string|null">string|null</span> <a href="#members">$companySize</a>;
+                    </li><li>private  <a href="#members">$currencyCode</a>;
+                    </li><li>private  <a href="#members">$email</a>;
+                    </li><li>private  <a href="#members">$fax</a>;
+                    </li><li>private  <a href="#members">$fname</a>;
+                    </li><li>private <span title="ZEROSPAM\Freshbooks\Request\Data\Client\string|null">string|null</span> <a href="#members">$homePhone</a>;
+                    </li><li>private  <a href="#members">$language</a>;
+                    </li><li>private  <a href="#members">$lname</a>;
+                    </li><li>private  <a href="#members">$mobPhone</a>;
+                    </li><li>private <span title="ZEROSPAM\Freshbooks\Request\Data\Client\string|null">string|null</span> <a href="#members">$note</a>;
+                    </li><li>private <span title="ZEROSPAM\Freshbooks\Request\Data\Client\bool">bool</span> <a href="#members">$notified</a>;
+                    </li><li>private  <a href="#members">$organization</a>;
+                    </li><li>private  <a href="#members">$pCity</a>;
+                    </li><li>private  <a href="#members">$pCode</a>;
+                    </li><li>private  <a href="#members">$pCountry</a>;
+                    </li><li>private  <a href="#members">$pProvince</a>;
+                    </li><li>private  <a href="#members">$pStreet</a>;
+                    </li><li>private  <a href="#members">$pStreet2</a>;
+                    </li><li>private <span title="ZEROSPAM\Freshbooks\Request\Data\Client\bool">bool</span> <a href="#members">$prefEmail</a>;
+                    </li><li>private <span title="ZEROSPAM\Freshbooks\Request\Data\Client\bool">bool</span> <a href="#members">$prefGmail</a>;
+                    </li><li>private  <a href="#members">$sCity</a>;
+                    </li><li>private  <a href="#members">$sCode</a>;
+                    </li><li>private  <a href="#members">$sCountry</a>;
+                    </li><li>private  <a href="#members">$sProvince</a>;
+                    </li><li>private  <a href="#members">$sStreet</a>;
+                    </li><li>private  <a href="#members">$sStreet2</a>;
+                    </li><li>private  <a href="#members">$username</a>;
+                    </li><li>private <span title="ZEROSPAM\Freshbooks\Request\Data\Client\string|null">string|null</span> <a href="#members">$vatName</a>;
+                    </li><li>private <span title="ZEROSPAM\Freshbooks\Request\Data\Client\string|null">string|null</span> <a href="#members">$vatNumber</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public <span title="ClientData">ClientData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setAllowLateFees.html">setAllowLateFees</a>()
+                    </li><li>public <span title="ClientData">ClientData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setAllowLateNotifications.html">setAllowLateNotifications</a>()
+                    </li><li>public <span title="ClientData">ClientData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setBusPhone.html">setBusPhone</a>()
+                    </li><li>public <span title="ClientData">ClientData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setCompanyIndustry.html">setCompanyIndustry</a>()
+                    </li><li>public <span title="ClientData">ClientData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setCompanySize.html">setCompanySize</a>()
+                    </li><li>public <span title="ClientData">ClientData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setCurrencyCode.html">setCurrencyCode</a>()
+                    </li><li>public <span title="ClientData">ClientData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setCurrency.html">setCurrency</a>()
+                    </li><li>public <span title="ClientData">ClientData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setEmail.html">setEmail</a>()
+                    </li><li>public <span title="ClientData">ClientData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setFax.html">setFax</a>()
+                    </li><li>public <span title="ClientData">ClientData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setFname.html">setFname</a>()
+                    </li><li>public <span title="ClientData">ClientData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setHomePhone.html">setHomePhone</a>()
+                    </li><li>public <span title="ClientData">ClientData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setLanguage.html">setLanguage</a>()
+                    </li><li>public <span title="ClientData">ClientData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setLname.html">setLname</a>()
+                    </li><li>public <span title="ClientData">ClientData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setMobPhone.html">setMobPhone</a>()
+                    </li><li>public <span title="ClientData">ClientData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setNote.html">setNote</a>()
+                    </li><li>public <span title="ClientData">ClientData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setNotified.html">setNotified</a>()
+                    </li><li>public <span title="ClientData">ClientData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setOrganization.html">setOrganization</a>()
+                    </li><li>public <span title="ClientData">ClientData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setPCity.html">setPCity</a>()
+                    </li><li>public <span title="ClientData">ClientData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setPCode.html">setPCode</a>()
+                    </li><li>public <span title="ClientData">ClientData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setPCountry.html">setPCountry</a>()
+                    </li><li>public <span title="ClientData">ClientData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setPProvince.html">setPProvince</a>()
+                    </li><li>public <span title="ClientData">ClientData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setPStreet.html">setPStreet</a>()
+                    </li><li>public <span title="ClientData">ClientData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setPStreet2.html">setPStreet2</a>()
+                    </li><li>public <span title="ClientData">ClientData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setPrefEmail.html">setPrefEmail</a>()
+                    </li><li>public <span title="ClientData">ClientData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setPrefGmail.html">setPrefGmail</a>()
+                    </li><li>public <span title="ClientData">ClientData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setSCity.html">setSCity</a>()
+                    </li><li>public <span title="ClientData">ClientData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setSCode.html">setSCode</a>()
+                    </li><li>public <span title="ClientData">ClientData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setSCountry.html">setSCountry</a>()
+                    </li><li>public <span title="ClientData">ClientData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setSProvince.html">setSProvince</a>()
+                    </li><li>public <span title="ClientData">ClientData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setSStreet.html">setSStreet</a>()
+                    </li><li>public <span title="ClientData">ClientData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setSStreet2.html">setSStreet2</a>()
+                    </li><li>public <span title="ClientData">ClientData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setUsername.html">setUsername</a>()
+                    </li><li>public <span title="ClientData">ClientData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setVatName.html">setVatName</a>()
+                    </li><li>public <span title="ClientData">ClientData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setVatNumber.html">setVatNumber</a>()
+                    </li></ul><ul class="none"><li>// Inherited methods from <span title="ZEROSPAM\Freshbooks\Request\Data\Client\LatePayment\CommonWriteLatePaymentReminders">CommonWriteLatePaymentReminders</span></li><li>public CommonWriteLatePaymentReminders <a title="ZEROSPAM\Freshbooks\Request\Data\Client\LatePayment\CommonWriteLatePaymentReminders" href="../traits/ZEROSPAM_Freshbooks_Request_Data_Client_LatePayment_CommonWriteLatePaymentReminders/setLateReminders.html">setLateReminders</a>()
+                        </li><li>public CommonWriteLatePaymentReminders <a title="ZEROSPAM\Freshbooks\Request\Data\Client\LatePayment\CommonWriteLatePaymentReminders" href="../traits/ZEROSPAM_Freshbooks_Request_Data_Client_LatePayment_CommonWriteLatePaymentReminders/setLateFee.html">setLateFee</a>()
+                        </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>ZEROSPAM\Framework\SDK\Utils\Data\ArrayableData</li>
+          </ul>
+          <h4>Uses</h4>
+          <ul>
+            <li>
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\LatePayment\CommonWriteLatePaymentReminders" href="../traits/ZEROSPAM_Freshbooks_Request_Data_Client_LatePayment_CommonWriteLatePaymentReminders.html">ZEROSPAM\Freshbooks\Request\Data\Client\LatePayment\CommonWriteLatePaymentReminders</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="allowLateFees"><strong>$allowLateFees</strong>
+                —
+                <a title="ZEROSPAM\Freshbooks\Request\Data\Client\bool" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_bool.html">ZEROSPAM\Freshbooks\Request\Data\Client\bool</a></li>
+            <li id="allowLateNotifications"><strong>$allowLateNotifications</strong>
+                —
+                <a title="ZEROSPAM\Freshbooks\Request\Data\Client\bool" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_bool.html">ZEROSPAM\Freshbooks\Request\Data\Client\bool</a></li>
+            <li id="busPhone"><strong>$busPhone</strong>
+                —
+                string</li>
+            <li id="companyIndustry"><strong>$companyIndustry</strong>
+                —
+                <a title="ZEROSPAM\Freshbooks\Request\Data\Client\string|null" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_string|null.html">ZEROSPAM\Freshbooks\Request\Data\Client\string|null</a></li>
+            <li id="companySize"><strong>$companySize</strong>
+                —
+                <a title="ZEROSPAM\Freshbooks\Request\Data\Client\string|null" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_string|null.html">ZEROSPAM\Freshbooks\Request\Data\Client\string|null</a></li>
+            <li id="currencyCode"><strong>$currencyCode</strong>
+                —
+                string</li>
+            <li id="email"><strong>$email</strong>
+                —
+                string</li>
+            <li id="fax"><strong>$fax</strong>
+                —
+                string</li>
+            <li id="fname"><strong>$fname</strong>
+                —
+                string</li>
+            <li id="homePhone"><strong>$homePhone</strong>
+                —
+                <a title="ZEROSPAM\Freshbooks\Request\Data\Client\string|null" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_string|null.html">ZEROSPAM\Freshbooks\Request\Data\Client\string|null</a></li>
+            <li id="language"><strong>$language</strong>
+                —
+                string</li>
+            <li id="lname"><strong>$lname</strong>
+                —
+                string</li>
+            <li id="mobPhone"><strong>$mobPhone</strong>
+                —
+                string</li>
+            <li id="note"><strong>$note</strong>
+                —
+                <a title="ZEROSPAM\Freshbooks\Request\Data\Client\string|null" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_string|null.html">ZEROSPAM\Freshbooks\Request\Data\Client\string|null</a></li>
+            <li id="notified"><strong>$notified</strong>
+                —
+                <a title="ZEROSPAM\Freshbooks\Request\Data\Client\bool" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_bool.html">ZEROSPAM\Freshbooks\Request\Data\Client\bool</a></li>
+            <li id="organization"><strong>$organization</strong>
+                —
+                string</li>
+            <li id="pCity"><strong>$pCity</strong>
+                —
+                string</li>
+            <li id="pCode"><strong>$pCode</strong>
+                —
+                string</li>
+            <li id="pCountry"><strong>$pCountry</strong>
+                —
+                string</li>
+            <li id="pProvince"><strong>$pProvince</strong>
+                —
+                string</li>
+            <li id="pStreet"><strong>$pStreet</strong>
+                —
+                string</li>
+            <li id="pStreet2"><strong>$pStreet2</strong>
+                —
+                string</li>
+            <li id="prefEmail"><strong>$prefEmail</strong>
+                —
+                <a title="ZEROSPAM\Freshbooks\Request\Data\Client\bool" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_bool.html">ZEROSPAM\Freshbooks\Request\Data\Client\bool</a></li>
+            <li id="prefGmail"><strong>$prefGmail</strong>
+                —
+                <a title="ZEROSPAM\Freshbooks\Request\Data\Client\bool" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_bool.html">ZEROSPAM\Freshbooks\Request\Data\Client\bool</a></li>
+            <li id="sCity"><strong>$sCity</strong>
+                —
+                string</li>
+            <li id="sCode"><strong>$sCode</strong>
+                —
+                string</li>
+            <li id="sCountry"><strong>$sCountry</strong>
+                —
+                string</li>
+            <li id="sProvince"><strong>$sProvince</strong>
+                —
+                string</li>
+            <li id="sStreet"><strong>$sStreet</strong>
+                —
+                string</li>
+            <li id="sStreet2"><strong>$sStreet2</strong>
+                —
+                string</li>
+            <li id="username"><strong>$username</strong>
+                —
+                string</li>
+            <li id="vatName"><strong>$vatName</strong>
+                —
+                <a title="ZEROSPAM\Freshbooks\Request\Data\Client\string|null" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_string|null.html">ZEROSPAM\Freshbooks\Request\Data\Client\string|null</a></li>
+            <li id="vatNumber"><strong>$vatNumber</strong>
+                —
+                <a title="ZEROSPAM\Freshbooks\Request\Data\Client\string|null" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_string|null.html">ZEROSPAM\Freshbooks\Request\Data\Client\string|null</a></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>public</h4>
+          <ul>
+            <li id="setAllowLateFees">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setAllowLateFees.html">setAllowLateFees()</a>
+            </li>
+            <li id="setAllowLateNotifications">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setAllowLateNotifications.html">setAllowLateNotifications()</a>
+            </li>
+            <li id="setBusPhone">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setBusPhone.html">setBusPhone()</a>
+            </li>
+            <li id="setCompanyIndustry">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setCompanyIndustry.html">setCompanyIndustry()</a>
+            </li>
+            <li id="setCompanySize">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setCompanySize.html">setCompanySize()</a>
+            </li>
+            <li id="setCurrency">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setCurrency.html">setCurrency()</a>
+            </li>
+            <li id="setCurrencyCode">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setCurrencyCode.html">setCurrencyCode()</a>
+            </li>
+            <li id="setEmail">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setEmail.html">setEmail()</a>
+            </li>
+            <li id="setFax">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setFax.html">setFax()</a>
+            </li>
+            <li id="setFname">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setFname.html">setFname()</a>
+            </li>
+            <li id="setHomePhone">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setHomePhone.html">setHomePhone()</a>
+            </li>
+            <li id="setLanguage">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setLanguage.html">setLanguage()</a>
+            </li>
+            <li id="setLname">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setLname.html">setLname()</a>
+            </li>
+            <li id="setMobPhone">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setMobPhone.html">setMobPhone()</a>
+            </li>
+            <li id="setNote">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setNote.html">setNote()</a>
+            </li>
+            <li id="setNotified">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setNotified.html">setNotified()</a>
+            </li>
+            <li id="setOrganization">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setOrganization.html">setOrganization()</a>
+            </li>
+            <li id="setPCity">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setPCity.html">setPCity()</a>
+            </li>
+            <li id="setPCode">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setPCode.html">setPCode()</a>
+            </li>
+            <li id="setPCountry">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setPCountry.html">setPCountry()</a>
+            </li>
+            <li id="setPProvince">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setPProvince.html">setPProvince()</a>
+            </li>
+            <li id="setPStreet">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setPStreet.html">setPStreet()</a>
+            </li>
+            <li id="setPStreet2">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setPStreet2.html">setPStreet2()</a>
+            </li>
+            <li id="setPrefEmail">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setPrefEmail.html">setPrefEmail()</a>
+            </li>
+            <li id="setPrefGmail">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setPrefGmail.html">setPrefGmail()</a>
+            </li>
+            <li id="setSCity">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setSCity.html">setSCity()</a>
+            </li>
+            <li id="setSCode">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setSCode.html">setSCode()</a>
+            </li>
+            <li id="setSCountry">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setSCountry.html">setSCountry()</a>
+            </li>
+            <li id="setSProvince">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setSProvince.html">setSProvince()</a>
+            </li>
+            <li id="setSStreet">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setSStreet.html">setSStreet()</a>
+            </li>
+            <li id="setSStreet2">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setSStreet2.html">setSStreet2()</a>
+            </li>
+            <li id="setUsername">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setUsername.html">setUsername()</a>
+            </li>
+            <li id="setVatName">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setVatName.html">setVatName()</a>
+            </li>
+            <li id="setVatNumber">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\ClientData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_Client_ClientData/setVatNumber.html">setVatNumber()</a>
+            </li>
+          </ul>
+          <h3>Inherited from <a title="ZEROSPAM\Freshbooks\Request\Data\Client\LatePayment\CommonWriteLatePaymentReminders" href="../traits/ZEROSPAM_Freshbooks_Request_Data_Client_LatePayment_CommonWriteLatePaymentReminders.html">ZEROSPAM\Freshbooks\Request\Data\Client\LatePayment\CommonWriteLatePaymentReminders</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="setLateFee">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\LatePayment\CommonWriteLatePaymentReminders" href="../traits/ZEROSPAM_Freshbooks_Request_Data_Client_LatePayment_CommonWriteLatePaymentReminders/setLateFee.html">setLateFee()</a>
+            </li>
+            <li id="setLateReminders">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\Client\LatePayment\CommonWriteLatePaymentReminders" href="../traits/ZEROSPAM_Freshbooks_Request_Data_Client_LatePayment_CommonWriteLatePaymentReminders/setLateReminders.html">setLateReminders()</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="history">History</h2>
+        <ul class="styled history">
+          <li>
+            <h3>2018-09-27T13:04:59+00:00 (commit #<span title="fb5b3a3083905d968e8e8388650af3350c4ff4ed">fb5b3a3</span>)</h3>
+            <div>
+              <p>
+                        Author: Philippe Bouchard-Bourdeau (pbb@zerospam.ca) /
+                        Commiter: Philippe Bouchard-Bourdeau (pbb@zerospam.ca)
+                    </p>
+              <pre class="wrapped">fix(Payment): refactored setter usage in view of deprecation</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-09-26T19:13:28+00:00 (commit #<span title="a9b42c0bcf47e00b807904e53557d358db898e70">a9b42c0</span>)</h3>
+            <div>
+              <p>
+                        Author: Philippe Bouchard-Bourdeau (pbb@zerospam.ca) /
+                        Commiter: Philippe Bouchard-Bourdeau (pbb@zerospam.ca)
+                    </p>
+              <pre class="wrapped">refactor(Currency): prevent breaking change</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-09-26T17:56:20+00:00 (commit #<span title="be3d6f641769408acc5c3e3abf618cb647ce312a">be3d6f6</span>)</h3>
+            <div>
+              <p>
+                        Author: Philippe Bouchard-Bourdeau (pbb@zerospam.ca) /
+                        Commiter: Philippe Bouchard-Bourdeau (pbb@zerospam.ca)
+                    </p>
+              <pre class="wrapped">refactor(Currency): Refactored currency properties to use Currency enumeration</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-09-26T17:33:09+00:00 (commit #<span title="343ae68cf304637b2f968b7457d29f68c7a78405">343ae68</span>)</h3>
+            <div>
+              <p>
+                        Author: Antoine Aflalo (antoine.aflalo@zerospam.ca) /
+                        Commiter: Antoine Aflalo (antoine.aflalo@zerospam.ca)
+                    </p>
+              <pre class="wrapped">refactor(ArrayableData): Use the new structure from SDK</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-09-25T19:14:50+00:00 (commit #<span title="0f65c5e256966d66ea3412ba215bf09d8b4631f3">0f65c5e</span>)</h3>
+            <div>
+              <p>
+                        Author: Antoine Aflalo (antoine.aflalo@zerospam.ca) /
+                        Commiter: Antoine Aflalo (antoine.aflalo@zerospam.ca)
+                    </p>
+              <pre class="wrapped">feat(Invoice): Add reminders and late payments</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-09-18T14:47:48+00:00 (commit #<span title="dec4c3445cf95c275456b5dba75c879cb322a2ec">dec4c34</span>)</h3>
+            <div>
+              <p>
+                        Author: Yan Coutu (yan.coutu@zerospam.ca) /
+                        Commiter: Yan Coutu (yan.coutu@zerospam.ca)
+                    </p>
+              <pre class="wrapped">feat(LatePaymentFee): Add ability to add/edit the late payment fees of a client</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-09-18T13:11:37+00:00 (commit #<span title="4e27b4727ffc3de1b977fe335eb1f84622b50038">4e27b47</span>)</h3>
+            <div>
+              <p>
+                        Author: Yan Coutu (yan.coutu@zerospam.ca) /
+                        Commiter: Yan Coutu (yan.coutu@zerospam.ca)
+                    </p>
+              <pre class="wrapped">refactor(LatePaymentReminder): Rename Reminder class to ReminderData</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-09-17T20:42:09+00:00 (commit #<span title="e04583e1b6752720be1f2f5741afe63fd3a80337">e04583e</span>)</h3>
+            <div>
+              <p>
+                        Author: Yan Coutu (yan.coutu@zerospam.ca) /
+                        Commiter: Yan Coutu (yan.coutu@zerospam.ca)
+                    </p>
+              <pre class="wrapped">feat(LatePaymentReminder): Add ability to manage the late payment reminders of a client
+
+fix #30</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-08-10T21:07:18+00:00 (commit #<span title="56d6f51aeb3208da32e1ce64d9c92d48c5c77d1f">56d6f51</span>)</h3>
+            <div>
+              <p>
+                        Author: Philippe Bouchard-Bourdeau (pbb@zerospam.ca) /
+                        Commiter: Philippe Bouchard-Bourdeau (pbb@zerospam.ca)
+                    </p>
+              <pre class="wrapped">feat(Estimate): Added Estimate Line
+
+WIP Still need to test it</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-07-12T15:49:10+00:00 (commit #<span title="8aa8b1b55de890607971f0deee33cfb02305e72d">8aa8b1b</span>)</h3>
+            <div>
+              <p>
+                        Author: Yan Coutu (yan.coutu@zerospam.ca) /
+                        Commiter: Yan Coutu (yan.coutu@zerospam.ca)
+                    </p>
+              <pre class="wrapped">fix(Client): Add field nullability</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-07-12T14:40:02+00:00 (commit #<span title="34b7da5c74216d3318b4d7ccfb7eb9dfd35495e1">34b7da5</span>)</h3>
+            <div>
+              <p>
+                        Author: Yan Coutu (yan.coutu@zerospam.ca) /
+                        Commiter: Yan Coutu (yan.coutu@zerospam.ca)
+                    </p>
+              <pre class="wrapped">docs(Client): Fix typing in client doc</pre>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2019 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

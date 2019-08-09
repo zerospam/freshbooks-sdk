@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - ZEROSPAM\Freshbooks\Middleware\Error\UnprocessableEntityMiddleware</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.html">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.html">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.html">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.html">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.html">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.html">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.html">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.html">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.html#ZEROSPAM_Freshbooks_Middleware_Error">ZEROSPAM\Freshbooks\Middleware\Error</a>
+          </li>
+          <li class="separator">UnprocessableEntityMiddleware</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="#history">History</a>
+          </li>
+          <li>
+            <a href="../source/src/Middleware/Error/UnprocessableEntityMiddleware.php.html#line17">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>ZEROSPAM\Freshbooks\Middleware\Error\</small>UnprocessableEntityMiddleware</h1>
+        <h4/>
+        <p/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class UnprocessableEntityMiddleware
+                implements
+                IMiddleware
+            {<br/><ul class="none"><li>// members</li><li>protected <span title="ZEROSPAM\Framework\SDK\Client\IOAuthClient">IOAuthClient</span> <a href="#members">$client</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public <span title="IMiddleware">IMiddleware</span> <a title="ZEROSPAM\Freshbooks\Middleware\Error\UnprocessableEntityMiddleware" href="../classes/ZEROSPAM_Freshbooks_Middleware_Error_UnprocessableEntityMiddleware/setClient.html">setClient</a>()
+                    </li><li>public static array <a title="ZEROSPAM\Freshbooks\Middleware\Error\UnprocessableEntityMiddleware" href="../classes/ZEROSPAM_Freshbooks_Middleware_Error_UnprocessableEntityMiddleware/statusCode.html">statusCode</a>()
+                    </li><li>public array <a title="ZEROSPAM\Freshbooks\Middleware\Error\UnprocessableEntityMiddleware" href="../classes/ZEROSPAM_Freshbooks_Middleware_Error_UnprocessableEntityMiddleware/handle.html">handle</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Implements</h4>
+          <ul>
+            <li>ZEROSPAM\Framework\SDK\Client\Middleware\IMiddleware</li>
+          </ul>
+        </div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="client"><strong>$client</strong>
+                —
+                <a title="ZEROSPAM\Framework\SDK\Client\IOAuthClient" href="../classes/ZEROSPAM_Framework_SDK_Client_IOAuthClient.html">ZEROSPAM\Framework\SDK\Client\IOAuthClient</a></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>public</h4>
+          <ul>
+            <li id="handle"><a title="ZEROSPAM\Freshbooks\Middleware\Error\UnprocessableEntityMiddleware" href="../classes/ZEROSPAM_Freshbooks_Middleware_Error_UnprocessableEntityMiddleware/handle.html">handle()</a>
+                — Handle the request/response.</li>
+            <li id="setClient"><a title="ZEROSPAM\Freshbooks\Middleware\Error\UnprocessableEntityMiddleware" href="../classes/ZEROSPAM_Freshbooks_Middleware_Error_UnprocessableEntityMiddleware/setClient.html">setClient()</a>
+                — Set the OAuth Client.</li>
+            <li id="statusCode"><a title="ZEROSPAM\Freshbooks\Middleware\Error\UnprocessableEntityMiddleware" href="../classes/ZEROSPAM_Freshbooks_Middleware_Error_UnprocessableEntityMiddleware/statusCode.html">statusCode()</a>
+                — Which status error code does this middleware manage.</li>
+          </ul>
+        </div>
+        <h2 id="history">History</h2>
+        <ul class="styled history">
+          <li>
+            <h3>2019-01-23T20:38:42+00:00 (commit #<span title="cdb2ea807dfb1cca129c7b25463af7cb8569fe88">cdb2ea8</span>)</h3>
+            <div>
+              <p>
+                        Author: Antoine Aflalo (antoine.aflalo@zerospam.ca) /
+                        Commiter: Antoine Aflalo (antoine.aflalo@zerospam.ca)
+                    </p>
+              <pre class="wrapped">fix(Errors): Add support for 413 code</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-12-04T14:53:43+00:00 (commit #<span title="42ee32a641da32f94cf2d1ef0ec6a9eda053d94b">42ee32a</span>)</h3>
+            <div>
+              <p>
+                        Author: Antoine Aflalo (antoine.aflalo@zerospam.ca) /
+                        Commiter: Antoine Aflalo (antoine.aflalo@zerospam.ca)
+                    </p>
+              <pre class="wrapped">feat(UnprocessableEntity): Trigger Exception with error msg</pre>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2019 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.html">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.html">Namespaces</a>
+        </li>
+        <li>
+          <a href="../interfaces.html">Interfaces</a>
+        </li>
+        <li>
+          <a href="../classes.html">Classes</a>
+        </li>
+        <li>
+          <a href="../traits.html">Traits</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.html">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.html">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.html">Classes</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.html#ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile">ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile</a>
+          </li>
+          <li class="separator">InvoiceProfileData</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="#history">History</a>
+          </li>
+          <li>
+            <a href="../source/src/Request/Data/InvoiceProfile/InvoiceProfileData.php.html#line17">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\</small>InvoiceProfileData</h1>
+        <h4/>
+        <p/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class InvoiceProfileData
+                extends ArrayableData
+            {<br/><ul class="none"><li>// members</li><li>private  <a href="#members">$frequency</a>;
+                    </li><li>private <span title="ZEROSPAM\Freshbooks\Request\Data\DateTimeData">DateTimeData</span> <a href="#members">$createDate</a>;
+                    </li><li>private <span title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\bool">bool</span> <a href="#members">$sendEmail</a>;
+                    </li><li>private  <a href="#members">$street</a>;
+                    </li><li>private <span title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\string|null">string|null</span> <a href="#members">$billGateway</a>;
+                    </li><li>private  <a href="#members">$vatNumber</a>;
+                    </li><li>private  <a href="#members">$numberRecurring</a>;
+                    </li><li>private  <a href="#members">$city</a>;
+                    </li><li>private <span title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\bool">bool</span> <a href="#members">$sendGmail</a>;
+                    </li><li>private  <a href="#members">$lname</a>;
+                    </li><li>private  <a href="#members">$fname</a>;
+                    </li><li>private  <a href="#members">$province</a>;
+                    </li><li>private <span title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\string|null">string|null</span> <a href="#members">$terms</a>;
+                    </li><li>private  <a href="#members">$vatName</a>;
+                    </li><li>private  <a href="#members">$street2</a>;
+                    </li><li>private  <a href="#members">$currencyCode</a>;
+                    </li><li>private <span title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\bool">bool</span> <a href="#members">$disable</a>;
+                    </li><li>private  <a href="#members">$address</a>;
+                    </li><li>private  <a href="#members">$organization</a>;
+                    </li><li>private  <a href="#members">$customerid</a>;
+                    </li><li>private  <a href="#members">$dueOffsetDays</a>;
+                    </li><li>private  <a href="#members">$language</a>;
+                    </li><li>private  <a href="#members">$poNumber</a>;
+                    </li><li>private  <a href="#members">$country</a>;
+                    </li><li>private  <a href="#members">$notes</a>;
+                    </li><li>private <span title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\bool">bool</span> <a href="#members">$includeUnbilledTime</a>;
+                    </li><li>private  <a href="#members">$paymentDetails</a>;
+                    </li><li>private  <a href="#members">$code</a>;
+                    </li><li>private  <a href="#members">$discountValue</a>;
+                    </li><li>private <span title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\bool">bool</span> <a href="#members">$autoBill</a>;
+                    </li><li>private <span title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\bool">bool</span> <a href="#members">$requireAutoBill</a>;
+                    </li><li>private  <a href="#members">$lines</a>;
+                    </li><li>protected array <a href="#members">$renamed</a> =
+                        ;
+                    </li></ul><ul class="none"><li>// methods</li><li>public <span title="InvoiceProfileData">InvoiceProfileData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setFrequency.html">setFrequency</a>()
+                    </li><li>public <span title="InvoiceProfileData">InvoiceProfileData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setCreateDate.html">setCreateDate</a>()
+                    </li><li>public <span title="InvoiceProfileData">InvoiceProfileData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setSendEmail.html">setSendEmail</a>()
+                    </li><li>public <span title="InvoiceProfileData">InvoiceProfileData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setStreet.html">setStreet</a>()
+                    </li><li>public <span title="InvoiceProfileData">InvoiceProfileData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setBillGateway.html">setBillGateway</a>()
+                    </li><li>public <span title="InvoiceProfileData">InvoiceProfileData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setVatNumber.html">setVatNumber</a>()
+                    </li><li>public <span title="InvoiceProfileData">InvoiceProfileData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setNumberRecurring.html">setNumberRecurring</a>()
+                    </li><li>public <span title="InvoiceProfileData">InvoiceProfileData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setCity.html">setCity</a>()
+                    </li><li>public <span title="InvoiceProfileData">InvoiceProfileData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setSendGmail.html">setSendGmail</a>()
+                    </li><li>public <span title="InvoiceProfileData">InvoiceProfileData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setLname.html">setLname</a>()
+                    </li><li>public <span title="InvoiceProfileData">InvoiceProfileData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setFname.html">setFname</a>()
+                    </li><li>public <span title="InvoiceProfileData">InvoiceProfileData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setProvince.html">setProvince</a>()
+                    </li><li>public <span title="InvoiceProfileData">InvoiceProfileData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setTerms.html">setTerms</a>()
+                    </li><li>public <span title="InvoiceProfileData">InvoiceProfileData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setVatName.html">setVatName</a>()
+                    </li><li>public <span title="InvoiceProfileData">InvoiceProfileData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setStreet2.html">setStreet2</a>()
+                    </li><li>public <span title="InvoiceProfileData">InvoiceProfileData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setCurrencyCode.html">setCurrencyCode</a>()
+                    </li><li>public <span title="InvoiceProfileData">InvoiceProfileData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setCurrency.html">setCurrency</a>()
+                    </li><li>public <span title="InvoiceProfileData">InvoiceProfileData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setDisable.html">setDisable</a>()
+                    </li><li>public <span title="InvoiceProfileData">InvoiceProfileData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setAddress.html">setAddress</a>()
+                    </li><li>public <span title="InvoiceProfileData">InvoiceProfileData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setOrganization.html">setOrganization</a>()
+                    </li><li>public <span title="InvoiceProfileData">InvoiceProfileData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setCustomerid.html">setCustomerid</a>()
+                    </li><li>public <span title="InvoiceProfileData">InvoiceProfileData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setDueOffsetDays.html">setDueOffsetDays</a>()
+                    </li><li>public <span title="InvoiceProfileData">InvoiceProfileData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setLanguage.html">setLanguage</a>()
+                    </li><li>public <span title="InvoiceProfileData">InvoiceProfileData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setPoNumber.html">setPoNumber</a>()
+                    </li><li>public <span title="InvoiceProfileData">InvoiceProfileData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setCountry.html">setCountry</a>()
+                    </li><li>public <span title="InvoiceProfileData">InvoiceProfileData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setNotes.html">setNotes</a>()
+                    </li><li>public <span title="InvoiceProfileData">InvoiceProfileData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setIncludeUnbilledTime.html">setIncludeUnbilledTime</a>()
+                    </li><li>public <span title="InvoiceProfileData">InvoiceProfileData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setPaymentDetails.html">setPaymentDetails</a>()
+                    </li><li>public <span title="InvoiceProfileData">InvoiceProfileData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setCode.html">setCode</a>()
+                    </li><li>public <span title="InvoiceProfileData">InvoiceProfileData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setDiscountValue.html">setDiscountValue</a>()
+                    </li><li>public <span title="InvoiceProfileData">InvoiceProfileData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setAutoBill.html">setAutoBill</a>()
+                    </li><li>public <span title="InvoiceProfileData">InvoiceProfileData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setRequireAutoBill.html">setRequireAutoBill</a>()
+                    </li><li>public <span title="InvoiceProfileData">InvoiceProfileData</span> <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setLines.html">setLines</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>ZEROSPAM\Framework\SDK\Utils\Data\ArrayableData</li>
+          </ul>
+        </div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="address"><strong>$address</strong>
+                —
+                string</li>
+            <li id="autoBill"><strong>$autoBill</strong>
+                —
+                <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\bool" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_bool.html">ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\bool</a></li>
+            <li id="billGateway"><strong>$billGateway</strong>
+                —
+                <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\string|null" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_string|null.html">ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\string|null</a></li>
+            <li id="city"><strong>$city</strong>
+                —
+                string</li>
+            <li id="code"><strong>$code</strong>
+                —
+                string</li>
+            <li id="country"><strong>$country</strong>
+                —
+                string</li>
+            <li id="createDate"><strong>$createDate</strong>
+                —
+                <a title="ZEROSPAM\Freshbooks\Request\Data\DateTimeData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_DateTimeData.html">ZEROSPAM\Freshbooks\Request\Data\DateTimeData</a></li>
+            <li id="currencyCode"><strong>$currencyCode</strong>
+                —
+                string</li>
+            <li id="customerid"><strong>$customerid</strong>
+                —
+                int</li>
+            <li id="disable"><strong>$disable</strong>
+                —
+                <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\bool" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_bool.html">ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\bool</a></li>
+            <li id="discountValue"><strong>$discountValue</strong>
+                —
+                string</li>
+            <li id="dueOffsetDays"><strong>$dueOffsetDays</strong>
+                —
+                int</li>
+            <li id="fname"><strong>$fname</strong>
+                —
+                string</li>
+            <li id="frequency"><strong>$frequency</strong>
+                —
+                string</li>
+            <li id="includeUnbilledTime"><strong>$includeUnbilledTime</strong>
+                —
+                <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\bool" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_bool.html">ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\bool</a></li>
+            <li id="language"><strong>$language</strong>
+                —
+                string</li>
+            <li id="lines"><strong>$lines</strong>
+                —
+                array</li>
+            <li id="lname"><strong>$lname</strong>
+                —
+                string</li>
+            <li id="notes"><strong>$notes</strong>
+                —
+                string</li>
+            <li id="numberRecurring"><strong>$numberRecurring</strong>
+                —
+                int</li>
+            <li id="organization"><strong>$organization</strong>
+                —
+                string</li>
+            <li id="paymentDetails"><strong>$paymentDetails</strong>
+                —
+                string</li>
+            <li id="poNumber"><strong>$poNumber</strong>
+                —
+                string</li>
+            <li id="province"><strong>$province</strong>
+                —
+                string</li>
+            <li id="requireAutoBill"><strong>$requireAutoBill</strong>
+                —
+                <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\bool" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_bool.html">ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\bool</a></li>
+            <li id="sendEmail"><strong>$sendEmail</strong>
+                —
+                <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\bool" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_bool.html">ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\bool</a></li>
+            <li id="sendGmail"><strong>$sendGmail</strong>
+                —
+                <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\bool" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_bool.html">ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\bool</a></li>
+            <li id="street"><strong>$street</strong>
+                —
+                string</li>
+            <li id="street2"><strong>$street2</strong>
+                —
+                string</li>
+            <li id="terms"><strong>$terms</strong>
+                —
+                <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\string|null" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_string|null.html">ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\string|null</a></li>
+            <li id="vatName"><strong>$vatName</strong>
+                —
+                string</li>
+            <li id="vatNumber"><strong>$vatNumber</strong>
+                —
+                string</li>
+          </ul>
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="renamed">
+              <strong>$renamed</strong>
+            </li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>public</h4>
+          <ul>
+            <li id="setAddress">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setAddress.html">setAddress()</a>
+            </li>
+            <li id="setAutoBill">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setAutoBill.html">setAutoBill()</a>
+            </li>
+            <li id="setBillGateway">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setBillGateway.html">setBillGateway()</a>
+            </li>
+            <li id="setCity">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setCity.html">setCity()</a>
+            </li>
+            <li id="setCode">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setCode.html">setCode()</a>
+            </li>
+            <li id="setCountry">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setCountry.html">setCountry()</a>
+            </li>
+            <li id="setCreateDate">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setCreateDate.html">setCreateDate()</a>
+            </li>
+            <li id="setCurrency">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setCurrency.html">setCurrency()</a>
+            </li>
+            <li id="setCurrencyCode">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setCurrencyCode.html">setCurrencyCode()</a>
+            </li>
+            <li id="setCustomerid">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setCustomerid.html">setCustomerid()</a>
+            </li>
+            <li id="setDisable">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setDisable.html">setDisable()</a>
+            </li>
+            <li id="setDiscountValue">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setDiscountValue.html">setDiscountValue()</a>
+            </li>
+            <li id="setDueOffsetDays">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setDueOffsetDays.html">setDueOffsetDays()</a>
+            </li>
+            <li id="setFname">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setFname.html">setFname()</a>
+            </li>
+            <li id="setFrequency">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setFrequency.html">setFrequency()</a>
+            </li>
+            <li id="setIncludeUnbilledTime">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setIncludeUnbilledTime.html">setIncludeUnbilledTime()</a>
+            </li>
+            <li id="setLanguage">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setLanguage.html">setLanguage()</a>
+            </li>
+            <li id="setLines">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setLines.html">setLines()</a>
+            </li>
+            <li id="setLname">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setLname.html">setLname()</a>
+            </li>
+            <li id="setNotes">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setNotes.html">setNotes()</a>
+            </li>
+            <li id="setNumberRecurring">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setNumberRecurring.html">setNumberRecurring()</a>
+            </li>
+            <li id="setOrganization">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setOrganization.html">setOrganization()</a>
+            </li>
+            <li id="setPaymentDetails">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setPaymentDetails.html">setPaymentDetails()</a>
+            </li>
+            <li id="setPoNumber">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setPoNumber.html">setPoNumber()</a>
+            </li>
+            <li id="setProvince">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setProvince.html">setProvince()</a>
+            </li>
+            <li id="setRequireAutoBill">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setRequireAutoBill.html">setRequireAutoBill()</a>
+            </li>
+            <li id="setSendEmail">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setSendEmail.html">setSendEmail()</a>
+            </li>
+            <li id="setSendGmail">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setSendGmail.html">setSendGmail()</a>
+            </li>
+            <li id="setStreet">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setStreet.html">setStreet()</a>
+            </li>
+            <li id="setStreet2">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setStreet2.html">setStreet2()</a>
+            </li>
+            <li id="setTerms">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setTerms.html">setTerms()</a>
+            </li>
+            <li id="setVatName">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setVatName.html">setVatName()</a>
+            </li>
+            <li id="setVatNumber">
+              <a title="ZEROSPAM\Freshbooks\Request\Data\InvoiceProfile\InvoiceProfileData" href="../classes/ZEROSPAM_Freshbooks_Request_Data_InvoiceProfile_InvoiceProfileData/setVatNumber.html">setVatNumber()</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="history">History</h2>
+        <ul class="styled history">
+          <li>
+            <h3>2018-09-27T13:04:59+00:00 (commit #<span title="fb5b3a3083905d968e8e8388650af3350c4ff4ed">fb5b3a3</span>)</h3>
+            <div>
+              <p>
+                        Author: Philippe Bouchard-Bourdeau (pbb@zerospam.ca) /
+                        Commiter: Philippe Bouchard-Bourdeau (pbb@zerospam.ca)
+                    </p>
+              <pre class="wrapped">fix(Payment): refactored setter usage in view of deprecation</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-09-26T19:13:28+00:00 (commit #<span title="a9b42c0bcf47e00b807904e53557d358db898e70">a9b42c0</span>)</h3>
+            <div>
+              <p>
+                        Author: Philippe Bouchard-Bourdeau (pbb@zerospam.ca) /
+                        Commiter: Philippe Bouchard-Bourdeau (pbb@zerospam.ca)
+                    </p>
+              <pre class="wrapped">refactor(Currency): prevent breaking change</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-09-26T17:56:20+00:00 (commit #<span title="be3d6f641769408acc5c3e3abf618cb647ce312a">be3d6f6</span>)</h3>
+            <div>
+              <p>
+                        Author: Philippe Bouchard-Bourdeau (pbb@zerospam.ca) /
+                        Commiter: Philippe Bouchard-Bourdeau (pbb@zerospam.ca)
+                    </p>
+              <pre class="wrapped">refactor(Currency): Refactored currency properties to use Currency enumeration</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-09-26T17:33:09+00:00 (commit #<span title="343ae68cf304637b2f968b7457d29f68c7a78405">343ae68</span>)</h3>
+            <div>
+              <p>
+                        Author: Antoine Aflalo (antoine.aflalo@zerospam.ca) /
+                        Commiter: Antoine Aflalo (antoine.aflalo@zerospam.ca)
+                    </p>
+              <pre class="wrapped">refactor(ArrayableData): Use the new structure from SDK</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-08-15T18:13:43+00:00 (commit #<span title="2e35826f7734ca557f0d1ba5f8301181b048587b">2e35826</span>)</h3>
+            <div>
+              <p>
+                        Author: Philippe Bouchard-Bourdeau (pbb@zerospam.ca) /
+                        Commiter: Philippe Bouchard-Bourdeau (pbb@zerospam.ca)
+                    </p>
+              <pre class="wrapped">fix(Estimate): Refactored Invoice Back into the business namespace</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-08-10T21:07:18+00:00 (commit #<span title="56d6f51aeb3208da32e1ce64d9c92d48c5c77d1f">56d6f51</span>)</h3>
+            <div>
+              <p>
+                        Author: Philippe Bouchard-Bourdeau (pbb@zerospam.ca) /
+                        Commiter: Philippe Bouchard-Bourdeau (pbb@zerospam.ca)
+                    </p>
+              <pre class="wrapped">feat(Estimate): Added Estimate Line
+
+WIP Still need to test it</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-07-16T18:21:27+00:00 (commit #<span title="86dd87e10c80508fd350adc5da1a0c648b903356">86dd87e</span>)</h3>
+            <div>
+              <p>
+                        Author: Yan Coutu (yan.coutu@zerospam.ca) /
+                        Commiter: Yan Coutu (yan.coutu@zerospam.ca)
+                    </p>
+              <pre class="wrapped">fix(InvoiceProfile): Fix field name
+
+Fix field name and add lines field</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-07-16T15:17:50+00:00 (commit #<span title="f69ffabbfef8ac7da8e8b5845d5f99f70fec1493">f69ffab</span>)</h3>
+            <div>
+              <p>
+                        Author: Yan Coutu (yan.coutu@zerospam.ca) /
+                        Commiter: Yan Coutu (yan.coutu@zerospam.ca)
+                    </p>
+              <pre class="wrapped">feat(InvoiceProfile): Add invoice profile update request</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-07-13T13:29:13+00:00 (commit #<span title="2909392ab5e445652313ad796402f6cf2bd5b98b">2909392</span>)</h3>
+            <div>
+              <p>
+                        Author: Yan Coutu (yan.coutu@zerospam.ca) /
+                        Commiter: Yan Coutu (yan.coutu@zerospam.ca)
+                    </p>
+              <pre class="wrapped">fix(Invoice): Fix update invoice request problem with tests
+
+Fix response array order and WritableInvoiceFieldTrait return types</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-07-13T13:17:12+00:00 (commit #<span title="9e18ce1c87a4f2fb1d03a48eb8f1205c970c10b5">9e18ce1</span>)</h3>
+            <div>
+              <p>
+                        Author: Yan Coutu (yan.coutu@zerospam.ca) /
+                        Commiter: Yan Coutu (yan.coutu@zerospam.ca)
+                    </p>
+              <pre class="wrapped">feat(Invoice): Add invoice update request
+
+Refactor some fields from InvoiceCreateData to InvoiceUpdateData</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-07-12T20:28:58+00:00 (commit #<span title="faeee8cdb208d740ef40ee2f3c9db61847895cdc">faeee8c</span>)</h3>
+            <div>
+              <p>
+                        Author: Yan Coutu (yan.coutu@zerospam.ca) /
+                        Commiter: Yan Coutu (yan.coutu@zerospam.ca)
+                    </p>
+              <pre class="wrapped">refactor(Request): DateTimeData can now take null and Carbon</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-07-12T19:20:18+00:00 (commit #<span title="4750493e27d6f4b826fa6725149a05bd79f85d2b">4750493</span>)</h3>
+            <div>
+              <p>
+                        Author: Yan Coutu (yan.coutu@zerospam.ca) /
+                        Commiter: Yan Coutu (yan.coutu@zerospam.ca)
+                    </p>
+              <pre class="wrapped">fix(Invoice): Remove unchangeable fields for invoice creation</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-07-12T18:28:17+00:00 (commit #<span title="363bd45e9ce1e0700318344d695b103441677aa0">363bd45</span>)</h3>
+            <div>
+              <p>
+                        Author: Yan Coutu (yan.coutu@zerospam.ca) /
+                        Commiter: Yan Coutu (yan.coutu@zerospam.ca)
+                    </p>
+              <pre class="wrapped">fix(Invoice): Add field nullability</pre>
+            </div>
+          </li>
+          <li>
+            <h3>2018-07-11T19:26:42+00:00 (commit #<span title="5375bdd8952f001a8deb54d1d7b37ace3e5c045f">5375bdd</span>)</h3>
+            <div>
+              <p>
+                        Author: Yan Coutu (yan.coutu@zerospam.ca) /
+                        Commiter: Yan Coutu (yan.coutu@zerospam.ca)
+                    </p>
+              <pre class="wrapped">refactor(Invoice): Remove seemingly unusable invoice creation fields</pre>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+    <footer>
+      <span>Generated using phpDox 0.12.0 - Copyright (C) 2010 - 2019 by Arne Blankerts and Contributors</span>
+    </footer>
+  </body>
+</html>
