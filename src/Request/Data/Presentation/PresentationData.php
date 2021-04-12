@@ -144,4 +144,68 @@ class PresentationData extends ArrayableData
 
         return $data;
     }
+
+    /**
+     * @return string|null
+     */
+    public function getDateFormat(): ?string
+    {
+        return $this->dateFormat;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getImageBannerPositionY(): ?int
+    {
+        return $this->imageBannerPosition_y;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getImageBannerSrc(): ?string
+    {
+        return $this->imageBannerSrc;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getImageLogoSrc(): ?string
+    {
+        return $this->imageLogoSrc;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getThemeFontName(): ?string
+    {
+        return $this->themeFontName;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getThemeLayout(): ?string
+    {
+        return $this->themeLayout;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getThemePrimaryColor(): ?string
+    {
+        return $this->themePrimaryColor;
+    }
 }

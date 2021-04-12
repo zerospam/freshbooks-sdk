@@ -14,16 +14,17 @@
     "freshbooks"
   ],
   "require": {
-    "php": ">= 7.2",
+    "php": ">= 7.4",
     "zerospam/oauth2-freshbooks": "^1.6",
-    "zerospam/sdk-framework": "^6.0"
+    "zerospam/sdk-framework": "^v7.0.1"
   },
   "require-dev": {
     "mockery/mockery": "^1.1",
     "squizlabs/php_codesniffer": "^3.2",
-    "phpunit/phpunit": "^7.1",
+    "phpunit/phpunit": "^9.5.4",
     "php-coveralls/php-coveralls": "^2.0",
-    "phploc/phploc": "^4.0"
+    "phploc/phploc": "^7.0.2",
+    "dms/phpunit-arraysubset-asserts": "^v0.2.1"
   },
   "autoload": {
     "psr-4": {

@@ -53,8 +53,8 @@ class PresentationsTest extends TestCase
 
         $data = PresentationData::fromResponse($response);
 
-        $this->assertAttributeSame('yyyy-mm-dd', 'dateFormat', $data);
-        $this->assertAttributeSame(226105, 'id', $data);
+        $this->assertEquals('yyyy-mm-dd', $data->getDateFormat());
+        $this->assertEquals(226105, $data->getId());
     }
 
     public function testSetPresentationInvoice(): void
