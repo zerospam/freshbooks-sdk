@@ -8,7 +8,6 @@
 
 namespace ZEROSPAM\Freshbooks\Argument;
 
-use ZEROSPAM\Framework\SDK\Request\Arguments\Stackable\ISubKeyedStackableArgument;
 use ZEROSPAM\Framework\SDK\Request\Arguments\Stackable\SubKeyedStackableRequestArg;
 
 /**

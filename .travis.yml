@@ -1,15 +1,11 @@
+os: linux
+dist: xenial
 language: php
-sudo: true
 php:
 - 7.2
-- 7.1
 cache:
   directories:
   - "$HOME/.composer/cache/files"
-stages:
-- test
-- name: deploy
-  if: branch = master
 jobs:
   include:
   - stage: deploy
@@ -25,9 +21,9 @@ jobs:
     after_success: true
     deploy:
       provider: pages
-      skip-cleanup: true
-      github-token: "$GITHUB_TOKEN"
-      local-dir: build/docs/html
+      skip_cleanup: true
+      token: "$GITHUB_TOKEN"
+      local_dir: build/docs/html
       on:
         branch: master
   - script:

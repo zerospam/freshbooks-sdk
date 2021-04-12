@@ -17,8 +17,4 @@
             <directory suffix=".php">./src/</directory>
         </whitelist>
     </filter>
-    <!--<logging>-->
-    <!--<log type="coverage-clover" target="build/logs/clover.xml"/>-->
-    <!--<log type="junit" target="build/phpunit/junit.xml" />-->
-    <!--</logging>-->
 </phpunit>

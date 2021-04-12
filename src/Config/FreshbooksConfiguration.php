@@ -8,18 +8,16 @@
 
 namespace ZEROSPAM\Freshbooks\Config;
 
+use ZEROSPAM\Framework\SDK\Config\OAuth\BaseOAuthConfiguration;
 use ZEROSPAM\Framework\SDK\Config\OAuthConfiguration;
 use ZEROSPAM\Freshbooks\Middleware\Error\UnprocessableEntityMiddleware;
 use ZEROSPAM\OAuth2\Client\Provider\FreshBooks;
 
 /**
- * Class FreshbooksConfiguration
- *
- * Use the Freshbooks OAuth Provider
  *
  * @package ZEROSPAM\Freshbooks\Config
  */
-class FreshbooksConfiguration extends OAuthConfiguration
+class FreshbooksConfiguration extends BaseOAuthConfiguration
 {
 
     /**
