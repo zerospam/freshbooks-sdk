@@ -9,7 +9,7 @@
 namespace ZEROSPAM\Freshbooks\Middleware\Error;
 
 use Psr\Http\Message\ResponseInterface;
-use ZEROSPAM\Framework\SDK\Client\IOAuthClient;
+use ZEROSPAM\Framework\SDK\Client\BaseClient;
 use ZEROSPAM\Framework\SDK\Client\Middleware\IMiddleware;
 use ZEROSPAM\Framework\SDK\Request\Api\IRequest;
 use ZEROSPAM\Freshbooks\Exception\UnprocessableEntityException;
@@ -18,18 +18,18 @@ class UnprocessableEntityMiddleware implements IMiddleware
 {
 
     /**
-     * @var IOAuthClient
+     * @var BaseClient
      */
     protected $client;
 
     /**
      * Set the OAuth Client.
      *
-     * @param IOAuthClient $client
+     * @param BaseClient $client
      *
      * @return $this
      */
-    public function setClient(IOAuthClient $client): IMiddleware
+    public function setClient(BaseClient $client): IMiddleware
     {
         $this->client = $client;
 
