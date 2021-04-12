@@ -46,6 +46,9 @@ trait WritableInvoiceFieldsTrait
     /** @var int */
     private $dueOffsetDays;
 
+    /** @var int */
+    private $visState;
+
     /**
      * @param string $invoiceNumber
      *
@@ -54,6 +57,7 @@ trait WritableInvoiceFieldsTrait
     public function setInvoiceNumber(string $invoiceNumber)
     {
         $this->invoiceNumber = $invoiceNumber;
+
         return $this;
     }
 
@@ -66,6 +70,7 @@ trait WritableInvoiceFieldsTrait
     {
         $this->nullableChanged();
         $this->generationDate = new DateTimeData($generationDate, 'Y-m-d');
+
         return $this;
     }
 
@@ -78,6 +83,7 @@ trait WritableInvoiceFieldsTrait
     {
         $this->nullableChanged();
         $this->discountDescription = $discountDescription;
+
         return $this;
     }
 
@@ -90,6 +96,7 @@ trait WritableInvoiceFieldsTrait
     {
         $this->nullableChanged();
         $this->returnUri = $returnUri;
+
         return $this;
     }
 
@@ -102,6 +109,7 @@ trait WritableInvoiceFieldsTrait
     {
         $this->nullableChanged();
         $this->depositPercentage = $depositPercentage;
+
         return $this;
     }
 
@@ -113,6 +121,7 @@ trait WritableInvoiceFieldsTrait
     public function setShowAttachments(bool $showAttachments)
     {
         $this->showAttachments = $showAttachments;
+
         return $this;
     }
 
@@ -124,6 +133,7 @@ trait WritableInvoiceFieldsTrait
     public function setDueOffsetDays(int $dueOffsetDays)
     {
         $this->dueOffsetDays = $dueOffsetDays;
+
         return $this;
     }
 
@@ -135,6 +145,7 @@ trait WritableInvoiceFieldsTrait
     public function setBasecampid(int $basecampid)
     {
         $this->basecampid = $basecampid;
+
         return $this;
     }
 
@@ -146,6 +157,7 @@ trait WritableInvoiceFieldsTrait
     public function setStatus(string $status)
     {
         $this->status = $status;
+
         return $this;
     }
 
@@ -157,6 +169,7 @@ trait WritableInvoiceFieldsTrait
     public function setParent(int $parent)
     {
         $this->parent = $parent;
+
         return $this;
     }
 
@@ -168,6 +181,51 @@ trait WritableInvoiceFieldsTrait
     public function setAutoBill(bool $autoBill)
     {
         $this->autoBill = $autoBill;
+
         return $this;
+    }
+
+    /**
+     * Set state of the invoice
+     *
+     * @param int $visState
+     *
+     * @return $this
+     */
+    public function setVisState(int $visState)
+    {
+        $this->visState = $visState;
+
+        return $this;
+    }
+
+    /**
+     * Set the invoice deleted or recovered
+     *
+     * @return $this
+     */
+    public function setDeleted()
+    {
+        return $this->setVisState(1);
+    }
+
+    /**
+     * Set the invoice as active
+     *
+     * @return $this
+     */
+    public function setActive()
+    {
+        return $this->setVisState(0);
+    }
+
+    /**
+     * Set the invoice as archived
+     *
+     * @return $this
+     */
+    public function setArchived()
+    {
+        return $this->setVisState(2);
     }
 }

@@ -1,3 +1,101 @@
+# [2.8.0](https://github.com/zerospam/freshbooks-sdk/compare/v2.7.0...v2.8.0) (2019-08-09)
+
+
+### Features
+
+* **Dependencies:** update dependencies ([27a99af](https://github.com/zerospam/freshbooks-sdk/commit/27a99af))
+* **Dependencies:** update node modules ([1967c80](https://github.com/zerospam/freshbooks-sdk/commit/1967c80))
+
+# [2.7.0](https://github.com/zerospam/freshbooks-sdk/compare/v2.6.3...v2.7.0) (2019-08-09)
+
+
+### Features
+
+* **Dependencies:** update sdk-framework version ([b3e7ff3](https://github.com/zerospam/freshbooks-sdk/commit/b3e7ff3))
+
+## [2.6.3](https://github.com/zerospam/freshbooks-sdk/compare/v2.6.2...v2.6.3) (2019-01-23)
+
+
+### Bug Fixes
+
+* **Invoice:** Fix the vis state of an invoice ([e7bdf63](https://github.com/zerospam/freshbooks-sdk/commit/e7bdf63))
+
+## [2.6.2](https://github.com/zerospam/freshbooks-sdk/compare/v2.6.1...v2.6.2) (2019-01-23)
+
+
+### Bug Fixes
+
+* **Errors:** Add support for 413 code ([cdb2ea8](https://github.com/zerospam/freshbooks-sdk/commit/cdb2ea8))
+
+## [2.6.1](https://github.com/zerospam/freshbooks-sdk/compare/v2.6.0...v2.6.1) (2019-01-23)
+
+
+### Bug Fixes
+
+* **Invoice:** Add missing visState to delete invoice ([5f0127f](https://github.com/zerospam/freshbooks-sdk/commit/5f0127f))
+
+# [2.6.0](https://github.com/zerospam/freshbooks-sdk/compare/v2.5.2...v2.6.0) (2019-01-11)
+
+
+### Features
+
+* **AllowedGateway:** Add set gateway feature to accept payments ([1fac653](https://github.com/zerospam/freshbooks-sdk/commit/1fac653))
+
+## [2.5.2](https://github.com/zerospam/freshbooks-sdk/compare/v2.5.1...v2.5.2) (2018-12-04)
+
+
+### Bug Fixes
+
+* **Taxes:** Http Method for Update ([004b8e8](https://github.com/zerospam/freshbooks-sdk/commit/004b8e8))
+
+## [2.5.1](https://github.com/zerospam/freshbooks-sdk/compare/v2.5.0...v2.5.1) (2018-12-04)
+
+
+### Bug Fixes
+
+* **Taxes:** Url contained a space ([5c87872](https://github.com/zerospam/freshbooks-sdk/commit/5c87872))
+
+# [2.5.0](https://github.com/zerospam/freshbooks-sdk/compare/v2.4.2...v2.5.0) (2018-12-04)
+
+
+### Features
+
+* **Configuration:** Set default middlewares ([13635a9](https://github.com/zerospam/freshbooks-sdk/commit/13635a9))
+* **UnprocessableEntity:** Trigger Exception with error msg ([42ee32a](https://github.com/zerospam/freshbooks-sdk/commit/42ee32a))
+
+## [2.4.2](https://github.com/zerospam/freshbooks-sdk/compare/v2.4.1...v2.4.2) (2018-11-07)
+
+
+### Bug Fixes
+
+* **deps:** fix problem with requests ([0d84c6b](https://github.com/zerospam/freshbooks-sdk/commit/0d84c6b))
+
+## [2.4.1](https://github.com/zerospam/freshbooks-sdk/compare/v2.4.0...v2.4.1) (2018-10-23)
+
+
+### Bug Fixes
+
+* **Payment:** refactored setter usage in view of deprecation ([fb5b3a3](https://github.com/zerospam/freshbooks-sdk/commit/fb5b3a3))
+
+# [2.4.0](https://github.com/zerospam/freshbooks-sdk/compare/v2.3.1...v2.4.0) (2018-09-26)
+
+
+### Bug Fixes
+
+* **Presentation:** Fix the use of presentation ([61d807b](https://github.com/zerospam/freshbooks-sdk/commit/61d807b))
+
+
+### Features
+
+* **Estimate:** Added payment method enumeration ([dfc6365](https://github.com/zerospam/freshbooks-sdk/commit/dfc6365))
+
+## [2.3.1](https://github.com/zerospam/freshbooks-sdk/compare/v2.3.0...v2.3.1) (2018-09-26)
+
+
+### Performance Improvements
+
+* **Reminders-LatePayment:** Sets from response ([7e64672](https://github.com/zerospam/freshbooks-sdk/commit/7e64672))
+
 # [2.3.0](https://github.com/zerospam/freshbooks-sdk/compare/v2.2.0...v2.3.0) (2018-09-26)
 
 

@@ -66,6 +66,6 @@ class TaxCreateRequest extends BaseRequest implements IAccountIdRequest
      */
     public function baseRoute(): string
     {
-        return 'accounting/account/:accountId/taxes/taxes ';
+        return 'accounting/account/:accountId/taxes/taxes';
     }
 }
